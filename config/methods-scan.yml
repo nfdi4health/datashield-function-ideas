@@ -1,0 +1,15 @@
+# Settings of the researcher (methods-scan.yml), merged over the defaults
+# of nfdi4health/datashield-workflows' config/methods-scan.yml.
+
+# Named PubMed queries, in the search syntax of the PubMed website: try a
+# query there first and look at the hits. The pilot uses the first unless
+# a run names another. First drafts, to be refined.
+queries:
+  - name: cohort-nutrition
+    pubmed: '"cohort studies"[MeSH Terms] AND ("diet"[MeSH Terms] OR "nutritional status"[MeSH Terms])'
+  - name: cohort-epidemiology
+    pubmed: '"cohort studies"[MeSH Terms] AND "epidemiologic methods"[MeSH Terms]'
+
+pilot:
+  papers: 100
+  months: 12
