@@ -16,7 +16,12 @@ datashield-workflows; the design is in its `dev-notes/issue-agents.md`
 - **Routing:** labels in `.github/workflows/route-idea.yml` (`label =
   owner/repo`); only `allowed-logins` may route; the bots' App must be
   installed on the target.
-- **The researcher** runs on the user's Claude subscription
-  (`CLAUDE_CODE_OAUTH_TOKEN`), started only by `subscription-logins`.
+- **The researcher** runs in the private runner
+  `FlorianSchw/datashield-agent-runner` on the user's Claude subscription,
+  in one queue with the implementer (decided 2026-11-13); the caller here
+  (`methods-scan.yml` → `methods-scan-start.yml`) only starts it, for
+  `allowed-logins`, with the bots' App. Its pilot report comes back as
+  `scans/pilot-YYYY-MM.md` in a pull request. This repository holds no
+  Claude or NCBI secret any more.
   Phases: pilot (built), vocabulary round, backfill, monthly candidate PR
   with three boxes per candidate (designed, not built).

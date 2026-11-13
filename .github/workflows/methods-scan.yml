@@ -1,9 +1,11 @@
 name: Methods Scan
 
 # The researcher: which statistical methods health research uses, from
-# PubMed and PMC, to find what DataSHIELD lacks. Started by hand for now;
-# `pilot` compares abstracts with methods sections and writes a report
-# into the run's summary. The queries are in config/methods-scan.yml.
+# PubMed and PMC, to find what DataSHIELD lacks. It runs in the private
+# runner repository (one queue with the implementer, on the maintainer's
+# Claude subscription); this only starts it there. It reads the queries in
+# config/methods-scan.yml and proposes its report as scans/pilot-YYYY-MM.md
+# by pull request.
 on:
   workflow_dispatch:
     inputs:
@@ -15,14 +17,15 @@ on:
         default: ''
 
 jobs:
-  scan:
+  start:
     permissions:
       contents: read
-    uses: nfdi4health/datashield-workflows/.github/workflows/methods-scan.yml@main
+    uses: nfdi4health/datashield-workflows/.github/workflows/methods-scan-start.yml@main
     with:
+      runner-repository: FlorianSchw/datashield-agent-runner
       mode: ${{ inputs.mode }}
       query: ${{ inputs.query }}
-      subscription-logins: FlorianSchw
+      allowed-logins: FlorianSchw
     secrets:
-      claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-      ncbi-api-key: ${{ secrets.NCBI_API_KEY }}
+      app-client-id: ${{ secrets.APP_CLIENT_ID }}
+      app-private-key: ${{ secrets.APP_PRIVATE_KEY }}
