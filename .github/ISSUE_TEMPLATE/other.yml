@@ -1,0 +1,20 @@
+name: Other idea
+description: Anything else that would help DataSHIELD analyses, e.g. a utility, a helper, documentation.
+labels: [other-idea]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This repository is public: no study names, variable names, results or data.
+  - type: textarea
+    id: idea
+    attributes:
+      label: The idea
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it would help
+    validations:
+      required: false

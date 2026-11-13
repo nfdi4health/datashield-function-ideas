@@ -1,0 +1,38 @@
+name: Analysis method
+description: A statistical method you'd need in DataSHIELD but no package offers yet.
+title: "Missing DataSHIELD function: "
+labels: [analysis-method]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This repository is public. Describe **the method only**: no study names,
+        variable names, research questions, results or data.
+  - type: textarea
+    id: what
+    attributes:
+      label: What is missing
+      description: The method, e.g. "k-medoids clustering", "multiple imputation by chained equations".
+    validations:
+      required: true
+  - type: textarea
+    id: use
+    attributes:
+      label: What you would use it for
+      description: In general terms, e.g. "grouping participants by dietary pattern", "imputing missing covariates before a pooled model". Inputs and outputs you'd expect help too.
+    validations:
+      required: false
+  - type: input
+    id: r-package
+    attributes:
+      label: In plain R
+      description: The R package or function that does it outside DataSHIELD, if you know one (e.g. cluster::pam).
+    validations:
+      required: false
+  - type: textarea
+    id: source
+    attributes:
+      label: Where this comes from
+      description: Leave as it is if it was filled in for you.
+    validations:
+      required: false

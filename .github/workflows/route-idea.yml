@@ -1,0 +1,23 @@
+name: Route Idea
+
+# A routing label, set by a listed login, copies the idea to the topic
+# package's repository; this issue stays open as the record of demand.
+# The bots' GitHub App must be installed on the target (Issues: write).
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  route:
+    permissions:
+      issues: write
+    uses: nfdi4health/datashield-workflows/.github/workflows/route-idea.yml@main
+    with:
+      allowed-logins: FlorianSchw
+      # label = owner/repo, one per line; add a line per topic package
+      # (and create the label of the same name in this repository).
+      routes: |
+        # dsClusterAnalysis = FlorianSchw/dsClusterAnalysisClient
+    secrets:
+      app-client-id: ${{ secrets.APP_CLIENT_ID }}
+      app-private-key: ${{ secrets.APP_PRIVATE_KEY }}
