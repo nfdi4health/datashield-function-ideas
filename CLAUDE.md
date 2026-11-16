@@ -11,6 +11,9 @@ datashield-workflows; the design is in its `dev-notes/issue-agents.md`
 
 - **Branches:** `main` only (user's choice); Claude Code sessions work on
   `agent-suggest/<type>/<topic>` and open pull requests into `main`.
+  `cleanup-branches.yml` deletes `bot-suggest/*` and `agent-suggest/*`
+  branches once their pull request is closed (2026-11-16); the literature
+  watch's `data` branch is never touched.
 - **Public:** nothing about studies, variables, results or data; the issue
   forms say so. The analysis starter's gap links carry only the missing
   method.
