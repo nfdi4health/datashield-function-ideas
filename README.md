@@ -43,4 +43,6 @@ the demand.
 The workflows come from
 [nfdi4health/datashield-workflows](https://github.com/nfdi4health/datashield-workflows)
 (`route-idea.yml`, `methods-scan.yml`); this repository holds the callers,
-their settings (`config/`) and, later, the monthly scan results (`scans/`).
+their settings (`config/`) and the researcher's reports (`scans/`, by
+pull request). The researcher itself runs in a private runner repository on
+the maintainer's Claude subscription; this repository only starts it.
