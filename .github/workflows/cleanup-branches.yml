@@ -1,0 +1,17 @@
+name: Cleanup Branches
+
+# Deletes a closed pull request's `bot-suggest/*` or `agent-suggest/*`
+# branch of this repository (the literature watch's report branch, Claude
+# Code sessions' branches) unless another open pull request still uses it.
+# Other branches stay, `data` (the literature watch's data) and `main`
+# among them.
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  cleanup:
+    permissions:
+      contents: write
+      pull-requests: read
+    uses: nfdi4health/datashield-workflows/.github/workflows/cleanup-suggestion-branch.yml@main
