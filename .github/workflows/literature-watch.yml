@@ -1,0 +1,32 @@
+name: Literature Watch
+
+# The literature watch: which statistical methods health research uses,
+# from PubMed and PMC, to find what DataSHIELD lacks. It runs in the private
+# runner repository (one queue with the implementer, on the maintainer's
+# Claude subscription); this only starts it there. It runs the queries in
+# config/literature-watch.yml and proposes the month's data and report
+# (literature-watch/data/YYYY-MM.yml, literature-watch/reports/YYYY-MM.md)
+# by pull request; a re-run in the month updates it.
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'pilot (methods named in the abstract against the methods section)'
+        default: pilot
+      query:
+        description: 'One query of config/literature-watch.yml (empty: all of them)'
+        default: ''
+
+jobs:
+  start:
+    permissions:
+      contents: read
+    uses: nfdi4health/datashield-workflows/.github/workflows/literature-watch-start.yml@main
+    with:
+      runner-repository: FlorianSchw/datashield-agent-runner
+      mode: ${{ inputs.mode }}
+      query: ${{ inputs.query }}
+      allowed-logins: FlorianSchw
+    secrets:
+      app-client-id: ${{ secrets.APP_CLIENT_ID }}
+      app-private-key: ${{ secrets.APP_PRIVATE_KEY }}
