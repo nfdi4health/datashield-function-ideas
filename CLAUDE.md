@@ -3,9 +3,9 @@
 The hub of missing DataSHIELD functions (created 2026-11-13 by the user).
 Issues are the ideas; this repository holds only thin callers of
 `nfdi4health/datashield-workflows` (`route-idea.yml`, `literature-watch.yml`),
-their settings in `config/`, and later the researcher's data files
-(`literature-watch/data/YYYY-MM.yml`, with the reports in
-`literature-watch/reports/`). Logic, prompts and tests live in
+their settings in `config/`, and the literature watch's report
+(`literature-watch/reports/overview.md`, by pull request); its data lives
+on the `data` branch (pushed by the runs, no pull request). Logic, prompts and tests live in
 datashield-workflows; the design is in its `dev-notes/issue-agents.md`
 ("A central hub") and `dev-notes/v1-planning.md` (6b).
 
@@ -21,8 +21,11 @@ datashield-workflows; the design is in its `dev-notes/issue-agents.md`
   `FlorianSchw/datashield-agent-runner` on the user's Claude subscription,
   in one queue with the implementer (decided 2026-11-13); the caller here
   (`literature-watch.yml` → `literature-watch-start.yml`) only starts it, for
-  `allowed-logins`, with the bots' App. Each month's data and report come
-  back in one pull request; a re-run of one query replaces only its part. This repository holds no
-  Claude or NCBI secret any more.
-  Phases: pilot (built), vocabulary round, backfill, monthly candidate PR
-  with three boxes per candidate (designed, not built).
+  `allowed-logins`, with the bots' App; the runner also runs it nightly.
+  This repository holds no Claude or NCBI secret.
+  **Settings (user, 2026-11-16):** 11 fields (`fields`, checked on the
+  PubMed website), `target_per_month` 25 and `years_back` 5 for the first
+  round, `papers_per_run` 1500; the user raises the target or years by
+  hand for the next round (no automatic stages). Pilot done; backfill and
+  monthly runs built; classification, "Exists?" and the candidate PR with
+  three boxes per candidate designed, not built.

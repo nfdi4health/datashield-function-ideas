@@ -1,16 +1,49 @@
 # Settings of the literature watch (literature-watch.yml), merged over the
 # defaults of nfdi4health/datashield-workflows' config/literature-watch.yml.
 
-# Named PubMed queries, in the search syntax of the PubMed website: try a
-# query there first and look at the hits. A run takes all of them unless it
-# names one; the name is the query's section in the month's report. First
-# drafts, to be refined.
-queries:
-  - name: cohort-nutrition
-    pubmed: '"cohort studies"[MeSH Terms] AND ("diet"[MeSH Terms] OR "nutritional status"[MeSH Terms])'
-  - name: cohort-epidemiology
-    pubmed: '"cohort studies"[MeSH Terms] AND "epidemiologic methods"[MeSH Terms]'
+# How much is read, and how fast. A round is complete when every field has
+# target_per_month papers (or all, if a month has fewer) of every
+# publication month of the last years_back years read; you then get a pull
+# request saying so, and the nightly runs only read each new month. Raise
+# target_per_month and/or years_back for the next round: it reads only the
+# papers not yet read. papers_per_run is the pace (about 2,000 papers fit
+# into a 5-hour session on Max 5x); a run started by hand can set another
+# number once (max-papers).
+sampling:
+  target_per_month: 25
+  years_back: 5
+  papers_per_run: 1500
 
-pilot:
-  papers: 100
-  months: 12
+# The fields watched: each name and its part of the PubMed search. Every
+# field's search is
+#   "Epidemiologic Studies"[MeSH Terms] AND (<pubmed>) AND
+#   "pubmed pmc open access"[filter] NOT (review[pt] OR systematic review[pt] OR meta-analysis[pt])
+# (design and filters come from the workflow's defaults). MeSH headings
+# include everything below them in the MeSH tree; [majr] means the paper's
+# main subject. Checked on the PubMed website on 2026-11-16 (open-access
+# research articles 2022-2026 in brackets). Changing a field's search gives
+# it a new version (data branch: queries.csv) and a fresh sample; a new
+# field gets its own backfill, papers already read aren't read again.
+fields:
+  - name: cardiovascular             # ~50,200
+    pubmed: '"Cardiovascular Diseases"[majr]'
+  - name: metabolic                  # ~34,500
+    pubmed: '"Nutritional and Metabolic Diseases"[majr]'
+  - name: mental-health              # ~25,900
+    pubmed: '"Mental Disorders"[majr]'
+  - name: cancer                     # ~67,000
+    pubmed: '"Neoplasms"[majr]'
+  - name: respiratory-allergy        # ~19,800 (infections apart: COVID-19 would dominate)
+    pubmed: '("Respiratory Tract Diseases"[majr] OR "Hypersensitivity"[majr]) NOT "Respiratory Tract Infections"[majr]'
+  - name: infections                 # ~68,600 (COVID-19 dominates 2020-2023)
+    pubmed: '"Infections"[majr]'
+  - name: pregnancy-child            # ~13,700
+    pubmed: '"Pregnancy Complications"[majr] OR "Prenatal Exposure Delayed Effects"[majr] OR "Child Development"[majr] OR "Infant, Newborn, Diseases"[majr]'
+  - name: environment                # ~3,900
+    pubmed: '"Environmental Exposure"[majr] OR "Environmental Pollutants"[majr] OR "Air Pollution"[majr] OR "Noise"[majr] OR "Built Environment"[majr]'
+  - name: nutrition                  # ~8,000
+    pubmed: '"Diet"[majr] OR "Nutritional Status"[majr] OR "Feeding Behavior"[majr]'
+  - name: omics                      # ~4,300
+    pubmed: '"Genomics"[majr] OR "Epigenomics"[majr] OR "Metabolomics"[majr] OR "Proteomics"[majr] OR "Multiomics"[majr] OR "Microbiota"[majr]'
+  - name: lifestyle                  # ~8,600
+    pubmed: '"Exercise"[majr] OR "Sedentary Behavior"[majr] OR "Smoking"[majr] OR "Alcohol Drinking"[majr] OR "Sleep"[majr]'

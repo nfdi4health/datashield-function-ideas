@@ -1,20 +1,20 @@
 name: Literature Watch
 
-# The literature watch: which statistical methods health research uses,
-# from PubMed and PMC, to find what DataSHIELD lacks. It runs in the private
-# runner repository (one queue with the implementer, on the maintainer's
-# Claude subscription); this only starts it there. It runs the queries in
-# config/literature-watch.yml and proposes the month's data and report
-# (literature-watch/data/YYYY-MM.yml, literature-watch/reports/YYYY-MM.md)
-# by pull request; a re-run in the month updates it.
+# The literature watch: which statistical methods epidemiological research
+# uses, from PubMed and PMC, to find what DataSHIELD lacks. It runs in the
+# private runner repository (nightly, and in one queue with the
+# implementer, on the maintainer's Claude subscription); this starts an
+# extra run there. It reads the fields of config/literature-watch.yml,
+# pushes the data to this repository's `data` branch and proposes the
+# report (literature-watch/reports/overview.md) by pull request.
 on:
   workflow_dispatch:
     inputs:
-      mode:
-        description: 'pilot (methods named in the abstract against the methods section)'
-        default: pilot
-      query:
-        description: 'One query of config/literature-watch.yml (empty: all of them)'
+      field:
+        description: 'One field of config/literature-watch.yml (empty: all of them)'
+        default: ''
+      max-papers:
+        description: 'At most this many papers in this run, e.g. more over a holiday (empty: papers_per_run of config/literature-watch.yml)'
         default: ''
 
 jobs:
@@ -24,8 +24,8 @@ jobs:
     uses: nfdi4health/datashield-workflows/.github/workflows/literature-watch-start.yml@main
     with:
       runner-repository: FlorianSchw/datashield-agent-runner
-      mode: ${{ inputs.mode }}
-      query: ${{ inputs.query }}
+      field: ${{ inputs.field }}
+      max-papers: ${{ inputs.max-papers }}
       allowed-logins: FlorianSchw
     secrets:
       app-client-id: ${{ secrets.APP_CLIENT_ID }}

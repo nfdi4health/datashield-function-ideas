@@ -43,7 +43,10 @@ the demand.
 The workflows come from
 [nfdi4health/datashield-workflows](https://github.com/nfdi4health/datashield-workflows)
 (`route-idea.yml`, `literature-watch.yml`); this repository holds the
-callers, their settings (`config/`) and the literature watch's monthly
-results (`literature-watch/data/` and `literature-watch/reports/`, by pull
-request). The researcher itself runs in a private runner repository on
-the maintainer's Claude subscription; this repository only starts it.
+callers and their settings (`config/`). The literature watch runs nightly
+in a private runner repository on the maintainer's Claude subscription:
+it reads a random sample of open-access research articles per field and
+month, keeps what it finds on the `data` branch (IDs, titles and the
+methods named, never the papers' text) and proposes its report
+(`literature-watch/reports/overview.md`) by pull request. Its fields and
+pace are in `config/literature-watch.yml`.
