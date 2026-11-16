@@ -1,0 +1,5 @@
+"field","month","query","total","target","threshold","sample_read","checked"
+"cancer","2026-09","3e24eb6c",1174,25,"05a322d9c255",25,"2026-11-16"
+"cardiovascular","2026-09","2b21c0b8",984,25,"0687e4cfaedc",25,"2026-11-16"
+"mental-health","2026-09","49157751",517,25,"09f08aa517c0",25,"2026-11-16"
+"metabolic","2026-09","d26e1bd5",681,25,"098dd079dacc",25,"2026-11-16"
