@@ -27,9 +27,11 @@ the demand.
   a step of an analysis plan needs a function no package offers, its pull
   request offers a prefilled link to an issue here. It carries only what
   is missing, never the plan; the analyst opens it under their own account.
-- **The researcher** (in preparation): a monthly scan of the published
-  literature (PubMed, PMC) for the methods health research uses, proposing
-  candidates DataSHIELD lacks in a pull request, for a person to decide.
+- **The literature watch**: a nightly read of the published literature
+  (PubMed, PMC) for the methods health research uses. Once a month it
+  proposes the most used methods DataSHIELD lacks in a pull request, each
+  with a short brief, for a maintainer to decide: open an issue, not now,
+  or don't suggest again.
 
 ## What happens to an idea
 
@@ -47,6 +49,10 @@ callers and their settings (`config/`). The literature watch runs nightly
 in a private runner repository on the maintainer's Claude subscription:
 it reads a random sample of open-access research articles per field and
 month, keeps what it finds on the `data` branch (IDs, titles and the
-methods named, never the papers' text) and proposes its report
-(`literature-watch/reports/overview.md`) by pull request. Its fields and
-pace are in `config/literature-watch.yml`.
+methods named, never the papers' text), with its report
+(`literature-watch/reports/overview.md`) and progress there too. The
+monthly candidates come as a pull request
+(`literature-watch/candidates/YYYY-MM.json`); `literature-candidates.yml`
+keeps it red until every candidate has exactly one box ticked and, on
+merge, opens the issues and records the decisions. Its fields and pace are
+in `config/literature-watch.yml`.
