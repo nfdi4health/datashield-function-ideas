@@ -1,11 +1,18 @@
 name: Route Idea
 
 # A routing label, set by a listed login, copies the idea to the topic
-# package's repository; this issue stays open as the record of demand.
-# The bots' GitHub App must be installed on the target (Issues: write).
+# package's (client) repository, opened in the maintainer's name with
+# ROUTE_TOKEN (a classic token with only public_repo); this issue stays
+# open as the record of demand, with a link to the copy. A push of this
+# file (or a run started by hand) creates the route labels that don't
+# exist yet.
 on:
   issues:
     types: [labeled]
+  push:
+    branches: [main]
+    paths: ['.github/workflows/route-idea.yml']
+  workflow_dispatch:
 
 jobs:
   route:
@@ -14,10 +21,22 @@ jobs:
     uses: nfdi4health/datashield-workflows/.github/workflows/route-idea.yml@main
     with:
       allowed-logins: FlorianSchw
-      # label = owner/repo, one per line; add a line per topic package
-      # (and create the label of the same name in this repository).
+      # label = owner/repo, one per line: the package's name as the label,
+      # its client repository as the target.
       routes: |
-        # dsClusterAnalysis = FlorianSchw/dsClusterAnalysisClient
+        dsBase = datashield/dsBaseClient
+        dsSurvival = datashield/dsSurvivalClient
+        dsMediation = datashield/dsMediationClient
+        dsTidyverse = molgenis/ds-tidyverse-client
+        dsOmics = isglobal-brge/dsOmicsClient
+        dsExposome = isglobal-brge/dsExposomeClient
+        dsML = isglobal-brge/dsMLClient
+        dsOMOP = isglobal-brge/dsOMOPClient
+        dsGamlss = bips-hb/dsGamlssClient
+        dsSwissKnife = sib-swiss/dsSwissKnifeClient
+        dsMTL = transbioZI/dsMTLClient
+        dsClusterAnalysis = FlorianSchw/dsClusterAnalysisClient
+        dsIntestinalMicrobiomics = FlorianSchw/dsIntestinalMicrobiomicsClient
+        dsSupport = nfdi4health/dsSupportClient
     secrets:
-      app-client-id: ${{ secrets.APP_CLIENT_ID }}
-      app-private-key: ${{ secrets.APP_PRIVATE_KEY }}
+      route-token: ${{ secrets.ROUTE_TOKEN }}
