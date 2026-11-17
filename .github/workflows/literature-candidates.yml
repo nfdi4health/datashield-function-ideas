@@ -1,0 +1,17 @@
+name: Literature Candidates
+
+# The literature watch's candidate pull requests (one a month): the check
+# stays red until every candidate has exactly one box ticked; merging
+# opens an idea issue for each "Open an issue" and records the decisions on
+# the data branch, which the literature watch reads.
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened, closed]
+    branches: [main]
+
+jobs:
+  candidates:
+    permissions:
+      contents: write
+      issues: write
+    uses: nfdi4health/datashield-workflows/.github/workflows/literature-candidates.yml@main
