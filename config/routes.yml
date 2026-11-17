@@ -1,0 +1,22 @@
+# Routes of the hub's ideas: a routing label set by the maintainer copies
+# the idea to that repository (route-idea.yml), opened in the
+# maintainer's name with ROUTE_TOKEN. The label is the package's name,
+# the target its client repository (where the analyst calls the function;
+# the implementer works on the client and its server package together).
+# The labels are created in this repository when this file changes on
+# main. Format: `label: owner/repo`, one per line.
+routes:
+  dsBase: datashield/dsBaseClient
+  dsSurvival: datashield/dsSurvivalClient
+  dsMediation: datashield/dsMediationClient
+  dsTidyverse: molgenis/ds-tidyverse-client
+  dsOmics: isglobal-brge/dsOmicsClient
+  dsExposome: isglobal-brge/dsExposomeClient
+  dsML: isglobal-brge/dsMLClient
+  dsOMOP: isglobal-brge/dsOMOPClient
+  dsGamlss: bips-hb/dsGamlssClient
+  dsSwissKnife: sib-swiss/dsSwissKnifeClient
+  dsMTL: transbioZI/dsMTLClient
+  dsClusterAnalysis: FlorianSchw/dsClusterAnalysisClient
+  dsIntestinalMicrobiomics: FlorianSchw/dsIntestinalMicrobiomicsClient
+  dsSupportClient: nfdi4health/dsSupportClient   # client only, no server package
