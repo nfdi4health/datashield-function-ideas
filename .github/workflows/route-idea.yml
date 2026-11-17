@@ -37,6 +37,6 @@ jobs:
         dsMTL = transbioZI/dsMTLClient
         dsClusterAnalysis = FlorianSchw/dsClusterAnalysisClient
         dsIntestinalMicrobiomics = FlorianSchw/dsIntestinalMicrobiomicsClient
-        dsSupport = nfdi4health/dsSupportClient
+        dsSupportClient = nfdi4health/dsSupportClient   # client only, no server package
     secrets:
       route-token: ${{ secrets.ROUTE_TOKEN }}
