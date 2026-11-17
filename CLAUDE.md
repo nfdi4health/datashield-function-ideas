@@ -17,9 +17,12 @@ datashield-workflows; the design is in its `dev-notes/issue-agents.md`
 - **Public:** nothing about studies, variables, results or data; the issue
   forms say so. The analysis starter's gap links carry only the missing
   method.
-- **Routing:** labels in `.github/workflows/route-idea.yml` (`label =
-  owner/repo`); only `allowed-logins` may route; the bots' App must be
-  installed on the target.
+- **Routing:** `config/routes.yml` (`label: owner/repo`, the package's
+  name as the label, its client repository as the target; user,
+  2026-11-17); `route-idea.yml` creates the labels when that file changes
+  and opens the copies in the maintainer's name with `ROUTE_TOKEN` (a
+  classic token with only `public_repo`); only `allowed-logins` may
+  route.
 - **The researcher** runs in the private runner
   `FlorianSchw/datashield-agent-runner` on the user's Claude subscription,
   in one queue with the implementer (decided 2026-11-13); the caller here
