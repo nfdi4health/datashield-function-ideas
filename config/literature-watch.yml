@@ -11,7 +11,10 @@
 # number once (max-papers).
 sampling:
   target_per_month: 25
-  years_back: 5
+  # 10 years for the first backfill (user, 2026-11-18), an exception to the
+  # default of 5. Once the round is complete, the same nightly run only
+  # reads each month that becomes due.
+  years_back: 10
   papers_per_run: 1500
 
 # The fields watched: each name and its part of the PubMed search. Every
