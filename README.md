@@ -35,10 +35,12 @@ the demand.
 
 ## What happens to an idea
 
-1. It is collected here, with votes and discussion.
+1. It is collected here: a 👍 counts the demand, and comments help shape
+   the idea until it has a home.
 2. A maintainer routes it to the repository of the package that fits (a
-   label per package): the issue is copied there, with a link back. Work
-   happens there; this issue stays open as the record of demand.
+   label per package): the issue is copied there, with a link back.
+   Discussion and work happen there from then on; this issue stays open as
+   the record of demand, and a 👍 here still counts.
 
 ## How it works
 
