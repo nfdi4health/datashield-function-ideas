@@ -5,13 +5,17 @@ name: Route Idea
 # name with ROUTE_TOKEN (a classic token with only public_repo); this
 # issue stays open as the record of demand, with a link to the copy. A
 # change of the routes (or a run started by hand) creates the route labels
-# that don't exist yet.
+# that don't exist yet. Once a day (and by hand) it checks the copies and
+# reports here when one is closed or reopened; a hub issue is closed as
+# completed once its copies are.
 on:
   issues:
     types: [labeled]
   push:
     branches: [main]
     paths: ['config/routes.yml', '.github/workflows/route-idea.yml']
+  schedule:
+    - cron: '41 4 * * *'
   workflow_dispatch:
 
 jobs:
