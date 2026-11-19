@@ -5,8 +5,8 @@ name: Literature Watch
 # private runner repository (nightly, and in one queue with the
 # implementer, on the maintainer's Claude subscription); this starts an
 # extra run there. It reads the fields of config/literature-watch.yml,
-# pushes the data to this repository's `data` branch and proposes the
-# report (literature-watch/reports/overview.md) by pull request.
+# pushes the data and the report (literature-watch/reports/overview.md) to
+# this repository's `data` branch.
 on:
   workflow_dispatch:
     inputs:
@@ -19,14 +19,28 @@ on:
 
 jobs:
   start:
-    permissions:
-      contents: read
-    uses: nfdi4health/datashield-workflows/.github/workflows/literature-watch-start.yml@main
-    with:
-      runner-repository: FlorianSchw/datashield-agent-runner
-      field: ${{ inputs.field }}
-      max-papers: ${{ inputs.max-papers }}
-      allowed-logins: FlorianSchw
-    secrets:
-      app-client-id: ${{ secrets.APP_CLIENT_ID }}
-      app-private-key: ${{ secrets.APP_PRIVATE_KEY }}
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - name: May this login start the literature watch?
+        env:
+          LOGINS: FlorianSchw
+          ACTOR: ${{ github.triggering_actor }}
+        run: |
+          for login in $(tr ',' ' ' <<< "$LOGINS"); do
+            [ "$login" = "$ACTOR" ] && exit 0
+          done
+          echo "::error::$ACTOR may not start the literature watch."
+          exit 1
+
+      - name: Start the researcher in the runner
+        uses: nfdi4health/datashield-workflows/.github/actions/dispatch-runner@main
+        with:
+          repository: FlorianSchw/datashield-agent-runner
+          workflow: literature-watch.yml
+          ref: main
+          app-client-id: ${{ secrets.APP_CLIENT_ID }}
+          app-private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          fields: |
+            field=${{ inputs.field }}
+            max-papers=${{ inputs.max-papers }}

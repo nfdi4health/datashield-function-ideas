@@ -8,6 +8,8 @@ name: Route Idea
 # that don't exist yet. Once a day (and by hand) it checks the copies and
 # reports here when one is closed or reopened; a hub issue is closed as
 # completed once its copies are.
+# The logic is in the composite action .github/actions/route-idea; no
+# Claude, no checkout.
 on:
   issues:
     types: [labeled]
@@ -19,11 +21,72 @@ on:
   workflow_dispatch:
 
 jobs:
-  route:
+  labels:
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
     permissions:
       issues: write
-    uses: nfdi4health/datashield-workflows/.github/workflows/route-idea.yml@main
-    with:
-      allowed-logins: FlorianSchw
-    secrets:
-      route-token: ${{ secrets.ROUTE_TOKEN }}
+    steps:
+      # Without a token: the hub is public, and the jobs need no
+      # contents permission.
+      - name: The routes file
+        env:
+          ROUTES_FILE: config/routes.yml
+        run: |
+          mkdir -p "$(dirname "$ROUTES_FILE")"
+          curl -fsSL "https://raw.githubusercontent.com/$GITHUB_REPOSITORY/$GITHUB_SHA/$ROUTES_FILE" -o "$ROUTES_FILE" ||
+            { echo "::error::Could not read $ROUTES_FILE of $GITHUB_REPOSITORY."; exit 1; }
+      - name: The routes' labels
+        uses: $/.github/actions/route-idea
+        with:
+          step: labels
+          routes-file: config/routes.yml
+          token: ${{ github.token }}
+
+  route:
+    if: github.event_name == 'issues'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      # Without a token: the hub is public, and the jobs need no
+      # contents permission.
+      - name: The routes file
+        env:
+          ROUTES_FILE: config/routes.yml
+        run: |
+          mkdir -p "$(dirname "$ROUTES_FILE")"
+          curl -fsSL "https://raw.githubusercontent.com/$GITHUB_REPOSITORY/$GITHUB_SHA/$ROUTES_FILE" -o "$ROUTES_FILE" ||
+            { echo "::error::Could not read $ROUTES_FILE of $GITHUB_REPOSITORY."; exit 1; }
+      - name: Which repository, and may this login route?
+        id: plan
+        uses: $/.github/actions/route-idea
+        with:
+          step: plan
+          routes-file: config/routes.yml
+          allowed-logins: FlorianSchw
+          token: ${{ github.token }}
+
+      - name: Copy the idea
+        if: steps.plan.outputs.target != ''
+        uses: $/.github/actions/route-idea
+        with:
+          step: copy
+          token: ${{ github.token }}
+          target: ${{ steps.plan.outputs.target }}
+          target-token: ${{ secrets.ROUTE_TOKEN }}
+          routed-label: routed
+
+  sync:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: How the copies are doing
+        uses: $/.github/actions/route-idea
+        with:
+          step: sync
+          token: ${{ github.token }}
+          routed-label: routed
+          declined-label: declined

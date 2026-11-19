@@ -4,14 +4,40 @@ name: Literature Candidates
 # stays red until every candidate has exactly one box ticked; merging
 # opens an idea issue for each "Open an issue" and records the decisions on
 # the data branch, which the literature watch reads.
+# No Claude; the logic is in .github/actions/literature-candidates/candidates.mjs.
 on:
   pull_request:
     types: [opened, edited, synchronize, reopened, closed]
     branches: [main]
 
 jobs:
-  candidates:
+  check:
+    if: github.event.action != 'closed' && startsWith(github.event.pull_request.head.ref, 'bot-suggest/literature-watch/candidates')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: One box per candidate
+        run: node .github/actions/literature-candidates/candidates.mjs check
+
+  apply:
+    if: github.event.action == 'closed' && github.event.pull_request.merged && startsWith(github.event.pull_request.head.ref, 'bot-suggest/literature-watch/candidates')
+    runs-on: ubuntu-latest
     permissions:
       contents: write
       issues: write
-    uses: nfdi4health/datashield-workflows/.github/workflows/literature-candidates.yml@main
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Open the issues and record the decisions
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CANDIDATES_FOLDER: literature-watch/candidates
+          DATA_BRANCH: data
+          DECISIONS_PATH: literature-watch/data/decisions.json
+          ISSUE_LABELS: literature-watch
+        run: node .github/actions/literature-candidates/candidates.mjs apply

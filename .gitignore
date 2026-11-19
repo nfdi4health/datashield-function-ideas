@@ -2,3 +2,9 @@
 .Rhistory
 .RData
 .Ruserdata
+
+# Checkouts of the workflows and tests (datashield-workflows, this
+# repository at the running commit, the data branch).
+.shared-workflows/
+.hub/
+watch-data/
