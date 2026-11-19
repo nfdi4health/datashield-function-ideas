@@ -2,3 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
+
+# The workflows' copies (this repository at the running commit, the data
+# branch).
+.hub/
+watch-data/

@@ -1,0 +1,29 @@
+name: Hub files
+description: >-
+  Copies this repository (R scripts, prompts, config, the actions' scripts)
+  into a folder of the workspace, at the commit the calling workflow runs.
+  Use it with `uses: $/.github/actions/hub-files`: the runner then fetches
+  this action, and with it the whole repository, at that commit, also when
+  the runner repository calls a workflow of this one. (A checkout at
+  github.job_workflow_sha doesn't work: that context property is empty.)
+
+inputs:
+  path:
+    description: Folder in the workspace to copy into (replaced). Must not be the workspace itself.
+    required: false
+    default: .hub
+
+outputs:
+  sha:
+    description: The commit of this repository the workflow runs; empty if the runner's folder doesn't name it.
+    value: ${{ steps.copy.outputs.sha }}
+
+runs:
+  using: composite
+  steps:
+    - name: Copy this repository
+      id: copy
+      shell: bash
+      env:
+        TARGET: ${{ inputs.path }}
+      run: bash "$GITHUB_ACTION_PATH/hub-files.sh"
