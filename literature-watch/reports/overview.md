@@ -1,6 +1,6 @@
 # Literature watch
 
-Updated 2026-11-17. Round: 25 papers per field and publication month, 2021-10 to 2026-09.
+Updated 2026-11-19. Round: 25 papers per field and publication month, 2016-10 to 2026-09.
 
 Which statistical methods epidemiological research uses, from a random sample of open-access research articles in PubMed and PMC per field and month (no reviews). Claude lists each paper's methods from its abstract and methods section; only IDs, titles and the methods are stored.
 
@@ -8,423 +8,584 @@ Which statistical methods epidemiological research uses, from a random sample of
 
 | Field | Months complete | Papers read |
 |---|---|---|
-| cardiovascular | 7 / 60 | 175 / 1500 |
-| metabolic | 7 / 60 | 175 / 1500 |
-| mental-health | 7 / 60 | 175 / 1500 |
-| cancer | 6 / 60 | 174 / 1500 |
-| respiratory-allergy | 6 / 60 | 150 / 1500 |
-| infections | 6 / 60 | 150 / 1500 |
-| pregnancy-child | 6 / 60 | 150 / 1500 |
-| environment | 6 / 60 | 150 / 1500 |
-| nutrition | 6 / 60 | 150 / 1500 |
-| omics | 6 / 60 | 150 / 1500 |
-| lifestyle | 6 / 60 | 150 / 1500 |
-| **all** | 69 / 660 | 1749 / 16500 |
+| cardiovascular | 20 / 120 | 500 / 3000 |
+| metabolic | 20 / 120 | 500 / 3000 |
+| mental-health | 20 / 120 | 500 / 3000 |
+| cancer | 20 / 120 | 500 / 3000 |
+| respiratory-allergy | 20 / 120 | 500 / 3000 |
+| infections | 20 / 120 | 500 / 3000 |
+| pregnancy-child | 19 / 120 | 497 / 3000 |
+| environment | 19 / 120 | 475 / 3000 |
+| nutrition | 19 / 120 | 475 / 3000 |
+| omics | 19 / 120 | 475 / 3000 |
+| lifestyle | 19 / 120 | 475 / 3000 |
+| **all** | 215 / 1320 | 5397 / 33000 |
 
 ## All fields
 
-Papers read: 1600, 1577 of them usable (1577 of these in the last 36 months, which the order below is based on).
+Papers read: 4597, 4522 of them usable (4522 of these in the last 36 months, which the order below is based on).
 
-| Method | Share, last 3 years | Papers | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | Trend |
-|---|---|---|---|---|---|---|---|---|---|
-| chi-square test | 48% | 762 | – | – | – | – | – | 48% | – |
-| logistic regression | 37% | 577 | – | – | – | – | – | 37% | – |
-| mann-whitney u test | 25% | 391 | – | – | – | – | – | 25% | – |
-| fisher's exact test | 22% | 348 | – | – | – | – | – | 22% | – |
-| t-test | 19% | 307 | – | – | – | – | – | 19% | – |
-| linear regression | 17% | 261 | – | – | – | – | – | 17% | – |
-| cox regression | 16% | 260 | – | – | – | – | – | 16% | – |
-| kruskal-wallis test | 13% | 211 | – | – | – | – | – | 13% | – |
-| spearman correlation | 13% | 210 | – | – | – | – | – | 13% | – |
-| shapiro-wilk test | 13% | 203 | – | – | – | – | – | 13% | – |
-| kaplan-meier estimator | 12% | 188 | – | – | – | – | – | 12% | – |
-| variance inflation factor | 10% | 155 | – | – | – | – | – | 10% | – |
-| pearson correlation | 9% | 136 | – | – | – | – | – | 9% | – |
-| log-rank test | 8% | 125 | – | – | – | – | – | 8% | – |
-| roc curve analysis | 8% | 124 | – | – | – | – | – | 8% | – |
-| multiple imputation | 7% | 118 | – | – | – | – | – | 7% | – |
-| anova | 7% | 111 | – | – | – | – | – | 7% | – |
-| roc analysis | 7% | 109 | – | – | – | – | – | 7% | – |
-| restricted cubic splines | 6% | 96 | – | – | – | – | – | 6% | – |
-| linear mixed model | 6% | 93 | – | – | – | – | – | 6% | – |
-| *papers read* | | | 0 | 0 | 0 | 0 | 0 | 1577 | |
+| Method | Share, last 3 years | Papers | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | Trend | In DataSHIELD |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Chi-square test | 48% | 2156 | – | – | – | – | – | – | – | – | – | 47% | 48% | – | – |
+| Logistic regression | 36% | 1649 | – | – | – | – | – | – | – | – | – | 36% | 37% | – | – |
+| Student's t-test | 36% | 1621 | – | – | – | – | – | – | – | – | – | 37% | 35% | – | – |
+| Mann-Whitney U test | 32% | 1449 | – | – | – | – | – | – | – | – | – | 32% | 33% | – | – |
+| Fisher's exact test | 23% | 1024 | – | – | – | – | – | – | – | – | – | 21% | 25% | – | – |
+| Linear regression | 19% | 842 | – | – | – | – | – | – | – | – | – | 17% | 20% | – | – |
+| Analysis of variance (ANOVA) | 16% | 723 | – | – | – | – | – | – | – | – | – | 16% | 16% | – | – |
+| ROC curve analysis | 16% | 701 | – | – | – | – | – | – | – | – | – | 16% | 15% | – | – |
+| Cox proportional hazards regression | 15% | 700 | – | – | – | – | – | – | – | – | – | 15% | 16% | – | – |
+| Spearman's rank correlation | 13% | 590 | – | – | – | – | – | – | – | – | – | 12% | 14% | – | – |
+| Kruskal-Wallis test | 12% | 550 | – | – | – | – | – | – | – | – | – | 11% | 13% | – | – |
+| Pearson correlation | 12% | 542 | – | – | – | – | – | – | – | – | – | 13% | 11% | – | – |
+| Shapiro-Wilk test | 12% | 541 | – | – | – | – | – | – | – | – | – | 12% | 12% | – | – |
+| Kaplan-Meier estimator | 12% | 524 | – | – | – | – | – | – | – | – | – | 12% | 12% | – | – |
+| false-discovery-rate-correction | 9% | 427 | – | – | – | – | – | – | – | – | – | 7% | 12% | – | – |
+| Subgroup analysis | 9% | 410 | – | – | – | – | – | – | – | – | – | 9% | 9% | – | – |
+| Variance inflation factor | 8% | 369 | – | – | – | – | – | – | – | – | – | 6% | 10% | – | – |
+| Log-rank test | 8% | 342 | – | – | – | – | – | – | – | – | – | 8% | 8% | – | – |
+| Restricted cubic splines | 7% | 307 | – | – | – | – | – | – | – | – | – | 7% | 7% | – | – |
+| Multiple imputation | 7% | 304 | – | – | – | – | – | – | – | – | – | 6% | 8% | – | – |
+| *papers read* | | | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2411 | 2111 | | |
+
+```mermaid
+xychart-beta
+  title "Chi-square test: share of papers per year"
+  x-axis [2025, 2026]
+  y-axis "%" 0 --> 50
+  line [47.3, 48.1]
+```
+
+```mermaid
+xychart-beta
+  title "Logistic regression: share of papers per year"
+  x-axis [2025, 2026]
+  y-axis "%" 0 --> 40
+  line [36.1, 36.9]
+```
+
+```mermaid
+xychart-beta
+  title "Student's t-test: share of papers per year"
+  x-axis [2025, 2026]
+  y-axis "%" 0 --> 40
+  line [36.6, 35.0]
+```
+
+```mermaid
+xychart-beta
+  title "Mann-Whitney U test: share of papers per year"
+  x-axis [2025, 2026]
+  y-axis "%" 0 --> 35
+  line [31.6, 32.5]
+```
+
+```mermaid
+xychart-beta
+  title "Fisher's exact test: share of papers per year"
+  x-axis [2025, 2026]
+  y-axis "%" 0 --> 25
+  line [20.8, 24.8]
+```
 
 **Variants named in at least 2 papers** (DataSHIELD may have the method but not the variant):
 
-| Method | Variant | Papers |
-|---|---|---|
-| multiple imputation | chained equations | 48 |
-| t-test | independent samples | 24 |
-| anova | one-way | 16 |
-| logistic regression | survey-weighted | 16 |
-| linear mixed model | random intercept | 15 |
-| linear mixed model | random intercepts | 13 |
-| cox regression | time-varying covariates | 12 |
-| modified poisson regression | robust standard errors | 12 |
-| principal component analysis | varimax rotation | 11 |
-| mediation analysis | bootstrap confidence intervals | 10 |
-| cox regression | stratified | 8 |
-| linear regression | robust standard errors | 8 |
-| multiple imputation | chained equations, predictive mean matching | 8 |
-| chi-square test | survey-weighted | 7 |
-| cross-validation | stratified | 7 |
-| logistic regression | forward stepwise selection | 7 |
-| logistic regression | stratified | 7 |
-| propensity score matching | nearest-neighbor, caliper | 7 |
-| lasso regression | penalised (lasso) | 6 |
-| poisson regression | robust standard errors | 6 |
+| Method | Variant | Papers | In DataSHIELD |
+|---|---|---|---|
+| false-discovery-rate-correction | benjamini-hochberg | 311 | – |
+| Analysis of variance (ANOVA) | one-way | 305 | – |
+| Student's t-test | independent samples | 245 | – |
+| Student's t-test | paired | 159 | – |
+| Multiple imputation | chained equations | 144 | – |
+| Logistic regression | survey-weighted | 78 | – |
+| Propensity score matching | caliper | 68 | – |
+| gradient-boosting | xgboost implementation | 67 | – |
+| Linear mixed model | random intercept | 67 | – |
+| Cox proportional hazards regression | stratified | 54 | – |
+| Linear mixed model | random intercepts | 54 | – |
+| Analysis of variance (ANOVA) | covariate-adjusted (ancova) | 53 | – |
+| Analysis of variance (ANOVA) | repeated measures | 50 | – |
+| Poisson regression | robust standard errors | 50 | – |
+| Student's t-test | welch unequal variances | 50 | – |
+| Mediation analysis | bootstrap confidence intervals | 49 | – |
+| Cox proportional hazards regression | time-varying covariates | 43 | – |
+| Poisson regression | robust variance | 42 | – |
+| LASSO regression | penalised (lasso) | 41 | – |
+| ROC curve analysis | youden optimal cutoff | 40 | – |
 
 ## cardiovascular
 
-Papers read: 162, 159 of them usable (159 of these in the last 36 months, which the order below is based on).
+Papers read: 429, 420 of them usable (420 of these in the last 36 months, which the order below is based on).
 
-| Method | Share, last 3 years | Papers | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | Trend |
-|---|---|---|---|---|---|---|---|---|---|
-| chi-square test | 58% | 93 | – | – | – | – | – | 58% | – |
-| logistic regression | 47% | 74 | – | – | – | – | – | 47% | – |
-| mann-whitney u test | 30% | 48 | – | – | – | – | – | 30% | – |
-| fisher's exact test | 28% | 44 | – | – | – | – | – | 28% | – |
-| cox regression | 26% | 42 | – | – | – | – | – | 26% | – |
-| t-test | 24% | 38 | – | – | – | – | – | 24% | – |
-| kaplan-meier estimator | 21% | 33 | – | – | – | – | – | 21% | – |
-| shapiro-wilk test | 18% | 28 | – | – | – | – | – | 18% | – |
-| roc analysis | 16% | 26 | – | – | – | – | – | 16% | – |
-| linear regression | 15% | 24 | – | – | – | – | – | 15% | – |
-| *papers read* | | | 0 | 0 | 0 | 0 | 0 | 159 | |
+| Method | Share, last 3 years | Papers | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | Trend | In DataSHIELD |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Chi-square test | 58% | 242 | – | – | – | – | – | – | – | – | – | 56% | 60% | – | – |
+| Mann-Whitney U test | 46% | 193 | – | – | – | – | – | – | – | – | – | 46% | 46% | – | – |
+| Student's t-test | 42% | 177 | – | – | – | – | – | – | – | – | – | 44% | 40% | – | – |
+| Logistic regression | 42% | 175 | – | – | – | – | – | – | – | – | – | 40% | 44% | – | – |
+| Fisher's exact test | 33% | 140 | – | – | – | – | – | – | – | – | – | 31% | 36% | – | – |
+| Cox proportional hazards regression | 24% | 100 | – | – | – | – | – | – | – | – | – | 21% | 27% | – | – |
+| ROC curve analysis | 21% | 87 | – | – | – | – | – | – | – | – | – | 19% | 23% | – | – |
+| Kaplan-Meier estimator | 20% | 83 | – | – | – | – | – | – | – | – | – | 20% | 19% | – | – |
+| Analysis of variance (ANOVA) | 15% | 65 | – | – | – | – | – | – | – | – | – | 14% | 17% | – | – |
+| Shapiro-Wilk test | 15% | 64 | – | – | – | – | – | – | – | – | – | 13% | 17% | – | – |
+| *papers read* | | | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 225 | 195 | | |
 
 **Variants named in at least 2 papers** (DataSHIELD may have the method but not the variant):
 
-| Method | Variant | Papers |
-|---|---|---|
-| multiple imputation | chained equations | 11 |
-| subgroup analysis | interaction terms | 3 |
-| subgroup analysis | interaction tests | 3 |
-| anova | one-way | 2 |
-| cross-validation | stratified | 2 |
-| logistic regression | ridge-penalised | 2 |
-| logistic regression | stepwise selection | 2 |
-| net reclassification improvement | category-free | 2 |
-| poisson regression | robust standard errors | 2 |
-| t-test | independent samples | 2 |
+| Method | Variant | Papers | In DataSHIELD |
+|---|---|---|---|
+| Analysis of variance (ANOVA) | one-way | 25 | – |
+| Student's t-test | paired | 23 | – |
+| Multiple imputation | chained equations | 20 | – |
+| Student's t-test | independent samples | 18 | – |
+| false-discovery-rate-correction | benjamini-hochberg | 13 | – |
+| Propensity score matching | caliper | 7 | – |
+| gradient-boosting | xgboost implementation | 6 | – |
+| Linear mixed model | random intercepts | 6 | – |
+| Subgroup analysis | interaction terms | 6 | – |
+| Student's t-test | welch unequal variances | 6 | – |
+| Test for trend | linear | 6 | – |
+| Cox proportional hazards regression | stratified | 5 | – |
+| Generalized linear mixed model | logistic | 5 | – |
+| Generalized linear mixed model | random intercept | 5 | – |
+| Linear regression | stepwise | 5 | – |
+| Logistic regression | survey-weighted | 5 | – |
+| Analysis of variance (ANOVA) | covariate-adjusted (ancova) | 4 | – |
+| Analysis of variance (ANOVA) | repeated measures | 4 | – |
+| Bootstrap | internal model validation | 4 | – |
+| Cox proportional hazards regression | time-varying covariates | 4 | – |
 
 ## metabolic
 
-Papers read: 156, 155 of them usable (155 of these in the last 36 months, which the order below is based on).
+Papers read: 427, 424 of them usable (424 of these in the last 36 months, which the order below is based on).
 
-| Method | Share, last 3 years | Papers | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | Trend |
-|---|---|---|---|---|---|---|---|---|---|
-| chi-square test | 56% | 87 | – | – | – | – | – | 56% | – |
-| logistic regression | 43% | 66 | – | – | – | – | – | 43% | – |
-| mann-whitney u test | 26% | 41 | – | – | – | – | – | 26% | – |
-| fisher's exact test | 21% | 33 | – | – | – | – | – | 21% | – |
-| t-test | 21% | 32 | – | – | – | – | – | 21% | – |
-| linear regression | 20% | 31 | – | – | – | – | – | 20% | – |
-| kruskal-wallis test | 19% | 29 | – | – | – | – | – | 19% | – |
-| cox regression | 17% | 27 | – | – | – | – | – | 17% | – |
-| shapiro-wilk test | 15% | 24 | – | – | – | – | – | 15% | – |
-| variance inflation factor | 14% | 21 | – | – | – | – | – | 14% | – |
-| *papers read* | | | 0 | 0 | 0 | 0 | 0 | 155 | |
+| Method | Share, last 3 years | Papers | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | Trend | In DataSHIELD |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Chi-square test | 59% | 249 | – | – | – | – | – | – | – | – | – | 59% | 58% | – | – |
+| Student's t-test | 47% | 198 | – | – | – | – | – | – | – | – | – | 47% | 46% | – | – |
+| Logistic regression | 42% | 176 | – | – | – | – | – | – | – | – | – | 42% | 41% | – | – |
+| Mann-Whitney U test | 35% | 147 | – | – | – | – | – | – | – | – | – | 34% | 35% | – | – |
+| Analysis of variance (ANOVA) | 24% | 101 | – | – | – | – | – | – | – | – | – | 24% | 24% | – | – |
+| Linear regression | 23% | 98 | – | – | – | – | – | – | – | – | – | 21% | 25% | – | – |
+| Fisher's exact test | 21% | 88 | – | – | – | – | – | – | – | – | – | 19% | 23% | – | – |
+| ROC curve analysis | 17% | 70 | – | – | – | – | – | – | – | – | – | 16% | 17% | – | – |
+| Shapiro-Wilk test | 17% | 70 | – | – | – | – | – | – | – | – | – | 17% | 16% | – | – |
+| Spearman's rank correlation | 16% | 68 | – | – | – | – | – | – | – | – | – | 15% | 17% | – | – |
+| *papers read* | | | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 234 | 190 | | |
 
 **Variants named in at least 2 papers** (DataSHIELD may have the method but not the variant):
 
-| Method | Variant | Papers |
-|---|---|---|
-| logistic regression | survey-weighted | 6 |
-| chi-square test | survey-weighted | 4 |
-| modified poisson regression | robust standard errors | 4 |
-| t-test | survey-weighted | 4 |
-| multiple imputation | chained equations | 3 |
-| poisson regression | modified, robust standard errors | 3 |
-| t-test | independent samples | 3 |
-| anova | one-way | 2 |
-| linear mixed model | random intercepts | 2 |
-| logistic regression | forward stepwise selection | 2 |
-| logistic regression | stratified | 2 |
-| multiple imputation | chained equations, predictive mean matching | 2 |
-| propensity score matching | 1:1 nearest-neighbor, caliper | 2 |
+| Method | Variant | Papers | In DataSHIELD |
+|---|---|---|---|
+| Analysis of variance (ANOVA) | one-way | 41 | – |
+| Student's t-test | paired | 20 | – |
+| false-discovery-rate-correction | benjamini-hochberg | 18 | – |
+| Logistic regression | survey-weighted | 18 | – |
+| Student's t-test | independent samples | 17 | – |
+| Multiple imputation | chained equations | 15 | – |
+| Analysis of variance (ANOVA) | covariate-adjusted (ancova) | 11 | – |
+| Propensity score matching | caliper | 10 | – |
+| Poisson regression | robust standard errors | 9 | – |
+| Poisson regression | modified | 8 | – |
+| Chi-square test | survey-weighted | 7 | – |
+| Linear mixed model | random intercept | 6 | – |
+| Linear regression | survey-weighted | 6 | – |
+| Poisson regression | robust variance | 6 | – |
+| Segmented (piecewise) regression | threshold effect | 6 | – |
+| Student's t-test | survey-weighted | 6 | – |
+| Analysis of variance (ANOVA) | repeated measures | 5 | – |
+| gradient-boosting | xgboost implementation | 5 | – |
+| Linear mixed model | random intercepts | 5 | – |
+| Logistic regression | interaction terms | 5 | – |
 
 ## mental-health
 
-Papers read: 161, 158 of them usable (158 of these in the last 36 months, which the order below is based on).
+Papers read: 426, 421 of them usable (421 of these in the last 36 months, which the order below is based on).
 
-| Method | Share, last 3 years | Papers | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | Trend |
-|---|---|---|---|---|---|---|---|---|---|
-| chi-square test | 46% | 73 | – | – | – | – | – | 46% | – |
-| logistic regression | 30% | 48 | – | – | – | – | – | 30% | – |
-| linear regression | 21% | 33 | – | – | – | – | – | 21% | – |
-| mann-whitney u test | 21% | 33 | – | – | – | – | – | 21% | – |
-| t-test | 21% | 33 | – | – | – | – | – | 21% | – |
-| fisher's exact test | 15% | 23 | – | – | – | – | – | 15% | – |
-| spearman correlation | 14% | 22 | – | – | – | – | – | 14% | – |
-| cox regression | 13% | 21 | – | – | – | – | – | 13% | – |
-| pearson correlation | 11% | 18 | – | – | – | – | – | 11% | – |
-| bonferroni correction | 11% | 17 | – | – | – | – | – | 11% | – |
-| *papers read* | | | 0 | 0 | 0 | 0 | 0 | 158 | |
+| Method | Share, last 3 years | Papers | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | Trend | In DataSHIELD |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Chi-square test | 46% | 195 | – | – | – | – | – | – | – | – | – | 46% | 47% | – | – |
+| Student's t-test | 37% | 154 | – | – | – | – | – | – | – | – | – | 37% | 36% | – | – |
+| Logistic regression | 33% | 138 | – | – | – | – | – | – | – | – | – | 32% | 34% | – | – |
+| Linear regression | 23% | 97 | – | – | – | – | – | – | – | – | – | 21% | 26% | – | – |
+| Mann-Whitney U test | 22% | 91 | – | – | – | – | – | – | – | – | – | 19% | 24% | – | – |
+| Analysis of variance (ANOVA) | 19% | 80 | – | – | – | – | – | – | – | – | – | 20% | 18% | – | – |
+| Pearson correlation | 16% | 68 | – | – | – | – | – | – | – | – | – | 19% | 13% | – | – |
+| Fisher's exact test | 14% | 61 | – | – | – | – | – | – | – | – | – | 12% | 18% | – | – |
+| ROC curve analysis | 13% | 55 | – | – | – | – | – | – | – | – | – | 13% | 13% | – | – |
+| Spearman's rank correlation | 11% | 46 | – | – | – | – | – | – | – | – | – | 10% | 12% | – | – |
+| *papers read* | | | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 227 | 194 | | |
 
 **Variants named in at least 2 papers** (DataSHIELD may have the method but not the variant):
 
-| Method | Variant | Papers |
-|---|---|---|
-| multiple imputation | chained equations | 5 |
-| anova | one-way | 2 |
-| cox regression | stratified | 2 |
-| mediation analysis | bootstrap confidence intervals | 2 |
-| t-test | independent samples | 2 |
+| Method | Variant | Papers | In DataSHIELD |
+|---|---|---|---|
+| Student's t-test | independent samples | 33 | – |
+| Analysis of variance (ANOVA) | one-way | 30 | – |
+| false-discovery-rate-correction | benjamini-hochberg | 27 | – |
+| Multiple imputation | chained equations | 20 | – |
+| Analysis of variance (ANOVA) | covariate-adjusted (ancova) | 14 | – |
+| Student's t-test | paired | 14 | – |
+| Mediation analysis | bootstrap confidence intervals | 10 | – |
+| Analysis of variance (ANOVA) | repeated measures | 9 | – |
+| gradient-boosting | xgboost implementation | 7 | – |
+| Linear mixed model | random intercepts | 7 | – |
+| Linear mixed model | random slopes | 7 | – |
+| Poisson regression | robust standard errors | 7 | – |
+| Propensity score matching | caliper | 7 | – |
+| Cox proportional hazards regression | robust standard errors | 6 | – |
+| Cox proportional hazards regression | stratified | 6 | – |
+| Cross-validation | k-fold | 6 | – |
+| Structural equation modeling | path analysis | 6 | – |
+| gradient-boosting | catboost | 5 | – |
+| Linear mixed model | random intercept | 5 | – |
+| Poisson regression | modified | 5 | – |
 
 ## cancer
 
-Papers read: 164, 159 of them usable (159 of these in the last 36 months, which the order below is based on).
+Papers read: 426, 412 of them usable (412 of these in the last 36 months, which the order below is based on).
 
-| Method | Share, last 3 years | Papers | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | Trend |
-|---|---|---|---|---|---|---|---|---|---|
-| chi-square test | 50% | 80 | – | – | – | – | – | 50% | – |
-| cox regression | 36% | 57 | – | – | – | – | – | 36% | – |
-| kaplan-meier estimator | 36% | 57 | – | – | – | – | – | 36% | – |
-| logistic regression | 31% | 50 | – | – | – | – | – | 31% | – |
-| fisher's exact test | 31% | 49 | – | – | – | – | – | 31% | – |
-| log-rank test | 25% | 40 | – | – | – | – | – | 25% | – |
-| mann-whitney u test | 25% | 39 | – | – | – | – | – | 25% | – |
-| t-test | 16% | 25 | – | – | – | – | – | 16% | – |
-| kruskal-wallis test | 11% | 18 | – | – | – | – | – | 11% | – |
-| roc curve analysis | 9% | 15 | – | – | – | – | – | 9% | – |
-| *papers read* | | | 0 | 0 | 0 | 0 | 0 | 159 | |
+| Method | Share, last 3 years | Papers | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | Trend | In DataSHIELD |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Chi-square test | 48% | 198 | – | – | – | – | – | – | – | – | – | 47% | 49% | – | – |
+| Kaplan-Meier estimator | 34% | 141 | – | – | – | – | – | – | – | – | – | 33% | 35% | – | – |
+| Logistic regression | 34% | 140 | – | – | – | – | – | – | – | – | – | 35% | 33% | – | – |
+| Mann-Whitney U test | 33% | 138 | – | – | – | – | – | – | – | – | – | 32% | 35% | – | – |
+| Fisher's exact test | 31% | 128 | – | – | – | – | – | – | – | – | – | 28% | 35% | – | – |
+| Student's t-test | 31% | 127 | – | – | – | – | – | – | – | – | – | 31% | 30% | – | – |
+| Cox proportional hazards regression | 31% | 126 | – | – | – | – | – | – | – | – | – | 26% | 35% | – | – |
+| Log-rank test | 25% | 102 | – | – | – | – | – | – | – | – | – | 25% | 25% | – | – |
+| ROC curve analysis | 22% | 92 | – | – | – | – | – | – | – | – | – | 24% | 20% | – | – |
+| Kruskal-Wallis test | 9% | 36 | – | – | – | – | – | – | – | – | – | 8% | 10% | – | – |
+| *papers read* | | | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 213 | 199 | | |
 
 **Variants named in at least 2 papers** (DataSHIELD may have the method but not the variant):
 
-| Method | Variant | Papers |
-|---|---|---|
-| cox regression | time-varying covariates | 5 |
-| t-test | independent samples | 5 |
-| cox regression | backward stepwise selection | 2 |
-| cox regression | stratified | 2 |
-| linear mixed model | random intercepts | 2 |
-| linear regression | stratified | 2 |
-| multiple imputation | chained equations | 2 |
-| propensity score matching | 1:1 | 2 |
+| Method | Variant | Papers | In DataSHIELD |
+|---|---|---|---|
+| false-discovery-rate-correction | benjamini-hochberg | 16 | – |
+| Analysis of variance (ANOVA) | one-way | 15 | – |
+| Student's t-test | independent samples | 15 | – |
+| Propensity score matching | caliper | 11 | – |
+| Student's t-test | paired | 11 | – |
+| gradient-boosting | xgboost implementation | 9 | – |
+| Cox proportional hazards regression | stratified | 8 | – |
+| Cross-validation | k-fold | 7 | – |
+| ROC curve analysis | youden optimal cutoff | 7 | – |
+| gradient-boosting | lightgbm | 6 | – |
+| Bootstrap | internal model validation | 5 | – |
+| Cox proportional hazards regression | time-varying covariates | 5 | – |
+| Concordance index (C-index) | harrell's | 4 | – |
+| Cox proportional hazards regression | robust standard errors | 4 | – |
+| Cross-validation | nested | 4 | – |
+| Generalized estimating equations | exchangeable correlation | 4 | – |
+| Kaplan-Meier estimator | reverse (follow-up time) | 4 | – |
+| LASSO regression | penalised (lasso) | 4 | – |
+| Linear mixed model | random intercept | 4 | – |
+| Multiple imputation | chained equations | 4 | – |
 
 ## respiratory-allergy
 
-Papers read: 137, 136 of them usable (136 of these in the last 36 months, which the order below is based on).
+Papers read: 426, 422 of them usable (422 of these in the last 36 months, which the order below is based on).
 
-| Method | Share, last 3 years | Papers | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | Trend |
-|---|---|---|---|---|---|---|---|---|---|
-| chi-square test | 50% | 68 | – | – | – | – | – | 50% | – |
-| logistic regression | 40% | 54 | – | – | – | – | – | 40% | – |
-| fisher's exact test | 31% | 42 | – | – | – | – | – | 31% | – |
-| mann-whitney u test | 25% | 34 | – | – | – | – | – | 25% | – |
-| cox regression | 21% | 29 | – | – | – | – | – | 21% | – |
-| kaplan-meier estimator | 20% | 27 | – | – | – | – | – | 20% | – |
-| t-test | 20% | 27 | – | – | – | – | – | 20% | – |
-| roc curve analysis | 12% | 17 | – | – | – | – | – | 12% | – |
-| log-rank test | 12% | 16 | – | – | – | – | – | 12% | – |
-| spearman correlation | 12% | 16 | – | – | – | – | – | 12% | – |
-| *papers read* | | | 0 | 0 | 0 | 0 | 0 | 136 | |
+| Method | Share, last 3 years | Papers | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | Trend | In DataSHIELD |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Chi-square test | 54% | 226 | – | – | – | – | – | – | – | – | – | 56% | 50% | – | – |
+| Logistic regression | 41% | 173 | – | – | – | – | – | – | – | – | – | 41% | 41% | – | – |
+| Mann-Whitney U test | 39% | 164 | – | – | – | – | – | – | – | – | – | 43% | 34% | – | – |
+| Student's t-test | 38% | 162 | – | – | – | – | – | – | – | – | – | 39% | 38% | – | – |
+| Fisher's exact test | 33% | 138 | – | – | – | – | – | – | – | – | – | 31% | 35% | – | – |
+| ROC curve analysis | 23% | 97 | – | – | – | – | – | – | – | – | – | 25% | 21% | – | – |
+| Kaplan-Meier estimator | 23% | 96 | – | – | – | – | – | – | – | – | – | 25% | 20% | – | – |
+| Cox proportional hazards regression | 22% | 91 | – | – | – | – | – | – | – | – | – | 22% | 21% | – | – |
+| Analysis of variance (ANOVA) | 15% | 64 | – | – | – | – | – | – | – | – | – | 16% | 14% | – | – |
+| Pearson correlation | 14% | 61 | – | – | – | – | – | – | – | – | – | 14% | 15% | – | – |
+| *papers read* | | | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 225 | 197 | | |
 
 **Variants named in at least 2 papers** (DataSHIELD may have the method but not the variant):
 
-| Method | Variant | Papers |
-|---|---|---|
-| multiple imputation | chained equations | 4 |
-| dunn's test | bonferroni correction | 3 |
-| intraclass correlation coefficient | two-way random-effects | 3 |
-| lasso regression | penalised (lasso) | 3 |
-| anova | one-way | 2 |
-| logistic regression | cluster-robust standard errors | 2 |
+| Method | Variant | Papers | In DataSHIELD |
+|---|---|---|---|
+| Analysis of variance (ANOVA) | one-way | 29 | – |
+| Student's t-test | independent samples | 22 | – |
+| gradient-boosting | xgboost implementation | 13 | – |
+| LASSO regression | penalised (lasso) | 12 | – |
+| Propensity score matching | caliper | 11 | – |
+| Student's t-test | paired | 11 | – |
+| false-discovery-rate-correction | benjamini-hochberg | 10 | – |
+| Multiple imputation | chained equations | 10 | – |
+| Logistic regression | stepwise selection | 7 | – |
+| Bootstrap | internal model validation | 6 | – |
+| LASSO regression | logistic | 6 | – |
+| Analysis of variance (ANOVA) | two-way | 5 | – |
+| Cox proportional hazards regression | stratified | 5 | – |
+| Linear mixed model | random intercept | 5 | – |
+| Student's t-test | unpaired | 5 | – |
+| Student's t-test | welch unequal variances | 5 | – |
+| Cox proportional hazards regression | time-varying covariates | 4 | – |
+| Cross-validation | stratified | 4 | – |
+| Propensity score matching | 1:1 | 4 | – |
+| Student's t-test | welch | 4 | – |
 
 ## infections
 
-Papers read: 139, 137 of them usable (137 of these in the last 36 months, which the order below is based on).
+Papers read: 441, 431 of them usable (431 of these in the last 36 months, which the order below is based on).
 
-| Method | Share, last 3 years | Papers | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | Trend |
-|---|---|---|---|---|---|---|---|---|---|
-| chi-square test | 53% | 72 | – | – | – | – | – | 53% | – |
-| logistic regression | 47% | 65 | – | – | – | – | – | 47% | – |
-| fisher's exact test | 34% | 47 | – | – | – | – | – | 34% | – |
-| mann-whitney u test | 25% | 34 | – | – | – | – | – | 25% | – |
-| t-test | 13% | 18 | – | – | – | – | – | 13% | – |
-| kruskal-wallis test | 12% | 16 | – | – | – | – | – | 12% | – |
-| shapiro-wilk test | 11% | 15 | – | – | – | – | – | 11% | – |
-| variance inflation factor | 11% | 15 | – | – | – | – | – | 11% | – |
-| kaplan-meier estimator | 9% | 12 | – | – | – | – | – | 9% | – |
-| cox regression | 8% | 11 | – | – | – | – | – | 8% | – |
-| *papers read* | | | 0 | 0 | 0 | 0 | 0 | 137 | |
+| Method | Share, last 3 years | Papers | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | Trend | In DataSHIELD |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Chi-square test | 53% | 227 | – | – | – | – | – | – | – | – | – | 53% | 52% | – | – |
+| Logistic regression | 42% | 180 | – | – | – | – | – | – | – | – | – | 40% | 44% | – | – |
+| Fisher's exact test | 33% | 143 | – | – | – | – | – | – | – | – | – | 29% | 38% | – | – |
+| Mann-Whitney U test | 33% | 142 | – | – | – | – | – | – | – | – | – | 31% | 36% | – | – |
+| Student's t-test | 29% | 123 | – | – | – | – | – | – | – | – | – | 29% | 28% | – | – |
+| ROC curve analysis | 13% | 57 | – | – | – | – | – | – | – | – | – | 13% | 14% | – | – |
+| Cox proportional hazards regression | 12% | 52 | – | – | – | – | – | – | – | – | – | 13% | 11% | – | – |
+| Analysis of variance (ANOVA) | 11% | 46 | – | – | – | – | – | – | – | – | – | 11% | 11% | – | – |
+| Linear regression | 11% | 46 | – | – | – | – | – | – | – | – | – | 12% | 10% | – | – |
+| Kaplan-Meier estimator | 10% | 45 | – | – | – | – | – | – | – | – | – | 10% | 11% | – | – |
+| *papers read* | | | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 242 | 189 | | |
 
 **Variants named in at least 2 papers** (DataSHIELD may have the method but not the variant):
 
-| Method | Variant | Papers |
-|---|---|---|
-| linear mixed model | random intercepts | 2 |
-| logistic regression | forward stepwise selection | 2 |
-| mediation analysis | bootstrap | 2 |
-| modified poisson regression | robust standard errors | 2 |
-| multiple imputation | chained equations | 2 |
+| Method | Variant | Papers | In DataSHIELD |
+|---|---|---|---|
+| Analysis of variance (ANOVA) | one-way | 21 | – |
+| Student's t-test | independent samples | 17 | – |
+| false-discovery-rate-correction | benjamini-hochberg | 13 | – |
+| Multiple imputation | chained equations | 11 | – |
+| Student's t-test | paired | 11 | – |
+| Poisson regression | robust standard errors | 7 | – |
+| Segmented (piecewise) regression | interrupted time series | 7 | – |
+| gradient-boosting | xgboost implementation | 6 | – |
+| ROC curve analysis | youden optimal cutoff | 6 | – |
+| Linear regression | log-transformed outcome | 5 | – |
+| Logistic regression | forward stepwise selection | 5 | – |
+| Logistic regression | survey-weighted | 5 | – |
+| Phylogenetic analysis | maximum likelihood | 5 | – |
+| Poisson regression | robust variance | 5 | – |
+| Propensity score matching | caliper | 5 | – |
+| Linear mixed model | random intercept | 4 | – |
+| Poisson regression | modified | 4 | – |
+| Analysis of variance (ANOVA) | repeated measures | 3 | – |
+| Cox proportional hazards regression | stratified | 3 | – |
+| Cox proportional hazards regression | time-varying covariates | 3 | – |
 
 ## pregnancy-child
 
-Papers read: 143, 141 of them usable (141 of these in the last 36 months, which the order below is based on).
+Papers read: 432, 424 of them usable (424 of these in the last 36 months, which the order below is based on).
 
-| Method | Share, last 3 years | Papers | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | Trend |
-|---|---|---|---|---|---|---|---|---|---|
-| logistic regression | 48% | 67 | – | – | – | – | – | 48% | – |
-| chi-square test | 43% | 60 | – | – | – | – | – | 43% | – |
-| mann-whitney u test | 24% | 34 | – | – | – | – | – | 24% | – |
-| fisher's exact test | 23% | 33 | – | – | – | – | – | 23% | – |
-| t-test | 19% | 27 | – | – | – | – | – | 19% | – |
-| linear regression | 12% | 17 | – | – | – | – | – | 12% | – |
-| kruskal-wallis test | 11% | 16 | – | – | – | – | – | 11% | – |
-| shapiro-wilk test | 11% | 16 | – | – | – | – | – | 11% | – |
-| spearman correlation | 10% | 14 | – | – | – | – | – | 10% | – |
-| roc curve analysis | 8% | 11 | – | – | – | – | – | 8% | – |
-| *papers read* | | | 0 | 0 | 0 | 0 | 0 | 141 | |
+| Method | Share, last 3 years | Papers | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | Trend | In DataSHIELD |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Chi-square test | 46% | 196 | – | – | – | – | – | – | – | – | – | 50% | 43% | – | – |
+| Logistic regression | 46% | 193 | – | – | – | – | – | – | – | – | – | 44% | 47% | – | – |
+| Student's t-test | 37% | 157 | – | – | – | – | – | – | – | – | – | 41% | 33% | – | – |
+| Mann-Whitney U test | 30% | 128 | – | – | – | – | – | – | – | – | – | 33% | 27% | – | – |
+| Fisher's exact test | 26% | 110 | – | – | – | – | – | – | – | – | – | 27% | 24% | – | – |
+| Linear regression | 16% | 69 | – | – | – | – | – | – | – | – | – | 15% | 17% | – | – |
+| Analysis of variance (ANOVA) | 14% | 58 | – | – | – | – | – | – | – | – | – | 14% | 13% | – | – |
+| ROC curve analysis | 14% | 58 | – | – | – | – | – | – | – | – | – | 16% | 11% | – | – |
+| Shapiro-Wilk test | 11% | 48 | – | – | – | – | – | – | – | – | – | 13% | 10% | – | – |
+| Kruskal-Wallis test | 11% | 47 | – | – | – | – | – | – | – | – | – | 10% | 12% | – | – |
+| *papers read* | | | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 222 | 202 | | |
 
 **Variants named in at least 2 papers** (DataSHIELD may have the method but not the variant):
 
-| Method | Variant | Papers |
-|---|---|---|
-| multiple imputation | chained equations | 3 |
-| bootstrap | nonparametric | 2 |
-| cox regression | robust standard errors | 2 |
-| logistic regression | cluster-robust standard errors | 2 |
-| logistic regression | interaction term | 2 |
-| logistic regression | stratified | 2 |
+| Method | Variant | Papers | In DataSHIELD |
+|---|---|---|---|
+| Analysis of variance (ANOVA) | one-way | 30 | – |
+| Student's t-test | independent samples | 23 | – |
+| false-discovery-rate-correction | benjamini-hochberg | 16 | – |
+| Student's t-test | paired | 13 | – |
+| Multiple imputation | chained equations | 8 | – |
+| Poisson regression | robust standard errors | 8 | – |
+| Poisson regression | robust variance | 6 | – |
+| Bootstrap | internal validation | 5 | – |
+| LASSO regression | penalised (lasso) | 5 | – |
+| Linear mixed model | random intercepts | 5 | – |
+| Logistic regression | stratified | 5 | – |
+| Poisson regression | modified | 5 | – |
+| Propensity score matching | caliper | 5 | – |
+| Analysis of variance (ANOVA) | covariate-adjusted (ancova) | 4 | – |
+| Cox proportional hazards regression | robust standard errors | 4 | – |
+| Generalized linear mixed model | logistic | 4 | – |
+| gradient-boosting | xgboost implementation | 4 | – |
+| Logistic regression | cluster-robust standard errors | 4 | – |
+| Logistic regression | forward stepwise selection | 4 | – |
+| Logistic regression | interaction term | 4 | – |
 
 ## environment
 
-Papers read: 136, 135 of them usable (135 of these in the last 36 months, which the order below is based on).
+Papers read: 409, 405 of them usable (405 of these in the last 36 months, which the order below is based on).
 
-| Method | Share, last 3 years | Papers | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | Trend |
-|---|---|---|---|---|---|---|---|---|---|
-| chi-square test | 39% | 52 | – | – | – | – | – | 39% | – |
-| logistic regression | 33% | 45 | – | – | – | – | – | 33% | – |
-| linear regression | 27% | 37 | – | – | – | – | – | 27% | – |
-| mann-whitney u test | 23% | 31 | – | – | – | – | – | 23% | – |
-| spearman correlation | 21% | 28 | – | – | – | – | – | 21% | – |
-| cox regression | 14% | 19 | – | – | – | – | – | 14% | – |
-| fisher's exact test | 14% | 19 | – | – | – | – | – | 14% | – |
-| t-test | 13% | 18 | – | – | – | – | – | 13% | – |
-| variance inflation factor | 13% | 18 | – | – | – | – | – | 13% | – |
-| shapiro-wilk test | 12% | 16 | – | – | – | – | – | 12% | – |
-| *papers read* | | | 0 | 0 | 0 | 0 | 0 | 135 | |
+| Method | Share, last 3 years | Papers | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | Trend | In DataSHIELD |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Chi-square test | 34% | 139 | – | – | – | – | – | – | – | – | – | 32% | 36% | – | – |
+| Logistic regression | 33% | 132 | – | – | – | – | – | – | – | – | – | 30% | 36% | – | – |
+| Linear regression | 27% | 108 | – | – | – | – | – | – | – | – | – | 25% | 29% | – | – |
+| Student's t-test | 25% | 101 | – | – | – | – | – | – | – | – | – | 28% | 22% | – | – |
+| Mann-Whitney U test | 22% | 90 | – | – | – | – | – | – | – | – | – | 22% | 22% | – | – |
+| Spearman's rank correlation | 19% | 75 | – | – | – | – | – | – | – | – | – | 18% | 19% | – | – |
+| Subgroup analysis | 16% | 63 | – | – | – | – | – | – | – | – | – | 16% | 15% | – | – |
+| Cox proportional hazards regression | 15% | 60 | – | – | – | – | – | – | – | – | – | 15% | 15% | – | – |
+| Restricted cubic splines | 14% | 58 | – | – | – | – | – | – | – | – | – | 17% | 11% | – | – |
+| Pearson correlation | 13% | 51 | – | – | – | – | – | – | – | – | – | 13% | 12% | – | – |
+| *papers read* | | | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 213 | 192 | | |
 
 **Variants named in at least 2 papers** (DataSHIELD may have the method but not the variant):
 
-| Method | Variant | Papers |
-|---|---|---|
-| multiple imputation | chained equations | 9 |
-| cox regression | time-varying covariates | 3 |
-| linear mixed model | random intercept | 3 |
-| t-test | independent samples | 3 |
-| bayesian kernel machine regression | hierarchical variable selection | 2 |
-| cross-validation | stratified | 2 |
-| linear mixed model | random intercepts | 2 |
-| logistic regression | unconditional | 2 |
-| principal component analysis | varimax rotation | 2 |
-| subgroup analysis | stratified | 2 |
+| Method | Variant | Papers | In DataSHIELD |
+|---|---|---|---|
+| false-discovery-rate-correction | benjamini-hochberg | 30 | – |
+| Multiple imputation | chained equations | 28 | – |
+| Analysis of variance (ANOVA) | one-way | 19 | – |
+| Student's t-test | independent samples | 16 | – |
+| Student's t-test | paired | 14 | – |
+| Cox proportional hazards regression | time-varying covariates | 13 | – |
+| Cox proportional hazards regression | stratified | 10 | – |
+| Linear mixed model | random intercept | 10 | – |
+| Cox proportional hazards regression | age as time scale | 8 | – |
+| Interaction analysis | interaction terms | 7 | – |
+| Interaction analysis | stratified | 6 | – |
+| Linear mixed model | random intercepts | 6 | – |
+| Logistic regression | survey-weighted | 5 | – |
+| Logistic regression | unconditional | 5 | – |
+| Poisson regression | robust standard errors | 5 | – |
+| Standardized incidence ratio | mortality ratio | 5 | – |
+| Generalized linear mixed model | random intercepts | 4 | – |
+| gradient-boosting | xgboost implementation | 4 | – |
+| Linear regression | survey-weighted | 4 | – |
+| Mediation analysis | bootstrap confidence intervals | 4 | – |
 
 ## nutrition
 
-Papers read: 142, 142 of them usable (142 of these in the last 36 months, which the order below is based on).
+Papers read: 423, 421 of them usable (421 of these in the last 36 months, which the order below is based on).
 
-| Method | Share, last 3 years | Papers | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | Trend |
-|---|---|---|---|---|---|---|---|---|---|
-| chi-square test | 60% | 85 | – | – | – | – | – | 60% | – |
-| logistic regression | 35% | 50 | – | – | – | – | – | 35% | – |
-| linear regression | 29% | 41 | – | – | – | – | – | 29% | – |
-| t-test | 25% | 36 | – | – | – | – | – | 25% | – |
-| mann-whitney u test | 24% | 34 | – | – | – | – | – | 24% | – |
-| shapiro-wilk test | 23% | 33 | – | – | – | – | – | 23% | – |
-| variance inflation factor | 18% | 26 | – | – | – | – | – | 18% | – |
-| spearman correlation | 17% | 24 | – | – | – | – | – | 17% | – |
-| cox regression | 16% | 23 | – | – | – | – | – | 16% | – |
-| kruskal-wallis test | 15% | 22 | – | – | – | – | – | 15% | – |
-| *papers read* | | | 0 | 0 | 0 | 0 | 0 | 142 | |
+| Method | Share, last 3 years | Papers | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | Trend | In DataSHIELD |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Chi-square test | 57% | 238 | – | – | – | – | – | – | – | – | – | 53% | 60% | – | – |
+| Student's t-test | 37% | 156 | – | – | – | – | – | – | – | – | – | 34% | 41% | – | – |
+| Logistic regression | 36% | 152 | – | – | – | – | – | – | – | – | – | 37% | 35% | – | – |
+| Linear regression | 29% | 124 | – | – | – | – | – | – | – | – | – | 25% | 34% | – | – |
+| Mann-Whitney U test | 26% | 108 | – | – | – | – | – | – | – | – | – | 24% | 27% | – | – |
+| Analysis of variance (ANOVA) | 24% | 99 | – | – | – | – | – | – | – | – | – | 22% | 25% | – | – |
+| Cox proportional hazards regression | 17% | 72 | – | – | – | – | – | – | – | – | – | 18% | 16% | – | – |
+| Fisher's exact test | 17% | 70 | – | – | – | – | – | – | – | – | – | 16% | 17% | – | – |
+| Shapiro-Wilk test | 17% | 70 | – | – | – | – | – | – | – | – | – | 15% | 18% | – | – |
+| Kruskal-Wallis test | 16% | 67 | – | – | – | – | – | – | – | – | – | 17% | 15% | – | – |
+| *papers read* | | | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 217 | 204 | | |
 
 **Variants named in at least 2 papers** (DataSHIELD may have the method but not the variant):
 
-| Method | Variant | Papers |
-|---|---|---|
-| principal component analysis | varimax rotation | 7 |
-| logistic regression | survey-weighted | 4 |
-| multiple imputation | chained equations | 4 |
-| t-test | independent samples | 4 |
-| factor analysis | varimax rotation | 3 |
-| linear mixed model | random intercept | 3 |
-| linear regression | robust standard errors | 3 |
-| cox regression | survey-weighted | 2 |
-| cox regression | time-varying covariates | 2 |
-| logistic regression | unconditional | 2 |
-| manova | pillai's trace | 2 |
-| mediation analysis | bootstrap confidence intervals | 2 |
-| subgroup analysis | interaction terms | 2 |
-| subgroup analysis | interaction tests | 2 |
+| Method | Variant | Papers | In DataSHIELD |
+|---|---|---|---|
+| Analysis of variance (ANOVA) | one-way | 35 | – |
+| Student's t-test | independent samples | 29 | – |
+| false-discovery-rate-correction | benjamini-hochberg | 23 | – |
+| Logistic regression | survey-weighted | 20 | – |
+| Student's t-test | paired | 14 | – |
+| Principal component analysis | varimax rotation | 13 | – |
+| Multiple imputation | chained equations | 10 | – |
+| Analysis of variance (ANOVA) | covariate-adjusted (ancova) | 8 | – |
+| Cox proportional hazards regression | stratified | 7 | – |
+| Linear mixed model | random intercept | 7 | – |
+| Chi-square test | survey-weighted | 6 | – |
+| Cox proportional hazards regression | time-varying covariates | 6 | – |
+| Linear regression | robust standard errors | 6 | – |
+| Logistic regression | survey weights | 6 | – |
+| Poisson regression | robust variance | 6 | – |
+| Analysis of variance (ANOVA) | covariate adjusted | 5 | – |
+| Exploratory factor analysis | varimax rotation | 5 | – |
+| LASSO regression | penalised (lasso) | 5 | – |
+| Mediation analysis | bootstrap confidence intervals | 5 | – |
+| Student's t-test | welch unequal variances | 5 | – |
 
 ## omics
 
-Papers read: 141, 139 of them usable (139 of these in the last 36 months, which the order below is based on).
+Papers read: 409, 399 of them usable (399 of these in the last 36 months, which the order below is based on).
 
-| Method | Share, last 3 years | Papers | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | Trend |
-|---|---|---|---|---|---|---|---|---|---|
-| mann-whitney u test | 37% | 51 | – | – | – | – | – | 37% | – |
-| permanova | 37% | 51 | – | – | – | – | – | 37% | – |
-| chi-square test | 32% | 45 | – | – | – | – | – | 32% | – |
-| spearman correlation | 31% | 43 | – | – | – | – | – | 31% | – |
-| kruskal-wallis test | 27% | 38 | – | – | – | – | – | 27% | – |
-| benjamini-hochberg correction | 27% | 37 | – | – | – | – | – | 27% | – |
-| fisher's exact test | 22% | 31 | – | – | – | – | – | 22% | – |
-| principal component analysis | 22% | 31 | – | – | – | – | – | 22% | – |
-| t-test | 22% | 30 | – | – | – | – | – | 22% | – |
-| linear regression | 21% | 29 | – | – | – | – | – | 21% | – |
-| *papers read* | | | 0 | 0 | 0 | 0 | 0 | 139 | |
+| Method | Share, last 3 years | Papers | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | Trend | In DataSHIELD |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Mann-Whitney U test | 50% | 199 | – | – | – | – | – | – | – | – | – | 47% | 53% | – | – |
+| false-discovery-rate-correction | 47% | 188 | – | – | – | – | – | – | – | – | – | 42% | 53% | – | – |
+| Student's t-test | 41% | 162 | – | – | – | – | – | – | – | – | – | 43% | 38% | – | – |
+| Chi-square test | 33% | 130 | – | – | – | – | – | – | – | – | – | 32% | 34% | – | – |
+| Spearman's rank correlation | 31% | 125 | – | – | – | – | – | – | – | – | – | 30% | 33% | – | – |
+| PERMANOVA | 31% | 123 | – | – | – | – | – | – | – | – | – | 28% | 34% | – | – |
+| ROC curve analysis | 28% | 112 | – | – | – | – | – | – | – | – | – | 29% | 27% | – | – |
+| Kruskal-Wallis test | 27% | 109 | – | – | – | – | – | – | – | – | – | 28% | 27% | – | – |
+| Principal coordinates analysis | 25% | 98 | – | – | – | – | – | – | – | – | – | 23% | 26% | – | – |
+| Linear regression | 21% | 84 | – | – | – | – | – | – | – | – | – | 21% | 21% | – | – |
+| *papers read* | | | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 209 | 190 | | |
 
 **Variants named in at least 2 papers** (DataSHIELD may have the method but not the variant):
 
-| Method | Variant | Papers |
-|---|---|---|
-| linear mixed model | random intercept | 5 |
-| logistic regression | survey-weighted | 4 |
-| anova | one-way | 3 |
-| cross-validation | repeated | 3 |
-| multiple imputation | chained equations | 3 |
-| chi-square test | survey-weighted | 2 |
-| cross-validation | nested | 2 |
-| cross-validation | repeated stratified | 2 |
-| cross-validation | stratified | 2 |
-| mediation analysis | bootstrap | 2 |
-| partial correlation | pearson | 2 |
-| permanova | pairwise | 2 |
-| principal coordinate analysis | bray-curtis distance | 2 |
-| repeated-measures anova | greenhouse-geisser correction | 2 |
+| Method | Variant | Papers | In DataSHIELD |
+|---|---|---|---|
+| false-discovery-rate-correction | benjamini-hochberg | 138 | – |
+| Analysis of variance (ANOVA) | one-way | 31 | – |
+| Student's t-test | welch unequal variances | 17 | – |
+| Linear mixed model | random intercept | 14 | – |
+| gradient-boosting | xgboost implementation | 10 | – |
+| Principal coordinates analysis | bray-curtis distance | 10 | – |
+| Student's t-test | independent samples | 10 | – |
+| Student's t-test | paired | 10 | – |
+| Alpha diversity analysis | shannon index | 9 | – |
+| Network analysis (graphical models) | co-occurrence | 8 | – |
+| Pathway enrichment analysis | kegg | 8 | – |
+| Cross-validation | nested | 7 | – |
+| Cross-validation | stratified | 7 | – |
+| DESeq2 differential expression analysis | differential abundance | 7 | – |
+| Linear mixed model | random intercepts | 7 | – |
+| Logistic regression | survey-weighted | 7 | – |
+| Multiple imputation | chained equations | 7 | – |
+| Cross-validation | k-fold | 6 | – |
+| Cross-validation | leave-one-out | 6 | – |
+| Cross-validation | repeated | 6 | – |
 
 ## lifestyle
 
-Papers read: 142, 138 of them usable (138 of these in the last 36 months, which the order below is based on).
+Papers read: 416, 408 of them usable (408 of these in the last 36 months, which the order below is based on).
 
-| Method | Share, last 3 years | Papers | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | Trend |
-|---|---|---|---|---|---|---|---|---|---|
-| chi-square test | 41% | 56 | – | – | – | – | – | 41% | – |
-| logistic regression | 27% | 37 | – | – | – | – | – | 27% | – |
-| t-test | 19% | 26 | – | – | – | – | – | 19% | – |
-| linear regression | 17% | 23 | – | – | – | – | – | 17% | – |
-| variance inflation factor | 16% | 22 | – | – | – | – | – | 16% | – |
-| pearson correlation | 15% | 21 | – | – | – | – | – | 15% | – |
-| mann-whitney u test | 14% | 19 | – | – | – | – | – | 14% | – |
-| cox regression | 13% | 18 | – | – | – | – | – | 13% | – |
-| shapiro-wilk test | 13% | 18 | – | – | – | – | – | 13% | – |
-| spearman correlation | 12% | 16 | – | – | – | – | – | 12% | – |
-| *papers read* | | | 0 | 0 | 0 | 0 | 0 | 138 | |
+| Method | Share, last 3 years | Papers | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | Trend | In DataSHIELD |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Chi-square test | 37% | 150 | – | – | – | – | – | – | – | – | – | 35% | 39% | – | – |
+| Logistic regression | 34% | 139 | – | – | – | – | – | – | – | – | – | 37% | 31% | – | – |
+| Student's t-test | 32% | 129 | – | – | – | – | – | – | – | – | – | 29% | 34% | – | – |
+| Linear regression | 24% | 96 | – | – | – | – | – | – | – | – | – | 22% | 25% | – | – |
+| Mann-Whitney U test | 18% | 74 | – | – | – | – | – | – | – | – | – | 17% | 20% | – | – |
+| Analysis of variance (ANOVA) | 17% | 71 | – | – | – | – | – | – | – | – | – | 18% | 17% | – | – |
+| Pearson correlation | 15% | 60 | – | – | – | – | – | – | – | – | – | 14% | 16% | – | – |
+| Spearman's rank correlation | 12% | 50 | – | – | – | – | – | – | – | – | – | 12% | 13% | – | – |
+| Variance inflation factor | 12% | 50 | – | – | – | – | – | – | – | – | – | 10% | 15% | – | – |
+| Shapiro-Wilk test | 12% | 48 | – | – | – | – | – | – | – | – | – | 11% | 13% | – | – |
+| *papers read* | | | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 219 | 189 | | |
 
 **Variants named in at least 2 papers** (DataSHIELD may have the method but not the variant):
 
-| Method | Variant | Papers |
-|---|---|---|
-| multiple imputation | chained equations | 5 |
-| anova | one-way | 4 |
-| modified poisson regression | robust standard errors | 4 |
-| t-test | independent samples | 3 |
-| elastic net regression | penalised (elastic net) | 2 |
-| logistic regression | stratified | 2 |
-| logistic regression | survey-weighted | 2 |
-| repeated measures anova | greenhouse-geisser correction | 2 |
+| Method | Variant | Papers | In DataSHIELD |
+|---|---|---|---|
+| Student's t-test | independent samples | 47 | – |
+| Analysis of variance (ANOVA) | one-way | 32 | – |
+| Student's t-test | paired | 21 | – |
+| Multiple imputation | chained equations | 14 | – |
+| Logistic regression | survey-weighted | 12 | – |
+| Analysis of variance (ANOVA) | repeated measures | 11 | – |
+| false-discovery-rate-correction | benjamini-hochberg | 11 | – |
+| Mediation analysis | bootstrap confidence intervals | 10 | – |
+| Poisson regression | robust variance | 10 | – |
+| Linear mixed model | random intercept | 8 | – |
+| Linear mixed model | random intercepts | 8 | – |
+| Cox proportional hazards regression | stratified | 6 | – |
+| Mediation analysis | bootstrap | 6 | – |
+| Poisson regression | modified | 6 | – |
+| Poisson regression | robust standard errors | 6 | – |
+| Segmented (piecewise) regression | threshold effect | 6 | – |
+| Analysis of variance (ANOVA) | covariate-adjusted (ancova) | 5 | – |
+| Generalized linear mixed model | random intercept | 5 | – |
+| Linear mixed model | interaction terms | 5 | – |
+| Linear regression | interaction terms | 5 | – |
 
 ## Searches
 
@@ -442,4 +603,4 @@ Papers read: 142, 138 of them usable (138 of these in the last 36 months, which 
 | omics | `88c8ab9a` | `"Epidemiologic Studies"[MeSH Terms] AND ("Genomics"[majr] OR "Epigenomics"[majr] OR "Metabolomics"[majr] OR "Proteomics"[majr] OR "Multiomics"[majr] OR "Microbiota"[majr]) AND "pubmed pmc open access"[filter] NOT (review[pt] OR systematic review[pt] OR meta-analysis[pt])` |
 | lifestyle | `d8a73a12` | `"Epidemiologic Studies"[MeSH Terms] AND ("Exercise"[majr] OR "Sedentary Behavior"[majr] OR "Smoking"[majr] OR "Alcohol Drinking"[majr] OR "Sleep"[majr]) AND "pubmed pmc open access"[filter] NOT (review[pt] OR systematic review[pt] OR meta-analysis[pt])` |
 
-_Notes: shares are per year of publication; all fields dip in 2022-2023, most likely NLM's switch to automated MeSH indexing, so read changes around those years with care. Method names aren't merged into synonyms yet ("t-test" and "Student's t-test" are counted apart); that comes with the vocabulary step._
+_Notes: shares are per year of publication; all fields dip in 2022-2023, most likely NLM's switch to automated MeSH indexing, so read changes around those years with care. Method names are merged by the vocabulary (`vocabulary.yml`, Claude); names not classified yet are shown as the papers gave them. "In DataSHIELD" is Claude's verdict against the functions' documentation in the package catalogue, with the function it found; "partly" means the plain method or only some of it, "no (in development)" a match only in a development package, "unconfirmed" an answer whose evidence didn't check out, "–" not checked yet (fewer papers than the threshold)._
