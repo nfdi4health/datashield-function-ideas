@@ -34,7 +34,7 @@ jobs:
           exit 1
 
       - name: Start the researcher in the runner
-        uses: nfdi4health/datashield-workflows/.github/actions/dispatch-runner@main
+        uses: $/.github/actions/dispatch-runner
         with:
           repository: FlorianSchw/datashield-agent-runner
           workflow: literature-watch.yml

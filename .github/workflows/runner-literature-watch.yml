@@ -146,21 +146,9 @@ jobs:
           persist-credentials: false
 
       # This repository's scripts, prompts and config at the commit of this
-      # workflow, in .hub; the shared R functions (the Claude call, config
-      # merging) and their defaults from datashield-workflows.
+      # workflow, in .hub (the workspace root is main).
       - name: Hub scripts
         uses: $/.github/actions/hub-files
-      - name: Shared functions
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          repository: nfdi4health/datashield-workflows
-          ref: main
-          path: .shared-workflows
-          sparse-checkout: |
-            R/functions/shared
-            config/claude.yml
-          sparse-checkout-cone-mode: false
-          persist-credentials: false
 
       - name: Data, R and Claude Code
         uses: $/.github/actions/literature-watch-setup
@@ -225,21 +213,9 @@ jobs:
           persist-credentials: false
 
       # This repository's scripts, prompts and config at the commit of this
-      # workflow, in .hub; the shared R functions (the Claude call, config
-      # merging) and their defaults from datashield-workflows.
+      # workflow, in .hub (the workspace root is main).
       - name: Hub scripts
         uses: $/.github/actions/hub-files
-      - name: Shared functions
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          repository: nfdi4health/datashield-workflows
-          ref: main
-          path: .shared-workflows
-          sparse-checkout: |
-            R/functions/shared
-            config/claude.yml
-          sparse-checkout-cone-mode: false
-          persist-credentials: false
 
       - name: Data, R and Claude Code
         uses: $/.github/actions/literature-watch-setup
@@ -303,21 +279,9 @@ jobs:
           persist-credentials: false
 
       # This repository's scripts, prompts and config at the commit of this
-      # workflow, in .hub; the shared R functions (the Claude call, config
-      # merging) and their defaults from datashield-workflows.
+      # workflow, in .hub (the workspace root is main).
       - name: Hub scripts
         uses: $/.github/actions/hub-files
-      - name: Shared functions
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          repository: nfdi4health/datashield-workflows
-          ref: main
-          path: .shared-workflows
-          sparse-checkout: |
-            R/functions/shared
-            config/claude.yml
-          sparse-checkout-cone-mode: false
-          persist-credentials: false
 
       - name: Data, R and Claude Code
         uses: $/.github/actions/literature-watch-setup
@@ -373,7 +337,7 @@ jobs:
 
       - name: Propose the candidates to the hub
         if: steps.candidates.outputs.due == 'yes' && inputs.hub-repository != ''
-        uses: nfdi4health/datashield-workflows/.github/actions/propose-branch@main
+        uses: $/.github/actions/propose-branch
         with:
           manifest: candidates_files.txt
           branch: bot-suggest/literature-watch/candidates-${{ steps.candidates.outputs.month }}
@@ -420,21 +384,9 @@ jobs:
           persist-credentials: false
 
       # This repository's scripts, prompts and config at the commit of this
-      # workflow, in .hub; the shared R functions (the Claude call, config
-      # merging) and their defaults from datashield-workflows.
+      # workflow, in .hub (the workspace root is main).
       - name: Hub scripts
         uses: $/.github/actions/hub-files
-      - name: Shared functions
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          repository: nfdi4health/datashield-workflows
-          ref: main
-          path: .shared-workflows
-          sparse-checkout: |
-            R/functions/shared
-            config/claude.yml
-          sparse-checkout-cone-mode: false
-          persist-credentials: false
 
       - name: Data and R
         uses: $/.github/actions/literature-watch-setup

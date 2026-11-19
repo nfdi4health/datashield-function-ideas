@@ -108,21 +108,9 @@ jobs:
           persist-credentials: false
 
       # This repository's scripts, prompts and config at the commit of this
-      # workflow, in .hub; the shared R functions (the Claude call, config
-      # merging) and their defaults from datashield-workflows.
+      # workflow, in .hub (the workspace root is main).
       - name: Hub scripts
         uses: $/.github/actions/hub-files
-      - name: Shared functions
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          repository: nfdi4health/datashield-workflows
-          ref: main
-          path: .shared-workflows
-          sparse-checkout: |
-            R/functions/shared
-            config/claude.yml
-          sparse-checkout-cone-mode: false
-          persist-credentials: false
 
       - name: Unchecked issues
         id: list

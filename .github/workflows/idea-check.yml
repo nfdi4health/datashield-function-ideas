@@ -29,7 +29,7 @@ jobs:
           exit 1
 
       - name: Start the check in the runner
-        uses: nfdi4health/datashield-workflows/.github/actions/dispatch-runner@main
+        uses: $/.github/actions/dispatch-runner
         with:
           repository: FlorianSchw/datashield-agent-runner
           workflow: idea-check.yml

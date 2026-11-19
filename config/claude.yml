@@ -1,7 +1,28 @@
-# Claude settings of the hub's profiles, merged over the defaults of
-# nfdi4health/datashield-workflows' config/claude.yml (its `default`
-# profile and `model_rules`), which the workflows check out into
-# .shared-workflows.
+# Claude settings of the hub, per task: model, tokens, thinking, tool name
+# (claude_settings(): a profile is merged over `default`). Copied from
+# nfdi4health/datashield-workflows' config/claude.yml on 2026-11-19 (its
+# `default` and `model_rules`); keep `model_rules` current when models come
+# out, here as there.
+
+# What some models reject, for claude_settings() / adapt_to_model(): a
+# profile, or a caller's `model` input, can name any model, and its
+# settings are fitted to it (tool_choice auto, adaptive thinking, no
+# server-side fallback, no effort). A model in no list is sent as the profile says.
+# Extend the lists when new models come out.
+model_rules:
+  no_forced_tool_choice: [claude-opus-5-5, claude-sonnet-5-5, claude-fable-5-1, claude-mythos-5-1]
+  no_disabled_thinking: [claude-opus-5-5, claude-sonnet-5-5, claude-fable-5, claude-fable-5-1, claude-mythos-5, claude-mythos-5-1]
+  server_side_fallbacks: [claude-fable-5-1, claude-opus-5-5, claude-opus-5, claude-sonnet-5-5]
+  no_effort: [claude-haiku-4-5, claude-sonnet-4-5]
+
+default:
+  anthropic:
+    model: claude-sonnet-5
+    max_tokens: 4096
+    api_version: "2023-06-01"
+    thinking:
+      type: disabled
+    tool_choice_type: tool
 
 methods-extraction:
   anthropic:

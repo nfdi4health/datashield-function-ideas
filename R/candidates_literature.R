@@ -21,14 +21,10 @@
 library(jsonlite)
 library(purrr)
 
-# The hub's own functions (R/functions/literature): in the workflows from
-# .hub, this repository at the commit the workflow runs (the root is the
-# hub's main branch), else from here; the shared ones (the Claude call,
-# config merging) from datashield-workflows, which the workflows check out
-# into .shared-workflows.
+# This repository's functions: in the runner from .hub (this repository at
+# the commit the workflow runs; the workspace root is main), else from here.
 functions_dir <- if (dir.exists(".hub/R/functions")) ".hub/R/functions" else "R/functions"
-walk(c(list.files(".shared-workflows/R/functions/shared", pattern = "\\.R$", full.names = TRUE),
-  list.files(file.path(functions_dir, "literature"), pattern = "\\.R$", full.names = TRUE)), source)
+walk(list.files(file.path(functions_dir, c("shared", "literature")), pattern = "\\.R$", full.names = TRUE), source)
 
 settings <- read_config_yaml("config/literature-watch.yml")
 today <- as.Date(Sys.getenv("WATCH_TODAY", as.character(Sys.Date())))
@@ -61,8 +57,7 @@ if (is.null(inventory)) {
   message("The function inventory couldn't be read; the candidates wait for the next run.")
   quit(save = "no")
 }
-auth <- claude_auth()
-exists_claude <- claude_client("methods-exists", "prompts/methods-exists-prompt.md", auth = auth)
+exists_claude <- claude_client("methods-exists", "prompts/methods-exists-prompt.md")
 by_exists <- hash_keys(paste(exists_claude$config$model %||% "", hash_keys(exists_claude$prompt %||% "")))
 update_lookup_table(file.path(dir, "readers.csv"), data.frame(fingerprint = by_exists, group = "exists",
   model = exists_claude$config$model, prompt = hash_keys(exists_claude$prompt)), today)
@@ -103,7 +98,7 @@ if (nrow(new) + nrow(deferred) == 0) {
   quit(save = "no")
 }
 
-claude <- claude_client("methods-research", "prompts/methods-research-prompt.md", auth = auth)
+claude <- claude_client("methods-research", "prompts/methods-research-prompt.md")
 research <- list()
 for (i in seq_len(nrow(new))) {
   r <- research_candidate(claude, new[i, ], vocab)

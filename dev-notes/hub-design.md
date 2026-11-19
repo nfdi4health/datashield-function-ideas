@@ -15,11 +15,13 @@ it grew from 2026-11-11; paths in it name the files where they were then
 - **The pipeline lives in the hub** (option A over keeping it in
   datashield-workflows tied to the hub): the runner calls
   `runner-literature-watch.yml` and `runner-idea-check.yml` of this
-  repository; the shared R helpers (the Claude call, config merging) and
-  `config/claude.yml`'s defaults come from datashield-workflows, checked out
-  into `.shared-workflows`; its `dispatch-runner` and `propose-branch`
-  actions are used at `@main`. The usage counter (`count-run`) is no
-  longer called: it counts uses of datashield-workflows' workflows.
+  repository. **Nothing is used from datashield-workflows at run time**
+  (user: "better drift and duplicates than relying on small parts"): the
+  Claude call and config helpers (trimmed to the subscription path),
+  `config/claude.yml`'s `default` and `model_rules`, `dispatch-runner`,
+  `propose-branch` and the branch clean-up are copies, each file saying
+  so. The usage counter (`count-run`) is no longer called: it counts uses
+  of datashield-workflows' workflows.
 - **Candidate selection becomes its own workflow** (not built yet), apart
   from reading and categorising: rank every method and variant over the
   whole register, "Exists?" down the ranking, research only the gaps, the

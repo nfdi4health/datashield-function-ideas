@@ -1,7 +1,6 @@
 name: CI
 
-# The hub's own checks: unit tests of the R functions (with the shared
-# ones from datashield-workflows), tests of the shell and Node scripts, and
+# The hub's own checks: unit tests of the R functions, tests of the shell and Node scripts, and
 # static checks of the workflows and scripts. Runs on pull requests and on
 # pushes to main. None of it calls Claude or costs anything but runner
 # minutes.
@@ -33,19 +32,6 @@ jobs:
           packages: >-
             any::testthat, any::withr, any::httr2, any::jsonlite, any::yaml,
             any::purrr, any::xml2, any::openssl
-      # The shared functions (the Claude call, config merging) and the
-      # defaults of config/claude.yml.
-      - name: Shared functions
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          repository: nfdi4health/datashield-workflows
-          ref: main
-          path: .shared-workflows
-          sparse-checkout: |
-            R/functions/shared
-            config/claude.yml
-          sparse-checkout-cone-mode: false
-          persist-credentials: false
       - name: Run the tests
         env:
           LANG: C.UTF-8

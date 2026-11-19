@@ -46,9 +46,10 @@ the demand.
 
 Everything lives in this repository: the workflows (`.github/workflows/`),
 their scripts (`R/`, `.github/actions/`), prompts (`prompts/`) and
-settings (`config/`), with tests in `tests/`. A few shared helpers (the
-Claude call, config merging) come from
-[nfdi4health/datashield-workflows](https://github.com/nfdi4health/datashield-workflows).
+settings (`config/`), with tests in `tests/`. A few helpers (the Claude
+call, config merging) started as copies from
+[nfdi4health/datashield-workflows](https://github.com/nfdi4health/datashield-workflows),
+which also builds bots for DataSHIELD packages.
 New issues get an "Exists in DataSHIELD?" check (`idea-check.yml`): a
 comment with the closest DataSHIELD functions, and a label if one exists.
 The literature watch runs nightly in a private runner repository on the
@@ -63,6 +64,5 @@ keeps it red until every candidate has exactly one box ticked and, on
 merge, opens the issues and records the decisions. Its fields and pace are
 in `config/literature-watch.yml`.
 
-Tests: `Rscript tests/testthat.R` (needs a checkout of
-datashield-workflows in `.shared-workflows` or next to this repository),
-`bash tests/shell/<file>.sh`, `node --test tests/node/*.test.mjs`.
+Tests: `Rscript tests/testthat.R`, `bash tests/shell/<file>.sh`,
+`node --test tests/node/*.test.mjs`.

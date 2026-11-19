@@ -3,8 +3,7 @@
 .RData
 .Ruserdata
 
-# Checkouts of the workflows and tests (datashield-workflows, this
-# repository at the running commit, the data branch).
-.shared-workflows/
+# The workflows' copies (this repository at the running commit, the data
+# branch).
 .hub/
 watch-data/

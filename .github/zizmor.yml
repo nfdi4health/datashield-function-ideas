@@ -1,9 +1,0 @@
-# zizmor's settings: the hub uses datashield-workflows' shared actions and
-# workflows at main (like every caller of that repository); all other
-# actions are pinned to a commit.
-rules:
-  unpinned-uses:
-    config:
-      policies:
-        "nfdi4health/datashield-workflows/*": ref-pin
-        "*": hash-pin

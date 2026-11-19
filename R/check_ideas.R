@@ -14,14 +14,10 @@
 library(jsonlite)
 library(purrr)
 
-# The hub's own functions (R/functions/literature): in the workflows from
-# .hub, this repository at the commit the workflow runs (the root is the
-# hub's main branch), else from here; the shared ones (the Claude call,
-# config merging) from datashield-workflows, which the workflows check out
-# into .shared-workflows.
+# This repository's functions: in the runner from .hub (this repository at
+# the commit the workflow runs; the workspace root is main), else from here.
 functions_dir <- if (dir.exists(".hub/R/functions")) ".hub/R/functions" else "R/functions"
-walk(c(list.files(".shared-workflows/R/functions/shared", pattern = "\\.R$", full.names = TRUE),
-  list.files(file.path(functions_dir, "literature"), pattern = "\\.R$", full.names = TRUE)), source)
+walk(list.files(file.path(functions_dir, c("shared", "literature")), pattern = "\\.R$", full.names = TRUE), source)
 
 settings <- read_config_yaml("config/idea-check.yml")
 watch <- read_config_yaml("config/literature-watch.yml")
@@ -47,9 +43,8 @@ if (is.null(inventory)) {
 data_dir <- file.path(Sys.getenv("WATCH_DATA_DIR", "watch-data"), watch$files$data %||% "literature-watch/data")
 vocab <- if (dir.exists(data_dir)) read_vocabulary(data_dir) else NULL
 reg <- if (dir.exists(data_dir)) read_register(data_dir) else NULL
-auth <- claude_auth()
-reader <- claude_client("idea-reading", "prompts/idea-reading-prompt.md", auth = auth)
-judge <- claude_client("methods-exists", "prompts/methods-exists-prompt.md", auth = auth)
+reader <- claude_client("idea-reading", "prompts/idea-reading-prompt.md")
+judge <- claude_client("methods-exists", "prompts/methods-exists-prompt.md")
 
 for (issue in ideas$ideas) {
   x <- check_idea(issue, ideas$others %||% list(), inventory, reader, judge, settings, today)

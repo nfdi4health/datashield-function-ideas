@@ -15,17 +15,20 @@ runs, no pull request), with the report
 (`literature-watch/reports/overview.md`). The design is in
 `dev-notes/hub-design.md`.
 
-**From datashield-workflows** (`nfdi4health/datashield-workflows@main`):
-the shared R functions (`R/functions/shared/`: `claude_client()`,
-`call_claude_tool()`, `read_config_yaml()`, `plain_comment_text()`, …) and
-the defaults of `config/claude.yml` (the `default` profile, `model_rules`),
-checked out into `.shared-workflows` by the workflows and CI (locally a
-clone next to this one; `tests/testthat/helper-load.R`); the actions
-`dispatch-runner` and `propose-branch`; `cleanup-suggestion-branch.yml`.
-This repository's `config/claude.yml` has only its own profiles, merged
-over those defaults. In the runner, the workspace root is this
-repository's `main` (config, prompts) and `.hub` the copy at the commit
-the workflow runs (`hub-files`, for R and the scripts).
+**Nothing comes from datashield-workflows at run time** (user,
+2026-11-19: "better drift and duplicates than relying on small parts"):
+the Claude call and config helpers (`R/functions/shared/`, trimmed to the
+subscription path through Claude Code), `config/claude.yml`'s `default` and
+`model_rules`, the actions `dispatch-runner` and `propose-branch`, and the
+branch clean-up are copies of datashield-workflows' of 2026-11-19, each
+file saying so. They will drift: when a fix lands there (above all in
+`call_claude_code_tool()`, `claude_code_isolation_args()`,
+`credential_variables()`, `plain_comment_text()`), check whether it is
+needed here, and the other way round; keep `model_rules` current when
+models come out. In the runner, the workspace root is this repository's
+`main` (config, prompts) and `.hub` the copy at the commit the workflow
+runs (`hub-files`, for R and the scripts; also the defaults
+`read_config_yaml()` merges the root's files over).
 
 - **Branches:** `main` only (user's choice); Claude Code sessions work on
   `agent-suggest/<type>/<topic>` and open pull requests into `main`.
@@ -45,7 +48,7 @@ the workflow runs (`hub-files`, for R and the scripts).
   `FlorianSchw/datashield-agent-runner` on the user's Claude subscription,
   in one queue with the implementer (decided 2026-11-13);
   `literature-watch.yml` here only starts it (for FlorianSchw, with the
-  bots' App and datashield-workflows' `dispatch-runner`); the runner runs
+  bots' App and `dispatch-runner`); the runner runs
   `runner-literature-watch.yml` nightly and on that start.
   This repository holds no Claude or NCBI secret.
   **Settings (user, 2026-11-16):** 11 fields (`fields`, checked on the
