@@ -418,3 +418,17 @@ test_that("at the usage limit the calls stop, and the result says how far they g
   expect_true(is_usage_limit("You've hit your usage limit"))
   expect_false(is_usage_limit("Internal server error"))
 })
+
+test_that("ncbi_request() retries 5xx answers from NCBI, not other errors", {
+  seen <- NULL
+  local_mocked_bindings(req_perform = function(req, ...) {
+    seen <<- req
+    httr2::response(status_code = 200)
+  }, .package = "httr2")
+  settings <- read_config_yaml("config/literature-watch.yml")
+  ncbi_request("esearch.fcgi", list(term = "x"), settings)
+  transient <- seen$policies$retry_is_transient
+  for (status in c(429, 500, 502, 503, 504)) expect_true(transient(httr2::response(status_code = status)))
+  for (status in c(400, 404)) expect_false(transient(httr2::response(status_code = status)))
+  expect_equal(seen$policies$retry_max_tries, 6)
+})
