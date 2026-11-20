@@ -34,7 +34,7 @@ settings <- read_config_yaml("config/literature-watch.yml")
 today <- as.Date(Sys.getenv("WATCH_TODAY", as.character(Sys.Date())))
 # The month the candidates are named after (file, title, marker): today's,
 # unless the workflow names another (WATCH_CANDIDATES_MONTH: the month
-# before for a late or repeated scheduled run, candidates-month.sh).
+# before for a late scheduled run, candidates-month.sh).
 month <- Sys.getenv("WATCH_CANDIDATES_MONTH")
 if (!grepl("^[0-9]{4}-(0[1-9]|1[0-2])$", month)) month <- format(today, "%Y-%m")
 dir <- file.path(Sys.getenv("WATCH_DATA_DIR", "watch-data"), settings$files$data %||% "literature-watch/data")

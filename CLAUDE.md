@@ -72,11 +72,11 @@ runs (`hub-files`, for R and the scripts; also the defaults
   earlier brief ("what's new"); "not now" gaps keep theirs until then.
   **Its month (2026-11-20):** the file, branch and title carry the current
   month; a scheduled run before the 15th carries the month before
-  (`candidates-month.sh`, `WATCH_CANDIDATES_MONTH`), because the runner
-  schedules the selection on the 28th and repeats it daily until the 2nd
-  while the hub has no candidate pull request proposed since the 28th
-  (its `candidates-proposed.sh` reads the newest commit of the pull
-  requests whose branch starts with
-  `bot-suggest/literature-watch/candidates`: keep that prefix). At the
-  usage limit this workflow still ends green without a pull request; the
-  runner's caller turns that into a failed run.
+  (`candidates-month.sh`, `WATCH_CANDIDATES_MONTH`). The runner schedules
+  the selection on the 28th, and a run that gets its turn only after
+  midnight (GitHub's delay, the subscription's queue) is in the next month
+  already when the 28th is the month's last day; the next regular run
+  would then get the same names. At the usage limit this workflow ends
+  green without a pull request, and the runner runs it on the 28th only
+  (user, 2026-11-20: no repeat days, no failed run): start it by hand
+  then.

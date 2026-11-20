@@ -56,16 +56,18 @@ README ("The subscription's queue").
   one after another in the order they arrived (tried in the runner on
   2026-11-20). A start from a workflow in the group without it cancels
   all waiting runs, so each needs it.
-- **The candidate selection is repeated:** scheduled on the 28th and
-  daily until the 2nd; each scheduled run first looks whether the hub has
-  a candidate pull request proposed since the 28th. `candidates_literature.R`
-  proposes nothing at the usage limit and ends without an error, which
-  was fine while the nightly run tried again and is a month's loss now;
-  the runner's caller fails such a run so it shows.
+- **The candidate selection stays on the 28th only** (user, 2026-11-20).
+  Proposed and taken back: scheduling it again on the days after the 28th
+  until the hub has a candidate pull request, and failing a run that
+  proposed nothing. `candidates_literature.R` proposes nothing at the
+  usage limit and ends without an error; if no pull request shows up
+  after the 28th, the selection is started by hand.
 - **The month in the names** (`candidates-month.sh`): a scheduled run
-  before the 15th is a late start or a repeat of the month before and
-  carries that month, so the next 28th doesn't produce the same file,
-  branch and title again. Runs started by hand carry the current month.
+  before the 15th is a late start of the month before (it got its turn
+  only after midnight, which is the next month when the 28th is the
+  month's last day) and carries that month, so the next 28th doesn't
+  produce the same file, branch and title again. Runs started by hand
+  carry the current month.
 
 ## A central hub for wishes and gaps (brainstorm with the user, 2026-11-11)
 

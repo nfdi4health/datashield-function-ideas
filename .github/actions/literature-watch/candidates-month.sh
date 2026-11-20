@@ -4,10 +4,10 @@
 # literature-watch/candidates/YYYY-MM.json, its branch and its pull
 # request's title): the current one. A scheduled run in the first half of
 # a month belongs to the month before: the runner schedules the selection
-# late in the month and again on the following days until it has proposed
-# something, and such a run may also get its turn only after midnight.
-# Named after its own month, the next regular run would get the same
-# name. A run started by hand always gets the current month.
+# late in the month (the 28th), and a run that gets its turn only after
+# midnight is in the next month already when that day is the month's
+# last. Named after its own month, the next regular run would get the
+# same name. A run started by hand always gets the current month.
 #
 # $EVENT is the run's event (github.event_name); $NOW (YYYY-MM-DD) is for
 # tests.

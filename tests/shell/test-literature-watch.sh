@@ -106,7 +106,7 @@ check "a failed renewal keeps the old token and goes on" "$(cat "$work/exit")" 0
 # candidates-month.sh: the month a candidate selection is named after.
 month() { EVENT="$1" NOW="$2" bash "$here/../../.github/actions/literature-watch/candidates-month.sh"; }
 check "candidates month: the scheduled run of the 28th gets its own month" "$(month schedule 2026-11-28)" "2026-11"
-check "a scheduled run that starts or is repeated in the first days of the next month keeps it" "$(month schedule 2026-12-02)" "2026-11"
+check "a scheduled run that gets its turn only in the first days of the next month keeps it" "$(month schedule 2026-12-02)" "2026-11"
 check "also over the turn of the year" "$(month schedule 2027-01-01)" "2026-12"
 check "and after a February of 28 days" "$(month schedule 2027-03-01)" "2027-02"
 check "a scheduled run from the 15th on gets the current month" "$(month schedule 2026-12-15)" "2026-12"
