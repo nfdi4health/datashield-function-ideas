@@ -54,8 +54,16 @@ runs (`hub-files`, for R and the scripts; also the defaults
   **Settings (user, 2026-11-16):** 11 fields (`fields`, checked on the
   PubMed website), `target_per_month` 25 and `years_back` 10 for the first
   round (2026-11-18), `papers_per_run` 1500; the user raises the target or
-  years by hand for the next round (no automatic stages). Reading,
-  vocabulary, report, "Exists?" and the candidate PR are built.
-- **Next (decided 2026-11-19, `dev-notes/hub-design.md`):** candidate
-  selection as its own workflow (monthly and by hand), the literature
-  watch's `candidates` input removed, research reused for 6 months.
+  years by hand for the next round (no automatic stages). The literature
+  watch (`runner-literature-watch.yml`) reads, sorts names into the
+  vocabulary and writes the report; nothing else.
+- **Candidate selection** (built 2026-11-20, `runner-candidate-selection.yml`,
+  started here with `candidate-selection.yml`, monthly in the runner; user:
+  apart from the reading): ranking over all papers read, "Exists?" down the
+  ranking, research, the candidate PR. The PR's top line says what the
+  ranking rests on: usable papers read in total and per publication year
+  (user, 2026-11-20: not the current round's progress). Briefs are kept in
+  `research.json` on the data branch and reused for
+  `candidates$research_max_age_days` (183) while the verdict and the
+  catalogue functions found stay the same; after that Claude updates the
+  earlier brief ("what's new"); "not now" gaps keep theirs until then.

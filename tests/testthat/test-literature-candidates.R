@@ -57,15 +57,34 @@ test_that("rank_candidates() counts papers, orders by share and applies tracked 
   expect_equal(few$key, "cox-regression")
 })
 
-test_that("candidates_due() follows the mode, the round and this month's file", {
-  folder <- withr::local_tempdir()
-  expect_true(candidates_due("always", folder, "2026-11", FALSE))
-  expect_false(candidates_due("never", folder, "2026-11", TRUE))
-  expect_false(candidates_due("auto", folder, "2026-11", FALSE))
-  expect_true(candidates_due("auto", folder, "2026-11", TRUE))
-  writeLines("{}", file.path(folder, "2026-11.json"))
-  expect_false(candidates_due("auto", folder, "2026-11", TRUE))
-  expect_true(candidates_due("auto", folder, "2026-12", FALSE))
+test_that("coverage_by_year() counts the papers read per publication year, newest first", {
+  cov <- coverage_by_year(cand_register())
+  expect_equal(cov$year, "2026")
+  expect_equal(cov$read, 14L)
+  reg <- cand_register()
+  reg$papers[["99"]] <- cand_paper("99", "2019-03", list("cox"))
+  reg$papers[["99"]]$usable <- FALSE
+  cov <- coverage_by_year(reg)
+  expect_equal(cov$year, c("2026", "2019"))
+  expect_equal(cov$usable, c(14L, 0L))
+  expect_match(format_coverage(cov), "14 usable papers read so far (of 15 read), by publication year: 2026: 14 · 2019: 0.", fixed = TRUE)
+  expect_equal(format_coverage(coverage_by_year(list(papers = list()))), "No papers read yet.")
+})
+
+test_that("research_entry() reuses a brief for six months while the verdict and functions stay the same", {
+  v <- cand_vocab()
+  v$methods[["fine-gray"]]$exists$candidates <- "h1"
+  row <- data.frame(key = "fine-gray", method = "fine-gray", variant = "", verdict = "none")
+  store <- list(`fine-gray` = list(date = "2026-06-01", verdict = "none", candidates = "h1", research = list(description = "x")))
+  expect_true(research_entry(store, row, v, as.Date("2026-11-20"), 183)$fresh)
+  expect_false(research_entry(store, row, v, as.Date("2026-12-20"), 183)$fresh)
+  v$methods[["fine-gray"]]$exists$candidates <- "h2"
+  expect_false(research_entry(store, row, v, as.Date("2026-11-20"), 183)$fresh)
+  row$verdict <- "partial"
+  expect_false(research_entry(store, row, v, as.Date("2026-11-20"), 183)$fresh)
+  expect_null(research_entry(list(), row, v, as.Date("2026-11-20"), 183)$entry)
+  lines <- earlier_brief_lines(store[["fine-gray"]])
+  expect_match(lines[2], "Earlier brief of 2026-06-01", fixed = TRUE)
 })
 
 test_that("candidate_text() defuses mentions and markers", {
@@ -118,7 +137,7 @@ test_that("candidates_literature.R researches the new candidates and writes the 
   on.exit(rm(list = setdiff(ls(globalenv(), all.names = TRUE), before), envir = globalenv()), add = TRUE)
   stand_in <- get("call_claude_tool", globalenv())
   trace_source <- function(file, ...) { base::source(file, ...); assign("call_claude_tool", stand_in, globalenv()) }
-  withr::with_dir(dir, withr::with_envvar(c(WATCH_TODAY = "2026-11-17", WATCH_DATA_DIR = "watch-data", WATCH_CANDIDATES = "always",
+  withr::with_dir(dir, withr::with_envvar(c(WATCH_TODAY = "2026-11-17", WATCH_DATA_DIR = "watch-data",
     WATCH_TRACKED = "tracked.json", CLAUDE_CODE_OAUTH_TOKEN = "x"),
     httr2::with_mocked_responses(mock, sys.source(file.path(".hub", "R", "candidates_literature.R"),
       envir = list2env(list(source = trace_source), parent = globalenv())))))
@@ -143,6 +162,35 @@ test_that("candidates_literature.R researches the new candidates and writes the 
   expect_true(any(grepl("@​someone", body, fixed = TRUE)))
   expect_true(any(body == "<!-- literature-watch-candidates: 2026-11 -->"))
   expect_equal(sum(body == "- [ ] Open an issue"), 2)
+  expect_true(any(grepl("The ranking rests on 14 usable papers read so far (of 14 read), by publication year: 2026: 14.", body, fixed = TRUE)))
+  expect_true(any(body == "_Brief of 2026-11-17._"))
+  expect_equal(rec$coverage[[1]]$year, "2026")
+  store <- read_research_store(data)
+  expect_equal(names(store), "fine-gray")
+  expect_equal(store[["fine-gray"]]$date, "2026-11-17")
+  # A second run a month later reuses the brief: no research call.
+  asked <- character(0)
+  withr::with_dir(dir, withr::with_envvar(c(WATCH_TODAY = "2026-12-17", WATCH_DATA_DIR = "watch-data",
+    WATCH_TRACKED = "tracked.json", CLAUDE_CODE_OAUTH_TOKEN = "x"),
+    httr2::with_mocked_responses(mock, sys.source(file.path(".hub", "R", "candidates_literature.R"),
+      envir = list2env(list(source = trace_source), parent = globalenv())))))
+  expect_false("submit_candidate_research" %in% asked)
+  body <- readLines(file.path(dir, "candidates_body.md"))
+  expect_true(any(body == "_Brief of 2026-11-17._"))
+  # Seven months later it is updated, starting from the earlier brief.
+  local_global_mock(call_claude_tool = function(claude, tool, prompt) {
+    asked <<- c(asked, claude$config$tool_name)
+    if (identical(claude$config$tool_name, "submit_candidate_research")) expect_match(prompt, "Earlier brief of 2026-11-17", fixed = TRUE)
+    stand_in(claude, tool, prompt)
+  })
+  stand_in2 <- get("call_claude_tool", globalenv())
+  trace_source2 <- function(file, ...) { base::source(file, ...); assign("call_claude_tool", stand_in2, globalenv()) }
+  withr::with_dir(dir, withr::with_envvar(c(WATCH_TODAY = "2027-06-20", WATCH_DATA_DIR = "watch-data",
+    WATCH_TRACKED = "tracked.json", CLAUDE_CODE_OAUTH_TOKEN = "x"),
+    httr2::with_mocked_responses(mock, sys.source(file.path(".hub", "R", "candidates_literature.R"),
+      envir = list2env(list(source = trace_source2), parent = globalenv())))))
+  expect_true("submit_candidate_research" %in% asked)
+  expect_equal(read_research_store(data)[["fine-gray"]]$date, "2027-06-20")
 })
 
 test_that("rank_candidates() ranks by share over all years and keeps the recent share apart", {

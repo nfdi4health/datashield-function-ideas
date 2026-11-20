@@ -69,18 +69,22 @@ exists:
   functions_url: https://raw.githubusercontent.com/FederatedMethods/packages/main/datashield_functions_metadata.json
   packages_url: https://raw.githubusercontent.com/FederatedMethods/packages/main/package_list.csv
 
-# The candidates: once the first round is complete, and then once a month,
-# two lists of methods (and variants) DataSHIELD lacks (`none` or
-# `partial`; `development` doesn't count): the `most_used` ones by share
+# The candidates (runner-candidate-selection.yml: monthly and by hand,
+# apart from the reading; user, 2026-11-20): two lists of methods (and
+# variants) DataSHIELD lacks (`none` or `partial`; `development` doesn't
+# count), ranked over all papers read so far: the `most_used` ones by share
 # over all years read, and the `rising` ones (a rising trend, p < 0.05,
 # ordered by their share in the last `report$share_years` years), without
 # the first list's candidates and their variants (user, 2026-11-18). They
 # are researched by Claude (with web search) and proposed to the hub as a
-# pull request, three boxes per
-# candidate: open an issue, not now, don't suggest again. Methods with a
-# hub issue (open or closed) are left out; a "don't suggest again" comes
-# back when its papers reach `resuggest_factor` times the count at the
-# decision. The decisions are kept in decisions.yml under `data`.
+# pull request, three boxes per candidate: open an issue, not now, don't
+# suggest again. Methods with a hub issue (open or closed) are left out; a
+# "don't suggest again" comes back when its papers reach `resuggest_factor`
+# times the count at the decision. The decisions are kept in
+# decisions.json under `data`. A brief is reused for
+# `research_max_age_days` while the "Exists?" verdict and the catalogue
+# functions found stay the same; after that Claude updates it (research.json
+# under `data`).
 candidates:
   most_used: 7          # candidates by share over all years
   rising: 3             # candidates on the rise
@@ -89,6 +93,7 @@ candidates:
   folder: literature-watch/candidates    # on the hub's main branch, one file per month
   resuggest_factor: 2
   examples: 3           # example papers per candidate
+  research_max_age_days: 183   # a brief is reused this long (six months)
 
 # The report.
 report:

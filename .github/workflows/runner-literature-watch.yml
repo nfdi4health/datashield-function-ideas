@@ -8,7 +8,7 @@ name: Literature Watch (runner)
 # implementer's queue and the subscription token stays in one place. Not
 # meant for other repositories: the hub is the one place ideas are kept.
 #
-# Four jobs, one after the other, handing over through the hub's data
+# Three jobs, one after the other, handing over through the hub's data
 # branch (each with its own hub token, and its own pass or fail):
 #   read        each field of the hub's config/literature-watch.yml gets a
 #               random sample of target_per_month papers per publication
@@ -20,17 +20,12 @@ name: Literature Watch (runner)
 #   vocabulary  Opus sorts the new method names into methods and variants,
 #               so one method counts once however papers word it
 #               (R/vocabulary_literature.R). Not after a usage limit.
-#   candidates  only when due (once the first round is complete, then
-#               monthly; or `candidates: always`): every method and variant
-#               ranked by use, checked against the DataSHIELD functions
-#               down that ranking until enough gaps are found ("Exists in
-#               DataSHIELD?"), the gaps researched with web search and
-#               proposed to the hub as a pull request
-#               (R/candidates_literature.R).
 #   report      progress, shares, trends and progress.csv to the data
 #               branch (R/report_literature.R), after every run, whatever
 #               happened before; no pull request, a progress report has
 #               nothing to decide.
+# The candidates are selected apart from the reading, monthly and by hand
+# (runner-candidate-selection.yml; user, 2026-11-20).
 on:
   workflow_call:
     inputs:
@@ -44,18 +39,8 @@ on:
         required: false
         type: string
         default: ''
-      report:
-        description: 'No longer used (the report now goes to the data branch with every run); kept so callers that pass it keep working.'
-        required: false
-        type: string
-        default: 'auto'
-      candidates:
-        description: 'The candidate pull request to the hub: auto (once the first round is complete, then once a month), always (this run, e.g. to show it early) or never.'
-        required: false
-        type: string
-        default: 'auto'
       hub-repository:
-        description: 'The hub (owner/name): its config/literature-watch.yml is read, the data and the report go to its data branch, the candidates to it as a pull request. Empty: the calling repository, nothing pushed (tests).'
+        description: 'The hub (owner/name): its config/literature-watch.yml is read, the data and the report go to its data branch. Empty: the calling repository, nothing pushed (tests).'
         required: false
         type: string
         default: 'nfdi4health/datashield-function-ideas'
@@ -252,116 +237,8 @@ jobs:
           overwrite: true
           retention-days: 30
 
-  candidates:
-    needs: [read, vocabulary]
-    if: >-
-      ${{ !cancelled() && inputs.candidates != 'never' && needs.vocabulary.result == 'success'
-      && needs.vocabulary.outputs.status != 'limit' }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 150
-    steps:
-      - name: Token for the hub
-        id: hub_token
-        if: inputs.hub-repository != ''
-        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
-        with:
-          client-id: ${{ secrets.app-client-id }}
-          private-key: ${{ secrets.app-private-key }}
-          owner: ${{ needs.read.outputs.owner }}
-          repositories: ${{ needs.read.outputs.name }}
-          permission-contents: write
-          permission-issues: read
-
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          repository: ${{ needs.read.outputs.repository }}
-          ref: ${{ inputs.hub-repository != '' && inputs.hub-branch || '' }}
-          persist-credentials: false
-
-      # This repository's scripts, prompts and config at the commit of this
-      # workflow, in .hub (the workspace root is main).
-      - name: Hub scripts
-        uses: $/.github/actions/hub-files
-
-      - name: Data, R and Claude Code
-        uses: $/.github/actions/literature-watch-setup
-        with:
-          hub-repository: ${{ inputs.hub-repository }}
-          hub-token: ${{ steps.hub_token.outputs.token }}
-          data-branch: ${{ inputs.data-branch }}
-
-      # The methods already tracked by a hub issue (its hidden marker); R
-      # gets the list, not the token.
-      - name: Tracked ideas
-        env:
-          HUB: ${{ inputs.hub-repository }}
-          GH_TOKEN: ${{ steps.hub_token.outputs.token }}
-        run: bash .hub/.github/actions/literature-watch/tracked-ideas.sh tracked.json
-
-      # Ranking, "Exists in DataSHIELD?" down the ranking, research.
-      - name: Candidates
-        id: candidates
-        env:
-          WATCH_DATA_DIR: watch-data
-          WATCH_CANDIDATES: ${{ inputs.candidates }}
-          WATCH_TRACKED: tracked.json
-          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.claude-code-oauth-token }}
-        run: |
-          Rscript .hub/R/candidates_literature.R
-          {
-            echo "due=$(cat candidates_due.txt)"
-            echo "title=$(head -n 1 candidates_title.txt 2>/dev/null)"
-            echo "month=$(date -u +%Y-%m)"
-          } >> "$GITHUB_OUTPUT"
-
-      # The verdicts are kept also when nothing is proposed; the research
-      # can take a while, so a fresh token.
-      - name: Token for the hub, after the research
-        id: hub_token_after
-        if: ${{ !cancelled() && inputs.hub-repository != '' }}
-        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
-        with:
-          client-id: ${{ secrets.app-client-id }}
-          private-key: ${{ secrets.app-private-key }}
-          owner: ${{ needs.read.outputs.owner }}
-          repositories: ${{ needs.read.outputs.name }}
-          permission-contents: write
-          permission-pull-requests: write
-
-      - name: Push the verdicts
-        if: ${{ !cancelled() }}
-        env:
-          HUB_TOKEN: ${{ steps.hub_token_after.outputs.token }}
-          DATA_BRANCH: ${{ inputs.data-branch }}
-        run: bash .hub/.github/actions/literature-watch/push-data.sh "Exists? verdicts"
-
-      - name: Propose the candidates to the hub
-        if: steps.candidates.outputs.due == 'yes' && inputs.hub-repository != ''
-        uses: $/.github/actions/propose-branch
-        with:
-          manifest: candidates_files.txt
-          branch: bot-suggest/literature-watch/candidates-${{ steps.candidates.outputs.month }}
-          base: ${{ inputs.hub-branch }}
-          title: ${{ steps.candidates.outputs.title }}
-          body-file: candidates_body.md
-          commit-message: 'docs: literature watch candidates ${{ steps.candidates.outputs.month }}'
-          token: ${{ steps.hub_token_after.outputs.token }}
-          repository: ${{ inputs.hub-repository }}
-
-      - name: Keep the data
-        if: always()
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: literature-watch-data
-          path: |
-            watch-data/
-            !watch-data/.git/
-          if-no-files-found: ignore
-          overwrite: true
-          retention-days: 30
-
   report:
-    needs: [read, vocabulary, candidates]
+    needs: [read, vocabulary]
     if: ${{ !cancelled() && needs.read.outputs.repository != '' }}
     runs-on: ubuntu-latest
     timeout-minutes: 30

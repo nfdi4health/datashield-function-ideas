@@ -1,0 +1,35 @@
+name: Candidate Selection
+
+# The candidate selection: which methods health research uses often that
+# DataSHIELD lacks, from everything the literature watch has read so far,
+# researched and proposed here as a pull request with three boxes per
+# candidate. It runs in the private runner repository (monthly, and in one
+# queue with the implementer and the literature watch, on the maintainer's
+# Claude subscription); this starts an extra run there. It reads no papers.
+on:
+  workflow_dispatch:
+
+jobs:
+  start:
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - name: May this login start the candidate selection?
+        env:
+          LOGINS: FlorianSchw
+          ACTOR: ${{ github.triggering_actor }}
+        run: |
+          for login in $(tr ',' ' ' <<< "$LOGINS"); do
+            [ "$login" = "$ACTOR" ] && exit 0
+          done
+          echo "::error::$ACTOR may not start the candidate selection."
+          exit 1
+
+      - name: Start the candidate selection in the runner
+        uses: $/.github/actions/dispatch-runner
+        with:
+          repository: FlorianSchw/datashield-agent-runner
+          workflow: candidate-selection.yml
+          ref: main
+          app-client-id: ${{ secrets.APP_CLIENT_ID }}
+          app-private-key: ${{ secrets.APP_PRIVATE_KEY }}

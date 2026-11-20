@@ -22,14 +22,17 @@ it grew from 2026-11-11; paths in it name the files where they were then
   `propose-branch` and the branch clean-up are copies, each file saying
   so. The usage counter (`count-run`) is no longer called: it counts uses
   of datashield-workflows' workflows.
-- **Candidate selection becomes its own workflow** (not built yet), apart
+- **Candidate selection becomes its own workflow** (built 2026-11-20:
+  `runner-candidate-selection.yml`), apart
   from reading and categorising: rank every method and variant over the
   whole register, "Exists?" down the ranking, research only the gaps, the
   candidate pull request. Monthly and by hand (`workflow_dispatch`); the
   literature watch's `candidates` input goes (a breaking change, accepted:
-  nothing outside the hub calls it). The pull request states the coverage
-  (papers read of the round) at the top. A night not read yet is simply not
-  part of that list.
+  nothing outside the hub calls it), and with it the unused `report`. The
+  pull request states at the top what the ranking rests on: usable papers
+  read in total and per publication year (user, 2026-11-20: the current
+  round's progress means nothing once later rounds are read). A night not
+  read yet is simply not part of that list.
 - **Research is reused for 6 months:** each result is kept on the data
   branch by method; a gap researched less than 6 months ago, with the same
   "Exists?" verdict and the same catalogue functions found for it, reuses

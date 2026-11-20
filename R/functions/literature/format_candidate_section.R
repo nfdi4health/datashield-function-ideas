@@ -2,7 +2,7 @@
 # (candidate_boxes()), how often and where it is used, the DataSHIELD
 # verdict, Claude's brief (`research`, research_candidate()) and example
 # papers.
-format_candidate_section <- function(i, row, vocab, research) {
+format_candidate_section <- function(i, row, vocab, research, researched_on = NULL) {
   name <- method_label(vocab, row$method)
   title <- if (nzchar(row$variant)) sprintf("%s: %s", name, method_label(vocab, row$method, row$variant)) else name
   verdict <- switch(row$verdict, none = "no", partial = sprintf("partly (`%s`)", row[["function"]]), row$verdict)
@@ -14,13 +14,8 @@ format_candidate_section <- function(i, row, vocab, research) {
   if (is.null(research)) {
     out <- c(out, "_The research step couldn't run for this one; it is tried again with the next pull request._", "")
   } else {
-    pk <- vapply(research$r_packages, function(p) sprintf("`%s::%s` (%s)", p$package, p[["function"]], p$note), "")
-    out <- c(out, sprintf("**What it is:** %s", research$description), "",
-      sprintf("**In R:** %s", if (length(pk) == 0) "no package found." else paste(pk, collapse = "; ")), "",
-      sprintf("**Federated:** %s", research$federated), "",
-      sprintf("**Disclosure, a first view:** %s", research$disclosure), "",
-      sprintf("**Would fit:** %s", research$fit), "")
-    if (length(research$sources) > 0) out <- c(out, sprintf("Sources: %s", paste(sprintf("<%s>", unlist(research$sources)), collapse = ", ")), "")
+    out <- c(out, research_brief_lines(research))
+    if (!is.null(researched_on)) out <- c(out, sprintf("_Brief of %s._", researched_on), "")
   }
   if (length(examples) > 0) {
     out <- c(out, sprintf("Example papers: %s", paste(vapply(examples, function(e)
