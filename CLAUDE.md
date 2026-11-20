@@ -46,7 +46,10 @@ runs (`hub-files`, for R and the scripts; also the defaults
   (`LOGINS` / the action's `allowed-logins` in the workflows).
 - **The researcher** runs in the private runner
   `FlorianSchw/datashield-agent-runner` on the user's Claude subscription,
-  in one queue with the implementer (decided 2026-11-13);
+  in one queue with the implementer (decided 2026-11-13; the runner's
+  concurrency group `claude-subscription`, since 2026-11-20 with
+  `queue: max`, so a waiting run is kept and no longer replaced by the
+  next start);
   `literature-watch.yml` here only starts it (for FlorianSchw, with the
   bots' App and `dispatch-runner`); the runner runs
   `runner-literature-watch.yml` nightly and on that start.
@@ -67,3 +70,13 @@ runs (`hub-files`, for R and the scripts; also the defaults
   `candidates$research_max_age_days` (183) while the verdict and the
   catalogue functions found stay the same; after that Claude updates the
   earlier brief ("what's new"); "not now" gaps keep theirs until then.
+  **Its month (2026-11-20):** the file, branch and title carry the current
+  month; a scheduled run before the 15th carries the month before
+  (`candidates-month.sh`, `WATCH_CANDIDATES_MONTH`), because the runner
+  schedules the selection on the 28th and repeats it daily until the 2nd
+  while the hub has no candidate pull request proposed since the 28th
+  (its `candidates-proposed.sh` reads the newest commit of the pull
+  requests whose branch starts with
+  `bot-suggest/literature-watch/candidates`: keep that prefix). At the
+  usage limit this workflow still ends green without a pull request; the
+  runner's caller turns that into a failed run.

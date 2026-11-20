@@ -181,6 +181,22 @@ test_that("candidates_literature.R researches the new candidates and writes the 
   expect_false("submit_candidate_research" %in% asked)
   body <- readLines(file.path(dir, "candidates_body.md"))
   expect_true(any(body == "_Brief of 2026-11-17._"))
+  expect_equal(readLines(file.path(dir, "candidates_files.txt")), "literature-watch/candidates/2026-12.json")
+  # A late or repeated scheduled run is named after the month before
+  # (WATCH_CANDIDATES_MONTH from the workflow); anything else is ignored.
+  withr::with_dir(dir, withr::with_envvar(c(WATCH_TODAY = "2027-01-02", WATCH_CANDIDATES_MONTH = "2026-12", WATCH_DATA_DIR = "watch-data",
+    WATCH_TRACKED = "tracked.json", CLAUDE_CODE_OAUTH_TOKEN = "x"),
+    httr2::with_mocked_responses(mock, sys.source(file.path(".hub", "R", "candidates_literature.R"),
+      envir = list2env(list(source = trace_source), parent = globalenv())))))
+  expect_equal(readLines(file.path(dir, "candidates_files.txt")), "literature-watch/candidates/2026-12.json")
+  expect_equal(readLines(file.path(dir, "candidates_title.txt")), "Literature watch: candidates 2026-12")
+  expect_true(any(readLines(file.path(dir, "candidates_body.md")) == "<!-- literature-watch-candidates: 2026-12 -->"))
+  expect_equal(jsonlite::fromJSON(file.path(dir, "literature-watch/candidates/2026-12.json"))$created, "2027-01-02")
+  withr::with_dir(dir, withr::with_envvar(c(WATCH_TODAY = "2027-01-02", WATCH_CANDIDATES_MONTH = "../x", WATCH_DATA_DIR = "watch-data",
+    WATCH_TRACKED = "tracked.json", CLAUDE_CODE_OAUTH_TOKEN = "x"),
+    httr2::with_mocked_responses(mock, sys.source(file.path(".hub", "R", "candidates_literature.R"),
+      envir = list2env(list(source = trace_source), parent = globalenv())))))
+  expect_equal(readLines(file.path(dir, "candidates_files.txt")), "literature-watch/candidates/2027-01.json")
   # Seven months later it is updated, starting from the earlier brief.
   local_global_mock(call_claude_tool = function(claude, tool, prompt) {
     asked <<- c(asked, claude$config$tool_name)

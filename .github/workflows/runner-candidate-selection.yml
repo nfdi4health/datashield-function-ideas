@@ -11,6 +11,11 @@ name: Candidate Selection (runner)
 # Reads no papers. Called from the private runner repository
 # FlorianSchw/datashield-agent-runner, in the subscription's queue; started
 # here with candidate-selection.yml. Not meant for other repositories.
+# The runner schedules it on the 28th and again on the following days
+# while nothing was proposed; such a late or repeated run keeps the name
+# of the month it belongs to (candidates-month.sh). At the usage limit
+# nothing is proposed and the job still ends green: the runner's caller
+# checks for the pull request.
 on:
   workflow_call:
     inputs:
@@ -118,12 +123,18 @@ jobs:
           WATCH_DATA_DIR: watch-data
           WATCH_TRACKED: tracked.json
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.claude-code-oauth-token }}
+          EVENT: ${{ github.event_name }}
         run: |
+          # The month in the names of the file, the branch and the pull
+          # request: the current one, or the one before for a late or
+          # repeated scheduled run (candidates-month.sh).
+          WATCH_CANDIDATES_MONTH="$(bash .hub/.github/actions/literature-watch/candidates-month.sh)"
+          export WATCH_CANDIDATES_MONTH
           Rscript .hub/R/candidates_literature.R
           {
             echo "due=$(cat candidates_due.txt)"
             echo "title=$(head -n 1 candidates_title.txt 2>/dev/null)"
-            echo "month=$(date -u +%Y-%m)"
+            echo "month=$WATCH_CANDIDATES_MONTH"
           } >> "$GITHUB_OUTPUT"
 
       # The verdicts are kept also when nothing is proposed; the research

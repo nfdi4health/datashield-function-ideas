@@ -19,7 +19,8 @@
 # a JSON file of key -> hub issue number (the workflow reads the issues'
 # markers; R has no token). At the usage limit, or when the inventory
 # can't be read, nothing is proposed: the next run tries again (the
-# verdicts so far are kept). WATCH_DATA_DIR, WATCH_TODAY for tests.
+# verdicts so far are kept). WATCH_DATA_DIR, WATCH_TODAY for tests;
+# WATCH_CANDIDATES_MONTH names the month (default: today's).
 
 library(jsonlite)
 library(purrr)
@@ -31,7 +32,11 @@ walk(list.files(file.path(functions_dir, c("shared", "literature")), pattern = "
 
 settings <- read_config_yaml("config/literature-watch.yml")
 today <- as.Date(Sys.getenv("WATCH_TODAY", as.character(Sys.Date())))
-month <- format(today, "%Y-%m")
+# The month the candidates are named after (file, title, marker): today's,
+# unless the workflow names another (WATCH_CANDIDATES_MONTH: the month
+# before for a late or repeated scheduled run, candidates-month.sh).
+month <- Sys.getenv("WATCH_CANDIDATES_MONTH")
+if (!grepl("^[0-9]{4}-(0[1-9]|1[0-2])$", month)) month <- format(today, "%Y-%m")
 dir <- file.path(Sys.getenv("WATCH_DATA_DIR", "watch-data"), settings$files$data %||% "literature-watch/data")
 folder <- settings$candidates$folder %||% "literature-watch/candidates"
 writeLines("no", "candidates_due.txt")

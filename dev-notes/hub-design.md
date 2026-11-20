@@ -40,6 +40,33 @@ it grew from 2026-11-11; paths in it name the files where they were then
   earlier result and is asked what is new since then. "Not now" gaps keep
   theirs until it is older than that.
 
+## 2026-11-20: the subscription's queue and the candidates' month
+
+From a Claude Code session on the user's problem statement (runs on the
+subscription were cancelled without a trace); the runner's side is in its
+README ("The subscription's queue").
+
+- **What happened:** GitHub kept one waiting run per concurrency group.
+  The implementer starts its next run at the end of each, and that start
+  cancelled a literature watch or candidate selection waiting in the
+  group. Since the candidate selection became monthly, a lost run meant
+  no candidates before the meeting.
+- **The queue:** the runner's three callers on the subscription set
+  `queue: max` (GitHub, May 2026): up to 100 waiting runs per group, run
+  one after another in the order they arrived (tried in the runner on
+  2026-11-20). A start from a workflow in the group without it cancels
+  all waiting runs, so each needs it.
+- **The candidate selection is repeated:** scheduled on the 28th and
+  daily until the 2nd; each scheduled run first looks whether the hub has
+  a candidate pull request proposed since the 28th. `candidates_literature.R`
+  proposes nothing at the usage limit and ends without an error, which
+  was fine while the nightly run tried again and is a month's loss now;
+  the runner's caller fails such a run so it shows.
+- **The month in the names** (`candidates-month.sh`): a scheduled run
+  before the 15th is a late start or a repeat of the month before and
+  carries that month, so the next 28th doesn't produce the same file,
+  branch and title again. Runs started by hand carry the current month.
+
 ## A central hub for wishes and gaps (brainstorm with the user, 2026-11-11)
 
 **Since 2026-11-13:** the hub is `nfdi4health/datashield-function-ideas`
@@ -54,7 +81,8 @@ design.
 the subscription token (and the NCBI key) once, and its caller shares the
 implementer's `concurrency` group, so the two never use the subscription
 at the same time (GitHub keeps one pending run per group: a third start
-while one runs and one waits replaces the waiting one). A public hub can't
+while one runs and one waits replaces the waiting one; since 2026-11-20
+the group has `queue: max`, see above). A public hub can't
 call the private runner's workflow, so the hub's caller
 (`literature-watch-start.yml`) checks the login and starts the runner's
 workflow by `workflow_dispatch` with the bots' App (Actions: write on the
