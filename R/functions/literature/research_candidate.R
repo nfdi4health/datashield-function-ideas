@@ -1,8 +1,10 @@
 # The research step for one candidate (a row of rank_candidates()): Claude
-# with web search writes a short brief (build_research_tool()). Returns
-# list(research = the brief with its texts cleaned (candidate_text()), or
-# NULL, limit = TRUE at the usage limit).
-research_candidate <- function(claude, row, vocab) {
+# with web search writes a short brief (build_research_tool()). With
+# `earlier` (a stored brief, read_research_store()), Claude starts from it
+# and looks for what is new since its date. Returns list(research = the
+# brief with its texts cleaned (candidate_text()), or NULL, limit = TRUE at
+# the usage limit).
+research_candidate <- function(claude, row, vocab, earlier = NULL) {
   m <- vocab$methods[[row$method]]
   lines <- c(
     sprintf("Method: %s. %s", m$name %||% row$method, m$description %||% ""),
@@ -11,7 +13,8 @@ research_candidate <- function(claude, row, vocab) {
     sprintf("DataSHIELD verdict: %s%s. %s", row$verdict, if (nzchar(row[["function"]])) sprintf(" (closest: %s)", row[["function"]]) else "",
       row$note),
     sprintf("Used in %.1f%% of the sampled health research papers of all years read (%d papers), %.1f%% in the last years, trend %s, mostly in: %s.",
-      100 * row$share, row$papers, 100 * (row$recent_share %||% row$share), row$trend, row$fields))
+      100 * row$share, row$papers, 100 * (row$recent_share %||% row$share), row$trend, row$fields),
+    if (!is.null(earlier)) earlier_brief_lines(earlier))
   res <- call_watch_claude(claude, build_research_tool(), fill_template(claude$prompt, list(CANDIDATE = paste(lines, collapse = "\n"))),
     sprintf("research on %s", row$key))
   if (is.null(res$answer)) return(list(research = NULL, limit = res$limit))

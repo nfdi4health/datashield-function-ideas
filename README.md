@@ -58,8 +58,11 @@ by hand with `literature-watch.yml`): it reads a random sample of
 open-access research articles per field and month, keeps what it finds on
 the `data` branch (IDs, titles and the methods named, never the papers'
 text), with its report (`literature-watch/reports/overview.md`) and
-progress there too. The candidates come as a pull request
-(`literature-watch/candidates/YYYY-MM.json`); `literature-candidates.yml`
+progress there too. Once a month, and when started by hand
+(`candidate-selection.yml`), the candidate selection ranks every method
+found over all papers read, checks down the ranking whether DataSHIELD has
+it, has Claude research the gaps (a brief is reused for six months), and
+proposes them as a pull request (`literature-watch/candidates/YYYY-MM.json`); `literature-candidates.yml`
 keeps it red until every candidate has exactly one box ticked and, on
 merge, opens the issues and records the decisions. Its fields and pace are
 in `config/literature-watch.yml`.

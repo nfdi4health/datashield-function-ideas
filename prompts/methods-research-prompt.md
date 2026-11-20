@@ -8,6 +8,10 @@ The method:
 
 {{CANDIDATE}}
 
+If an earlier brief follows the method, start from it: keep what still
+holds, look for what is new since its date (new R packages, new federated
+approaches, a DataSHIELD function), and correct what no longer holds.
+
 Search the web where it helps (CRAN, package documentation, papers on
 federated or privacy-preserving versions of the method), and answer:
 

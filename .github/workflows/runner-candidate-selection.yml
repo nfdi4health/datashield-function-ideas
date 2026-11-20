@@ -1,0 +1,161 @@
+name: Candidate Selection (runner)
+
+# The candidate selection of this hub (user, 2026-11-20: apart from the
+# reading, monthly and by hand): every method and variant the literature
+# watch has found, ranked over all papers read so far; "Exists in
+# DataSHIELD?" down the ranking until each list has its gaps (7 most used,
+# 3 on the rise); the gaps researched by Claude with web search (a brief is
+# reused for six months while its verdict stays the same, then updated);
+# and the candidate pull request to the hub, three boxes per candidate,
+# with what the ranking rests on (papers read per publication year) on top.
+# Reads no papers. Called from the private runner repository
+# FlorianSchw/datashield-agent-runner, in the subscription's queue; started
+# here with candidate-selection.yml. Not meant for other repositories.
+on:
+  workflow_call:
+    inputs:
+      hub-repository:
+        description: 'The hub (owner/name): its data branch is read and written, the candidates go to it as a pull request.'
+        required: false
+        type: string
+        default: 'nfdi4health/datashield-function-ideas'
+      hub-branch:
+        description: 'The hub''s branch its config is read from and the pull request goes into.'
+        required: false
+        type: string
+        default: 'main'
+      data-branch:
+        description: 'The hub''s branch for the data.'
+        required: false
+        type: string
+        default: 'data'
+      subscription-logins:
+        description: 'Who may start a run on the Claude subscription: exact GitHub logins, separated by commas or spaces. Empty: no check.'
+        required: false
+        type: string
+        default: ''
+    secrets:
+      claude-code-oauth-token:
+        description: 'Token of a Claude subscription (claude setup-token).'
+        required: true
+      app-client-id:
+        description: 'Client ID of the bots'' GitHub App, installed on the hub (Contents and Pull requests: read and write, Issues: read).'
+        required: true
+      app-private-key:
+        description: 'Its private key.'
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  candidates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - name: May this login use the subscription?
+        if: inputs.subscription-logins != ''
+        env:
+          LOGINS: ${{ inputs.subscription-logins }}
+          ACTOR: ${{ github.triggering_actor }}
+        run: |
+          for login in $(tr ',' ' ' <<< "$LOGINS"); do
+            [ "$login" = "$ACTOR" ] && exit 0
+          done
+          echo "::error::$ACTOR may not start runs on the subscription (subscription-logins)."
+          exit 1
+
+      - name: Which repository is the hub
+        id: hub
+        env:
+          HUB: ${{ inputs.hub-repository }}
+        run: |
+          [[ "$HUB" =~ ^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$ ]] || { echo "::error::hub-repository is not owner/name: $HUB"; exit 1; }
+          { echo "repository=$HUB"; echo "owner=${HUB%%/*}"; echo "name=${HUB#*/}"; } >> "$GITHUB_OUTPUT"
+
+      - name: Token for the hub
+        id: hub_token
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        with:
+          client-id: ${{ secrets.app-client-id }}
+          private-key: ${{ secrets.app-private-key }}
+          owner: ${{ steps.hub.outputs.owner }}
+          repositories: ${{ steps.hub.outputs.name }}
+          permission-contents: write
+          permission-issues: read
+
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: ${{ steps.hub.outputs.repository }}
+          ref: ${{ inputs.hub-branch }}
+          persist-credentials: false
+
+      # This repository's scripts, prompts and config at the commit of this
+      # workflow, in .hub (the workspace root is main).
+      - name: Hub scripts
+        uses: $/.github/actions/hub-files
+
+      - name: Data, R and Claude Code
+        uses: $/.github/actions/literature-watch-setup
+        with:
+          hub-repository: ${{ inputs.hub-repository }}
+          hub-token: ${{ steps.hub_token.outputs.token }}
+          data-branch: ${{ inputs.data-branch }}
+
+      # The methods already tracked by a hub issue (its hidden marker); R
+      # gets the list, not the token.
+      - name: Tracked ideas
+        env:
+          HUB: ${{ inputs.hub-repository }}
+          GH_TOKEN: ${{ steps.hub_token.outputs.token }}
+        run: bash .hub/.github/actions/literature-watch/tracked-ideas.sh tracked.json
+
+      # Ranking over all papers read, "Exists in DataSHIELD?" down the
+      # ranking, research (reused for six months).
+      - name: Candidates
+        id: candidates
+        env:
+          WATCH_DATA_DIR: watch-data
+          WATCH_TRACKED: tracked.json
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.claude-code-oauth-token }}
+        run: |
+          Rscript .hub/R/candidates_literature.R
+          {
+            echo "due=$(cat candidates_due.txt)"
+            echo "title=$(head -n 1 candidates_title.txt 2>/dev/null)"
+            echo "month=$(date -u +%Y-%m)"
+          } >> "$GITHUB_OUTPUT"
+
+      # The verdicts are kept also when nothing is proposed; the research
+      # can take a while, so a fresh token.
+      - name: Token for the hub, after the research
+        id: hub_token_after
+        if: ${{ !cancelled() }}
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        with:
+          client-id: ${{ secrets.app-client-id }}
+          private-key: ${{ secrets.app-private-key }}
+          owner: ${{ steps.hub.outputs.owner }}
+          repositories: ${{ steps.hub.outputs.name }}
+          permission-contents: write
+          permission-pull-requests: write
+
+      - name: Push the verdicts and briefs
+        if: ${{ !cancelled() }}
+        env:
+          HUB_TOKEN: ${{ steps.hub_token_after.outputs.token }}
+          DATA_BRANCH: ${{ inputs.data-branch }}
+        run: bash .hub/.github/actions/literature-watch/push-data.sh "Exists? verdicts and research"
+
+      - name: Propose the candidates to the hub
+        if: steps.candidates.outputs.due == 'yes'
+        uses: $/.github/actions/propose-branch
+        with:
+          manifest: candidates_files.txt
+          branch: bot-suggest/literature-watch/candidates-${{ steps.candidates.outputs.month }}
+          base: ${{ inputs.hub-branch }}
+          title: ${{ steps.candidates.outputs.title }}
+          body-file: candidates_body.md
+          commit-message: 'docs: literature watch candidates ${{ steps.candidates.outputs.month }}'
+          token: ${{ steps.hub_token_after.outputs.token }}
+          repository: ${{ inputs.hub-repository }}
