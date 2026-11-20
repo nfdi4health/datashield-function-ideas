@@ -61,7 +61,7 @@ runs (`hub-files`, for R and the scripts; also the defaults
   started here with `candidate-selection.yml`, monthly in the runner; user:
   apart from the reading): ranking over all papers read, "Exists?" down the
   ranking, research, the candidate PR. The PR's top line says what the
-  ranking rests on: usable papers read in total and per publication year
+  ranking rests on: usable papers read in total, per publication year in a folded table
   (user, 2026-11-20: not the current round's progress). Briefs are kept in
   `research.json` on the data branch and reused for
   `candidates$research_max_age_days` (183) while the verdict and the

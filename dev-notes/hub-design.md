@@ -30,7 +30,7 @@ it grew from 2026-11-11; paths in it name the files where they were then
   literature watch's `candidates` input goes (a breaking change, accepted:
   nothing outside the hub calls it), and with it the unused `report`. The
   pull request states at the top what the ranking rests on: usable papers
-  read in total and per publication year (user, 2026-11-20: the current
+  read in total, per publication year in a folded table (user, 2026-11-20: the current
   round's progress means nothing once later rounds are read). A night not
   read yet is simply not part of that list.
 - **Research is reused for 6 months:** each result is kept on the data
