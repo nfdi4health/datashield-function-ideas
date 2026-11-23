@@ -94,6 +94,19 @@ methods:
     - resampling
     added: '2026-11-19'
     by: b1852a99
+  additive-diversity-partitioning:
+    name: Additive diversity partitioning
+    description: Splits total (gamma) diversity into the sum of within-sample (alpha)
+      and between-sample (beta) parts across hierarchical levels.
+    keywords:
+    - diversity partitioning
+    - additive
+    - alpha
+    - beta
+    - gamma
+    - adipart
+    added: '2026-11-23'
+    by: b1852a99
   adjusted-rand-index:
     name: Adjusted Rand index
     description: Measures agreement between two clusterings corrected for chance agreement.
@@ -259,6 +272,19 @@ methods:
     - genetic distance
     - permutation
     added: '2026-11-21'
+    by: b1852a99
+  ancestral-state-reconstruction:
+    name: Ancestral state reconstruction
+    description: Infers the character states of ancestral nodes on a phylogenetic
+      tree from the states seen in present-day taxa.
+    keywords:
+    - ancestral state
+    - reconstruction
+    - phylogenetic
+    - parsimony
+    - ace
+    - tree
+    added: '2026-11-23'
     by: b1852a99
   ancom:
     name: ANCOM (analysis of composition of microbiomes)
@@ -518,6 +544,19 @@ methods:
     - species delineation
     added: '2026-11-19'
     by: b1852a99
+  average-symmetric-surface-distance:
+    name: Average symmetric surface distance (ASSD)
+    description: Measures how well a segmentation matches a reference as the mean
+      distance between their boundary surfaces, taken in both directions.
+    keywords:
+    - surface distance
+    - assd
+    - segmentation
+    - boundary
+    - hausdorff
+    - evaluation
+    added: '2026-11-23'
+    by: b1852a99
   average-variance-extracted:
     name: Average variance extracted (AVE)
     description: Assesses convergent validity of a latent construct as the mean squared
@@ -741,6 +780,19 @@ methods:
     - brms
     added: '2026-11-19'
     by: b1852a99
+  bayesian-imputation:
+    name: Bayesian imputation
+    description: Treats missing values as unknown parameters and samples them from
+      their posterior distribution together with the model parameters.
+    keywords:
+    - bayesian
+    - imputation
+    - missing data
+    - posterior
+    - mcmc
+    - jags
+    added: '2026-11-23'
+    by: b1852a99
   bayesian-inference:
     name: Bayesian inference
     description: Estimates model parameters as posterior distributions by combining
@@ -887,6 +939,32 @@ methods:
     - brms
     - stan
     added: '2026-11-19'
+    by: b1852a99
+  bayesian-seroprevalence-estimation:
+    name: Bayesian seroprevalence estimation adjusted for test performance
+    description: Estimates true seroprevalence within a Bayesian model that accounts
+      for the uncertain sensitivity and specificity of the assay.
+    keywords:
+    - seroprevalence
+    - bayesian
+    - sensitivity
+    - specificity
+    - test adjustment
+    - prevalence
+    added: '2026-11-23'
+    by: b1852a99
+  bayesian-skyline-plot:
+    name: Bayesian skyline plot
+    description: A coalescent-based method that estimates how effective population
+      size changes over time from dated gene sequences.
+    keywords:
+    - skyline
+    - coalescent
+    - effective population size
+    - phylodynamics
+    - beast
+    - bayesian
+    added: '2026-11-23'
     by: b1852a99
   bayesian-source-tracking:
     name: Bayesian microbial source tracking (SourceTracker)
@@ -1075,6 +1153,19 @@ methods:
     - rate
     added: '2026-11-19'
     by: b1852a99
+  beta-regression-mixed-model:
+    name: Beta regression mixed model
+    description: Models outcomes that are proportions between 0 and 1 with a beta
+      distribution and includes random effects for clustered or repeated data.
+    keywords:
+    - beta regression
+    - mixed model
+    - random effects
+    - proportion
+    - glmmtmb
+    - beta family
+    added: '2026-11-23'
+    by: b1852a99
   beta-regression-mixture-model:
     name: Beta regression mixture model
     description: Fits a finite mixture of beta regressions to find latent subgroups
@@ -1127,6 +1218,20 @@ methods:
     - confidence ellipse
     added: '2026-11-21'
     by: b1852a99
+  birdman:
+    name: BIRDMAn (Bayesian inferential regression for differential microbiome analysis)
+    description: A Bayesian negative binomial regression fitted by MCMC that ranks
+      microbial features by how their abundance differs between conditions.
+    keywords:
+    - birdman
+    - bayesian
+    - differential abundance
+    - differential ranking
+    - microbiome
+    - negative binomial
+    - stan
+    added: '2026-11-23'
+    by: b1852a99
   biserial-correlation:
     name: Biserial correlation
     description: Measures the correlation between a continuous variable and a binary
@@ -1165,6 +1270,21 @@ methods:
     - classification error
     added: '2026-11-19'
     by: b1852a99
+  bolt-lmm:
+    name: BOLT-LMM mixed model association
+    description: Tests genome-wide genetic variant associations with a linear mixed
+      model whose genetic random effect is fitted by a fast Bayesian mixture approach.
+    keywords:
+    - bolt
+    - lmm
+    - gwas
+    - mixed
+    - model
+    - association
+    - genetic
+    - relatedness
+    added: '2026-11-23'
+    by: a11fc3a8
   bonferroni-correction:
     name: Bonferroni correction
     description: Adjusts p-values or significance levels for multiple comparisons
@@ -1784,6 +1904,32 @@ methods:
     - gene expression
     added: '2026-11-19'
     by: b1852a99
+  circular-correlation:
+    name: Circular correlation
+    description: Measures the association between angular variables, such as time
+      of day, or between an angular and a linear variable.
+    keywords:
+    - circular
+    - correlation
+    - angular
+    - circular-linear
+    - cor.circular
+    - directional
+    added: '2026-11-23'
+    by: b1852a99
+  circular-statistics:
+    name: Circular statistics
+    description: Summarises and tests angular or periodic data with directional measures
+      such as the mean direction, plus tests like the Rayleigh test.
+    keywords:
+    - circular
+    - angular
+    - rayleigh
+    - mean direction
+    - von mises
+    - directional
+    added: '2026-11-23'
+    by: b1852a99
   clarke-error-grid-analysis:
     name: Clarke error grid analysis
     description: Judges the clinical accuracy of glucose measurements against reference
@@ -2004,6 +2150,19 @@ methods:
     - pooled sd
     added: '2026-11-19'
     by: b1852a99
+  cohens-f2:
+    name: Cohen's f²
+    description: An effect size for regression giving the share of outcome variance
+      explained by a set of predictors, relative to the variance left unexplained.
+    keywords:
+    - cohen
+    - f2
+    - effect size
+    - r-squared
+    - regression
+    - local effect size
+    added: '2026-11-23'
+    by: b1852a99
   cohens-h:
     name: Cohen's h
     description: Measures the effect size of a difference between two proportions
@@ -2191,6 +2350,20 @@ methods:
     - simplex
     added: '2026-11-19'
     by: b1852a99
+  compositional-tensor-factorization:
+    name: Compositional tensor factorization
+    description: Breaks multi-way compositional data, such as longitudinal microbiome
+      profiles, into low-rank components after a log-ratio transformation.
+    keywords:
+    - tensor
+    - factorization
+    - compositional
+    - decomposition
+    - microbiome
+    - longitudinal
+    - ctf
+    added: '2026-11-23'
+    by: b1852a99
   compound-annual-growth-rate:
     name: Compound annual growth rate
     description: Computes the constant yearly growth rate that takes a quantity from
@@ -2264,6 +2437,20 @@ methods:
     - survival
     added: '2026-11-19'
     by: b1852a99
+  conditional-autoregressive-model:
+    name: Conditional autoregressive (CAR) model
+    description: A spatial model in which each area's random effect depends on the
+      effects of its neighbouring areas, used to smooth area-level rates.
+    keywords:
+    - conditional autoregressive
+    - car
+    - spatial
+    - neighbours
+    - adjacency
+    - areal
+    - disease mapping
+    added: '2026-11-23'
+    by: b1852a99
   conditional-f-statistic:
     name: Conditional F-statistic for instrument strength
     description: Measures the strength of instruments for each exposure conditional
@@ -2329,6 +2516,45 @@ methods:
     - strata
     - odds ratio
     added: '2026-11-19'
+    by: b1852a99
+  conditional-poisson-regression:
+    name: Conditional Poisson regression
+    description: Poisson regression conditioned on stratum totals so that stratum-specific
+      effects are eliminated rather than estimated.
+    keywords:
+    - conditional
+    - poisson
+    - stratum
+    - eliminate
+    - multinomial
+    - case-crossover
+    - rate ratio
+    added: '2026-11-23'
+    by: a11fc3a8
+  conditional-random-forest:
+    name: Conditional random forest (cforest)
+    description: An ensemble of conditional inference trees that gives unbiased variable
+      selection and conditional variable importance.
+    keywords:
+    - cforest
+    - conditional inference
+    - random forest
+    - party
+    - variable importance
+    - ensemble
+    added: '2026-11-23'
+    by: b1852a99
+  confidence-interval-overlap-comparison:
+    name: Confidence interval overlap comparison
+    description: Compares groups or estimates by checking whether their confidence
+      intervals overlap.
+    keywords:
+    - confidence interval
+    - overlap
+    - comparison
+    - interval
+    - estimate
+    added: '2026-11-23'
     by: b1852a99
   confirmatory-factor-analysis:
     name: Confirmatory factor analysis
@@ -2562,6 +2788,19 @@ methods:
     - outliers
     - regression diagnostics
     added: '2026-11-19'
+    by: b1852a99
+  copula-model:
+    name: Copula model
+    description: Models the joint distribution of several variables by linking their
+      marginal distributions through a copula function.
+    keywords:
+    - copula
+    - joint distribution
+    - dependence
+    - marginal
+    - bivariate
+    - gaussian copula
+    added: '2026-11-23'
     by: b1852a99
   correlation-based-feature-selection:
     name: Correlation-based feature selection
@@ -3445,6 +3684,19 @@ methods:
     - dmrcate
     added: '2026-11-19'
     by: b1852a99
+  diggle-chetwynd-test:
+    name: Diggle-Chetwynd test
+    description: Tests for spatial clustering of cases relative to controls by comparing
+      their K functions.
+    keywords:
+    - diggle
+    - chetwynd
+    - k function
+    - spatial clustering
+    - point pattern
+    - case-control
+    added: '2026-11-23'
+    by: b1852a99
   direct-standardization:
     name: Direct standardization
     description: Computes rates weighted to a standard population's age (or other)
@@ -3498,6 +3750,19 @@ methods:
     - composition test
     added: '2026-11-19'
     by: b1852a99
+  dirichlet-regression:
+    name: Dirichlet regression
+    description: Regresses compositional outcomes (proportions that sum to one) on
+      covariates, assuming a Dirichlet distribution.
+    keywords:
+    - dirichlet
+    - regression
+    - compositional
+    - proportions
+    - dirichletreg
+    - simplex
+    added: '2026-11-23'
+    by: b1852a99
   disability-adjusted-life-years:
     name: Disability-adjusted life years (DALY) estimation
     description: Estimates disease burden as the sum of years of life lost to premature
@@ -3510,6 +3775,19 @@ methods:
     - burden of disease
     - life years
     added: '2026-11-19'
+    by: b1852a99
+  discrete-event-simulation:
+    name: Discrete event simulation
+    description: Simulates individuals moving through a system as a sequence of events
+      over time, to estimate outcomes or costs.
+    keywords:
+    - discrete event
+    - simulation
+    - des
+    - queue
+    - events
+    - time-to-event
+    added: '2026-11-23'
     by: b1852a99
   discrete-time-subdistribution-hazard-model:
     name: Discrete-time subdistribution hazard model
@@ -3577,6 +3855,20 @@ methods:
     - exposure-response
     - time series
     added: '2026-11-19'
+    by: b1852a99
+  dn-ds-analysis:
+    name: dN/dS (Ka/Ks) selection analysis
+    description: Estimates the ratio of non-synonymous to synonymous substitution
+      rates to detect selection on coding sequences.
+    keywords:
+    - dnds
+    - nonsynonymous
+    - synonymous
+    - selection
+    - ka/ks
+    - substitution rate
+    - codon
+    added: '2026-11-23'
     by: b1852a99
   domain-generalization:
     name: Domain generalization
@@ -3813,6 +4105,19 @@ methods:
     - rt
     added: '2026-11-19'
     by: b1852a99
+  eggers-test:
+    name: Egger's regression test
+    description: Tests for funnel plot asymmetry (small-study effects or publication
+      bias) in a meta-analysis by regressing standardized effects on precision.
+    keywords:
+    - egger
+    - publication bias
+    - funnel asymmetry
+    - small-study effects
+    - meta-analysis
+    - regtest
+    added: '2026-11-23'
+    by: b1852a99
   elastic-net-regression:
     name: Elastic net regression
     description: Fits a regression model with a combined L1 and L2 penalty for variable
@@ -3875,6 +4180,20 @@ methods:
     - empirical null
     - calibrated p-value
     added: '2026-11-19'
+    by: b1852a99
+  ensemble-adjustment-kalman-filter:
+    name: Ensemble adjustment Kalman filter
+    description: Uses an ensemble of model states, adjusted sequentially as observations
+      arrive, to estimate the hidden states and parameters of a dynamic (e.g. epidemic)
+      model.
+    keywords:
+    - kalman filter
+    - ensemble
+    - data assimilation
+    - state space
+    - filtering
+    - eakf
+    added: '2026-11-23'
     by: b1852a99
   ensemble-classifier:
     name: Ensemble (voting) classifier
@@ -4029,6 +4348,19 @@ methods:
     - partial eta
     added: '2026-11-19'
     by: b1852a99
+  event-based-model:
+    name: Event-based model (disease progression)
+    description: Estimates the most likely order in which biomarkers become abnormal
+      during disease progression, using cross-sectional data.
+    keywords:
+    - event-based model
+    - disease progression
+    - biomarker ordering
+    - sequence
+    - staging
+    - ebm
+    added: '2026-11-23'
+    by: b1852a99
   exact-logistic-regression:
     name: Exact logistic regression
     description: Estimates logistic regression parameters from exact conditional distributions
@@ -4068,6 +4400,47 @@ methods:
     - rate ratio
     added: '2026-11-19'
     by: b1852a99
+  excess-absolute-risk:
+    name: Excess absolute risk
+    description: Estimates the additional disease rate attributable to an exposure
+      per unit dose, often with additive risk models.
+    keywords:
+    - excess absolute risk
+    - ear
+    - additive risk
+    - dose-response
+    - radiation
+    - excess rate
+    added: '2026-11-23'
+    by: b1852a99
+  excess-hazard-regression:
+    name: Excess hazard (relative survival) regression
+    description: Models the excess mortality of a patient group over the expected
+      population mortality as a function of covariates.
+    keywords:
+    - excess hazard
+    - excess risk
+    - relative survival
+    - expected mortality
+    - life table
+    - regression
+    added: '2026-11-23'
+    by: b1852a99
+  excess-relative-risk-model:
+    name: Excess relative risk model
+    description: Poisson likelihood model in which the rate is background times one
+      plus a linear (or linear-quadratic) excess relative risk in dose.
+    keywords:
+    - excess
+    - relative
+    - risk
+    - err
+    - dose
+    - linear
+    - poisson
+    - amfit
+    added: '2026-11-23'
+    by: a11fc3a8
   exclusive-lasso:
     name: Exclusive lasso
     description: A penalised regression that applies an L1 penalty within groups and
@@ -4147,6 +4520,19 @@ methods:
     - association
     - multiple testing
     added: '2026-11-19'
+    by: b1852a99
+  expression-qtl-analysis:
+    name: Expression quantitative trait loci (eQTL) analysis
+    description: Tests associations between genetic variants and gene expression levels
+      to find loci that regulate expression.
+    keywords:
+    - eqtl
+    - expression
+    - quantitative trait loci
+    - genotype
+    - gene expression
+    - matrixeqtl
+    added: '2026-11-23'
     by: b1852a99
   external-validation:
     name: External validation
@@ -4239,6 +4625,15 @@ methods:
     - categorical
     added: '2026-11-19'
     by: b1852a99
+  fairchild-test:
+    name: Fairchild test
+    description: A statistical test attributed to Fairchild, as named in the source
+      paper.
+    keywords:
+    - fairchild
+    - test
+    added: '2026-11-23'
+    by: b1852a99
   fairness-metrics:
     name: Algorithmic fairness metrics
     description: Compares a prediction model's performance or error rates across demographic
@@ -4258,6 +4653,19 @@ methods:
     keywords: []
     added: '2026-11-19'
     by: b1852a99
+    variants:
+      bayesian-fdr:
+        name: Bayesian FDR
+      benjamini-hochberg:
+        name: Benjamini-Hochberg procedure
+      benjamini-yekutieli:
+        name: Benjamini-Yekutieli procedure
+      discrete-fdr:
+        name: Discrete FDR
+      storey-q-value:
+        name: Storey q-value
+      two-stage-benjamini-krieger-yekutieli:
+        name: Two-stage Benjamini-Krieger-Yekutieli
   false-positive-report-probability:
     name: False positive report probability (FPRP)
     description: Estimates the probability that a significant association is a false
@@ -4734,6 +5142,32 @@ methods:
     - prevalence
     added: '2026-11-22'
     by: b1852a99
+  functional-connectivity-analysis:
+    name: Functional connectivity analysis
+    description: Quantifies statistical dependence, usually correlation, between time
+      series from different brain regions.
+    keywords:
+    - functional connectivity
+    - correlation
+    - fmri
+    - brain regions
+    - connectome
+    - time series
+    added: '2026-11-23'
+    by: b1852a99
+  functional-data-analysis:
+    name: Functional data analysis
+    description: Analyses data that are curves or functions, such as trajectories
+      over time, by treating each curve as a single observation.
+    keywords:
+    - functional data
+    - fda
+    - curves
+    - basis functions
+    - functional regression
+    - smoothing
+    added: '2026-11-23'
+    by: b1852a99
   functional-normalization:
     name: Functional normalization
     description: Normalizes DNA methylation array data by regressing out technical
@@ -5088,6 +5522,31 @@ methods:
     - deviance
     added: '2026-11-19'
     by: b1852a99
+  generalized-lotka-volterra-model:
+    name: Generalized Lotka-Volterra model
+    description: A system of differential equations that models population dynamics
+      and pairwise interactions among species, such as microbial taxa.
+    keywords:
+    - lotka-volterra
+    - glv
+    - population dynamics
+    - interaction
+    - differential equations
+    - microbial
+    added: '2026-11-23'
+    by: b1852a99
+  generalized-nonlinear-model:
+    name: Generalized nonlinear model
+    description: Extends generalized linear models so that the predictor can be nonlinear
+      in the parameters, such as multiplicative interaction terms.
+    keywords:
+    - gnm
+    - generalized nonlinear
+    - nonlinear predictor
+    - multiplicative
+    - glm extension
+    added: '2026-11-23'
+    by: b1852a99
   generalized-ordered-logistic-regression:
     name: Generalized ordered logistic regression (partial proportional odds)
     description: Ordinal regression model that relaxes the proportional odds assumption
@@ -5387,6 +5846,19 @@ methods:
     - globaltest
     - pathway
     added: '2026-11-21'
+    by: b1852a99
+  glucotyping:
+    name: Glucotyping
+    description: Groups individuals by the patterns of glucose variability seen in
+      continuous glucose monitoring data.
+    keywords:
+    - glucotype
+    - continuous glucose monitoring
+    - cgm
+    - glucose variability
+    - clustering
+    - spectral
+    added: '2026-11-23'
     by: b1852a99
   gnova:
     name: GNOVA (genetic covariance analyzer)
@@ -5757,6 +6229,19 @@ methods:
     - runharmony
     added: '2026-11-19'
     by: b1852a99
+  hausdorff-distance:
+    name: Hausdorff distance
+    description: Measures the greatest distance from a point on one shape or segmentation
+      to the closest point on another.
+    keywords:
+    - hausdorff
+    - distance
+    - segmentation
+    - surface
+    - contour
+    - similarity
+    added: '2026-11-23'
+    by: b1852a99
   hausman-test:
     name: Hausman test
     description: Compares two estimators, typically fixed-effects and random-effects,
@@ -6041,6 +6526,19 @@ methods:
     - dependence
     added: '2026-11-19'
     by: b1852a99
+  hurdle-poisson-regression:
+    name: Hurdle Poisson regression
+    description: 'Models count data in two parts: a binary model for zero versus non-zero,
+      and a zero-truncated Poisson model for the positive counts.'
+    keywords:
+    - hurdle
+    - poisson
+    - zero
+    - truncated
+    - count
+    - two-part
+    added: '2026-11-23'
+    by: b1852a99
   hutcheson-t-test:
     name: Hutcheson t-test
     description: Compares the Shannon diversity indices of two communities using a
@@ -6282,6 +6780,19 @@ methods:
     - multiplicative
     added: '2026-11-19'
     by: b1852a99
+  interval-censored-linear-mixed-model:
+    name: Linear mixed model for interval-censored outcomes
+    description: Linear mixed model fitted by likelihood that accounts for outcomes
+      observed only within intervals or below/above limits.
+    keywords:
+    - interval
+    - censored
+    - mixed
+    - likelihood
+    - random
+    - effects
+    added: '2026-11-23'
+    by: a11fc3a8
   interval-censored-semiparametric-regression:
     name: Semiparametric regression for interval-censored data
     description: Fits proportional hazards or proportional odds models with a nonparametric
@@ -6347,6 +6858,21 @@ methods:
     - snp
     - mr_ivw
     added: '2026-11-19'
+    by: b1852a99
+  ipd-reconstruction-from-kaplan-meier:
+    name: Reconstruction of individual patient data from Kaplan-Meier curves (Guyot
+      algorithm)
+    description: Recovers approximate individual time-to-event data from digitised
+      published Kaplan-Meier curves and numbers at risk.
+    keywords:
+    - reconstruct
+    - individual patient data
+    - kaplan-meier
+    - digitized
+    - guyot
+    - ipd
+    - survival curve
+    added: '2026-11-23'
     by: b1852a99
   iqr-outlier-detection:
     name: Interquartile range (Tukey fences) outlier detection
@@ -6793,6 +7319,19 @@ methods:
     - relationship
     added: '2026-11-21'
     by: b1852a99
+  kinship-linear-mixed-model:
+    name: Linear mixed model with genetic relatedness matrix
+    description: Linear mixed model whose random effect has a covariance proportional
+      to a known genetic relatedness (kinship) matrix.
+    keywords:
+    - kinship
+    - relatedness
+    - grm
+    - mixed
+    - heritability
+    - polygenic
+    added: '2026-11-23'
+    by: a11fc3a8
   klemera-doubal-method:
     name: Klemera-Doubal biological age method
     description: Estimates biological age by combining several biomarkers regressed
@@ -7402,6 +7941,79 @@ methods:
     - multilevel
     added: '2026-11-19'
     by: b1852a99
+    variants:
+      ar1-covariance:
+        name: AR(1) covariance
+      changepoint:
+        name: Changepoint mixed model
+      cluster-robust-se:
+        name: Cluster-robust standard errors
+      compositional-exposures:
+        name: Compositional log-ratio exposures
+      compound-symmetry-covariance:
+        name: Compound symmetry covariance
+      constrained-baseline:
+        name: Constrained baseline (cLDA)
+      covariate-by-time-interaction:
+        name: Covariate-by-time interaction
+      cross-level-interactions:
+        name: Cross-level interactions
+      crossed-random-effects:
+        name: Crossed random effects
+      greenhouse-geisser-correction:
+        name: Greenhouse-Geisser correction
+      heterogeneous-ar1-covariance:
+        name: Heterogeneous AR(1) covariance
+      interaction-terms:
+        name: Interaction terms
+      kenward-roger-df:
+        name: Kenward-Roger degrees of freedom
+      lagged-exposure:
+        name: Lagged exposure
+      lagged-outcome:
+        name: Lagged dependent variable
+      linear-time-trend:
+        name: Linear time trend
+      log-transformed-outcome:
+        name: Log-transformed outcome
+      logit-transformed-outcome:
+        name: Logit-transformed outcome
+      ml-estimation:
+        name: Maximum likelihood estimation
+      nested-random-effects:
+        name: Nested random effects
+      permutation-inference:
+        name: Permutation p-values
+      piecewise-linear:
+        name: Piecewise linear time
+      polynomial-terms:
+        name: Polynomial time terms
+      power-covariance:
+        name: Power covariance structure
+      random-intercept:
+        name: Random intercept
+      random-slopes:
+        name: Random slopes
+      reml-estimation:
+        name: REML estimation
+      satterthwaite-df:
+        name: Satterthwaite degrees of freedom
+      spatial-covariance:
+        name: Spatial covariance structure
+      spline-terms:
+        name: Spline terms
+      sqrt-transformed-outcome:
+        name: Square-root-transformed outcome
+      survey-weighted:
+        name: Survey-weighted mixed model
+      time-varying-covariates:
+        name: Time-varying covariates
+      unstructured-covariance:
+        name: Unstructured covariance
+      weighted:
+        name: Weighted mixed model
+      within-between-decomposition:
+        name: Within-between decomposition
   linear-quadratic-model:
     name: Linear-quadratic dose-response model
     description: Models the response to a dose, such as radiation cell survival, as
@@ -7563,6 +8175,19 @@ methods:
     - pattern
     added: '2026-11-19'
     by: b1852a99
+  ljung-box-test:
+    name: Ljung-Box test
+    description: Tests whether a time series or model residuals show autocorrelation
+      over several lags at once.
+    keywords:
+    - ljung-box
+    - portmanteau
+    - autocorrelation
+    - box test
+    - residuals
+    - time series
+    added: '2026-11-23'
+    by: b1852a99
   lkb-ntcp-model:
     name: Lyman-Kutcher-Burman NTCP model
     description: Models the normal tissue complication probability as a probit function
@@ -7654,6 +8279,20 @@ methods:
     - glm
     - relative risk
     added: '2026-11-19'
+    by: b1852a99
+  log-linear-model:
+    name: Log-linear model
+    description: Models the log of expected cell counts in a multiway contingency
+      table to analyse associations among categorical variables.
+    keywords:
+    - loglinear
+    - log-linear
+    - contingency table
+    - cell counts
+    - loglm
+    - interaction
+    - poisson
+    added: '2026-11-23'
     by: b1852a99
   log-rank-test:
     name: Log-rank test
@@ -8125,6 +8764,19 @@ methods:
     - mauchly.test
     added: '2026-11-19'
     by: b1852a99
+  maximal-information-coefficient:
+    name: Maximal information coefficient (MIC)
+    description: Measures the strength of a possibly nonlinear association between
+      two variables from the maximal normalized mutual information over grid partitions.
+    keywords:
+    - maximal information coefficient
+    - mic
+    - mine
+    - mutual information
+    - nonlinear association
+    - dependence
+    added: '2026-11-23'
+    by: b1852a99
   maximally-selected-rank-statistics:
     name: Maximally selected rank statistics
     description: Finds the optimal cut-point of a continuous variable for splitting
@@ -8328,6 +8980,107 @@ methods:
     - causal
     added: '2026-11-19'
     by: b1852a99
+    variants:
+      aalen-additive-hazards-mediation:
+        name: Additive hazards mediation
+      autoregressive-mediation:
+        name: Autoregressive longitudinal mediation
+      baron-kenny-causal-steps:
+        name: Baron-Kenny causal steps
+      bayesian-mediation:
+        name: Bayesian mediation
+      bias-corrected-bootstrap-ci:
+        name: Bias-corrected bootstrap CI
+      bidirectional-mediation:
+        name: Bidirectional mediation
+      binary-outcome:
+        name: Binary outcome
+      bootstrap-confidence-intervals:
+        name: Bootstrap confidence intervals
+      bootstrap-standard-errors:
+        name: Bootstrap standard errors
+      categorical-mediator:
+        name: Categorical mediator
+      controlled-direct-effect:
+        name: Controlled direct effect
+      count-outcome:
+        name: Count outcome
+      counterfactual-causal-mediation:
+        name: Counterfactual causal mediation
+      cox-model-mediation:
+        name: Cox model mediation
+      delta-method-standard-errors:
+        name: Delta method inference
+      difference-of-coefficients:
+        name: Difference of coefficients
+      exposure-mediator-interaction:
+        name: Exposure-mediator interaction
+      flexible-parametric-survival-mediation:
+        name: Flexible parametric survival mediation
+      g-formula-mediation:
+        name: Mediational g-formula
+      gee-mediation:
+        name: GEE-based mediation
+      interventional-effects:
+        name: Interventional effects
+      latent-growth-curve-mediation:
+        name: Latent growth curve mediation
+      longitudinal-mediation:
+        name: Longitudinal mediation
+      marginal-structural-model-mediation:
+        name: Marginal structural model mediation
+      moderated-mediation:
+        name: Moderated mediation
+      monte-carlo-confidence-intervals:
+        name: Monte Carlo confidence intervals
+      multicategorical-exposure:
+        name: Multicategorical exposure
+      multilevel-mediation:
+        name: Multilevel mediation
+      multiple-mediators:
+        name: Multiple mediators
+      ordinal-outcome:
+        name: Ordinal outcome
+      parallel-mediators:
+        name: Parallel mediators
+      penalized-mediation:
+        name: Penalized mediation
+      percentage-excess-risk-explained:
+        name: Percentage excess risk explained
+      permutation-test-inference:
+        name: Permutation test inference
+      probit-model-mediation:
+        name: Probit model mediation
+      product-of-coefficients:
+        name: Product of coefficients
+      quasi-bayesian-monte-carlo:
+        name: Quasi-Bayesian Monte Carlo
+      r-squared-effect-size:
+        name: R-squared mediation effect size
+      regression-based-mediation:
+        name: Regression-based mediation
+      rmst-outcome:
+        name: Restricted mean survival outcome
+      robust-maximum-likelihood:
+        name: Robust maximum likelihood
+      robust-standard-errors:
+        name: Robust standard errors
+      sem-based-mediation:
+        name: SEM-based mediation
+      serial-mediation:
+        name: Serial mediation
+      survey-weighted-mediation:
+        name: Survey-weighted mediation
+      survival-outcome:
+        name: Survival outcome
+      time-varying-effect-mediation:
+        name: Time-varying effect mediation
+      unmeasured-confounding-sensitivity:
+        name: Unmeasured confounding sensitivity analysis
+      weighting-based-mediation:
+        name: Weighting-based mediation
+      wlsmv-estimation:
+        name: WLSMV estimation
   mega-analysis:
     name: Mega-analysis
     description: Analyses pooled individual-level data from several studies in a single
@@ -8429,6 +9182,21 @@ methods:
     - differential abundance
     - microbiome
     added: '2026-11-19'
+    by: b1852a99
+  meteorological-normalization:
+    name: Meteorological normalization
+    description: Removes the effect of weather variation from air pollutant time series,
+      usually by predicting concentrations under resampled meteorology with a machine
+      learning model.
+    keywords:
+    - meteorological normalisation
+    - weather normalization
+    - deweather
+    - random forest
+    - air quality
+    - resampling
+    - pollutant
+    added: '2026-11-23'
     by: b1852a99
   methylation-qtl-analysis:
     name: Methylation quantitative trait loci (mQTL) analysis
@@ -8557,6 +9325,20 @@ methods:
     - dummy
     - missingness
     added: '2026-11-19'
+    by: b1852a99
+  mitre:
+    name: MITRE (microbiome interpretable temporal rule engine)
+    description: Bayesian method that learns interpretable rules linking temporal
+      patterns in longitudinal microbiome data to a host outcome.
+    keywords:
+    - mitre
+    - microbiome
+    - temporal rules
+    - longitudinal
+    - bayesian
+    - rule learning
+    - host status
+    added: '2026-11-23'
     by: b1852a99
   mixed-logit-model:
     name: Mixed logit (random parameters logit) model
@@ -9031,6 +9813,20 @@ methods:
     - sensitivity
     added: '2026-11-19'
     by: b1852a99
+  multivoxel-pattern-analysis:
+    name: Multivoxel pattern analysis (MVPA)
+    description: Uses classifiers on spatial patterns of activity across many voxels
+      to decode conditions or stimuli from brain imaging data.
+    keywords:
+    - mvpa
+    - multivoxel
+    - pattern analysis
+    - decoding
+    - searchlight
+    - fmri
+    - classifier
+    added: '2026-11-23'
+    by: b1852a99
   mutual-information:
     name: Mutual information
     description: Measures how much information two variables share, capturing any
@@ -9122,6 +9918,19 @@ methods:
     - distrib
     added: '2026-11-21'
     by: b1852a99
+  nearest-centroid-classification:
+    name: Nearest centroid classification
+    description: Assigns each sample to the class whose mean profile (centroid) is
+      closest to it.
+    keywords:
+    - nearest centroid
+    - centroid
+    - classifier
+    - pamr
+    - shrunken centroids
+    - class prediction
+    added: '2026-11-23'
+    by: b1852a99
   negative-binomial-regression:
     name: Negative binomial regression
     description: Models overdispersed count outcomes with a negative binomial distribution
@@ -9211,6 +10020,20 @@ methods:
     - biomarker
     - integration
     added: '2026-11-19'
+    by: b1852a99
+  netshift:
+    name: NetShift
+    description: Compares microbial co-occurrence networks between two conditions
+      to identify taxa that drive changes in network structure.
+    keywords:
+    - netshift
+    - network
+    - driver taxa
+    - co-occurrence
+    - microbiome
+    - neighbor shift
+    - case control
+    added: '2026-11-23'
     by: b1852a99
   network-analysis:
     name: Network analysis (graphical models)
@@ -9384,6 +10207,18 @@ methods:
     - stress
     added: '2026-11-19'
     by: b1852a99
+  non-negative-least-squares:
+    name: Non-negative least squares regression
+    description: Fits a linear regression by least squares under the constraint that
+      all coefficients are non-negative.
+    keywords:
+    - nnls
+    - non-negative
+    - least squares
+    - constrained regression
+    - nonnegative coefficients
+    added: '2026-11-23'
+    by: b1852a99
   non-negative-matrix-factorization:
     name: Non-negative matrix factorization (NMF)
     description: Splits a non-negative data matrix into two lower-rank non-negative
@@ -9434,6 +10269,19 @@ methods:
     - mann-whitney
     - rank sum
     added: '2026-11-19'
+    by: b1852a99
+  nonparametric-relative-effect-multiple-comparisons:
+    name: Nonparametric multiple comparisons for relative effects (nparcomp)
+    description: Performs simultaneous rank-based multiple comparisons between groups
+      using estimated relative effects with family-wise error control.
+    keywords:
+    - nparcomp
+    - relative effects
+    - nonparametric
+    - multiple comparisons
+    - rank
+    - contrasts
+    added: '2026-11-23'
     by: b1852a99
   nonparametric-series-regression:
     name: Nonparametric series (sieve) regression
@@ -9515,6 +10363,19 @@ methods:
     - group differences
     added: '2026-11-19'
     by: b1852a99
+  ocsb-test:
+    name: Osborn-Chui-Smith-Birchenhall (OCSB) test
+    description: Tests a time series for a seasonal unit root to decide whether seasonal
+      differencing is needed.
+    keywords:
+    - ocsb
+    - seasonal unit root
+    - seasonality
+    - nsdiffs
+    - seasonal differencing
+    - time series
+    added: '2026-11-23'
+    by: b1852a99
   odds-ratio:
     name: Odds ratio
     description: Estimates the ratio of the odds of an outcome between two groups,
@@ -9564,6 +10425,20 @@ methods:
     - discriminant
     - vip
     added: '2026-11-19'
+    by: b1852a99
+  optimal-scaling:
+    name: Optimal scaling (categorical PCA / CATREG)
+    description: Assigns numeric quantifications to categorical variables so that
+      they can be analysed with principal components or regression methods.
+    keywords:
+    - optimal scaling
+    - catpca
+    - catreg
+    - homals
+    - princals
+    - categorical quantification
+    - nonlinear pca
+    added: '2026-11-23'
     by: b1852a99
   ordered-probit-regression:
     name: Ordered probit regression
@@ -9616,6 +10491,19 @@ methods:
     - kinetics
     - numerical solution
     added: '2026-11-21'
+    by: b1852a99
+  ordination-analysis:
+    name: Ordination
+    description: Places samples in a low-dimensional space from a multivariate (dis)similarity
+      structure to show gradients in community or multivariate data.
+    keywords:
+    - ordination
+    - ordinate
+    - dissimilarity
+    - vegan
+    - multivariate
+    - community
+    added: '2026-11-23'
     by: b1852a99
   orthogonal-partial-least-squares:
     name: Orthogonal partial least squares (OPLS) regression
@@ -10074,6 +10962,19 @@ methods:
     - hilbert
     added: '2026-11-19'
     by: b1852a99
+  phate:
+    name: PHATE (potential of heat-diffusion for affinity-based transition embedding)
+    description: Embeds high-dimensional data in low dimensions using diffusion-based
+      affinities to preserve local and global trajectory structure.
+    keywords:
+    - phate
+    - diffusion
+    - embedding
+    - dimensionality reduction
+    - visualization
+    - trajectory
+    added: '2026-11-23'
+    by: b1852a99
   phenograph-clustering:
     name: PhenoGraph clustering
     description: Clusters single-cell data by building a Jaccard-weighted k-nearest-neighbour
@@ -10244,6 +11145,19 @@ methods:
     - latent constructs
     added: '2026-11-19'
     by: b1852a99
+  point-biserial-correlation:
+    name: Point-biserial correlation
+    description: Measures the correlation between a continuous variable and a naturally
+      dichotomous variable.
+    keywords:
+    - point-biserial
+    - biserial
+    - correlation
+    - dichotomous
+    - binary
+    - pearson
+    added: '2026-11-23'
+    by: b1852a99
   points-based-risk-score:
     name: Points-based risk score (Sullivan method)
     description: Converts regression coefficients into integer points that are summed
@@ -10282,6 +11196,49 @@ methods:
     - incidence
     added: '2026-11-19'
     by: b1852a99
+    variants:
+      between-within:
+        name: Between-within decomposition
+      cluster-robust-standard-errors:
+        name: Cluster-robust standard errors
+      fixed-effects:
+        name: Fixed effects
+      grouped-data:
+        name: Grouped person-time data
+      hierarchical-entry:
+        name: Hierarchical covariate entry
+      interaction-terms:
+        name: Interaction terms
+      inverse-probability-weighted:
+        name: Inverse probability weighted
+      lagged-exposure:
+        name: Lagged exposure
+      modified-poisson:
+        name: Modified Poisson regression
+      newey-west-standard-errors:
+        name: Newey-West HAC standard errors
+      offset:
+        name: Offset term
+      quasi-poisson:
+        name: Quasi-Poisson overdispersion
+      repeated-measures:
+        name: Repeated measures data
+      robust-standard-errors:
+        name: Robust standard errors
+      seasonal-harmonic-terms:
+        name: Seasonal harmonic terms
+      split-follow-up:
+        name: Split follow-up time
+      stratified:
+        name: Stratified analysis
+      survey-weighted:
+        name: Survey-weighted
+      time-stratified:
+        name: Time-stratified design
+      time-varying-covariates:
+        name: Time-varying covariates
+      weighted:
+        name: Weighted
   polygenic-priority-score:
     name: Polygenic priority score (PoPS)
     description: Ranks genes at GWAS loci as likely causal by fitting gene-level association
@@ -10429,6 +11386,18 @@ methods:
     - alpha
     added: '2026-11-19'
     by: b1852a99
+  power-transformation:
+    name: Power transformation
+    description: Raises a variable to a chosen power to reduce skewness or stabilise
+      variance.
+    keywords:
+    - power transformation
+    - transform
+    - exponent
+    - skewness
+    - variance stabilization
+    added: '2026-11-23'
+    by: b1852a99
   prais-winsten-regression:
     name: Prais-Winsten regression
     description: Fits a linear regression with first-order autoregressive errors by
@@ -10456,6 +11425,18 @@ methods:
     - recall
     - precision
     added: '2026-11-19'
+    by: b1852a99
+  prediction-interval:
+    name: Prediction interval
+    description: Gives the range in which a future observation or study effect is
+      expected to fall with a given probability.
+    keywords:
+    - prediction interval
+    - predict
+    - interval
+    - future observation
+    - uncertainty
+    added: '2026-11-23'
     by: b1852a99
   prediction-strength:
     name: Prediction strength (cluster validation)
@@ -10682,6 +11663,47 @@ methods:
     - balance
     added: '2026-11-19'
     by: b1852a99
+    variants:
+      caliper-matching:
+        name: Caliper matching
+      disease-risk-score-matching:
+        name: Disease risk score matching
+      earth-movers-distance-matching:
+        name: Earth mover's distance matching
+      exact-matching-on-covariates:
+        name: Exact matching on covariates
+      genetic-matching:
+        name: Genetic matching
+      kernel-matching:
+        name: Kernel matching
+      l1-regularized-propensity-model:
+        name: L1-regularized propensity model
+      large-scale-propensity-score:
+        name: Large-scale propensity score
+      mahalanobis-distance-matching:
+        name: Mahalanobis distance matching
+      matched-set-stratified-analysis:
+        name: Matched-set stratified analysis
+      matching-with-replacement:
+        name: Matching with replacement
+      matching-without-replacement:
+        name: Matching without replacement
+      nearest-neighbor-matching:
+        name: Nearest-neighbor matching
+      optimal-matching:
+        name: Optimal matching
+      pairwise-multi-group-matching:
+        name: Pairwise multi-group matching
+      preference-score-matching:
+        name: Preference score matching
+      radius-matching:
+        name: Radius matching
+      robust-variance-estimation:
+        name: Robust variance estimation
+      sequential-matching:
+        name: Sequential time-conditional matching
+      variable-ratio-matching:
+        name: Variable-ratio matching
   propensity-score-stratification:
     name: Propensity score stratification
     description: Groups subjects into strata of the estimated propensity score and
@@ -11630,6 +12652,19 @@ methods:
     - croc
     added: '2026-11-19'
     by: b1852a99
+  romano-wolf-correction:
+    name: Romano-Wolf stepdown correction
+    description: Controls the family-wise error rate across multiple hypotheses using
+      a resampling-based stepdown procedure that accounts for dependence among tests.
+    keywords:
+    - romano-wolf
+    - stepdown
+    - family-wise error
+    - multiple testing
+    - bootstrap
+    - adjusted p-values
+    added: '2026-11-23'
+    by: b1852a99
   rosenthals-r:
     name: Rosenthal's r effect size
     description: Computes an effect size for a nonparametric test by dividing the
@@ -11733,6 +12768,19 @@ methods:
     - robust
     added: '2026-11-21'
     by: b1852a99
+  savitzky-golay-filter:
+    name: Savitzky-Golay filter
+    description: Smooths a signal by fitting low-degree polynomials to successive
+      windows of points by least squares.
+    keywords:
+    - savitzky-golay
+    - sgolay
+    - smoothing
+    - filter
+    - polynomial
+    - signal
+    added: '2026-11-23'
+    by: b1852a99
   sccoda:
     name: scCODA compositional analysis
     description: Tests for differences in cell-type composition between conditions
@@ -11772,6 +12820,19 @@ methods:
     - means
     added: '2026-11-19'
     by: b1852a99
+  scheirer-ray-hare-test:
+    name: Scheirer-Ray-Hare test
+    description: A rank-based nonparametric extension of two-way ANOVA that tests
+      main effects and their interaction.
+    keywords:
+    - scheirer-ray-hare
+    - nonparametric
+    - two-way
+    - rank
+    - kruskal-wallis
+    - interaction
+    added: '2026-11-23'
+    by: b1852a99
   schoenfeld-residuals-test:
     name: Schoenfeld residuals test
     description: Tests the proportional hazards assumption of a Cox model using Schoenfeld
@@ -11784,6 +12845,19 @@ methods:
     - assumption
     - cox
     added: '2026-11-19'
+    by: b1852a99
+  scnic:
+    name: SCNIC (sparse cooccurrence network investigation for compositional data)
+    description: Builds correlation networks among microbial features from compositional
+      data and groups highly correlated features into modules.
+    keywords:
+    - scnic
+    - co-occurrence
+    - correlation network
+    - modules
+    - compositional
+    - microbiome
+    added: '2026-11-23'
     by: b1852a99
   scree-plot:
     name: Scree plot
@@ -11862,6 +12936,19 @@ methods:
     - neural network
     - grid
     added: '2026-11-21'
+    by: b1852a99
+  semipartial-correlation:
+    name: Semipartial (part) correlation
+    description: Measures the correlation between an outcome and a predictor after
+      removing the other predictors' influence from that predictor only.
+    keywords:
+    - semipartial
+    - part correlation
+    - correlation
+    - unique variance
+    - sr2
+    - regression
+    added: '2026-11-23'
     by: b1852a99
   sensitivity-and-specificity:
     name: Sensitivity and specificity
@@ -11947,6 +13034,19 @@ methods:
     - graph
     - knn
     added: '2026-11-21'
+    by: b1852a99
+  short-time-fourier-transform:
+    name: Short-time Fourier transform
+    description: Computes Fourier spectra over successive short windows of a signal
+      to get its time-frequency content.
+    keywords:
+    - stft
+    - fourier
+    - spectrogram
+    - time-frequency
+    - window
+    - signal
+    added: '2026-11-23'
     by: b1852a99
   sidak-correction:
     name: Šidák correction
@@ -12091,6 +13191,19 @@ methods:
     - singular vectors
     added: '2026-11-19'
     by: b1852a99
+  skewness-kurtosis-normality-test:
+    name: Skewness and kurtosis normality test
+    description: Checks whether a variable is normally distributed by comparing its
+      sample skewness and kurtosis with the values expected under normality.
+    keywords:
+    - skewness
+    - kurtosis
+    - normality
+    - moments
+    - distribution
+    - sktest
+    added: '2026-11-23'
+    by: b1852a99
   sliding-window-functional-connectivity:
     name: sliding-window-functional-connectivity
     description: ''
@@ -12146,6 +13259,19 @@ methods:
     - product of coefficients
     - delta method
     added: '2026-11-19'
+    by: b1852a99
+  sobol-sensitivity-analysis:
+    name: Sobol sensitivity analysis
+    description: Splits the variance of a model's output into contributions from each
+      input and their interactions, giving Sobol indices.
+    keywords:
+    - sobol
+    - sensitivity
+    - variance decomposition
+    - global sensitivity
+    - indices
+    - saltelli
+    added: '2026-11-23'
     by: b1852a99
   social-network-analysis:
     name: Social network analysis
@@ -12259,6 +13385,19 @@ methods:
     - classification
     - variable selection
     added: '2026-11-19'
+    by: b1852a99
+  sparse-principal-component-analysis:
+    name: Sparse principal component analysis
+    description: Finds principal components whose loadings are made sparse by a penalty,
+      so each component uses only a few variables.
+    keywords:
+    - sparse pca
+    - principal component
+    - loadings
+    - penalty
+    - lasso
+    - spca
+    added: '2026-11-23'
     by: b1852a99
   spatial-interpolation:
     name: Spatial interpolation
@@ -12553,6 +13692,19 @@ methods:
     - learning rate
     - minibatch
     added: '2026-11-21'
+    by: b1852a99
+  stochastic-logistic-growth-model:
+    name: Stochastic logistic growth model
+    description: Models population growth that levels off at a carrying capacity,
+      with random noise in the growth dynamics.
+    keywords:
+    - logistic growth
+    - stochastic
+    - carrying capacity
+    - differential equation
+    - noise
+    - population dynamics
+    added: '2026-11-23'
     by: b1852a99
   structural-equation-modeling:
     name: Structural equation modeling
@@ -13054,6 +14206,19 @@ methods:
     - voxelwise
     added: '2026-11-21'
     by: b1852a99
+  tietjen-moore-test:
+    name: Tietjen-Moore test
+    description: Tests whether a stated number of the most extreme values in a sample
+      are outliers, assuming normally distributed data.
+    keywords:
+    - tietjen-moore
+    - outlier
+    - grubbs
+    - extreme values
+    - normal
+    - test
+    added: '2026-11-23'
+    by: b1852a99
   time-dependent-roc-analysis:
     name: Time-dependent ROC curve analysis
     description: Assesses how well a marker discriminates between subjects who have
@@ -13132,6 +14297,20 @@ methods:
     - library size
     added: '2026-11-19'
     by: b1852a99
+  tobit-mixed-model:
+    name: Tobit (censored) linear mixed model
+    description: Models a continuous outcome censored at a limit with fixed and random
+      effects by maximising a censored-normal mixed-model likelihood.
+    keywords:
+    - tobit
+    - censored
+    - mixed
+    - random
+    - effects
+    - left-censoring
+    - likelihood
+    added: '2026-11-23'
+    by: a11fc3a8
   tobit-regression:
     name: Tobit regression
     description: Regression model for a continuous outcome that is censored at a lower
@@ -13341,6 +14520,19 @@ methods:
     - cost
     added: '2026-11-19'
     by: b1852a99
+  two-stage-slope-analysis:
+    name: Two-stage slope (summary measure) analysis
+    description: Fits a slope to each subject's repeated measurements, then analyses
+      those per-subject slopes in a second-stage model.
+    keywords:
+    - two-stage
+    - individual slopes
+    - summary measures
+    - repeated measures
+    - longitudinal
+    - slope
+    added: '2026-11-23'
+    by: b1852a99
   two-step-cluster-analysis:
     name: Two-step cluster analysis
     description: Clusters records by first pre-clustering them into a cluster-feature
@@ -13354,6 +14546,19 @@ methods:
     - cluster feature tree
     - birch
     added: '2026-11-21'
+    by: b1852a99
+  two-way-imputation:
+    name: Two-way imputation
+    description: Fills in missing questionnaire item scores using the person's mean
+      plus the item's mean minus the overall mean.
+    keywords:
+    - two-way imputation
+    - item mean
+    - person mean
+    - questionnaire
+    - missing items
+    - imputation
+    added: '2026-11-23'
     by: b1852a99
   umap:
     name: Uniform manifold approximation and projection (UMAP)
@@ -13381,6 +14586,19 @@ methods:
     - time series
     - var
     added: '2026-11-21'
+    by: b1852a99
+  unobserved-components-model:
+    name: Unobserved components (structural time series) model
+    description: Splits a time series into latent trend, seasonal and irregular parts
+      using a state-space model estimated with the Kalman filter.
+    keywords:
+    - unobserved components
+    - state space
+    - kalman filter
+    - structural time series
+    - trend
+    - seasonal
+    added: '2026-11-23'
     by: b1852a99
   up-and-down-method:
     name: Dixon up-and-down method
@@ -13528,6 +14746,19 @@ methods:
     - toxicity
     added: '2026-11-21'
     by: b1852a99
+  voxelwise-modeling:
+    name: Voxelwise modeling
+    description: Fits a regression model separately at each brain voxel to relate
+      imaging signal to features or covariates.
+    keywords:
+    - voxelwise
+    - voxel
+    - encoding model
+    - fmri
+    - neuroimaging
+    - regression
+    added: '2026-11-23'
+    by: b1852a99
   vuong-test:
     name: Vuong's closeness test
     description: Likelihood-ratio-based test that compares two non-nested models to
@@ -13594,6 +14825,19 @@ methods:
     - modularity
     added: '2026-11-21'
     by: b1852a99
+  watson-williams-test:
+    name: Watson-Williams test
+    description: Tests whether two or more groups of circular (angular) data have
+      the same mean direction.
+    keywords:
+    - watson-williams
+    - circular
+    - mean direction
+    - angular
+    - von mises
+    - test
+    added: '2026-11-23'
+    by: b1852a99
   wavelet-coherence:
     name: Wavelet coherence analysis
     description: Measures how correlated two time series are and their phase relationship
@@ -13635,6 +14879,31 @@ methods:
     - exposure history
     - survival
     added: '2026-11-21'
+    by: b1852a99
+  weighted-geometric-mean:
+    name: Weighted geometric mean
+    description: Computes a geometric mean in which each value's log counts according
+      to a weight.
+    keywords:
+    - geometric mean
+    - weighted
+    - log
+    - average
+    - weights
+    added: '2026-11-23'
+    by: b1852a99
+  weighted-interval-score:
+    name: Weighted interval score
+    description: Scores probabilistic forecasts by combining the widths and coverage
+      penalties of several prediction intervals.
+    keywords:
+    - interval score
+    - forecast
+    - scoring rule
+    - prediction interval
+    - quantile
+    - evaluation
+    added: '2026-11-23'
     by: b1852a99
   weighted-median-estimator:
     name: Weighted median estimator (Mendelian randomization)
@@ -13962,6 +15231,9 @@ names:
   2^-δδct method:
     method: delta-delta-ct-method
     by: b1852a99
+  4-way decomposition causal mediation analysis:
+    method: four-way-decomposition
+    by: b1852a99
   aalen additive hazards model:
     method: aalen-additive-hazards-model
     by: b1852a99
@@ -14014,6 +15286,9 @@ names:
     method: interaction-analysis
     variant: additive and multiplicative
     by: b1852a99
+  additive diversity partitioning:
+    method: additive-diversity-partitioning
+    by: b1852a99
   additive hazards model:
     method: aalen-additive-hazards-model
     by: b1852a99
@@ -14058,6 +15333,12 @@ names:
   adjusted rand index:
     method: adjusted-rand-index
     by: b1852a99
+  adjusted residuals:
+    method: adjusted-standardized-residuals
+    by: b1852a99
+  adjusted residuals analysis:
+    method: adjusted-standardized-residuals
+    by: b1852a99
   adjusted standardized residuals:
     method: adjusted-standardized-residuals
     by: b1852a99
@@ -14073,6 +15354,13 @@ names:
     by: b1852a99
   affinity propagation:
     method: affinity-propagation-clustering
+    by: b1852a99
+  affinity propagation clustering:
+    method: affinity-propagation-clustering
+    by: b1852a99
+  age matching:
+    method: covariate-matching
+    variant: matching on age
     by: b1852a99
   age standardisation:
     method: direct-standardization
@@ -14103,7 +15391,13 @@ names:
   aggregated cauchy association test:
     method: aggregated-cauchy-association-test
     by: b1852a99
+  agreement rate:
+    method: percent-agreement
+    by: b1852a99
   aic comparison:
+    method: akaike-information-criterion
+    by: b1852a99
+  aic model selection:
     method: akaike-information-criterion
     by: b1852a99
   aic/bic:
@@ -14145,6 +15439,9 @@ names:
   alkire-foster method:
     method: alkire-foster-method
     by: b1852a99
+  all possible subsets regression:
+    method: best-subset-selection
+    by: b1852a99
   alpha and beta diversity:
     method: alpha-diversity
     by: b1852a99
@@ -14161,6 +15458,9 @@ names:
     method: alpha-diversity
     by: b1852a99
   alpha diversity metrics:
+    method: alpha-diversity
+    by: b1852a99
+  alpha-diversity analysis:
     method: alpha-diversity
     by: b1852a99
   alpha-diversity and beta-diversity analysis:
@@ -14187,6 +15487,9 @@ names:
     by: b1852a99
   analysis of variance:
     method: anova
+    by: b1852a99
+  ancestral state reconstruction:
+    method: ancestral-state-reconstruction
     by: b1852a99
   ancom:
     method: ancom
@@ -14246,7 +15549,14 @@ names:
     method: morans-i
     variant: local (lisa)
     by: b1852a99
+  apriori algorithm:
+    method: association-rule-mining
+    variant: apriori algorithm
+    by: b1852a99
   area under the curve:
+    method: area-under-the-curve
+    by: b1852a99
+  area under the curve (trapezoidal rule):
     method: area-under-the-curve
     by: b1852a99
   area under the roc curve:
@@ -14295,6 +15605,9 @@ names:
   attributable risk percent:
     method: attributable-risk-percent
     by: b1852a99
+  attributable risk proportion:
+    method: attributable-risk-percent
+    by: b1852a99
   auc comparison:
     method: roc-curve-analysis
     variant: auc comparison
@@ -14306,6 +15619,9 @@ names:
     method: roc-curve-analysis
     by: b1852a99
   autocorrelation and stationarity assessment:
+    method: autocorrelation-analysis
+    by: b1852a99
+  autocorrelation function:
     method: autocorrelation-analysis
     by: b1852a99
   autoencoder:
@@ -14330,11 +15646,21 @@ names:
     method: marginal-effects
     variant: marginal odds ratio
     by: b1852a99
+  average monthly percent change:
+    method: joinpoint-regression
+    variant: average monthly percent change
+    by: b1852a99
   average nucleotide identity:
     method: average-nucleotide-identity
     by: b1852a99
   average silhouette width:
     method: silhouette-analysis
+    by: b1852a99
+  average symmetric surface distance:
+    method: average-symmetric-surface-distance
+    by: b1852a99
+  average treatment effect estimation:
+    method: ''
     by: b1852a99
   average variance extracted:
     method: average-variance-extracted
@@ -14405,6 +15731,9 @@ names:
   basis splines:
     method: b-spline-regression
     by: b1852a99
+  batch correction:
+    method: batch-effect-correction
+    by: b1852a99
   batch effect correction:
     method: batch-effect-correction
     by: b1852a99
@@ -14439,11 +15768,18 @@ names:
     method: colocalization-analysis
     variant: bayesian
     by: b1852a99
+  bayesian conditional autoregressive model:
+    method: conditional-autoregressive-model
+    variant: bayesian
+    by: b1852a99
   bayesian confidence propagation neural network:
     method: bayesian-confidence-propagation-neural-network
     by: b1852a99
   bayesian continuous monitoring:
     method: bayesian-continuous-monitoring
+    by: b1852a99
+  bayesian differential ranking:
+    method: birdman
     by: b1852a99
   bayesian estimation:
     method: bayesian-inference
@@ -14462,6 +15798,9 @@ names:
     method: bayesian-regression
     variant: hurdle model
     by: b1852a99
+  bayesian imputation:
+    method: bayesian-imputation
+    by: b1852a99
   bayesian independent samples t-test:
     method: bayesian-t-test
     variant: independent samples
@@ -14478,6 +15817,10 @@ names:
   bayesian linear mixed model:
     method: bayesian-hierarchical-model
     variant: linear mixed model
+    by: b1852a99
+  bayesian linear model:
+    method: bayesian-regression
+    variant: linear
     by: b1852a99
   bayesian linear regression:
     method: bayesian-regression
@@ -14507,6 +15850,10 @@ names:
     by: b1852a99
   bayesian multinomial logistic normal regression:
     method: bayesian-multinomial-logistic-normal-regression
+    by: b1852a99
+  bayesian negative binomial model:
+    method: bayesian-regression
+    variant: negative binomial
     by: b1852a99
   bayesian network:
     method: bayesian-network
@@ -14556,6 +15903,12 @@ names:
     method: bayesian-anova
     variant: repeated measures
     by: b1852a99
+  bayesian seroprevalence estimation:
+    method: bayesian-seroprevalence-estimation
+    by: b1852a99
+  bayesian skyline plot:
+    method: bayesian-skyline-plot
+    by: b1852a99
   bayesian source tracking:
     method: bayesian-source-tracking
     by: b1852a99
@@ -14578,6 +15931,10 @@ names:
     by: b1852a99
   bayesian weighted quantile sum regression:
     method: bayesian-weighted-quantile-sum-regression
+    by: b1852a99
+  bayesian weighted sums regression:
+    method: bayesian-weighted-quantile-sum-regression
+    variant: weighted sums
     by: b1852a99
   bch approach:
     method: bolck-croon-hagenaars-method
@@ -14604,6 +15961,10 @@ names:
     variant: benjamini-hochberg
     by: b1852a99
   benjamini-hochberg fdr:
+    method: false-discovery-rate-correction
+    variant: benjamini-hochberg
+    by: b1852a99
+  benjamini-hochberg fdr adjustment:
     method: false-discovery-rate-correction
     variant: benjamini-hochberg
     by: b1852a99
@@ -14643,6 +16004,9 @@ names:
   best-case/worst-case sensitivity analysis:
     method: best-worst-case-sensitivity-analysis
     by: b1852a99
+  best/worst-case imputation:
+    method: best-worst-case-sensitivity-analysis
+    by: b1852a99
   bestkeeper:
     method: bestkeeper
     by: b1852a99
@@ -14651,6 +16015,10 @@ names:
     by: b1852a99
   beta diversity:
     method: beta-diversity
+    by: b1852a99
+  beta diversity (bray-curtis):
+    method: beta-diversity
+    variant: bray-curtis dissimilarity
     by: b1852a99
   beta diversity analysis:
     method: beta-diversity
@@ -14665,6 +16033,9 @@ names:
   beta diversity dissimilarity metrics:
     method: beta-diversity
     by: b1852a99
+  beta diversity distance measures:
+    method: beta-diversity
+    by: b1852a99
   beta diversity indices:
     method: beta-diversity
     by: b1852a99
@@ -14676,6 +16047,9 @@ names:
     by: b1852a99
   beta regression:
     method: beta-regression
+    by: b1852a99
+  beta regression mixed model:
+    method: beta-regression-mixed-model
     by: b1852a99
   beta regression mixture model:
     method: beta-regression-mixture-model
@@ -14697,6 +16071,10 @@ names:
     by: b1852a99
   betadisper homogeneity of dispersion test:
     method: permdisp
+    by: b1852a99
+  between-within model:
+    method: linear-mixed-model
+    variant: between-within decomposition
     by: b1852a99
   bhattacharya method:
     method: bhattacharya-method
@@ -14729,6 +16107,13 @@ names:
   biometric twin model (ace):
     method: ace-twin-model
     by: b1852a99
+  bipartite matching:
+    method: covariate-matching
+    variant: optimal bipartite matching
+    by: b1852a99
+  birdman differential abundance:
+    method: birdman
+    by: b1852a99
   biserial correlation:
     method: biserial-correlation
     by: b1852a99
@@ -14738,8 +16123,14 @@ names:
   bland-altman analysis:
     method: bland-altman-analysis
     by: b1852a99
+  bland-altman limits of agreement:
+    method: bland-altman-analysis
+    by: b1852a99
   bland-altman plot:
     method: bland-altman-analysis
+    by: b1852a99
+  blinder-oaxaca decomposition:
+    method: oaxaca-blinder-decomposition
     by: b1852a99
   bolck-croon-hagenaars / ml three-step approach:
     method: bolck-croon-hagenaars-method
@@ -14836,6 +16227,10 @@ names:
   bootstrap resampling:
     method: bootstrap
     by: b1852a99
+  bootstrap shrinkage:
+    method: bootstrap
+    variant: shrinkage factor estimation
+    by: b1852a99
   bootstrap test:
     method: bootstrap
     variant: hypothesis test
@@ -14885,6 +16280,9 @@ names:
     method: box-tidwell-test
     by: b1852a99
   box's m test:
+    method: box-m-test
+    by: b1852a99
+  box's test:
     method: box-m-test
     by: b1852a99
   brant test:
@@ -14968,6 +16366,9 @@ names:
   calibration plot:
     method: calibration-curve
     by: b1852a99
+  calibration plot and slope:
+    method: calibration-curve
+    by: b1852a99
   calibration slope:
     method: calibration-slope
     by: b1852a99
@@ -14995,6 +16396,9 @@ names:
     by: b1852a99
   canonical correlation analysis:
     method: canonical-correlation-analysis
+    by: b1852a99
+  canonical correspondence analysis:
+    method: canonical-correspondence-analysis
     by: b1852a99
   carry-over effect test:
     method: carry-over-effect-test
@@ -15034,6 +16438,9 @@ names:
   causal mediation analysis:
     method: mediation-analysis
     variant: causal (counterfactual)
+    by: b1852a99
+  causal probabilistic network:
+    method: bayesian-network
     by: b1852a99
   causal tree:
     method: causal-tree
@@ -15075,6 +16482,10 @@ names:
   cell-type deconvolution:
     method: cell-type-deconvolution
     by: b1852a99
+  cell-type deconvolution (cibersortx):
+    method: cibersort
+    variant: cibersortx
+    by: b1852a99
   cell-type deconvolution (music):
     method: cell-type-deconvolution
     variant: music
@@ -15108,6 +16519,9 @@ names:
   chain mediation analysis:
     method: mediation-analysis
     variant: serial (chain) mediation
+    by: b1852a99
+  change point detection:
+    method: changepoint-analysis
     by: b1852a99
   change-in-estimate approach:
     method: change-in-estimate-method
@@ -15167,6 +16581,12 @@ names:
     method: cibersort
     variant: cibersortx
     by: b1852a99
+  circular correlation:
+    method: circular-correlation
+    by: b1852a99
+  circular statistics:
+    method: circular-statistics
+    by: b1852a99
   citation burst detection:
     method: burst-detection
     variant: citation
@@ -15217,8 +16637,15 @@ names:
     method: bootstrap
     variant: cluster
     by: b1852a99
+  cluster heat map:
+    method: hierarchical-clustering
+    variant: heat map display
+    by: b1852a99
   cluster-based model:
     method: cluster-analysis
+    by: b1852a99
+  cluster-based multiple comparison correction:
+    method: cluster-wise-fwe-correction
     by: b1852a99
   cluster-based permutation test:
     method: cluster-based-permutation-test
@@ -15302,6 +16729,9 @@ names:
   cohen's d effect size:
     method: cohens-d
     by: b1852a99
+  cohen's f2 effect size:
+    method: cohens-f2
+    by: b1852a99
   cohen's h:
     method: cohens-h
     by: b1852a99
@@ -15335,6 +16765,9 @@ names:
   combinatorial biomarker panel analysis (combiroc):
     method: combiroc
     by: b1852a99
+  combiroc:
+    method: combiroc
+    by: b1852a99
   common method bias test:
     method: harmans-single-factor-test
     by: b1852a99
@@ -15347,12 +16780,23 @@ names:
   comparative risk assessment (population attributable fraction):
     method: population-attributable-fraction
     by: b1852a99
+  comparison of aucs:
+    method: roc-curve-analysis
+    variant: comparison of aucs
+    by: b1852a99
   comparison of correlations:
     method: comparison-of-correlations
+    by: b1852a99
+  comparison of proportions:
+    method: z-test
+    variant: two proportions
     by: b1852a99
   compartmental network model:
     method: compartmental-epidemic-model
     variant: network-based
+    by: b1852a99
+  compartmental transmission model:
+    method: compartmental-epidemic-model
     by: b1852a99
   competing risk analysis:
     method: competing-risks-analysis
@@ -15411,6 +16855,12 @@ names:
     method: compositional-data-analysis
     variant: regression
     by: b1852a99
+  compositional tensor factorisation:
+    method: compositional-tensor-factorization
+    by: b1852a99
+  compositional tensor factorization:
+    method: compositional-tensor-factorization
+    by: b1852a99
   compound annual growth rate:
     method: compound-annual-growth-rate
     by: b1852a99
@@ -15457,12 +16907,18 @@ names:
   conditional quantile regression:
     method: quantile-regression
     by: b1852a99
+  conditional random forest:
+    method: conditional-random-forest
+    by: b1852a99
   conditional survival analysis:
     method: kaplan-meier-estimator
     variant: conditional survival
     by: b1852a99
   confidence interval comparison:
     method: ''
+    by: b1852a99
+  confidence interval estimation for proportion:
+    method: proportion-confidence-interval
     by: b1852a99
   confidence interval for proportion:
     method: proportion-confidence-interval
@@ -15474,12 +16930,19 @@ names:
   confidence interval for proportions:
     method: proportion-confidence-interval
     by: b1852a99
+  confidence interval overlap comparison:
+    method: confidence-interval-overlap-comparison
+    by: b1852a99
   confirmatory factor analysis:
     method: confirmatory-factor-analysis
     by: b1852a99
   confirmatory network analysis:
     method: network-analysis
     variant: confirmatory
+    by: b1852a99
+  confusion matrix:
+    method: classification-performance-metrics
+    variant: confusion matrix
     by: b1852a99
   conjoint analysis:
     method: conjoint-analysis
@@ -15529,6 +16992,9 @@ names:
   contingency table analysis:
     method: cross-tabulation
     by: b1852a99
+  contingency table test:
+    method: chi-square-test
+    by: b1852a99
   contingent valuation:
     method: ''
     by: b1852a99
@@ -15573,6 +17039,9 @@ names:
   cook's distance:
     method: cooks-distance
     by: b1852a99
+  copula:
+    method: copula-model
+    by: b1852a99
   corrected item-total correlation:
     method: item-total-correlation
     variant: corrected
@@ -15603,7 +17072,13 @@ names:
   cosine similarity:
     method: cosine-similarity
     by: b1852a99
+  cosinor analysis:
+    method: cosinor-model
+    by: b1852a99
   cosinor model:
+    method: cosinor-model
+    by: b1852a99
+  cosinor regression:
     method: cosinor-model
     by: b1852a99
   cost-avoidance analysis:
@@ -15650,6 +17125,10 @@ names:
   covariate-specific roc analysis:
     method: roc-regression
     by: b1852a99
+  cox and snell r-squared:
+    method: pseudo-r-squared
+    variant: cox-snell
+    by: b1852a99
   cox elastic net regression:
     method: elastic-net-regression
     variant: cox model
@@ -15691,6 +17170,10 @@ names:
   cross-classification:
     method: cross-tabulation
     by: b1852a99
+  cross-classified multilevel model:
+    method: generalized-linear-mixed-model
+    variant: cross-classified random effects
+    by: b1852a99
   cross-correlation analysis:
     method: cross-correlation-function
     by: b1852a99
@@ -15718,6 +17201,10 @@ names:
     by: b1852a99
   ctgan data augmentation:
     method: ctgan
+    by: b1852a99
+  cubic smoothing spline:
+    method: penalized-splines
+    variant: cubic smoothing spline
     by: b1852a99
   cubic spline interpolation:
     method: cubic-spline-interpolation
@@ -15837,6 +17324,10 @@ names:
   decision tree classification:
     method: decision-tree
     variant: classification
+    by: b1852a99
+  decision tree regression:
+    method: decision-tree
+    variant: regression tree
     by: b1852a99
   decision trees:
     method: decision-tree
@@ -16043,6 +17534,9 @@ names:
   differential gene expression analysis (limma):
     method: limma
     by: b1852a99
+  differential item functioning:
+    method: differential-item-functioning
+    by: b1852a99
   differential item functioning analysis:
     method: differential-item-functioning
     by: b1852a99
@@ -16053,6 +17547,10 @@ names:
     method: differential-expression-analysis
     variant: protein
     by: b1852a99
+  differential ranking:
+    method: differential-abundance-analysis
+    variant: differential ranking
+    by: b1852a99
   differential transcript usage analysis (drimseq):
     method: differential-transcript-usage-analysis
     by: b1852a99
@@ -16061,6 +17559,9 @@ names:
     by: b1852a99
   differentially methylated region analysis:
     method: differentially-methylated-region-analysis
+    by: b1852a99
+  diggle and chetwynd test:
+    method: diggle-chetwynd-test
     by: b1852a99
   dipole:
     method: ''
@@ -16105,8 +17606,17 @@ names:
   dirichlet multinomial mixtures:
     method: dirichlet-multinomial-mixtures
     by: b1852a99
+  dirichlet multinomial mixtures clustering:
+    method: dirichlet-multinomial-mixtures
+    by: b1852a99
+  dirichlet regression:
+    method: dirichlet-regression
+    by: b1852a99
   dirichlet-multinomial test (hmp):
     method: dirichlet-multinomial-test
+    by: b1852a99
+  discrete event simulation:
+    method: discrete-event-simulation
     by: b1852a99
   discrete time hazard model:
     method: discrete-time-survival-model
@@ -16127,6 +17637,9 @@ names:
     by: b1852a99
   discrete-time subdistribution hazard model:
     method: discrete-time-subdistribution-hazard-model
+    by: b1852a99
+  discrete-time survival analysis:
+    method: discrete-time-survival-model
     by: b1852a99
   discriminant analysis:
     method: linear-discriminant-analysis
@@ -16164,6 +17677,9 @@ names:
     by: b1852a99
   diversity indices:
     method: alpha-diversity
+    by: b1852a99
+  dn/ds analysis:
+    method: dn-ds-analysis
     by: b1852a99
   domain generalization methods:
     method: domain-generalization
@@ -16274,6 +17790,9 @@ names:
   edger differential abundance:
     method: edger
     by: b1852a99
+  edger differential abundance analysis:
+    method: edger
+    by: b1852a99
   edger differential expression analysis:
     method: edger
     by: b1852a99
@@ -16308,9 +17827,16 @@ names:
   effective reproduction number estimation (epiestim):
     method: effective-reproduction-number-estimation
     by: b1852a99
+  egger's test:
+    method: eggers-test
+    by: b1852a99
   egocentric social network analysis:
     method: social-network-analysis
     variant: egocentric
+    by: b1852a99
+  eigenvector centrality:
+    method: graph-theory-analysis
+    variant: eigenvector centrality
     by: b1852a99
   elastic net:
     method: elastic-net-regression
@@ -16339,6 +17865,10 @@ names:
   em algorithm imputation:
     method: em-imputation
     by: b1852a99
+  empirical bayesian kriging:
+    method: kriging
+    variant: empirical bayesian
+    by: b1852a99
   empirical calibration:
     method: empirical-calibration
     by: b1852a99
@@ -16352,8 +17882,14 @@ names:
   energy adjustment residual method:
     method: residual-method-energy-adjustment
     by: b1852a99
+  energy-adjustment residual method:
+    method: residual-method-energy-adjustment
+    by: b1852a99
   enrichment analysis:
     method: pathway-enrichment-analysis
+    by: b1852a99
+  ensemble adjustment kalman filter:
+    method: ensemble-adjustment-kalman-filter
     by: b1852a99
   ensemble classifier:
     method: ensemble-classifier
@@ -16385,6 +17921,9 @@ names:
     by: b1852a99
   epigenome-wide association study:
     method: epigenome-wide-association-study
+    by: b1852a99
+  eqtl model:
+    method: expression-qtl-analysis
     by: b1852a99
   equality-of-medians test:
     method: median-test
@@ -16427,6 +17966,9 @@ names:
     method: difference-in-differences
     variant: event study
     by: b1852a99
+  event-based modeling:
+    method: event-based-model
+    by: b1852a99
   exact binomial confidence interval:
     method: clopper-pearson-confidence-interval
     by: b1852a99
@@ -16459,6 +18001,9 @@ names:
     by: b1852a99
   exact test:
     method: fishers-exact-test
+    by: b1852a99
+  excess absolute risk:
+    method: excess-absolute-risk
     by: b1852a99
   excess fraction estimation:
     method: population-attributable-fraction
@@ -16518,6 +18063,10 @@ names:
   f test:
     method: f-test
     by: b1852a99
+  f test for equality of variances:
+    method: f-test
+    variant: equality of variances
+    by: b1852a99
   f-test:
     method: f-test
     by: b1852a99
@@ -16542,6 +18091,9 @@ names:
   factorial mendelian randomization:
     method: mendelian-randomization
     variant: factorial
+    by: b1852a99
+  fairchild test:
+    method: fairchild-test
     by: b1852a99
   fairness metrics ratios:
     method: fairness-metrics
@@ -16659,6 +18211,10 @@ names:
   fisher-jenks natural breaks:
     method: jenks-natural-breaks
     by: b1852a99
+  fisher-pitman permutation test:
+    method: permutation-test
+    variant: fisher-pitman
+    by: b1852a99
   fisher's exact test:
     method: fishers-exact-test
     by: b1852a99
@@ -16677,6 +18233,9 @@ names:
   fisher's z test for independent correlations:
     method: fishers-z-test
     variant: independent correlations
+    by: b1852a99
+  fisher's z-test:
+    method: fishers-z-test
     by: b1852a99
   fisher's z-transformation:
     method: fisher-z-transformation
@@ -16823,6 +18382,12 @@ names:
     method: pathway-enrichment-analysis
     variant: functional class scoring
     by: b1852a99
+  functional connectivity analysis:
+    method: functional-connectivity-analysis
+    by: b1852a99
+  functional data analysis:
+    method: functional-data-analysis
+    by: b1852a99
   functional enrichment analysis:
     method: pathway-enrichment-analysis
     by: b1852a99
@@ -16905,6 +18470,9 @@ names:
     method: class-balancing
     variant: gaussian mixture oversampling
     by: b1852a99
+  gaussian mixture modeling:
+    method: gaussian-mixture-model
+    by: b1852a99
   gaussian naive bayes:
     method: naive-bayes
     variant: gaussian
@@ -16929,8 +18497,15 @@ names:
   gene enrichment analysis:
     method: pathway-enrichment-analysis
     by: b1852a99
+  gene functional enrichment analysis:
+    method: pathway-enrichment-analysis
+    by: b1852a99
   gene module discovery:
     method: gene-module-discovery
+    by: b1852a99
+  gene network analysis:
+    method: network-analysis
+    variant: gene network
     by: b1852a99
   gene ontology enrichment analysis:
     method: pathway-enrichment-analysis
@@ -16942,6 +18517,9 @@ names:
     by: b1852a99
   gene regulatory network inference:
     method: gene-regulatory-network-inference
+    by: b1852a99
+  gene set analysis:
+    method: gene-set-enrichment-analysis
     by: b1852a99
   gene set enrichment analysis:
     method: gene-set-enrichment-analysis
@@ -16983,11 +18561,21 @@ names:
   generalised estimating equations:
     method: generalized-estimating-equations
     by: b1852a99
+  generalised least squares:
+    method: marginal-model-repeated-measures
+    by: b1852a99
   generalised linear mixed model:
     method: generalized-linear-mixed-model
     by: b1852a99
   generalised linear model:
     method: generalized-linear-model
+    by: b1852a99
+  generalised non-linear model:
+    method: generalized-nonlinear-model
+    by: b1852a99
+  generalised structural equation modelling:
+    method: structural-equation-modeling
+    variant: generalized
     by: b1852a99
   generalized additive mixed model:
     method: generalized-additive-mixed-model
@@ -17004,6 +18592,9 @@ names:
   generalized cross-validation:
     method: cross-validation
     variant: generalized
+    by: b1852a99
+  generalized estimating equation:
+    method: generalized-estimating-equations
     by: b1852a99
   generalized estimating equations:
     method: generalized-estimating-equations
@@ -17031,6 +18622,9 @@ names:
   generalized linear regression:
     method: generalized-linear-model
     by: b1852a99
+  generalized lotka-volterra model:
+    method: generalized-lotka-volterra-model
+    by: b1852a99
   generalized multifactor dimensionality reduction:
     method: multifactor-dimensionality-reduction
     variant: generalized
@@ -17043,6 +18637,10 @@ names:
     by: b1852a99
   generalized propensity score:
     method: generalized-propensity-score
+    by: b1852a99
+  generalized propensity score weighting:
+    method: generalized-propensity-score
+    variant: weighting
     by: b1852a99
   generalized structural equation model:
     method: structural-equation-modeling
@@ -17129,6 +18727,9 @@ names:
     method: morans-i
     variant: global
     by: b1852a99
+  glucotyping:
+    method: glucotyping
+    by: b1852a99
   gnova:
     method: gnova
     by: b1852a99
@@ -17167,6 +18768,9 @@ names:
     method: gradient-boosting
     variant: xgboost
     by: b1852a99
+  gradient boosting decision tree:
+    method: gradient-boosting
+    by: b1852a99
   gradient boosting machine:
     method: gradient-boosting
     by: b1852a99
@@ -17189,7 +18793,15 @@ names:
   graph-theoretical analysis:
     method: graph-theory-analysis
     by: b1852a99
+  graphical gaussian model:
+    method: network-analysis
+    variant: gaussian graphical model
+    by: b1852a99
   graphical lasso:
+    method: network-analysis
+    variant: graphical lasso
+    by: b1852a99
+  graphical lasso network analysis:
     method: network-analysis
     variant: graphical lasso
     by: b1852a99
@@ -17399,6 +19011,9 @@ names:
     method: concordance-index
     variant: harrell's
     by: b1852a99
+  hausdorff distance:
+    method: hausdorff-distance
+    by: b1852a99
   hausman test:
     method: hausman-test
     by: b1852a99
@@ -17541,6 +19156,9 @@ names:
   hosmer-lemeshow test:
     method: hosmer-lemeshow-test
     by: b1852a99
+  hot deck imputation:
+    method: hot-deck-imputation
+    by: b1852a99
   hot spot analysis:
     method: getis-ord-gi-star
     by: b1852a99
@@ -17569,9 +19187,17 @@ names:
     method: cell-type-deconvolution
     variant: houseman reference-based
     by: b1852a99
+  houseman cell-type deconvolution:
+    method: cell-type-deconvolution
+    variant: houseman reference-based
+    by: b1852a99
   hurdle model:
     method: two-part-model
     variant: hurdle
+    by: b1852a99
+  hurdle poisson regression:
+    method: two-part-model
+    variant: hurdle poisson
     by: b1852a99
   hutcheson t-test:
     method: hutcheson-t-test
@@ -17628,6 +19254,9 @@ names:
     by: b1852a99
   incidence rate calculation:
     method: incidence-rate
+    by: b1852a99
+  incidence rate comparison:
+    method: incidence-rate-ratio
     by: b1852a99
   incidence rate difference:
     method: incidence-rate-difference
@@ -17798,6 +19427,10 @@ names:
     method: maximum-likelihood-estimation
     variant: interval-censored
     by: b1852a99
+  interval-censored proportional hazards regression:
+    method: interval-censored-semiparametric-regression
+    variant: proportional hazards
+    by: b1852a99
   interval-censored semi-parametric regression:
     method: interval-censored-semiparametric-regression
     by: b1852a99
@@ -17860,6 +19493,10 @@ names:
   inverse rank transformation:
     method: rank-based-inverse-normal-transformation
     by: b1852a99
+  inverse simpson index:
+    method: alpha-diversity
+    variant: inverse simpson
+    by: b1852a99
   inverse variance weighted:
     method: inverse-variance-weighted-mendelian-randomization
     by: b1852a99
@@ -17897,6 +19534,10 @@ names:
     by: b1852a99
   inverse-normal transformation:
     method: rank-based-inverse-normal-transformation
+    by: b1852a99
+  inverse-variance weighted meta-analysis:
+    method: meta-analysis
+    variant: inverse-variance weighted
     by: b1852a99
   inverse-variance weighted method:
     method: inverse-variance-weighted-mendelian-randomization
@@ -17946,6 +19587,9 @@ names:
     method: imputation
     variant: iterative
     by: b1852a99
+  iterative proportional fitting:
+    method: raking
+    by: b1852a99
   jaccard dissimilarity:
     method: jaccard-index
     variant: dissimilarity
@@ -17959,14 +19603,26 @@ names:
   jackknife resampling:
     method: jackknife
     by: b1852a99
+  jackknife variance estimation:
+    method: jackknife
+    variant: variance estimation
+    by: b1852a99
   james f test:
     method: james-test
+    by: b1852a99
+  jeffreys confidence interval:
+    method: proportion-confidence-interval
+    variant: jeffreys
     by: b1852a99
   jensen-shannon divergence:
     method: jensen-shannon-divergence
     by: b1852a99
   johnson-neyman technique:
     method: johnson-neyman-technique
+    by: b1852a99
+  joinpoint jump model:
+    method: joinpoint-regression
+    variant: jump model
     by: b1852a99
   joinpoint regression:
     method: joinpoint-regression
@@ -18148,6 +19804,9 @@ names:
   kinship coefficient estimation:
     method: kinship-coefficient-estimation
     by: b1852a99
+  kitagawa-blinder-oaxaca decomposition:
+    method: oaxaca-blinder-decomposition
+    by: b1852a99
   klemera-doubal method:
     method: klemera-doubal-method
     by: b1852a99
@@ -18263,6 +19922,13 @@ names:
   latent class mixed model:
     method: latent-class-mixed-model
     by: b1852a99
+  latent class mixture model:
+    method: latent-class-mixed-model
+    by: b1852a99
+  latent class regression:
+    method: latent-class-analysis
+    variant: with covariates
+    by: b1852a99
   latent class trajectory model:
     method: latent-class-mixed-model
     by: b1852a99
@@ -18288,6 +19954,10 @@ names:
   latent growth curve modelling:
     method: latent-growth-curve-model
     by: b1852a99
+  latent growth mixture model:
+    method: latent-class-mixed-model
+    variant: growth mixture
+    by: b1852a99
   latent growth mixture modeling:
     method: latent-class-mixed-model
     by: b1852a99
@@ -18309,6 +19979,12 @@ names:
     by: b1852a99
   least significant difference post hoc test:
     method: fishers-lsd-test
+    by: b1852a99
+  least significant difference test:
+    method: fishers-lsd-test
+    by: b1852a99
+  least squares fitting:
+    method: linear-regression
     by: b1852a99
   least squares means:
     method: estimated-marginal-means
@@ -18374,6 +20050,13 @@ names:
   life table method:
     method: life-table-method
     by: b1852a99
+  life-table method:
+    method: life-table-method
+    by: b1852a99
+  lifetime excess absolute risk calculation:
+    method: excess-absolute-risk
+    variant: lifetime
+    by: b1852a99
   light gradient boosting machine:
     method: gradient-boosting
     variant: lightgbm
@@ -18406,6 +20089,10 @@ names:
   lilliefors test:
     method: lilliefors-test
     by: b1852a99
+  limit-of-detection substitution:
+    method: limit-of-detection-imputation
+    variant: substitution
+    by: b1852a99
   limited-duration prevalence estimation:
     method: limited-duration-prevalence
     by: b1852a99
@@ -18421,6 +20108,9 @@ names:
   limma empirical bayes moderated test:
     method: limma
     variant: empirical bayes moderated
+    by: b1852a99
+  limma moderated linear models:
+    method: limma
     by: b1852a99
   limma moderated t-test:
     method: limma
@@ -18449,6 +20139,10 @@ names:
   linear bias correction:
     method: linear-bias-correction
     by: b1852a99
+  linear contrast test:
+    method: contrast-analysis
+    variant: linear
+    by: b1852a99
   linear contrasts:
     method: contrast-analysis
     variant: linear
@@ -18468,6 +20162,10 @@ names:
     by: b1852a99
   linear extrapolation:
     method: linear-extrapolation
+    by: b1852a99
+  linear growth model:
+    method: linear-mixed-model
+    variant: linear growth
     by: b1852a99
   linear hypothesis test:
     method: wald-test
@@ -18490,6 +20188,9 @@ names:
     method: linear-regression
     by: b1852a99
   linear model differential abundance analysis:
+    method: limma
+    by: b1852a99
+  linear model with empirical bayes moderation (limma):
     method: limma
     by: b1852a99
   linear probability model:
@@ -18561,6 +20262,9 @@ names:
     method: cutpoint-analysis
     variant: liu index
     by: b1852a99
+  ljung-box test:
+    method: ljung-box-test
+    by: b1852a99
   lms method:
     method: lms-method
     by: b1852a99
@@ -18598,6 +20302,9 @@ names:
   loess smoothing:
     method: loess
     by: b1852a99
+  log binomial regression:
+    method: log-binomial-regression
+    by: b1852a99
   log fold change analysis:
     method: fold-change-analysis
     variant: log
@@ -18614,6 +20321,9 @@ names:
     by: b1852a99
   log-likelihood ratio test:
     method: likelihood-ratio-test
+    by: b1852a99
+  log-linear model:
+    method: log-linear-model
     by: b1852a99
   log-linear regression:
     method: poisson-regression
@@ -18657,12 +20367,20 @@ names:
     method: parametric-survival-regression
     variant: lognormal
     by: b1852a99
+  long short-term memory neural network:
+    method: recurrent-neural-network
+    variant: long short-term memory
+    by: b1852a99
   longitudinal data analysis:
     method: ''
     by: b1852a99
   longitudinal growth curve mediation analysis:
     method: mediation-analysis
     variant: latent growth curve
+    by: b1852a99
+  longitudinal measurement invariance testing:
+    method: measurement-invariance-testing
+    variant: longitudinal
     by: b1852a99
   longitudinal mediation analysis:
     method: mediation-analysis
@@ -18711,6 +20429,9 @@ names:
     method: competing-risks-analysis
     variant: lunn-mcneil augmented data
     by: b1852a99
+  lyman kutcher burman model:
+    method: lkb-ntcp-model
+    by: b1852a99
   lyman-kutcher-burman ntcp model:
     method: lkb-ntcp-model
     by: b1852a99
@@ -18727,6 +20448,9 @@ names:
     method: maaslin2
     by: b1852a99
   maaslin2 linear models:
+    method: maaslin2
+    by: b1852a99
+  maaslin2 multivariate linear models:
     method: maaslin2
     by: b1852a99
   maaslin3:
@@ -18766,6 +20490,9 @@ names:
   machine learning model:
     method: machine-learning-prediction
     by: b1852a99
+  machine learning models:
+    method: machine-learning-prediction
+    by: b1852a99
   machine learning prediction:
     method: machine-learning-prediction
     by: b1852a99
@@ -18784,6 +20511,10 @@ names:
   mahalanobis distance matching:
     method: covariate-matching
     variant: mahalanobis distance
+    by: b1852a99
+  mahalanobis distance outlier detection:
+    method: mahalanobis-distance
+    variant: outlier detection
     by: b1852a99
   mancova:
     method: manova
@@ -18843,6 +20574,9 @@ names:
   mantel-haenszel test:
     method: cochran-mantel-haenszel-test
     by: b1852a99
+  mantel-haenszel trend test:
+    method: linear-by-linear-association-test
+    by: b1852a99
   mardia test:
     method: mardias-test
     by: b1852a99
@@ -18885,6 +20619,10 @@ names:
   marginal probability estimation:
     method: marginal-effects
     variant: marginal probabilities
+    by: b1852a99
+  marginal r-squared:
+    method: r-squared
+    variant: marginal (mixed model)
     by: b1852a99
   marginal standardisation:
     method: g-computation
@@ -18944,11 +20682,21 @@ names:
   matthews correlation coefficient:
     method: matthews-correlation-coefficient
     by: b1852a99
+  mauchly's sphericity test:
+    method: mauchlys-test
+    by: b1852a99
   mauchly's test:
     method: mauchlys-test
     by: b1852a99
   mauchly's test of sphericity:
     method: mauchlys-test
+    by: b1852a99
+  maximal information coefficient:
+    method: maximal-information-coefficient
+    by: b1852a99
+  maximally selected log-rank statistic:
+    method: maximally-selected-rank-statistics
+    variant: log-rank
     by: b1852a99
   maximally selected rank statistic:
     method: maximally-selected-rank-statistics
@@ -18997,6 +20745,13 @@ names:
     method: phylogenetic-analysis
     variant: maximum likelihood
     by: b1852a99
+  maximum-likelihood phylogenetic tree:
+    method: phylogenetic-analysis
+    variant: maximum likelihood
+    by: b1852a99
+  mcar test:
+    method: littles-mcar-test
+    by: b1852a99
   mcdonald's omega:
     method: mcdonalds-omega
     by: b1852a99
@@ -19009,6 +20764,10 @@ names:
     by: b1852a99
   mcnemar-bowker test:
     method: bowkers-test
+    by: b1852a99
+  mcnemar's exact test:
+    method: mcnemars-test
+    variant: exact
     by: b1852a99
   mcnemar's test:
     method: mcnemars-test
@@ -19134,8 +20893,14 @@ names:
   metastats:
     method: whites-nonparametric-t-test
     by: b1852a99
+  meteorological normalization:
+    method: meteorological-normalization
+    by: b1852a99
   methylation quantitative trait loci analysis:
     method: methylation-qtl-analysis
+    by: b1852a99
+  micro-costing:
+    method: ''
     by: b1852a99
   microbial network analysis:
     method: network-analysis
@@ -19143,6 +20908,10 @@ names:
     by: b1852a99
   microsimulation model:
     method: microsimulation-model
+    by: b1852a99
+  mid-p mcnemar test:
+    method: mcnemars-test
+    variant: mid-p
     by: b1852a99
   mid-p test for proportions:
     method: mid-p-exact-test
@@ -19196,6 +20965,16 @@ names:
   missing values imputation:
     method: imputation
     by: b1852a99
+  missing-indicator method:
+    method: missing-indicator-method
+    by: b1852a99
+  mitre:
+    method: mitre
+    by: b1852a99
+  mixed analysis of variance:
+    method: anova
+    variant: mixed design
+    by: b1852a99
   mixed ancova:
     method: anova
     variant: mixed-design ancova
@@ -19220,6 +20999,10 @@ names:
     method: network-analysis
     variant: mixed graphical model
     by: b1852a99
+  mixed logistic regression:
+    method: generalized-linear-mixed-model
+    variant: logistic
+    by: b1852a99
   mixed logit model:
     method: mixed-logit-model
     by: b1852a99
@@ -19242,12 +21025,23 @@ names:
     method: anova
     variant: mixed design
     by: b1852a99
+  mixed-effects analysis of variance:
+    method: anova
+    variant: mixed-effects
+    by: b1852a99
   mixed-effects logistic regression:
     method: generalized-linear-mixed-model
     variant: logistic
     by: b1852a99
   mixed-effects model:
     method: linear-mixed-model
+    by: b1852a99
+  mixed-effects ordered logistic regression:
+    method: ordinal-mixed-model
+    by: b1852a99
+  mixed-model anova:
+    method: anova
+    variant: mixed-model
     by: b1852a99
   mixer:
     method: mixer
@@ -19276,8 +21070,15 @@ names:
   mode-based estimation:
     method: weighted-mode-estimator
     by: b1852a99
+  mode-based estimator:
+    method: weighted-mode-estimator
+    by: b1852a99
   mode-based mr:
     method: weighted-mode-estimator
+    by: b1852a99
+  mode/median imputation:
+    method: single-imputation
+    variant: mode/median
     by: b1852a99
   model recalibration:
     method: logistic-recalibration
@@ -19288,6 +21089,9 @@ names:
   model-based multifactor dimensionality reduction:
     method: multifactor-dimensionality-reduction
     variant: model-based
+    by: b1852a99
+  moderated linear models (limma):
+    method: limma
     by: b1852a99
   moderated mediation:
     method: mediation-analysis
@@ -19312,6 +21116,10 @@ names:
   moderation analysis:
     method: interaction-analysis
     by: b1852a99
+  modified binomial regression:
+    method: log-binomial-regression
+    variant: modified
+    by: b1852a99
   modified kappa statistic:
     method: cohens-kappa
     variant: modified
@@ -19323,6 +21131,9 @@ names:
   modularity analysis:
     method: graph-theory-analysis
     variant: modularity
+    by: b1852a99
+  modularity maximization community detection:
+    method: modularity-community-detection
     by: b1852a99
   modularity-based clustering:
     method: modularity-community-detection
@@ -19399,6 +21210,9 @@ names:
   motif enrichment analysis:
     method: motif-enrichment-analysis
     by: b1852a99
+  moving average:
+    method: moving-average
+    by: b1852a99
   moving average exposure:
     method: moving-average
     variant: exposure averaging
@@ -19446,6 +21260,14 @@ names:
     by: b1852a99
   multi-item gamma poisson shrinker:
     method: multi-item-gamma-poisson-shrinker
+    by: b1852a99
+  multi-layer perceptron:
+    method: neural-network
+    variant: multi-layer perceptron
+    by: b1852a99
+  multi-model ensemble:
+    method: ensemble-classifier
+    variant: multi-model
     by: b1852a99
   multi-omics clustering:
     method: cluster-analysis
@@ -19522,9 +21344,16 @@ names:
   multilevel regression:
     method: linear-mixed-model
     by: b1852a99
+  multilevel regression model:
+    method: linear-mixed-model
+    by: b1852a99
   multilevel serial mediation analysis:
     method: mediation-analysis
     variant: multilevel serial
+    by: b1852a99
+  multilevel structural equation modelling:
+    method: structural-equation-modeling
+    variant: multilevel
     by: b1852a99
   multinomial confidence intervals:
     method: multinomial-confidence-intervals
@@ -19574,6 +21403,10 @@ names:
   multiple imputation by chained equations:
     method: multiple-imputation
     variant: chained equations
+    by: b1852a99
+  multiple informant model:
+    method: generalized-estimating-equations
+    variant: multiple informant
     by: b1852a99
   multiple instance learning:
     method: multiple-instance-learning
@@ -19632,6 +21465,9 @@ names:
   multistate model:
     method: multistate-model
     by: b1852a99
+  multistate survival model:
+    method: multistate-model
+    by: b1852a99
   multivariable analysis:
     method: ''
     by: b1852a99
@@ -19643,6 +21479,10 @@ names:
     by: b1852a99
   multivariable logistic regression:
     method: logistic-regression
+    by: b1852a99
+  multivariable mendelian randomisation:
+    method: mendelian-randomization
+    variant: multivariable
     by: b1852a99
   multivariable mendelian randomization:
     method: mendelian-randomization
@@ -19705,6 +21545,9 @@ names:
   multiverse analysis:
     method: multiverse-analysis
     by: b1852a99
+  multivoxel pattern analysis:
+    method: multivoxel-pattern-analysis
+    by: b1852a99
   mutual information:
     method: mutual-information
     by: b1852a99
@@ -19751,6 +21594,9 @@ names:
   national cancer institute usual intake method:
     method: nci-usual-intake-method
     by: b1852a99
+  natural breaks classification:
+    method: jenks-natural-breaks
+    by: b1852a99
   natural cubic splines:
     method: restricted-cubic-splines
     by: b1852a99
@@ -19760,12 +21606,22 @@ names:
   natural splines:
     method: restricted-cubic-splines
     by: b1852a99
+  nearest centroid classification:
+    method: nearest-centroid-classification
+    by: b1852a99
+  nearest neighbor imputation:
+    method: knn-imputation
+    by: b1852a99
   nearest neighbor matching:
     method: propensity-score-matching
     variant: nearest neighbor
     by: b1852a99
   nearest neighbour matching:
     method: covariate-matching
+    by: b1852a99
+  nearest shrunken centroids:
+    method: nearest-centroid-classification
+    variant: shrunken centroids
     by: b1852a99
   nearest-neighbor matching:
     method: propensity-score-matching
@@ -19789,6 +21645,9 @@ names:
     method: negative-binomial-regression
     by: b1852a99
   negative control outcome analysis:
+    method: negative-control-outcome-analysis
+    by: b1852a99
+  negative control outcomes:
     method: negative-control-outcome-analysis
     by: b1852a99
   negative log-binomial regression:
@@ -19816,6 +21675,10 @@ names:
     method: linear-mixed-model
     variant: nested random effects
     by: b1852a99
+  nested t-test:
+    method: linear-mixed-model
+    variant: nested t-test
+    by: b1852a99
   net reclassification improvement:
     method: net-reclassification-improvement
     by: b1852a99
@@ -19828,12 +21691,19 @@ names:
   netmoss:
     method: netmoss
     by: b1852a99
+  netshift:
+    method: netshift
+    by: b1852a99
   network analysis:
     method: network-analysis
     by: b1852a99
   network centrality analysis:
     method: graph-theory-analysis
     variant: centrality
+    by: b1852a99
+  network centrality analysis (atria):
+    method: graph-theory-analysis
+    variant: atria centrality
     by: b1852a99
   network comparison test:
     method: network-comparison-test
@@ -19900,6 +21770,9 @@ names:
   non-inferiority analysis:
     method: non-inferiority-test
     by: b1852a99
+  non-inferiority margin approach:
+    method: non-inferiority-test
+    by: b1852a99
   non-inferiority test:
     method: non-inferiority-test
     by: b1852a99
@@ -19914,6 +21787,9 @@ names:
     by: b1852a99
   non-metric multidimensional scaling:
     method: non-metric-multidimensional-scaling
+    by: b1852a99
+  non-negative least squares regression:
+    method: non-negative-least-squares
     by: b1852a99
   non-negative matrix factorization:
     method: non-negative-matrix-factorization
@@ -19967,6 +21843,9 @@ names:
     method: bootstrap
     variant: non-parametric
     by: b1852a99
+  nonparametric multiple comparisons for relative effects:
+    method: nonparametric-relative-effect-multiple-comparisons
+    by: b1852a99
   nonparametric rank-based tests:
     method: nonparametric-rank-based-tests
     by: b1852a99
@@ -20011,6 +21890,10 @@ names:
     method: nowcasting
     variant: lawless nonparametric
     by: b1852a99
+  number needed to harm:
+    method: number-needed-to-treat
+    variant: harm
+    by: b1852a99
   number needed to scan:
     method: number-needed-to-treat
     variant: number needed to scan
@@ -20045,6 +21928,9 @@ names:
     method: calibration-in-the-large
     variant: observed-to-expected ratio
     by: b1852a99
+  ocsb seasonality test:
+    method: ocsb-test
+    by: b1852a99
   odds ratio:
     method: odds-ratio
     by: b1852a99
@@ -20078,9 +21964,20 @@ names:
   omega squared:
     method: omega-squared
     by: b1852a99
+  omnibus likelihood ratio test:
+    method: likelihood-ratio-test
+    variant: omnibus
+    by: b1852a99
+  omnibus test:
+    method: ''
+    by: b1852a99
   omnibus test of model coefficients:
     method: likelihood-ratio-test
     variant: omnibus model test
+    by: b1852a99
+  one-sample t test:
+    method: t-test
+    variant: one-sample
     by: b1852a99
   one-sample t-test:
     method: t-test
@@ -20126,6 +22023,9 @@ names:
     method: propensity-score-matching
     variant: optimal matching
     by: b1852a99
+  optimal scaling analysis:
+    method: optimal-scaling
+    by: b1852a99
   optimized hotspot analysis:
     method: getis-ord-gi-star
     variant: optimized
@@ -20169,7 +22069,13 @@ names:
   ordinary least squares regression:
     method: linear-regression
     by: b1852a99
+  ordination:
+    method: ordination-analysis
+    by: b1852a99
   orthogonal partial least squares discriminant analysis:
+    method: opls-da
+    by: b1852a99
+  orthogonal partial least-squares discriminant analysis:
     method: opls-da
     by: b1852a99
   orthogonal projections to latent structures:
@@ -20288,6 +22194,9 @@ names:
     method: parametric-survival-regression
     variant: proportional hazards
     by: b1852a99
+  parametric survival distribution fitting:
+    method: parametric-survival-regression
+    by: b1852a99
   parametric survival model:
     method: parametric-survival-regression
     by: b1852a99
@@ -20303,8 +22212,15 @@ names:
   parc clustering:
     method: parc-clustering
     by: b1852a99
+  partial autocorrelation function:
+    method: autocorrelation-analysis
+    variant: partial autocorrelation
+    by: b1852a99
   partial correlation:
     method: partial-correlation
+    by: b1852a99
+  partial dependence plot:
+    method: partial-dependence-plot
     by: b1852a99
   partial dependence plots:
     method: partial-dependence-plot
@@ -20445,6 +22361,9 @@ names:
   penalized spline:
     method: penalized-splines
     by: b1852a99
+  penalized spline regression:
+    method: penalized-splines
+    by: b1852a99
   penalized splines:
     method: penalized-splines
     by: b1852a99
@@ -20462,6 +22381,10 @@ names:
     method: z-test
     variant: proportions
     by: b1852a99
+  percentile calculation (diagnostic reference level):
+    method: percentile-reference-values
+    variant: diagnostic reference level
+    by: b1852a99
   percentile reference values:
     method: percentile-reference-values
     by: b1852a99
@@ -20473,6 +22396,9 @@ names:
     variant: covariate-adjusted
     by: b1852a99
   permanova:
+    method: permanova
+    by: b1852a99
+  permanova (adonis):
     method: permanova
     by: b1852a99
   permdisp:
@@ -20515,6 +22441,9 @@ names:
   phase locking value:
     method: phase-locking-value
     by: b1852a99
+  phate:
+    method: phate
+    by: b1852a99
   phenograph clustering:
     method: phenograph-clustering
     by: b1852a99
@@ -20555,6 +22484,10 @@ names:
     method: cox-regression
     variant: piecewise threshold
     by: b1852a99
+  piecewise linear mixed model:
+    method: linear-mixed-model
+    variant: piecewise
+    by: b1852a99
   piecewise linear regression:
     method: segmented-regression
     by: b1852a99
@@ -20589,6 +22522,9 @@ names:
     by: b1852a99
   pls-da:
     method: pls-da
+    by: b1852a99
+  point biserial correlation:
+    method: point-biserial-correlation
     by: b1852a99
   point estimate with confidence interval:
     method: ''
@@ -20627,6 +22563,10 @@ names:
     by: b1852a99
   poisson exact confidence intervals:
     method: exact-poisson-confidence-interval
+    by: b1852a99
+  poisson generalised linear mixed model:
+    method: generalized-linear-mixed-model
+    variant: poisson
     by: b1852a99
   poisson generalized linear mixed model:
     method: generalized-linear-mixed-model
@@ -20695,11 +22635,20 @@ names:
   population attributable risk fraction:
     method: population-attributable-fraction
     by: b1852a99
+  population attributable risk proportion:
+    method: population-attributable-fraction
+    by: b1852a99
   population pharmacokinetic modeling:
     method: population-pharmacokinetic-modeling
     by: b1852a99
   positive and negative percent agreement:
     method: positive-negative-percent-agreement
+    by: b1852a99
+  positive and negative predictive value:
+    method: predictive-values
+    by: b1852a99
+  positive and negative predictive values:
+    method: predictive-values
     by: b1852a99
   positive matrix factorization:
     method: positive-matrix-factorization
@@ -20787,6 +22736,9 @@ names:
     method: power-analysis
     variant: simulation-based
     by: b1852a99
+  power transformation:
+    method: power-transformation
+    by: b1852a99
   prais-winsten regression:
     method: prais-winsten-regression
     by: b1852a99
@@ -20817,6 +22769,9 @@ names:
   predicted probabilities:
     method: marginal-effects
     variant: predicted probabilities
+    by: b1852a99
+  prediction interval:
+    method: prediction-interval
     by: b1852a99
   prediction model-based eligibility threshold analysis:
     method: risk-threshold-eligibility-analysis
@@ -20860,6 +22815,10 @@ names:
     method: relative-risk
     variant: prevalence ratio
     by: b1852a99
+  prevalence-adjusted bias-adjusted kappa:
+    method: cohens-kappa
+    variant: prevalence- and bias-adjusted
+    by: b1852a99
   primo:
     method: primo
     by: b1852a99
@@ -20872,6 +22831,9 @@ names:
     by: b1852a99
   principal component partial r2:
     method: principal-component-partial-r-squared
+    by: b1852a99
+  principal components analysis:
+    method: principal-component-analysis
     by: b1852a99
   principal coordinate analysis:
     method: principal-coordinates-analysis
@@ -20916,6 +22878,9 @@ names:
   propensity score analysis:
     method: propensity-score
     by: b1852a99
+  propensity score estimation:
+    method: propensity-score
+    by: b1852a99
   propensity score kernel matching:
     method: propensity-score-matching
     variant: kernel matching
@@ -20926,6 +22891,9 @@ names:
   propensity score matching weight:
     method: inverse-probability-weighting
     variant: matching weights
+    by: b1852a99
+  propensity score model:
+    method: propensity-score
     by: b1852a99
   propensity score overlap weighting:
     method: inverse-probability-weighting
@@ -20968,6 +22936,9 @@ names:
   proportional odds model:
     method: ordinal-logistic-regression
     by: b1852a99
+  proportional odds regression:
+    method: ordinal-logistic-regression
+    by: b1852a99
   proportional odds test:
     method: brant-test
     by: b1852a99
@@ -20998,6 +22969,9 @@ names:
     by: b1852a99
   psychophysiological interaction analysis:
     method: psychophysiological-interaction-analysis
+    by: b1852a99
+  purposeful selection:
+    method: purposeful-selection
     by: b1852a99
   purposeful variable selection:
     method: purposeful-selection
@@ -21057,6 +23031,10 @@ names:
   quantile regression:
     method: quantile-regression
     by: b1852a99
+  quantile regression imputation of left-censored data:
+    method: limit-of-detection-imputation
+    variant: quantile regression (qrilc)
+    by: b1852a99
   quantile-based g-computation:
     method: quantile-g-computation
     by: b1852a99
@@ -21079,6 +23057,10 @@ names:
     method: poisson-regression
     variant: quasi-poisson
     by: b1852a99
+  quasibinomial regression:
+    method: logistic-regression
+    variant: quasibinomial
+    by: b1852a99
   r-squared:
     method: r-squared
     by: b1852a99
@@ -21099,11 +23081,17 @@ names:
   raking post-stratification weighting:
     method: raking
     by: b1852a99
+  raking weights:
+    method: raking
+    by: b1852a99
   rand index:
     method: adjusted-rand-index
     variant: unadjusted
     by: b1852a99
   random effects adjustment for clustering:
+    method: linear-mixed-model
+    by: b1852a99
+  random effects model:
     method: linear-mixed-model
     by: b1852a99
   random field theory correction:
@@ -21138,6 +23126,10 @@ names:
     method: cross-lagged-panel-model
     variant: random intercept
     by: b1852a99
+  random over-sampling:
+    method: class-balancing
+    variant: random oversampling
+    by: b1852a99
   random search hyperparameter tuning:
     method: hyperparameter-tuning
     variant: random search
@@ -21157,6 +23149,9 @@ names:
     method: meta-analysis
     variant: random-effects
     by: b1852a99
+  random-effects model:
+    method: linear-mixed-model
+    by: b1852a99
   random-effects panel regression:
     method: linear-mixed-model
     variant: random-effects panel
@@ -21172,6 +23167,9 @@ names:
   randomized search hyperparameter tuning:
     method: hyperparameter-tuning
     variant: randomized search
+    by: b1852a99
+  rank biserial correlation:
+    method: rank-biserial-correlation
     by: b1852a99
   rank correlation:
     method: spearman-correlation
@@ -21222,6 +23220,10 @@ names:
     method: rarefaction
     variant: with extrapolation
     by: b1852a99
+  rasch analysis:
+    method: item-response-theory
+    variant: rasch model
+    by: b1852a99
   rasch model:
     method: item-response-theory
     variant: rasch
@@ -21240,8 +23242,15 @@ names:
   recalibration:
     method: logistic-recalibration
     by: b1852a99
+  recombination detection (gard):
+    method: recombination-detection
+    variant: gard
+    by: b1852a99
   recombination detection analysis:
     method: recombination-detection
+    by: b1852a99
+  reconstruction of individual patient data from kaplan-meier curves:
+    method: ipd-reconstruction-from-kaplan-meier
     by: b1852a99
   recurrence risk ratio:
     method: recurrence-risk-ratio
@@ -21283,10 +23292,16 @@ names:
   regression calibration:
     method: regression-calibration
     by: b1852a99
+  regression calibration measurement error correction:
+    method: regression-calibration
+    by: b1852a99
   regression diagnostics:
     method: residual-diagnostics
     by: b1852a99
   regression discontinuity:
+    method: regression-discontinuity-design
+    by: b1852a99
+  regression discontinuity design:
     method: regression-discontinuity-design
     by: b1852a99
   regression imputation:
@@ -21327,6 +23342,9 @@ names:
   relative excess risk due to interaction:
     method: relative-excess-risk-due-to-interaction
     by: b1852a99
+  relative excess risk regression:
+    method: excess-hazard-regression
+    by: b1852a99
   relative index of inequality:
     method: relative-index-of-inequality
     by: b1852a99
@@ -21337,9 +23355,16 @@ names:
     method: relative-risk
     variant: relative risk reduction
     by: b1852a99
+  relative risk regression:
+    method: log-binomial-regression
+    by: b1852a99
   relative sensitivity and specificity ratio:
     method: sensitivity-and-specificity
     variant: relative ratio
+    by: b1852a99
+  relative survival (pohar perme):
+    method: net-survival-estimation
+    variant: pohar perme
     by: b1852a99
   reliable change index:
     method: reliable-change-index
@@ -21408,6 +23433,10 @@ names:
     method: anova
     variant: repeated measures
     by: b1852a99
+  repeated-measures mancova:
+    method: manova
+    variant: repeated-measures with covariates
+    by: b1852a99
   repeated-measures manova:
     method: manova
     variant: repeated measures
@@ -21459,6 +23488,9 @@ names:
     method: restricted-maximum-likelihood
     by: b1852a99
   restricted mean survival time:
+    method: restricted-mean-survival-time
+    by: b1852a99
+  restricted mean survival time analysis:
     method: restricted-mean-survival-time
     by: b1852a99
   restricted mean survival time regression:
@@ -21524,6 +23556,10 @@ names:
   robinson-foulds distance:
     method: robinson-foulds-distance
     by: b1852a99
+  robust aitchison principal component analysis:
+    method: robust-principal-component-analysis
+    variant: robust aitchison
+    by: b1852a99
   robust linear regression:
     method: robust-regression
     by: b1852a99
@@ -21562,6 +23598,9 @@ names:
     by: b1852a99
   roc curve analysis (auc):
     method: roc-curve-analysis
+    by: b1852a99
+  romano-wolf multiple testing correction:
+    method: romano-wolf-correction
     by: b1852a99
   root mean square deviation:
     method: mean-squared-error
@@ -21626,6 +23665,9 @@ names:
   sampled-iterative local approximation (sila):
     method: sampled-iterative-local-approximation
     by: b1852a99
+  sampling weights:
+    method: survey-weighting
+    by: b1852a99
   sandwich variance estimator:
     method: cluster-robust-standard-errors
     by: b1852a99
@@ -21643,6 +23685,12 @@ names:
   satterthwaite t-test:
     method: t-test
     variant: welch-satterthwaite
+    by: b1852a99
+  savitzky-golay filter:
+    method: savitzky-golay-filter
+    by: b1852a99
+  scatter plots:
+    method: ''
     by: b1852a99
   sccoda:
     method: sccoda
@@ -21662,6 +23710,12 @@ names:
   scheffé post-hoc test:
     method: scheffe-test
     by: b1852a99
+  scheffe test:
+    method: scheffe-test
+    by: b1852a99
+  scheirer-ray-hare test:
+    method: scheirer-ray-hare-test
+    by: b1852a99
   schoenfeld residual test:
     method: schoenfeld-residuals-test
     by: b1852a99
@@ -21670,6 +23724,9 @@ names:
     by: b1852a99
   schoenfeld residuals test:
     method: schoenfeld-residuals-test
+    by: b1852a99
+  scnic correlation network:
+    method: scnic
     by: b1852a99
   scree plot:
     method: scree-plot
@@ -21698,6 +23755,9 @@ names:
     by: b1852a99
   segmented regression:
     method: segmented-regression
+    by: b1852a99
+  selection pressure analysis:
+    method: dn-ds-analysis
     by: b1852a99
   self-controlled case series:
     method: self-controlled-case-series
@@ -21741,6 +23801,9 @@ names:
     method: quantitative-bias-analysis
     variant: sensemakr
     by: b1852a99
+  sensitivity analysis of diagnostic accuracy:
+    method: sensitivity-and-specificity
+    by: b1852a99
   sensitivity and positive predictive value:
     method: classification-performance-metrics
     by: b1852a99
@@ -21760,6 +23823,9 @@ names:
     method: sensitivity-and-specificity
     by: b1852a99
   sensitivity calculation:
+    method: sensitivity-and-specificity
+    by: b1852a99
+  sensitivity, specificity, ppv, npv:
     method: sensitivity-and-specificity
     by: b1852a99
   sensitivity, specificity, predictive values:
@@ -21807,6 +23873,10 @@ names:
     method: alpha-diversity
     variant: shannon index
     by: b1852a99
+  shannon-wiener diversity index:
+    method: alpha-diversity
+    variant: shannon-wiener index
+    by: b1852a99
   shap:
     method: shap
     by: b1852a99
@@ -21828,12 +23898,23 @@ names:
   shapley values:
     method: shap
     by: b1852a99
+  shared frailty model:
+    method: frailty-model
+    variant: shared
+    by: b1852a99
+  shared mean bayesian model:
+    method: bayesian-hierarchical-model
+    variant: shared mean
+    by: b1852a99
   shared nearest-neighbor clustering:
     method: shared-nearest-neighbor-clustering
     by: b1852a99
   shared-frailty cox model:
     method: frailty-model
     variant: shared frailty cox
+    by: b1852a99
+  short-time fourier transform:
+    method: short-time-fourier-transform
     by: b1852a99
   sibling comparison analysis:
     method: fixed-effects-regression
@@ -21854,6 +23935,10 @@ names:
     by: b1852a99
   šídák multiple comparisons test:
     method: sidak-correction
+    by: b1852a99
+  sidak post-hoc test:
+    method: sidak-correction
+    variant: post hoc
     by: b1852a99
   sign test:
     method: sign-test
@@ -21886,6 +23971,9 @@ names:
   silhouette score:
     method: silhouette-analysis
     by: b1852a99
+  silhouette validation:
+    method: silhouette-analysis
+    by: b1852a99
   silhouette width:
     method: silhouette-analysis
     by: b1852a99
@@ -21898,8 +23986,14 @@ names:
   simon's two-stage design:
     method: ''
     by: b1852a99
+  simple effects analysis:
+    method: simple-effects-analysis
+    by: b1852a99
   simple effects test:
     method: simple-effects-analysis
+    by: b1852a99
+  simple imputation:
+    method: single-imputation
     by: b1852a99
   simple linear regression:
     method: linear-regression
@@ -21941,6 +24035,10 @@ names:
   simulation study:
     method: monte-carlo-simulation
     by: b1852a99
+  simulation-based power analysis:
+    method: power-analysis
+    variant: simulation-based
+    by: b1852a99
   single imputation:
     method: single-imputation
     by: b1852a99
@@ -21954,6 +24052,10 @@ names:
   single-cell rna sequencing analysis:
     method: ''
     by: b1852a99
+  single-proportion z-test:
+    method: z-test
+    variant: single proportion
+    by: b1852a99
   single-sample gene set enrichment analysis:
     method: single-sample-gene-set-enrichment-analysis
     by: b1852a99
@@ -21966,6 +24068,9 @@ names:
     by: b1852a99
   singular value decomposition:
     method: singular-value-decomposition
+    by: b1852a99
+  skewness and kurtosis normality check:
+    method: skewness-kurtosis-normality-test
     by: b1852a99
   skewness and kurtosis normality test:
     method: dagostino-pearson-test
@@ -22017,6 +24122,9 @@ names:
   sobel test:
     method: sobel-test
     by: b1852a99
+  sobol sensitivity analysis:
+    method: sobol-sensitivity-analysis
+    by: b1852a99
   social network analysis:
     method: social-network-analysis
     by: b1852a99
@@ -22047,6 +24155,10 @@ names:
   sparcc correlation network:
     method: sparcc
     by: b1852a99
+  sparcc correlation network analysis:
+    method: sparcc
+    variant: network analysis
+    by: b1852a99
   sparcc network analysis:
     method: sparcc
     variant: correlation network
@@ -22071,6 +24183,9 @@ names:
     by: b1852a99
   sparse pls-da:
     method: sparse-pls-da
+    by: b1852a99
+  sparse principal component analysis:
+    method: sparse-principal-component-analysis
     by: b1852a99
   spatial analysis:
     method: ''
@@ -22145,6 +24260,10 @@ names:
   square root transformation:
     method: square-root-transformation
     by: b1852a99
+  squared semipartial correlation:
+    method: semipartial-correlation
+    variant: squared
+    by: b1852a99
   ssgsea:
     method: single-sample-gene-set-enrichment-analysis
     by: b1852a99
@@ -22199,6 +24318,10 @@ names:
   standardized incidence ratio:
     method: standardized-incidence-ratio
     by: b1852a99
+  standardized infection ratio:
+    method: standardized-incidence-ratio
+    variant: infection
+    by: b1852a99
   standardized major axis regression:
     method: standardized-major-axis-regression
     by: b1852a99
@@ -22235,6 +24358,9 @@ names:
     by: b1852a99
   statistical parametric mapping:
     method: statistical-parametric-mapping
+    by: b1852a99
+  statistical process control chart:
+    method: statistical-process-control-chart
     by: b1852a99
   statistical process control run chart:
     method: statistical-process-control-chart
@@ -22305,12 +24431,19 @@ names:
   stochastic gradient descent:
     method: stochastic-gradient-descent
     by: b1852a99
+  stochastic logistic model:
+    method: stochastic-logistic-growth-model
+    by: b1852a99
   stochastic regression imputation:
     method: regression-imputation
     variant: stochastic
     by: b1852a99
   stochastic simulation:
     method: monte-carlo-simulation
+    by: b1852a99
+  storey false discovery rate:
+    method: false-discovery-rate-correction
+    variant: storey q-value
     by: b1852a99
   storey fdr correction:
     method: false-discovery-rate-correction
@@ -22334,6 +24467,10 @@ names:
   stratified k-fold cross-validation:
     method: cross-validation
     variant: stratified k-fold
+    by: b1852a99
+  stratified matching:
+    method: covariate-matching
+    variant: stratified
     by: b1852a99
   stratified sampling:
     method: ''
@@ -22406,6 +24543,10 @@ names:
     method: isoenergetic-substitution-model
     variant: leave-one-out
     by: b1852a99
+  substitution of values below loq:
+    method: limit-of-detection-imputation
+    variant: below loq
+    by: b1852a99
   subtype and stage inference:
     method: subtype-and-stage-inference
     by: b1852a99
@@ -22426,6 +24567,10 @@ names:
   superlearner ensemble:
     method: stacking-ensemble
     variant: super learner
+    by: b1852a99
+  supervised machine learning:
+    method: machine-learning-prediction
+    variant: supervised
     by: b1852a99
   supervised machine learning classification:
     method: machine-learning-classification
@@ -22500,6 +24645,9 @@ names:
     by: b1852a99
   survivorship-period-cohort model:
     method: survivorship-period-cohort-model
+    by: b1852a99
+  sustain:
+    method: subtype-and-stage-inference
     by: b1852a99
   svm-rfe:
     method: recursive-feature-elimination
@@ -22641,6 +24789,9 @@ names:
   thematic content analysis:
     method: ''
     by: b1852a99
+  thin-plate regression splines:
+    method: thin-plate-splines
+    by: b1852a99
   thin-plate spline analysis:
     method: thin-plate-splines
     by: b1852a99
@@ -22666,6 +24817,9 @@ names:
   threshold-free cluster enhancement:
     method: threshold-free-cluster-enhancement
     by: b1852a99
+  tietjen-moore test:
+    method: tietjen-moore-test
+    by: b1852a99
   time series analysis:
     method: time-series-analysis
     by: b1852a99
@@ -22690,6 +24844,9 @@ names:
     by: b1852a99
   time-dependent roc curve analysis:
     method: time-dependent-roc-analysis
+    by: b1852a99
+  time-driven activity-based costing:
+    method: ''
     by: b1852a99
   time-varying coefficient cox model:
     method: cox-regression
@@ -22778,6 +24935,10 @@ names:
     method: trend-test
     variant: across quartiles
     by: b1852a99
+  trend analysis of prevalence:
+    method: trend-test
+    variant: prevalence
+    by: b1852a99
   trend test:
     method: trend-test
     by: b1852a99
@@ -22785,6 +24946,9 @@ names:
     method: truncated-regression
     by: b1852a99
   tukey adjustment:
+    method: tukeys-hsd-test
+    by: b1852a99
+  tukey correction:
     method: tukeys-hsd-test
     by: b1852a99
   tukey hsd:
@@ -22800,6 +24964,9 @@ names:
     method: tukeys-hsd-test
     by: b1852a99
   tukey multiple comparison test:
+    method: tukeys-hsd-test
+    by: b1852a99
+  tukey multiple comparisons:
     method: tukeys-hsd-test
     by: b1852a99
   tukey multiple comparisons test:
@@ -22833,6 +25000,9 @@ names:
   tukey's hsd:
     method: tukeys-hsd-test
     by: b1852a99
+  tukey's hsd post hoc test:
+    method: tukeys-hsd-test
+    by: b1852a99
   tukey's hsd test:
     method: tukeys-hsd-test
     by: b1852a99
@@ -22857,8 +25027,15 @@ names:
   tweedie regression:
     method: compound-poisson-linear-model
     by: b1852a99
+  twin difference analysis:
+    method: mz-twin-difference-analysis
+    by: b1852a99
   twin modeling:
     method: ace-twin-model
+    by: b1852a99
+  twin models (ace/ade):
+    method: ace-twin-model
+    variant: ace/ade
     by: b1852a99
   two-part model:
     method: two-part-model
@@ -22915,6 +25092,9 @@ names:
     method: instrumental-variable-analysis
     variant: two-stage least squares
     by: b1852a99
+  two-stage slope analysis:
+    method: two-stage-slope-analysis
+    by: b1852a99
   two-step cluster analysis:
     method: two-step-cluster-analysis
     by: b1852a99
@@ -22932,6 +25112,10 @@ names:
   two-tailed test:
     method: ''
     by: b1852a99
+  two-way analysis of variance:
+    method: anova
+    variant: two-way
+    by: b1852a99
   two-way anova:
     method: anova
     variant: two-way
@@ -22943,6 +25127,9 @@ names:
   two-way fixed-effects model:
     method: fixed-effects-regression
     variant: two-way
+    by: b1852a99
+  two-way imputation:
+    method: two-way-imputation
     by: b1852a99
   two-way mixed anova:
     method: anova
@@ -22988,6 +25175,10 @@ names:
     method: feature-selection
     variant: univariate selectkbest
     by: b1852a99
+  univariate linear regression:
+    method: linear-regression
+    variant: univariable
+    by: b1852a99
   univariate logistic regression:
     method: logistic-regression
     by: b1852a99
@@ -22997,6 +25188,9 @@ names:
   uno c-index:
     method: concordance-index
     variant: uno's
+    by: b1852a99
+  unobserved components model:
+    method: unobserved-components-model
     by: b1852a99
   unpaired t test:
     method: t-test
@@ -23039,6 +25233,9 @@ names:
   variance partition analysis:
     method: variance-partitioning
     by: b1852a99
+  variance partition coefficient:
+    method: intraclass-correlation-coefficient
+    by: b1852a99
   variance partitioning:
     method: variance-partitioning
     by: b1852a99
@@ -23080,6 +25277,13 @@ names:
   volcano plot analysis:
     method: volcano-plot
     by: b1852a99
+  voom/limma differential analysis:
+    method: limma
+    variant: voom
+    by: b1852a99
+  voting ensemble:
+    method: ensemble-classifier
+    by: b1852a99
   voxel-based morphometry:
     method: voxel-based-morphometry
     by: b1852a99
@@ -23089,6 +25293,10 @@ names:
   voxel-wise whole-brain analysis:
     method: statistical-parametric-mapping
     variant: voxel-wise whole-brain
+    by: b1852a99
+  voxelwise multivariate modeling:
+    method: voxelwise-modeling
+    variant: multivariate
     by: b1852a99
   vuong's closeness test:
     method: vuong-test
@@ -23120,6 +25328,10 @@ names:
     method: z-test
     variant: difference in proportions
     by: b1852a99
+  wald test for linear trend:
+    method: wald-test
+    variant: linear trend
+    by: b1852a99
   wald test for trend:
     method: trend-test
     variant: wald
@@ -23134,6 +25346,9 @@ names:
   wallinga-teunis time-dependent reproduction number estimation:
     method: effective-reproduction-number-estimation
     variant: wallinga-teunis
+    by: b1852a99
+  watson-williams test:
+    method: watson-williams-test
     by: b1852a99
   wavelet analysis:
     method: continuous-wavelet-transform
@@ -23186,6 +25401,16 @@ names:
     by: b1852a99
   weighted gene correlation network analysis:
     method: wgcna
+    by: b1852a99
+  weighted genetic risk score:
+    method: polygenic-risk-score
+    variant: weighted
+    by: b1852a99
+  weighted geometric mean:
+    method: weighted-geometric-mean
+    by: b1852a99
+  weighted interval score:
+    method: weighted-interval-score
     by: b1852a99
   weighted kappa:
     method: cohens-kappa
@@ -23300,6 +25525,9 @@ names:
     method: log-rank-test
     variant: gehan-wilcoxon weights
     by: b1852a99
+  wilcoxon mann-whitney test:
+    method: mann-whitney-u-test
+    by: b1852a99
   wilcoxon mann-whitney u test:
     method: mann-whitney-u-test
     by: b1852a99
@@ -23352,6 +25580,10 @@ names:
   winsorizing:
     method: winsorization
     by: b1852a99
+  wishbone pseudotime analysis:
+    method: pseudotime-trajectory-analysis
+    variant: wishbone
+    by: b1852a99
   woolf test:
     method: woolf-test
     by: b1852a99
@@ -23377,7 +25609,13 @@ names:
   x-tile optimal cutoff:
     method: x-tile-cutoff-optimization
     by: b1852a99
+  x-tile optimal cutoff selection:
+    method: x-tile-cutoff-optimization
+    by: b1852a99
   x-tile optimal cutpoint:
+    method: x-tile-cutoff-optimization
+    by: b1852a99
+  x-tile optimal cutpoint selection:
     method: x-tile-cutoff-optimization
     by: b1852a99
   xgboost:
@@ -23435,10 +25673,17 @@ names:
   z test:
     method: z-test
     by: b1852a99
+  z test for auc comparison:
+    method: z-test
+    variant: auc comparison
+    by: b1852a99
   z-score:
     method: z-score-standardization
     by: b1852a99
   z-score normalisation:
+    method: z-score-standardization
+    by: b1852a99
+  z-score normalization:
     method: z-score-standardization
     by: b1852a99
   z-score outlier filtering:
@@ -23461,6 +25706,10 @@ names:
     method: z-test
     variant: column proportions
     by: b1852a99
+  z-test for difference between estimates:
+    method: z-test
+    variant: difference between estimates
+    by: b1852a99
   z-test for difference of proportions:
     method: z-test
     variant: two proportions
@@ -23476,12 +25725,18 @@ names:
   zero imputation:
     method: zero-imputation
     by: b1852a99
+  zero-hurdle poisson regression:
+    method: hurdle-poisson-regression
+    by: b1852a99
   zero-inflated beta regression:
     method: zero-inflated-beta-regression
     by: b1852a99
   zero-inflated gaussian mixture model:
     method: metagenomeseq
     variant: zero-inflated gaussian
+    by: b1852a99
+  zero-inflated negative binomial model:
+    method: zero-inflated-negative-binomial-regression
     by: b1852a99
   zero-inflated negative binomial regression:
     method: zero-inflated-negative-binomial-regression
@@ -24220,6 +26475,527 @@ variant_names:
       by: a11fc3a8
     weighted (smr weighting):
       variant: inverse-probability-weighted
+      by: a11fc3a8
+  false-discovery-rate-correction:
+    bayesian:
+      variant: bayesian-fdr
+      by: a11fc3a8
+    benjamini-hochberg:
+      variant: benjamini-hochberg
+      by: a11fc3a8
+    benjamini-yekutieli:
+      variant: benjamini-yekutieli
+      by: a11fc3a8
+    discrete fdr:
+      variant: discrete-fdr
+      by: a11fc3a8
+    q-value:
+      variant: storey-q-value
+      by: a11fc3a8
+    simes method:
+      variant: benjamini-hochberg
+      by: a11fc3a8
+    storey q-value:
+      variant: storey-q-value
+      by: a11fc3a8
+    storey q-values:
+      variant: storey-q-value
+      by: a11fc3a8
+    two-stage benjamini-krieger-yekutieli:
+      variant: two-stage-benjamini-krieger-yekutieli
+      by: a11fc3a8
+    two-stage step-up:
+      variant: two-stage-benjamini-krieger-yekutieli
+      by: a11fc3a8
+  linear-mixed-model:
+    age-stratified:
+      variant: ''
+      by: a11fc3a8
+    ar(1) correlation:
+      variant: ar1-covariance
+      by: a11fc3a8
+    ar(1) covariance:
+      variant: ar1-covariance
+      by: a11fc3a8
+    ar(1) heterogeneous covariance:
+      variant: heterogeneous-ar1-covariance
+      by: a11fc3a8
+    autocorrelation:
+      variant: ar1-covariance
+      by: a11fc3a8
+    autoregressive covariance:
+      variant: ar1-covariance
+      by: a11fc3a8
+    b-spline age:
+      variant: spline-terms
+      by: a11fc3a8
+    b-spline terms:
+      variant: spline-terms
+      by: a11fc3a8
+    backward selection:
+      variant: ''
+      by: a11fc3a8
+    bayesian (inla):
+      method: bayesian-hierarchical-model
+      by: a11fc3a8
+    between-within decomposition:
+      variant: within-between-decomposition
+      by: a11fc3a8
+    binary outcome:
+      method: generalized-linear-mixed-model
+      by: a11fc3a8
+    binomial and gaussian:
+      method: generalized-linear-mixed-model
+      by: a11fc3a8
+    bolt-lmm:
+      method: bolt-lmm
+      by: a11fc3a8
+    bootstrap weights:
+      variant: survey-weighted
+      by: a11fc3a8
+    case weights:
+      variant: weighted
+      by: a11fc3a8
+    center random effect:
+      variant: random-intercept
+      by: a11fc3a8
+    changepoint:
+      variant: changepoint
+      by: a11fc3a8
+    cluster-level:
+      variant: ''
+      by: a11fc3a8
+    cluster-robust standard errors:
+      variant: cluster-robust-se
+      by: a11fc3a8
+    clustered observations:
+      variant: ''
+      by: a11fc3a8
+    clustered twins:
+      variant: ''
+      by: a11fc3a8
+    clustering within chws:
+      variant: ''
+      by: a11fc3a8
+    complex survey design:
+      variant: survey-weighted
+      by: a11fc3a8
+    compound symmetry covariance:
+      variant: compound-symmetry-covariance
+      by: a11fc3a8
+    constrained baseline:
+      variant: constrained-baseline
+      by: a11fc3a8
+    county fixed effects:
+      variant: ''
+      by: a11fc3a8
+    covariate-by-time interactions:
+      variant: covariate-by-time-interaction
+      by: a11fc3a8
+    cross-classified random effects:
+      variant: crossed-random-effects
+      by: a11fc3a8
+    cross-level interactions:
+      variant: cross-level-interactions
+      by: a11fc3a8
+    crossed random effects:
+      variant: crossed-random-effects
+      by: a11fc3a8
+    crossed random intercepts:
+      variant: crossed-random-effects
+      by: a11fc3a8
+    cubic polynomial:
+      variant: polynomial-terms
+      by: a11fc3a8
+    cubic polynomial terms:
+      variant: polynomial-terms
+      by: a11fc3a8
+    cubic spline terms:
+      variant: spline-terms
+      by: a11fc3a8
+    cubic splines:
+      variant: spline-terms
+      by: a11fc3a8
+    effect modifiers:
+      variant: interaction-terms
+      by: a11fc3a8
+    familial correlation random effect:
+      variant: random-intercept
+      by: a11fc3a8
+    fixed effects for fieldworker and facility:
+      variant: ''
+      by: a11fc3a8
+    geisser-greenhouse correction:
+      variant: greenhouse-geisser-correction
+      by: a11fc3a8
+    generalized:
+      method: generalized-linear-mixed-model
+      by: a11fc3a8
+    genetic relatedness matrix:
+      method: kinship-linear-mixed-model
+      by: a11fc3a8
+    genome-wide:
+      variant: ''
+      by: a11fc3a8
+    group by time interaction:
+      variant: covariate-by-time-interaction
+      by: a11fc3a8
+    group-by-time interaction:
+      variant: ''
+      by: a11fc3a8
+    hierarchical:
+      variant: ''
+      by: a11fc3a8
+    interaction:
+      variant: ''
+      by: a11fc3a8
+    interaction effect:
+      variant: interaction-terms
+      by: a11fc3a8
+    interaction term:
+      variant: ''
+      by: a11fc3a8
+    interaction terms:
+      variant: ''
+      by: a11fc3a8
+    interaction with time:
+      variant: ''
+      by: a11fc3a8
+    interaction with year:
+      variant: covariate-by-time-interaction
+      by: a11fc3a8
+    interactions:
+      variant: ''
+      by: a11fc3a8
+    interval-censored outcome:
+      method: interval-censored-linear-mixed-model
+      by: a11fc3a8
+    inverse probability weighting:
+      variant: weighted
+      by: a11fc3a8
+    inverse probability weights:
+      variant: weighted
+      by: a11fc3a8
+    isometric log-ratio compositional exposures:
+      variant: compositional-exposures
+      by: a11fc3a8
+    kenward-roger degrees of freedom:
+      variant: kenward-roger-df
+      by: a11fc3a8
+    lagged dependent variable:
+      variant: lagged-outcome
+      by: a11fc3a8
+    lagged exposure:
+      variant: lagged-exposure
+      by: a11fc3a8
+    linear growth:
+      variant: linear-time-trend
+      by: a11fc3a8
+    log link:
+      method: generalized-linear-mixed-model
+      by: a11fc3a8
+    log-transformed outcome:
+      variant: log-transformed-outcome
+      by: a11fc3a8
+    logit-transformed outcome:
+      variant: logit-transformed-outcome
+      by: a11fc3a8
+    lognormal outcome:
+      variant: log-transformed-outcome
+      by: a11fc3a8
+    maaslin2:
+      method: maaslin2
+      by: a11fc3a8
+    maximum likelihood:
+      variant: ml-estimation
+      by: a11fc3a8
+    multilevel:
+      variant: ''
+      by: a11fc3a8
+    multiple testing correction:
+      variant: ''
+      by: a11fc3a8
+    natural cubic splines:
+      variant: spline-terms
+      by: a11fc3a8
+    natural splines:
+      variant: spline-terms
+      by: a11fc3a8
+    negative binomial:
+      method: generalized-linear-mixed-model
+      by: a11fc3a8
+    neighborhood random intercept:
+      variant: random-intercept
+      by: a11fc3a8
+    nested:
+      variant: nested-random-effects
+      by: a11fc3a8
+    nested random effects:
+      variant: nested-random-effects
+      by: a11fc3a8
+    nested random intercept:
+      variant: nested-random-effects
+      by: a11fc3a8
+    nested random intercepts:
+      variant: nested-random-effects
+      by: a11fc3a8
+    nested t-test:
+      variant: random-intercept
+      by: a11fc3a8
+    no random effect:
+      variant: ''
+      by: a11fc3a8
+    permutation p-values:
+      variant: permutation-inference
+      by: a11fc3a8
+    person-centered predictors:
+      variant: within-between-decomposition
+      by: a11fc3a8
+    piecewise:
+      variant: piecewise-linear
+      by: a11fc3a8
+    piecewise linear:
+      variant: piecewise-linear
+      by: a11fc3a8
+    piecewise linear splines:
+      variant: spline-terms
+      by: a11fc3a8
+    polynomial age terms:
+      variant: polynomial-terms
+      by: a11fc3a8
+    polynomial time effects:
+      variant: polynomial-terms
+      by: a11fc3a8
+    predictor-by-time interaction:
+      variant: covariate-by-time-interaction
+      by: a11fc3a8
+    principal components as outcomes:
+      variant: ''
+      by: a11fc3a8
+    quadratic:
+      variant: polynomial-terms
+      by: a11fc3a8
+    quadratic age:
+      variant: polynomial-terms
+      by: a11fc3a8
+    quadratic age term:
+      variant: polynomial-terms
+      by: a11fc3a8
+    quadratic and cubic polynomial trajectories:
+      variant: polynomial-terms
+      by: a11fc3a8
+    quadratic polynomial:
+      variant: polynomial-terms
+      by: a11fc3a8
+    quadratic term:
+      variant: polynomial-terms
+      by: a11fc3a8
+    quadratic time:
+      variant: polynomial-terms
+      by: a11fc3a8
+    quadratic time terms:
+      variant: polynomial-terms
+      by: a11fc3a8
+    random cluster effects:
+      variant: random-intercept
+      by: a11fc3a8
+    random coefficients:
+      variant: random-slopes
+      by: a11fc3a8
+    random effect:
+      variant: random-intercept
+      by: a11fc3a8
+    random effects:
+      variant: ''
+      by: a11fc3a8
+    random effects for batch:
+      variant: random-intercept
+      by: a11fc3a8
+    random effects for participants and centres:
+      variant: nested-random-effects
+      by: a11fc3a8
+    random effects for school and student:
+      variant: nested-random-effects
+      by: a11fc3a8
+    random effects for slide and instrument:
+      variant: crossed-random-effects
+      by: a11fc3a8
+    random effects nested:
+      variant: nested-random-effects
+      by: a11fc3a8
+    random effects within and between schools:
+      variant: nested-random-effects
+      by: a11fc3a8
+    random growth curve:
+      variant: random-slopes
+      by: a11fc3a8
+    random intercept:
+      variant: random-intercept
+      by: a11fc3a8
+    random intercept and random slopes:
+      variant: random-slopes
+      by: a11fc3a8
+    random intercept and slope:
+      variant: random-slopes
+      by: a11fc3a8
+    random intercept for cohort:
+      variant: random-intercept
+      by: a11fc3a8
+    random intercept for family:
+      variant: random-intercept
+      by: a11fc3a8
+    random intercept for neighborhood clusters:
+      variant: random-intercept
+      by: a11fc3a8
+    random intercept for site:
+      variant: random-intercept
+      by: a11fc3a8
+    random intercepts:
+      variant: random-intercept
+      by: a11fc3a8
+    random intercepts and slopes:
+      variant: random-slopes
+      by: a11fc3a8
+    random participant effects:
+      variant: random-intercept
+      by: a11fc3a8
+    random slopes:
+      variant: random-slopes
+      by: a11fc3a8
+    random slopes and intercepts:
+      variant: random-slopes
+      by: a11fc3a8
+    random-effects panel:
+      variant: random-intercept
+      by: a11fc3a8
+    reml:
+      variant: reml-estimation
+      by: a11fc3a8
+    repeated measures:
+      variant: ''
+      by: a11fc3a8
+    repeated measures (mmrm):
+      method: marginal-model-repeated-measures
+      by: a11fc3a8
+    restricted maximum likelihood:
+      variant: reml-estimation
+      by: a11fc3a8
+    robust standard errors:
+      variant: cluster-robust-se
+      by: a11fc3a8
+    satterthwaite approximation:
+      variant: satterthwaite-df
+      by: a11fc3a8
+    satterthwaite degrees of freedom:
+      variant: satterthwaite-df
+      by: a11fc3a8
+    satterthwaite df:
+      variant: satterthwaite-df
+      by: a11fc3a8
+    school random effect:
+      variant: random-intercept
+      by: a11fc3a8
+    smooth term for age:
+      variant: spline-terms
+      by: a11fc3a8
+    spatial covariance structure:
+      variant: spatial-covariance
+      by: a11fc3a8
+    spline:
+      variant: spline-terms
+      by: a11fc3a8
+    spline terms:
+      variant: spline-terms
+      by: a11fc3a8
+    square-root transformed outcome:
+      variant: sqrt-transformed-outcome
+      by: a11fc3a8
+    stratified:
+      variant: ''
+      by: a11fc3a8
+    survey propensity weights:
+      variant: survey-weighted
+      by: a11fc3a8
+    survey weights:
+      variant: survey-weighted
+      by: a11fc3a8
+    temporal power covariance:
+      variant: power-covariance
+      by: a11fc3a8
+    three levels:
+      variant: nested-random-effects
+      by: a11fc3a8
+    three-level:
+      variant: nested-random-effects
+      by: a11fc3a8
+    three-way interaction:
+      variant: interaction-terms
+      by: a11fc3a8
+    time × group interaction:
+      variant: covariate-by-time-interaction
+      by: a11fc3a8
+    time interaction:
+      variant: ''
+      by: a11fc3a8
+    time x group interaction:
+      variant: covariate-by-time-interaction
+      by: a11fc3a8
+    time-by-group interaction:
+      variant: ''
+      by: a11fc3a8
+    time-dependent covariates:
+      variant: time-varying-covariates
+      by: a11fc3a8
+    time-varying associations:
+      variant: covariate-by-time-interaction
+      by: a11fc3a8
+    time-varying covariate:
+      variant: time-varying-covariates
+      by: a11fc3a8
+    time-varying covariates:
+      variant: time-varying-covariates
+      by: a11fc3a8
+    tobit:
+      method: tobit-mixed-model
+      by: a11fc3a8
+    treatment-by-time interaction:
+      variant: covariate-by-time-interaction
+      by: a11fc3a8
+    two-level:
+      variant: random-intercept
+      by: a11fc3a8
+    two-stage:
+      variant: ''
+      by: a11fc3a8
+    univariate:
+      variant: ''
+      by: a11fc3a8
+    unstructured correlation:
+      variant: unstructured-covariance
+      by: a11fc3a8
+    unstructured covariance:
+      variant: unstructured-covariance
+      by: a11fc3a8
+    unstructured residual covariance:
+      variant: unstructured-covariance
+      by: a11fc3a8
+    vertex-wise:
+      variant: ''
+      by: a11fc3a8
+    weighted:
+      variant: weighted
+      by: a11fc3a8
+    within- and between-person effects:
+      variant: within-between-decomposition
+      by: a11fc3a8
+    within-between decomposition:
+      variant: within-between-decomposition
+      by: a11fc3a8
+    within-between person centering:
+      variant: within-between-decomposition
+      by: a11fc3a8
+    within-person centering:
+      variant: within-between-decomposition
       by: a11fc3a8
   linear-regression:
     aggregated data:
@@ -25242,6 +28018,882 @@ variant_names:
       by: a11fc3a8
     within path model:
       method: structural-equation-modeling
+      by: a11fc3a8
+  mediation-analysis:
+    1-1-1:
+      variant: multilevel-mediation
+      by: a11fc3a8
+    aalen additive hazards:
+      variant: aalen-additive-hazards-mediation
+      by: a11fc3a8
+    autoregressive paths:
+      variant: autoregressive-mediation
+      by: a11fc3a8
+    baron and kenny:
+      variant: baron-kenny-causal-steps
+      by: a11fc3a8
+    bayesian:
+      variant: bayesian-mediation
+      by: a11fc3a8
+    bayesian estimation:
+      variant: bayesian-mediation
+      by: a11fc3a8
+    bi-directional:
+      variant: bidirectional-mediation
+      by: a11fc3a8
+    bootstrap:
+      variant: bootstrap-confidence-intervals
+      by: a11fc3a8
+    bootstrap bias-corrected ci:
+      variant: bias-corrected-bootstrap-ci
+      by: a11fc3a8
+    bootstrap ci:
+      variant: bootstrap-confidence-intervals
+      by: a11fc3a8
+    bootstrap cis:
+      variant: bootstrap-confidence-intervals
+      by: a11fc3a8
+    bootstrap confidence intervals:
+      variant: bootstrap-confidence-intervals
+      by: a11fc3a8
+    bootstrap indirect effects:
+      variant: bootstrap-confidence-intervals
+      by: a11fc3a8
+    bootstrap simulations:
+      variant: bootstrap-confidence-intervals
+      by: a11fc3a8
+    bootstrap standard errors:
+      variant: bootstrap-standard-errors
+      by: a11fc3a8
+    bootstrapped:
+      variant: bootstrap-confidence-intervals
+      by: a11fc3a8
+    bootstrapped cis:
+      variant: bootstrap-confidence-intervals
+      by: a11fc3a8
+    bootstrapped confidence intervals:
+      variant: bootstrap-confidence-intervals
+      by: a11fc3a8
+    bootstrapped estimates:
+      variant: bootstrap-confidence-intervals
+      by: a11fc3a8
+    bootstrapped indirect effects:
+      variant: bootstrap-confidence-intervals
+      by: a11fc3a8
+    bootstrapped proportion mediated:
+      variant: bootstrap-confidence-intervals
+      by: a11fc3a8
+    bootstrapped standard errors:
+      variant: bootstrap-standard-errors
+      by: a11fc3a8
+    bootstrapping:
+      variant: bootstrap-confidence-intervals
+      by: a11fc3a8
+    categorical mediator:
+      variant: categorical-mediator
+      by: a11fc3a8
+    categorical mediators:
+      variant: categorical-mediator
+      by: a11fc3a8
+    causal (counterfactual):
+      variant: counterfactual-causal-mediation
+      by: a11fc3a8
+    causal steps:
+      variant: baron-kenny-causal-steps
+      by: a11fc3a8
+    chain mediation:
+      variant: serial-mediation
+      by: a11fc3a8
+    chained:
+      variant: serial-mediation
+      by: a11fc3a8
+    controlled direct effect:
+      variant: controlled-direct-effect
+      by: a11fc3a8
+    count outcome:
+      variant: count-outcome
+      by: a11fc3a8
+    counterfactual:
+      variant: counterfactual-causal-mediation
+      by: a11fc3a8
+    counterfactual framework:
+      variant: counterfactual-causal-mediation
+      by: a11fc3a8
+    cox-based:
+      variant: cox-model-mediation
+      by: a11fc3a8
+    cross-lagged panel:
+      variant: autoregressive-mediation
+      by: a11fc3a8
+    delta method:
+      variant: delta-method-standard-errors
+      by: a11fc3a8
+    difference method:
+      variant: difference-of-coefficients
+      by: a11fc3a8
+    difference-based:
+      variant: difference-of-coefficients
+      by: a11fc3a8
+    dual mediation:
+      variant: multiple-mediators
+      by: a11fc3a8
+    exposure-mediator interaction:
+      variant: exposure-mediator-interaction
+      by: a11fc3a8
+    flexible parametric survival model:
+      variant: flexible-parametric-survival-mediation
+      by: a11fc3a8
+    four-way decomposition:
+      method: four-way-decomposition
+      by: a11fc3a8
+    four-way decomposition (med4way):
+      method: four-way-decomposition
+      by: a11fc3a8
+    g-formula:
+      variant: g-formula-mediation
+      by: a11fc3a8
+    gender-stratified:
+      variant: ''
+      by: a11fc3a8
+    generalized estimating equations:
+      variant: gee-mediation
+      by: a11fc3a8
+    high-dimensional:
+      method: high-dimensional-mediation-analysis
+      by: a11fc3a8
+    indirect effects:
+      variant: ''
+      by: a11fc3a8
+    interventional effects:
+      variant: interventional-effects
+      by: a11fc3a8
+    karlson-holm-breen method:
+      method: khb-method
+      by: a11fc3a8
+    khb method:
+      method: khb-method
+      by: a11fc3a8
+    latent growth curve:
+      variant: latent-growth-curve-mediation
+      by: a11fc3a8
+    logistic:
+      variant: binary-outcome
+      by: a11fc3a8
+    logistic outcome:
+      variant: binary-outcome
+      by: a11fc3a8
+    longitudinal:
+      variant: longitudinal-mediation
+      by: a11fc3a8
+    marginal structural model:
+      variant: marginal-structural-model-mediation
+      by: a11fc3a8
+    moderated:
+      variant: moderated-mediation
+      by: a11fc3a8
+    monte carlo confidence intervals:
+      variant: monte-carlo-confidence-intervals
+      by: a11fc3a8
+    multi-categorical antecedent:
+      variant: multicategorical-exposure
+      by: a11fc3a8
+    multicategorical exposure:
+      variant: multicategorical-exposure
+      by: a11fc3a8
+    multilevel:
+      variant: multilevel-mediation
+      by: a11fc3a8
+    multilevel serial:
+      variant: multilevel-mediation
+      by: a11fc3a8
+    multiple:
+      variant: multiple-mediators
+      by: a11fc3a8
+    multiple mediators:
+      variant: multiple-mediators
+      by: a11fc3a8
+    multiple sequential mediators:
+      variant: serial-mediation
+      by: a11fc3a8
+    multivariate:
+      variant: multiple-mediators
+      by: a11fc3a8
+    natural direct and indirect effects:
+      variant: counterfactual-causal-mediation
+      by: a11fc3a8
+    natural effects:
+      variant: counterfactual-causal-mediation
+      by: a11fc3a8
+    non-causal:
+      variant: regression-based-mediation
+      by: a11fc3a8
+    nonparametric bootstrap:
+      variant: bootstrap-confidence-intervals
+      by: a11fc3a8
+    ordinal outcome:
+      variant: ordinal-outcome
+      by: a11fc3a8
+    parallel mediators:
+      variant: parallel-mediators
+      by: a11fc3a8
+    parallel multiple mediators:
+      variant: parallel-mediators
+      by: a11fc3a8
+    parametric regression:
+      variant: regression-based-mediation
+      by: a11fc3a8
+    path analysis:
+      variant: sem-based-mediation
+      by: a11fc3a8
+    penalised:
+      variant: penalized-mediation
+      by: a11fc3a8
+    percentage excess risk:
+      variant: percentage-excess-risk-explained
+      by: a11fc3a8
+    permutation testing:
+      variant: permutation-test-inference
+      by: a11fc3a8
+    phantom variables:
+      variant: sem-based-mediation
+      by: a11fc3a8
+    principal directions of mediation:
+      method: high-dimensional-mediation-analysis
+      by: a11fc3a8
+    probit for binary outcome:
+      variant: probit-model-mediation
+      by: a11fc3a8
+    probit link:
+      variant: probit-model-mediation
+      by: a11fc3a8
+    process macro:
+      variant: ''
+      by: a11fc3a8
+    product coefficient method:
+      variant: product-of-coefficients
+      by: a11fc3a8
+    product of coefficients:
+      variant: product-of-coefficients
+      by: a11fc3a8
+    quasi-bayesian:
+      variant: quasi-bayesian-monte-carlo
+      by: a11fc3a8
+    quasi-bayesian confidence intervals:
+      variant: quasi-bayesian-monte-carlo
+      by: a11fc3a8
+    quasi-bayesian monte carlo:
+      variant: quasi-bayesian-monte-carlo
+      by: a11fc3a8
+    quasi-bayesian simulation:
+      variant: quasi-bayesian-monte-carlo
+      by: a11fc3a8
+    r2-based:
+      variant: r-squared-effect-size
+      by: a11fc3a8
+    regression-based:
+      variant: regression-based-mediation
+      by: a11fc3a8
+    repeated measures:
+      variant: longitudinal-mediation
+      by: a11fc3a8
+    resampling:
+      variant: bootstrap-confidence-intervals
+      by: a11fc3a8
+    rmst pseudo-value regression:
+      variant: rmst-outcome
+      by: a11fc3a8
+    robust maximum likelihood:
+      variant: robust-maximum-likelihood
+      by: a11fc3a8
+    robust standard errors:
+      variant: robust-standard-errors
+      by: a11fc3a8
+    sensitivity analysis:
+      variant: unmeasured-confounding-sensitivity
+      by: a11fc3a8
+    serial:
+      variant: serial-mediation
+      by: a11fc3a8
+    serial (chain) mediation:
+      variant: serial-mediation
+      by: a11fc3a8
+    serial mediation:
+      variant: serial-mediation
+      by: a11fc3a8
+    serial multiple mediation:
+      variant: serial-mediation
+      by: a11fc3a8
+    serial multiple mediators:
+      variant: serial-mediation
+      by: a11fc3a8
+    sex-stratified:
+      variant: ''
+      by: a11fc3a8
+    simulation-based confidence intervals:
+      variant: monte-carlo-confidence-intervals
+      by: a11fc3a8
+    stratified:
+      variant: ''
+      by: a11fc3a8
+    structural equation:
+      variant: sem-based-mediation
+      by: a11fc3a8
+    structural equation model:
+      variant: sem-based-mediation
+      by: a11fc3a8
+    structural equation modeling:
+      variant: sem-based-mediation
+      by: a11fc3a8
+    survey-weighted:
+      variant: survey-weighted-mediation
+      by: a11fc3a8
+    survival outcome:
+      variant: survival-outcome
+      by: a11fc3a8
+    time-varying effect:
+      variant: time-varying-effect-mediation
+      by: a11fc3a8
+    two-stage regression for survival data:
+      variant: survival-outcome
+      by: a11fc3a8
+    two-step mr:
+      method: mendelian-randomization
+      by: a11fc3a8
+    weighted:
+      variant: weighting-based-mediation
+      by: a11fc3a8
+    weighting-based:
+      variant: weighting-based-mediation
+      by: a11fc3a8
+    with sensitivity analysis for unmeasured confounding:
+      variant: unmeasured-confounding-sensitivity
+      by: a11fc3a8
+    wlsmv estimator:
+      variant: wlsmv-estimation
+      by: a11fc3a8
+  poisson-regression:
+    ar(1) covariance:
+      method: generalized-estimating-equations
+      by: a11fc3a8
+    ar1 correlation:
+      method: generalized-estimating-equations
+      by: a11fc3a8
+    background stratification:
+      variant: stratified
+      by: a11fc3a8
+    between-within:
+      variant: between-within
+      by: a11fc3a8
+    bootstrap weights:
+      variant: survey-weighted
+      by: a11fc3a8
+    clustered:
+      variant: cluster-robust-standard-errors
+      by: a11fc3a8
+    clustered by hospital:
+      variant: cluster-robust-standard-errors
+      by: a11fc3a8
+    clustered by matched pair:
+      variant: cluster-robust-standard-errors
+      by: a11fc3a8
+    clustered design:
+      variant: cluster-robust-standard-errors
+      by: a11fc3a8
+    clustered matched pairs:
+      variant: cluster-robust-standard-errors
+      by: a11fc3a8
+    clustered standard errors:
+      variant: cluster-robust-standard-errors
+      by: a11fc3a8
+    complex sampling design:
+      variant: survey-weighted
+      by: a11fc3a8
+    conditional:
+      method: conditional-poisson-regression
+      by: a11fc3a8
+    dispersion adjustment:
+      variant: quasi-poisson
+      by: a11fc3a8
+    distributed lag:
+      method: distributed-lag-non-linear-model
+      by: a11fc3a8
+    excess relative rate:
+      method: excess-relative-risk-model
+      by: a11fc3a8
+    excess relative rate model:
+      method: excess-relative-risk-model
+      by: a11fc3a8
+    excess relative risk:
+      method: excess-relative-risk-model
+      by: a11fc3a8
+    excess relative risk model:
+      method: excess-relative-risk-model
+      by: a11fc3a8
+    exchangeable correlation:
+      method: generalized-estimating-equations
+      by: a11fc3a8
+    fixed effects:
+      variant: fixed-effects
+      by: a11fc3a8
+    fourier terms:
+      variant: seasonal-harmonic-terms
+      by: a11fc3a8
+    gee:
+      method: generalized-estimating-equations
+      by: a11fc3a8
+    generalised estimating equations:
+      method: generalized-estimating-equations
+      by: a11fc3a8
+    generalized estimating equations:
+      method: generalized-estimating-equations
+      by: a11fc3a8
+    grouped data:
+      variant: grouped-data
+      by: a11fc3a8
+    harmonic seasonal terms:
+      variant: seasonal-harmonic-terms
+      by: a11fc3a8
+    hierarchical entry:
+      variant: hierarchical-entry
+      by: a11fc3a8
+    individual fixed effects:
+      variant: fixed-effects
+      by: a11fc3a8
+    interaction:
+      variant: interaction-terms
+      by: a11fc3a8
+    interaction term:
+      variant: interaction-terms
+      by: a11fc3a8
+    interaction terms:
+      variant: interaction-terms
+      by: a11fc3a8
+    internal:
+      variant: ''
+      by: a11fc3a8
+    inverse probability weights:
+      variant: inverse-probability-weighted
+      by: a11fc3a8
+    lagged:
+      variant: lagged-exposure
+      by: a11fc3a8
+    lagged exposure:
+      variant: lagged-exposure
+      by: a11fc3a8
+    lagged exposures:
+      variant: lagged-exposure
+      by: a11fc3a8
+    lexis data structure:
+      variant: split-follow-up
+      by: a11fc3a8
+    linear excess relative risk model:
+      method: excess-relative-risk-model
+      by: a11fc3a8
+    linear-quadratic dose-response:
+      method: excess-relative-risk-model
+      by: a11fc3a8
+    linearized standard errors:
+      variant: survey-weighted
+      by: a11fc3a8
+    log link:
+      variant: ''
+      by: a11fc3a8
+    log-linear:
+      variant: ''
+      by: a11fc3a8
+    log-linear trend:
+      variant: ''
+      by: a11fc3a8
+    log-link:
+      variant: ''
+      by: a11fc3a8
+    mixed effects:
+      method: generalized-linear-mixed-model
+      by: a11fc3a8
+    mixed-effects:
+      method: generalized-linear-mixed-model
+      by: a11fc3a8
+    modified:
+      variant: modified-poisson
+      by: a11fc3a8
+    modified (robust variance):
+      variant: modified-poisson
+      by: a11fc3a8
+    modified robust poisson:
+      variant: modified-poisson
+      by: a11fc3a8
+    multilevel:
+      method: generalized-linear-mixed-model
+      by: a11fc3a8
+    multiplicative:
+      variant: ''
+      by: a11fc3a8
+    newey-west robust standard errors:
+      variant: newey-west-standard-errors
+      by: a11fc3a8
+    offset:
+      variant: offset
+      by: a11fc3a8
+    offset for follow-up time:
+      variant: offset
+      by: a11fc3a8
+    offset term:
+      variant: offset
+      by: a11fc3a8
+    offsets:
+      variant: offset
+      by: a11fc3a8
+    overdispersion:
+      variant: quasi-poisson
+      by: a11fc3a8
+    overdispersion scale parameter:
+      variant: quasi-poisson
+      by: a11fc3a8
+    person-time offset:
+      variant: offset
+      by: a11fc3a8
+    person-time splitting:
+      variant: split-follow-up
+      by: a11fc3a8
+    population offset:
+      variant: offset
+      by: a11fc3a8
+    propensity score weighted:
+      variant: inverse-probability-weighted
+      by: a11fc3a8
+    quasi-poisson:
+      variant: quasi-poisson
+      by: a11fc3a8
+    random effects:
+      method: generalized-linear-mixed-model
+      by: a11fc3a8
+    random intercept:
+      method: generalized-linear-mixed-model
+      by: a11fc3a8
+    random intercepts:
+      method: generalized-linear-mixed-model
+      by: a11fc3a8
+    region fixed effects:
+      variant: fixed-effects
+      by: a11fc3a8
+    relative risk:
+      variant: ''
+      by: a11fc3a8
+    repeated measures:
+      variant: repeated-measures
+      by: a11fc3a8
+    replicate weights:
+      variant: survey-weighted
+      by: a11fc3a8
+    robust:
+      variant: robust-standard-errors
+      by: a11fc3a8
+    robust clustered standard errors:
+      variant: cluster-robust-standard-errors
+      by: a11fc3a8
+    robust ses:
+      variant: robust-standard-errors
+      by: a11fc3a8
+    robust standard errors:
+      variant: robust-standard-errors
+      by: a11fc3a8
+    robust variance:
+      variant: robust-standard-errors
+      by: a11fc3a8
+    segmented:
+      method: segmented-regression
+      by: a11fc3a8
+    split follow-up:
+      variant: split-follow-up
+      by: a11fc3a8
+    stratified:
+      variant: stratified
+      by: a11fc3a8
+    stratified baseline:
+      variant: stratified
+      by: a11fc3a8
+    survey weighted:
+      variant: survey-weighted
+      by: a11fc3a8
+    survey weights:
+      variant: survey-weighted
+      by: a11fc3a8
+    survey-weighted:
+      variant: survey-weighted
+      by: a11fc3a8
+    taylor series variance:
+      variant: survey-weighted
+      by: a11fc3a8
+    time-dependent covariates:
+      variant: time-varying-covariates
+      by: a11fc3a8
+    time-dependent exposure:
+      variant: time-varying-covariates
+      by: a11fc3a8
+    time-stratified:
+      variant: time-stratified
+      by: a11fc3a8
+    time-varying covariates:
+      variant: time-varying-covariates
+      by: a11fc3a8
+    trend test:
+      variant: ''
+      by: a11fc3a8
+    unstructured correlation:
+      method: generalized-estimating-equations
+      by: a11fc3a8
+    weighted:
+      variant: weighted
+      by: a11fc3a8
+  propensity-score-matching:
+    1-to-1 nearest-neighbor:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    '1:1':
+      variant: ''
+      by: a11fc3a8
+    1:1 greedy:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    1:1 greedy matching:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    1:1 greedy nearest-neighbor:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    1:1 greedy nearest-neighbour:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    1:1 matching:
+      variant: ''
+      by: a11fc3a8
+    1:1 nearest neighbor:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    1:1 nearest neighbour:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    1:1 nearest-neighbor:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    1:1 nearest-neighbour:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    1:1 optimal pair matching:
+      variant: optimal-matching
+      by: a11fc3a8
+    1:1 without replacement:
+      variant: matching-without-replacement
+      by: a11fc3a8
+    '1:2':
+      variant: ''
+      by: a11fc3a8
+    1:2 matching:
+      variant: ''
+      by: a11fc3a8
+    1:2 nearest neighbor:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    1:2 without replacement:
+      variant: matching-without-replacement
+      by: a11fc3a8
+    1:2:3 matching:
+      variant: ''
+      by: a11fc3a8
+    1:3 matching:
+      variant: ''
+      by: a11fc3a8
+    1:3 nearest neighbor:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    1:3 ratio:
+      variant: ''
+      by: a11fc3a8
+    '1:4':
+      variant: ''
+      by: a11fc3a8
+    1:4 matching:
+      variant: ''
+      by: a11fc3a8
+    1:4 nearest neighbor:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    1:4 nearest-neighbor:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    1:4 ratio:
+      variant: ''
+      by: a11fc3a8
+    '1:5':
+      variant: ''
+      by: a11fc3a8
+    1:5 matching:
+      variant: ''
+      by: a11fc3a8
+    1:n matching:
+      variant: ''
+      by: a11fc3a8
+    2:1 matching:
+      variant: ''
+      by: a11fc3a8
+    caliper:
+      variant: caliper-matching
+      by: a11fc3a8
+    caliper matching:
+      variant: caliper-matching
+      by: a11fc3a8
+    caliper nearest-neighbor:
+      variant: caliper-matching
+      by: a11fc3a8
+    calliper:
+      variant: caliper-matching
+      by: a11fc3a8
+    distance-based on earth mover's distance:
+      variant: earth-movers-distance-matching
+      by: a11fc3a8
+    exact and nearest neighbor:
+      variant: exact-matching-on-covariates
+      by: a11fc3a8
+    exact match:
+      variant: exact-matching-on-covariates
+      by: a11fc3a8
+    exact matching:
+      variant: exact-matching-on-covariates
+      by: a11fc3a8
+    exact matching on some variables:
+      variant: exact-matching-on-covariates
+      by: a11fc3a8
+    genetic matching:
+      variant: genetic-matching
+      by: a11fc3a8
+    greedy:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    greedy 1:1:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    greedy 1:1 matching:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    greedy 1:4 matching:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    greedy matching:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    greedy nearest neighbor:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    greedy nearest neighbour:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    greedy nearest-neighbor:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    kernel matching:
+      variant: kernel-matching
+      by: a11fc3a8
+    l1-regularized:
+      variant: l1-regularized-propensity-model
+      by: a11fc3a8
+    large-scale:
+      variant: large-scale-propensity-score
+      by: a11fc3a8
+    mahalanobis distance:
+      variant: mahalanobis-distance-matching
+      by: a11fc3a8
+    matched on background drug:
+      variant: exact-matching-on-covariates
+      by: a11fc3a8
+    monthly re-matching:
+      variant: sequential-matching
+      by: a11fc3a8
+    nearest neighbor:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    nearest neighbor 1:1:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    nearest neighbor greedy:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    nearest neighbour:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    nearest neighbour 1:4:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    nearest-neighbor:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    nearest-neighbor 1:1:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    nearest-neighbor with caliper:
+      variant: caliper-matching
+      by: a11fc3a8
+    nearest-neighbour:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    no replacement:
+      variant: matching-without-replacement
+      by: a11fc3a8
+    one-to-many:
+      variant: ''
+      by: a11fc3a8
+    one-to-one:
+      variant: ''
+      by: a11fc3a8
+    one-to-one greedy:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    one-to-one nearest neighbor:
+      variant: nearest-neighbor-matching
+      by: a11fc3a8
+    optimal matching:
+      variant: optimal-matching
+      by: a11fc3a8
+    pairwise:
+      variant: pairwise-multi-group-matching
+      by: a11fc3a8
+    preference score:
+      variant: preference-score-matching
+      by: a11fc3a8
+    radius and kernel matching:
+      variant: radius-matching
+      by: a11fc3a8
+    radius matching:
+      variant: radius-matching
+      by: a11fc3a8
+    risk score:
+      variant: disease-risk-score-matching
+      by: a11fc3a8
+    robust variance:
+      variant: robust-variance-estimation
+      by: a11fc3a8
+    rolling entry matching:
+      variant: sequential-matching
+      by: a11fc3a8
+    stratified:
+      method: propensity-score-stratification
+      by: a11fc3a8
+    time conditional:
+      variant: sequential-matching
+      by: a11fc3a8
+    variable ratio:
+      variant: variable-ratio-matching
+      by: a11fc3a8
+    variable-ratio:
+      variant: variable-ratio-matching
+      by: a11fc3a8
+    with replacement:
+      variant: matching-with-replacement
+      by: a11fc3a8
+    within matched strata:
+      variant: matched-set-stratified-analysis
+      by: a11fc3a8
+    without replacement:
+      variant: matching-without-replacement
       by: a11fc3a8
   t-test:
     bonferroni correction:
