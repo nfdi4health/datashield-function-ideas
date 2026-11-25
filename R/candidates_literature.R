@@ -37,7 +37,7 @@ folder <- settings$candidates$folder %||% "literature-watch/candidates"
 writeLines("no", "candidates_due.txt")
 cs <- settings$candidates
 
-months <- watch_months(today, settings$sampling$lag_months %||% 2, settings$sampling$years_back %||% 5)
+months <- watch_months(today, settings$sampling$lag_months %||% 0, settings$sampling$years_back %||% 5)
 recent <- utils::head(months, 12 * (settings$report$share_years %||% 3))
 
 reg <- read_register(dir)

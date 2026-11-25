@@ -19,7 +19,7 @@ today <- as.Date(Sys.getenv("WATCH_TODAY", as.character(Sys.Date())))
 dir <- file.path(Sys.getenv("WATCH_DATA_DIR", "watch-data"), settings$files$data %||% "literature-watch/data")
 
 target <- as.integer(settings$sampling$target_per_month %||% 25)
-months <- watch_months(today, settings$sampling$lag_months %||% 2, settings$sampling$years_back %||% 5)
+months <- watch_months(today, settings$sampling$lag_months %||% 0, settings$sampling$years_back %||% 5)
 queries <- stats::setNames(as.list(hash_keys(vapply(fields, field_search, "", settings = settings))), names(fields))
 state <- read_months_state(dir)
 progress <- watch_progress(state, fields, months, target, queries)

@@ -24,7 +24,9 @@ sampling:
   # default of 5. Once the round is complete, the same nightly run only
   # reads each month that becomes due.
   years_back: 10
-  lag_months: 2           # the newest month is this many months back (papers arrive late)
+  # The current month is read too (user, 2026-11-25): papers that reach PMC
+  # later are picked up by the nightly re-search of the newest months.
+  lag_months: 0           # the newest month is this many months back
   recheck_months: 6       # the newest months are searched again on each run's day
   papers_per_run: 1500    # at most this many papers per run (the manual input max-papers overrides it once)
 

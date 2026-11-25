@@ -57,7 +57,7 @@ stopped <- result$stopped
 if (identical(stopped, "budget") && result$read < max_papers) stopped <- "chunk"
 
 target <- as.integer(settings$sampling$target_per_month %||% 25)
-months <- watch_months(today, settings$sampling$lag_months %||% 2, settings$sampling$years_back %||% 5)
+months <- watch_months(today, settings$sampling$lag_months %||% 0, settings$sampling$years_back %||% 5)
 progress <- watch_progress(read_months_state(dir), fields, months, target, queries)
 complete <- all(progress$months_complete == progress$months)
 line <- sprintf("Round %d per month, %s to %s: %d of %d papers read, %d of %d field-months complete%s.",

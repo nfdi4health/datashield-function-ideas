@@ -13,7 +13,7 @@
 run_watch_chunk <- function(settings, fields, dir, claude, today, budget, reader, fetch_size = 25) {
   s <- settings$sampling
   target <- s$target_per_month %||% 25
-  months <- watch_months(today, s$lag_months %||% 2, s$years_back %||% 5)
+  months <- watch_months(today, s$lag_months %||% 0, s$years_back %||% 5)
   recent <- utils::head(months, s$recheck_months %||% 6)
   today <- as.character(today)
   reg <- read_register(dir)
