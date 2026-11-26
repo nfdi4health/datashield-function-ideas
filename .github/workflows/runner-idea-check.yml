@@ -16,7 +16,9 @@ name: Idea Check (runner)
 # (Sonnet) matches by meaning, numbers only; for a method DataSHIELD lacks,
 # a brief by Claude (Opus) with web search, as for the candidates)
 # and a label for yes,
-# partly and in development (config/idea-check.yml). It never closes,
+# partly and in development (config/idea-check.yml). At most daily-limit
+# checks in 24 hours; a check asked for with priority-label by a login of
+# priority-logins is exempt (user, 2026-11-26). It never closes,
 # routes or edits an issue. R/check_ideas.R gets the issues as a file and
 # never sees a token.
 on:
@@ -36,6 +38,21 @@ on:
         required: false
         type: string
         default: '5'
+      daily-limit:
+        description: 'At most this many checks in 24 hours (the check comments of that time), so nobody can start hundreds; the rest waits, with a warning. 0: no limit. Checks on request (priority-label) don''t count.'
+        required: false
+        type: string
+        default: '20'
+      priority-label:
+        description: 'A label that asks for a check now: set by a login of priority-logins (the issue''s events say who), the issue comes first, is checked even if it was already or carries a skip label, and doesn''t count towards daily-limit; the label is removed afterwards.'
+        required: false
+        type: string
+        default: 'bot-check'
+      priority-logins:
+        description: 'Who may ask for a check with priority-label: exact GitHub logins, separated by commas or spaces. Empty: nobody.'
+        required: false
+        type: string
+        default: ''
       data-branch:
         description: 'The hub''s branch with the literature watch''s data: its vocabulary tells which issues name a method the watch knows.'
         required: false
@@ -121,8 +138,12 @@ jobs:
           GH_TOKEN: ${{ steps.hub_token.outputs.token }}
           MAX_ISSUES: ${{ inputs.max-issues }}
           SKIP_LABELS: ${{ inputs.skip-labels }}
+          DAILY_LIMIT: ${{ inputs.daily-limit }}
+          PRIORITY_LABEL: ${{ inputs.priority-label }}
+          PRIORITY_LOGINS: ${{ inputs.priority-logins }}
         run: |
           [[ "$MAX_ISSUES" =~ ^[0-9]+$ ]] || { echo "::error::max-issues is not a number: $MAX_ISSUES"; exit 1; }
+          [[ "$DAILY_LIMIT" =~ ^[0-9]+$ ]] || { echo "::error::daily-limit is not a number: $DAILY_LIMIT"; exit 1; }
           bash .hub/.github/actions/idea-check/list-ideas.sh "$RUNNER_TEMP/ideas.json"
           echo "count=$(jq '.ideas | length' "$RUNNER_TEMP/ideas.json")" >> "$GITHUB_OUTPUT"
 
@@ -166,4 +187,6 @@ jobs:
         env:
           HUB: ${{ inputs.hub-repository }}
           GH_TOKEN: ${{ steps.hub_token.outputs.token }}
+          IDEAS_FILE: ${{ runner.temp }}/ideas.json
+          PRIORITY_LABEL: ${{ inputs.priority-label }}
         run: bash .hub/.github/actions/idea-check/post-results.sh "$RUNNER_TEMP/idea_results.json"

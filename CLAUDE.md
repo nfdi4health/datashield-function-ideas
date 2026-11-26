@@ -44,6 +44,16 @@ runs (`hub-files`, for R and the scripts; also the defaults
   and opens the copies in the maintainer's name with `ROUTE_TOKEN` (a
   classic token with only `public_repo`); only FlorianSchw may route
   (`LOGINS` / the action's `allowed-logins` in the workflows).
+- **Idea check limits** (user, 2026-11-26): at most `daily-limit` (20)
+  checks in 24 hours, counted from the bots' check comments, so nobody can
+  start hundreds; the rest waits for a later run (a warning annotation;
+  the runner also runs the check once a day). The label `bot-check`, set
+  by a login of `priority-logins` (the runner's caller: FlorianSchw; who set
+  it is read from the issue's events), asks for a check now: first in the
+  run, also on a checked or skipped issue, not counted
+  (`<!-- idea-check-priority -->`), label removed afterwards. Spending and
+  steering aren't a worry for the user; the limit is only against floods.
+  RepositoryOverview reports the runner's Claude runs per day.
 - **The researcher** runs in the private runner
   `FlorianSchw/datashield-agent-runner` on the user's Claude subscription,
   in one queue with the implementer (decided 2026-11-13);
