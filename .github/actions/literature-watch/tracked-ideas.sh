@@ -3,8 +3,9 @@
 # closed: the hidden marker <!-- literature-watch-method: KEY --> that the
 # candidate workflow puts into the issues it opens, and that the idea check
 # (a bot's comment) puts on a hand-written issue whose method the
-# vocabulary knows by that exact name. Only bots' comments count, so a
-# person can't hide a candidate with a comment. Writes a JSON object
+# vocabulary knows by that exact name. Only bots' issues and comments
+# count, so a person can't hide a candidate with a hidden marker in an
+# issue or a comment (2026-11-26: issues counted whoever opened them). Writes a JSON object
 # KEY -> issue number to $1 (empty object without a hub or token).
 set -euo pipefail
 out="$1"
@@ -13,7 +14,7 @@ if [ -z "${HUB:-}" ] || [ -z "${GH_TOKEN:-}" ]; then
   exit 0
 fi
 bodies="$(gh api --paginate "repos/$HUB/issues?state=all&per_page=100" |
-  jq -s '[ add[]? | select(.pull_request == null) | . as $i
+  jq -s '[ add[]? | select(.pull_request == null and .user.type == "Bot") | . as $i
            | ((.body // "") | [scan("<!--\\s*literature-watch-method:\\s*([^\\s>]+)\\s*-->")[0]])[]
            | {key: ., number: $i.number} ]')"
 comments="$(gh api --paginate "repos/$HUB/issues/comments?per_page=100" |
