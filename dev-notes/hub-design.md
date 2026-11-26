@@ -122,8 +122,12 @@ and PubMed's counts per year, which the user checked on the website):**
   back, papers per run) and a one-off override when started by hand (e.g.
   more over Christmas). Each run first reads the newest complete month,
   then uses what's left for the backfill, and stops at the usage limit.
-- **Monthly runs read the month before last** (MeSH indexing and PMC
-  deposits lag), 50 per field.
+- ~~**Monthly runs read the month before last** (MeSH indexing and PMC
+  deposits lag), 50 per field.~~ Since 2026-11-25 (user) the nightly runs
+  read the current month too (`lag_months: 0`): the newest
+  `recheck_months` (6) are searched again every night, which picks up
+  papers that arrive late. A late paper can take a sample place from one
+  already read (its key is smaller); that paper stays in the register.
 - **Ranking:** by share over the last 3 years, trend as tie-breaker; the
   10-year series is for trend lines and context. Trends by year (a month
   of 25 papers is too noisy), as shares, never counts (volume tripled
