@@ -78,7 +78,7 @@ check "it stops reading comments once max-issues are found" "$rc"
 # third waits, with a warning.
 recent_comment() { jq -n --arg t "$(date -u -d "$1" +%Y-%m-%dT%H:%M:%SZ)" --arg b "$2" '{user: {type: "Bot"}, created_at: $t, body: $b}'; }
 {
-  for k in $(seq 1 18); do recent_comment "2 hours ago" "x <!-- idea-check: none -->"; done
+  for _ in $(seq 1 18); do recent_comment "2 hours ago" "x <!-- idea-check: none -->"; done
   recent_comment "3 hours ago" "x <!-- idea-check: none -->
 <!-- idea-check-priority -->"
   recent_comment "30 hours ago" "x <!-- idea-check: none -->"
