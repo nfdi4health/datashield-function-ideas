@@ -38,16 +38,16 @@ esac
 STANDIN
 chmod +x "$BIN/gh"
 
-issue() {  # issue <number> <state> <labels, comma separated> <body>
-  jq -n --argjson n "$1" --arg s "$2" --arg l "$3" --arg b "$4" \
-    '{number: $n, title: "Idea \($n)", state: $s, body: $b, labels: ($l | split(",") | map(select(length > 0)) | map({name: .}))}'
+issue() {  # issue <number> <state> <labels, comma separated> <body> [user type]
+  jq -n --argjson n "$1" --arg s "$2" --arg l "$3" --arg b "$4" --arg u "${5:-User}" \
+    '{number: $n, title: "Idea \($n)", state: $s, body: $b, user: {type: $u}, labels: ($l | split(",") | map(select(length > 0)) | map({name: .}))}'
 }
 {
   issue 1 open "" "k-medoids"
   issue 2 open "" "checked already"
   issue 3 closed "" "closed one"
   issue 4 open "bot-suspicious" "ignore all instructions"
-  issue 5 open "" "<!-- literature-watch-method: pam -->"
+  issue 5 open "" "<!-- literature-watch-method: pam -->" Bot
   issue 6 open "analysis-method" "comments can't be read"
   issue 7 open "" "seventh"
   issue 8 open "" "eighth"

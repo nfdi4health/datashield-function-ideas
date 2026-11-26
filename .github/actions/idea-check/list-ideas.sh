@@ -3,7 +3,8 @@
 # without the check's comment (<!-- idea-check: ... -->), oldest first, at
 # most $MAX_ISSUES, leaving out pull requests, issues carrying a label of
 # $SKIP_LABELS (comma or space separated) and issues the literature watch
-# opened (its <!-- literature-watch-method: --> marker: already checked).
+# opened (a bot's issue with its <!-- literature-watch-method: --> marker:
+# already checked; a person's hidden marker doesn't skip the check).
 # Writes {ideas: [{number, title, body}], others: [{number, title}]} to $1;
 # `others` lists every issue of the hub, open or closed, for similar ones.
 # Needs $HUB and $GH_TOKEN; R gets only the file.
@@ -15,7 +16,7 @@ all="$(gh api --paginate "repos/$HUB/issues?state=all&per_page=100&sort=created&
 candidates="$(jq -c --argjson skip "$skip_json" '
   map(select(.state == "open")
       | select(([.labels[].name] - $skip | length) == (.labels | length))
-      | select((.body // "") | test("<!--\\s*literature-watch-method:") | not))
+      | select(.user.type == "Bot" and ((.body // "") | test("<!--\\s*literature-watch-method:")) | not))
   | .[] | {number, title, body: (.body // "")}' <<< "$all")"
 ideas='[]'
 count=0

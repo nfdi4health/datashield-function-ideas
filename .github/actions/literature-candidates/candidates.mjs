@@ -97,13 +97,14 @@ function api(token, fetchImpl = fetch) {
   };
 }
 
-async function existingMarkers(gh, repo) {
+export async function existingMarkers(gh, repo) {
   const found = {};
   for (let page = 1; ; page++) {
     const items = await gh(`repos/${repo}/issues?state=all&per_page=100&page=${page}`);
     if (!items?.length) break;
     for (const i of items) {
-      if (i.pull_request) continue;
+      // Only the bots' issues: a person's hidden marker must not count.
+      if (i.pull_request || i.user?.type !== "Bot") continue;
       for (const m of (i.body ?? "").matchAll(/<!--\s*literature-watch-method:\s*([^\s]+)\s*-->/g)) found[m[1]] = i.number;
     }
     if (items.length < 100) break;
