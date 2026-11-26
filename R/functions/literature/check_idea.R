@@ -6,7 +6,8 @@
 # keeps only a function and quote that are really there. Similar issues
 # are kept only if they are among `others`. Returns list(limit, failed,
 # result): result is NULL at the usage limit or after a failed call, which
-# leave the issue for the next run.
+# leave the issue for the next run; it carries the method's description and
+# keywords for the literature match and the research.
 check_idea <- function(issue, others, inventory, reader, judge, settings, today) {
   s <- settings
   body <- issue$body %||% ""
@@ -24,7 +25,8 @@ check_idea <- function(issue, others, inventory, reader, judge, settings, today)
   similar <- utils::head(similar, s$similar %||% 3)
   if (!isTRUE(a$is_method) || !nzchar(trimws(a$method %||% ""))) {
     return(list(limit = FALSE, failed = FALSE,
-      result = list(number = issue$number, method = "", verdict = NULL, candidates = inventory[0, , drop = FALSE], similar = similar)))
+      result = list(number = issue$number, method = "", description = "", keywords = character(0), verdict = NULL,
+        candidates = inventory[0, , drop = FALSE], similar = similar)))
   }
   cand <- preselect_functions(inventory, c(a$method, unlist(a$keywords)), s$candidates %||% 15)
   if (nrow(cand) == 0) {
@@ -42,5 +44,6 @@ check_idea <- function(issue, others, inventory, reader, judge, settings, today)
       list(verdict = "unclear", `function` = "", quote = "", note = "")
   }
   list(limit = FALSE, failed = FALSE,
-    result = list(number = issue$number, method = a$method, verdict = rec, candidates = cand, similar = similar))
+    result = list(number = issue$number, method = a$method, description = a$description %||% "",
+      keywords = as.character(unlist(a$keywords)), verdict = rec, candidates = cand, similar = similar))
 }

@@ -10,9 +10,11 @@ name: Idea Check (runner)
 # catalogue's inventory (FederatedMethods/packages, as the literature
 # watch's "Exists?"), Claude (Opus) judges them with a quote from the
 # function's documentation, which R checks. One comment per issue (the
-# verdict, the closest functions, similar ideas; for a method the
-# literature watch's vocabulary knows by exactly this name, its paper count
-# and the watch's marker, so the candidate list doesn't propose it again)
+# verdict, the closest functions, similar ideas; the literature watch's
+# numbers for the method: by exact name with the watch's marker, so the
+# candidate list doesn't propose it again, else for the method Claude
+# (Sonnet) matches by meaning, numbers only; for a method DataSHIELD lacks,
+# a brief by Claude (Opus) with web search, as for the candidates)
 # and a label for yes,
 # partly and in development (config/idea-check.yml). It never closes,
 # routes or edits an issue. R/check_ideas.R gets the issues as a file and
@@ -66,7 +68,7 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 90   # up to 5 issues, each with a research brief of a few minutes
     steps:
       - name: May this login use the subscription?
         if: inputs.subscription-logins != ''

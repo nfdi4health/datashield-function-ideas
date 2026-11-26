@@ -101,3 +101,14 @@ idea-reading:
       type: adaptive
     effort: low
     max_tokens: 8000
+# Which method of the literature watch a hub issue's method is, when no
+# name matches exactly (match_idea_literature()); numbers only, no marker.
+idea-literature:
+  anthropic:
+    tool_name: submit_literature_match
+    model: claude-sonnet-5-5
+    tool_choice_type: auto
+    thinking:
+      type: adaptive
+    effort: low
+    max_tokens: 8000

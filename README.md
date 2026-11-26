@@ -51,7 +51,10 @@ call, config merging) started as copies from
 [nfdi4health/datashield-workflows](https://github.com/nfdi4health/datashield-workflows),
 which also builds bots for DataSHIELD packages.
 New issues get an "Exists in DataSHIELD?" check (`idea-check.yml`): a
-comment with the closest DataSHIELD functions, and a label if one exists.
+comment with the closest DataSHIELD functions, how often the literature
+watch found the method in papers, and, if DataSHIELD lacks it, a first
+research brief; a label if a function exists. A person's request counts
+as actual demand, ahead of what the literature watch infers from papers.
 The literature watch runs nightly in a private runner repository on the
 maintainer's Claude subscription (`runner-literature-watch.yml`, started
 by hand with `literature-watch.yml`): it reads a random sample of

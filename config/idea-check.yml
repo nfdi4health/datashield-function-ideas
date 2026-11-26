@@ -11,6 +11,12 @@ candidates: 15           # functions R preselects for Claude
 similar: 3               # similar hub issues named at most
 closest: 5               # functions listed in the comment
 max_note_chars: 300      # of Claude's notes in the comment
+literature_candidates: 12   # methods of the literature watch Claude chooses from, when no name matches exactly
+# A research brief (Claude with web search, as for the candidates; user,
+# 2026-11-26) for these verdicts; [] for none.
+research_verdicts: [none, partial, unclear, unconfirmed]
+max_research_issue_chars: 1500   # of the issue's text, for the research
+max_brief_chars: 700     # of each field of the brief in the comment
 
 # A label per verdict; a verdict without one gets none (`none` is what the
 # hub expects, `unclear` and `unconfirmed` say nothing reliable).
@@ -33,5 +39,30 @@ texts:
   note: "Note: %s"
   closest: "Closest functions:"
   similar: "Similar ideas here: %s."
-  literature: "The literature watch knows this method: named in %d of the %d usable papers read so far. It won't propose it again as a candidate."
+  # The literature watch's numbers: papers, usable papers, share (%),
+  # share in the last years (%), trend.
+  literature_numbers: "named in %d of the %d usable papers read so far (%.1f%%; %.1f%% in the last three years, %s)."
+  literature_fields: "Mostly in: %s."
+  trends:
+    rising: rising
+    falling: falling
+    steady: steady
+    "–": "too few years for a trend"
+  literature_exact: "The literature watch knows this method by this name, so it won't propose it again as a candidate:"
+  # A match by Claude, not by name (%s: the watch's method): numbers only,
+  # no effect on the candidate list.
+  literature_close:
+    same: "The literature watch's closest method, by Claude's match (not by name), is %s:"
+    broader: "The literature watch has a broader method, by Claude's match: %s,"
+    narrower: "The literature watch has a narrower method, by Claude's match: %s,"
+  brief_heading: "**A first brief** (Claude, with web search: a starting point, not a verdict)"
+  brief:
+    description: "**What it is:** %s"
+    r: "**In R:** %s"
+    no_package: "no package found."
+    federated: "**Federated:** %s"
+    disclosure: "**Disclosure, a first view:** %s"
+    fit: "**Would fit:** %s"
+    sources: "Sources (copy to open): %s"
+  brief_failed: "_No brief this time: the research call failed._"
   footer: "Checked against the DataSHIELD package catalogue (FederatedMethods/packages) on %s, from the functions' titles and descriptions only, so read a function's documentation before relying on this. The check runs once per issue; delete this comment to have it run again."

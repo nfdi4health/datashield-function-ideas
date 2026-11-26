@@ -40,6 +40,28 @@ it grew from 2026-11-11; paths in it name the files where they were then
   earlier result and is asked what is new since then. "Not now" gaps keep
   theirs until it is older than that.
 
+## Decided 2026-11-26 (user)
+
+- **A person's request weighs more than the literature watch's
+  candidates:** it is actual demand, not demand inferred from papers.
+  Reviews and the developers' meeting take that into account; nothing
+  ranks requests against candidates automatically, and hand-written ideas
+  don't go into the monthly candidate list (considered and dropped).
+- **Hand-written ideas get the same basis for the decision** (built
+  2026-11-26, `R/check_ideas.R`, not yet run in the runner): the idea check
+  adds the literature watch's numbers (share, share in the last three
+  years, trend, fields) and, for a method DataSHIELD lacks
+  (`research_verdicts` in `config/idea-check.yml`), the research brief of
+  the candidates (Opus with web search, `research_idea()`), in its
+  comment, so routing copies it along. The numbers come from an exact name
+  match as before (with the watch's marker), else from Claude's match by
+  meaning (`match_idea_literature()`, Sonnet, choosing among the
+  vocabulary's methods sharing words with it): labelled as Claude's match
+  (same, broader, narrower), without the marker, so a wrong match still
+  merges nothing (the decision of 2026-11-18 stands). The brief isn't kept
+  in `research.json` (the idea check reads the data branch only); it is
+  written once per issue, again only if the comment is deleted.
+
 ## A central hub for wishes and gaps (brainstorm with the user, 2026-11-11)
 
 **Since 2026-11-13:** the hub is `nfdi4health/datashield-function-ideas`

@@ -3,9 +3,14 @@
 # tells later runs the issue is done. Everything Claude wrote (the method's
 # name, the note) and the catalogue's texts pass plain_comment_text(), so
 # the comment can mention, link or show nothing. A method the literature
-# watch knows (`result$literature`) gets its paper count and the watch's
-# marker <!-- literature-watch-method: KEY -->, which the candidate list
-# reads from bots' comments as tracked. Returns list(body, label).
+# watch knows (`result$literature`: match_idea_literature() and
+# idea_literature_stats()) gets its numbers; only an exact match also gets
+# the watch's marker <!-- literature-watch-method: KEY -->, which the
+# candidate list reads from bots' comments as tracked, while a match by
+# Claude is labelled as such. `result$research` (research_idea()) adds the
+# brief, every field as plain text, sources included (readable, not links);
+# `result$research_failed` a line that it couldn't be written. Returns
+# list(body, label).
 format_idea_comment <- function(result, settings, today) {
   s <- settings
   t <- s$texts
@@ -33,13 +38,37 @@ format_idea_comment <- function(result, settings, today) {
   }
   lit <- result$literature
   if (!is.null(lit)) {
-    lines <- c(lines, "", sprintf(t$literature, lit$papers, lit$usable))
+    numbers <- sprintf(t$literature_numbers, lit$papers, lit$usable, 100 * lit$share, 100 * lit$recent_share,
+      t$trends[[lit$trend]] %||% lit$trend)
+    if (length(lit$fields)) numbers <- paste(numbers, sprintf(t$literature_fields, paste(lit$fields, collapse = ", ")))
+    if (isTRUE(lit$exact)) {
+      lines <- c(lines, "", paste(t$literature_exact, numbers))
+    } else {
+      name <- plain(lit$name %||% lit$key, 120)
+      lines <- c(lines, "", paste(sprintf(t$literature_close[[lit$relation]] %||% t$literature_close$same, name), numbers))
+      if (nzchar(trimws(lit$note %||% ""))) lines <- c(lines, sprintf(t$note, plain(lit$note)))
+    }
+  }
+  r <- result[["research"]]
+  if (!is.null(r)) {
+    n <- s$max_brief_chars %||% 700
+    pk <- vapply(r$r_packages %||% list(), function(p) sprintf("%s::%s (%s)", plain(p$package, 60), plain(p[["function"]], 60),
+      plain(p$note, 160)), "")
+    lines <- c(lines, "", t$brief_heading, "",
+      sprintf(t$brief$description, plain(r$description, n)), "",
+      sprintf(t$brief$r, if (length(pk)) paste(pk, collapse = "; ") else t$brief$no_package), "",
+      sprintf(t$brief$federated, plain(r$federated, n)), "",
+      sprintf(t$brief$disclosure, plain(r$disclosure, n)), "",
+      sprintf(t$brief$fit, plain(r$fit, n)))
+    if (length(r$sources)) lines <- c(lines, "", sprintf(t$brief$sources, paste(vapply(unlist(r$sources), plain, "", n = 200), collapse = " · ")))
+  } else if (isTRUE(result$research_failed)) {
+    lines <- c(lines, "", t$brief_failed)
   }
   if (length(result$similar)) {
     lines <- c(lines, "", sprintf(t$similar, paste0("#", result$similar, collapse = ", ")))
   }
   lines <- c(lines, "", sprintf("<sub>%s</sub>", sprintf(t$footer, format(today))), "",
     sprintf("<!-- idea-check: %s -->", verdict),
-    if (!is.null(lit)) sprintf("<!-- literature-watch-method: %s -->", lit$key))
+    if (isTRUE(lit$exact)) sprintf("<!-- literature-watch-method: %s -->", lit$key))
   list(body = paste(lines, collapse = "\n"), label = s$labels[[verdict]] %||% "")
 }

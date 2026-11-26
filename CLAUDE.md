@@ -57,6 +57,12 @@ runs (`hub-files`, for R and the scripts; also the defaults
   years by hand for the next round (no automatic stages). The literature
   watch (`runner-literature-watch.yml`) reads, sorts names into the
   vocabulary and writes the report; nothing else.
+- **Requests weigh more than candidates** (user, 2026-11-26): a person's
+  hub issue is actual demand, the literature watch's candidates inferred
+  demand. The idea check gives requests the same basis (literature
+  numbers, by exact name with the marker or by Claude's match without it;
+  a research brief for methods DataSHIELD lacks); requests don't go into
+  the candidate list.
 - **Candidate selection** (built 2026-11-20, `runner-candidate-selection.yml`,
   started here with `candidate-selection.yml`, monthly in the runner; user:
   apart from the reading): ranking over all papers read, "Exists?" down the
