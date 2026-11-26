@@ -1,7 +1,7 @@
 // The hub's candidate pull requests (.github/actions/literature-candidates).
 import assert from "node:assert/strict";
 import test from "node:test";
-import { candidatesMonth, issueBody, issueTitle, mergeDecisions, parseDecisions, undecided } from "../../.github/actions/literature-candidates/candidates.mjs";
+import { candidatesMonth, existingMarkers, issueBody, issueTitle, mergeDecisions, parseDecisions, undecided } from "../../.github/actions/literature-candidates/candidates.mjs";
 
 const body = `Intro
 - [x] Open an issue
@@ -66,4 +66,14 @@ test("decisions are recorded with their papers, the pull request and the issue",
     "fine-gray": { decision: "issue", date: "2026-12-01", papers: 41, pr: 3, issue: 12 },
     splines: { decision: "dont-suggest", date: "2026-12-01", papers: 9, pr: 3 },
   });
+});
+
+test("existingMarkers counts only bots' issues, not a person's hidden marker or pull requests", async () => {
+  const pages = [[
+    { number: 3, user: { type: "Bot" }, body: "x <!-- literature-watch-method: fine-gray -->" },
+    { number: 4, user: { type: "User" }, body: "<!-- literature-watch-method: lasso -->" },
+    { number: 5, user: { type: "Bot" }, pull_request: {}, body: "<!-- literature-watch-method: pr-only -->" },
+  ]];
+  const gh = async (path) => pages[Number(new URL(`https://x/${path}`).searchParams.get("page")) - 1] ?? [];
+  assert.deepEqual(await existingMarkers(gh, "o/hub"), { "fine-gray": 3 });
 });

@@ -114,13 +114,13 @@ case "$*" in
     printf '%s\n' '[{"issue_url":"https://api.github.com/repos/o/hub/issues/20","user":{"type":"Bot"},"body":"x <!-- idea-check: none -->\n<!-- literature-watch-method: k-medoids -->"},{"issue_url":"https://api.github.com/repos/o/hub/issues/21","user":{"type":"User"},"body":"<!-- literature-watch-method: lasso -->"}]'
     printf '%s\n' '[{"issue_url":"https://api.github.com/repos/o/hub/issues/22","user":{"type":"Bot"},"body":"<!-- literature-watch-method: fine-gray -->"}]' ;;
   *)
-    printf '%s\n' '[{"number":3,"body":"x <!-- literature-watch-method: fine-gray -->"},{"number":4,"pull_request":{},"body":"<!-- literature-watch-method: pr-only -->"}]'
-    printf '%s\n' '[{"number":9,"body":null},{"number":12,"body":"<!--literature-watch-method: cox-regression/tvc -->"}]' ;;
+    printf '%s\n' '[{"number":3,"user":{"type":"Bot"},"body":"x <!-- literature-watch-method: fine-gray -->"},{"number":4,"user":{"type":"Bot"},"pull_request":{},"body":"<!-- literature-watch-method: pr-only -->"}]'
+    printf '%s\n' '[{"number":9,"user":{"type":"User"},"body":null},{"number":12,"user":{"type":"Bot"},"body":"<!--literature-watch-method: cox-regression/tvc -->"},{"number":13,"user":{"type":"User"},"body":"<!-- literature-watch-method: glm -->"}]' ;;
 esac
 STUB
 chmod +x "$work/bin/gh"
 (cd "$work" && PATH="$work/bin:$PATH" HUB=o/hub GH_TOKEN=t bash "$tracked" out.json > /dev/null)
-check "tracked ideas: markers of issues and of bots' comments, not of pull requests or people's comments; an issue's own marker wins" "$(jq -c -S . "$work/out.json")" '{"cox-regression/tvc":12,"fine-gray":3,"k-medoids":20}'
+check "tracked ideas: markers of bots' issues and comments, not of pull requests or people's issues and comments; an issue's own marker wins" "$(jq -c -S . "$work/out.json")" '{"cox-regression/tvc":12,"fine-gray":3,"k-medoids":20}'
 (cd "$work" && HUB="" bash "$tracked" none.json > /dev/null)
 check "without a hub: an empty list" "$(cat "$work/none.json")" "{}"
 
