@@ -3,16 +3,19 @@ name: Idea Check
 # In the hub of missing functions: a new issue starts the "Exists in
 # DataSHIELD?" check in the private runner repository (idea-check.yml
 # there), which comments on the issue with the closest DataSHIELD functions
-# and labels it exists / exists-partly / in-development. By hand only the
-# logins listed may start it; the bots' App needs Actions: write on the
-# runner.
+# and labels it exists / exists-partly / in-development. The label
+# bot-check asks for a check now (the runner checks who set it: only its
+# priority-logins count; such a check is exempt from the daily limit). By
+# hand only the logins listed may start it; the bots' App needs Actions:
+# write on the runner.
 on:
   issues:
-    types: [opened]
+    types: [opened, labeled]
   workflow_dispatch:
 
 jobs:
   start:
+    if: github.event.action != 'labeled' || github.event.label.name == 'bot-check'
     runs-on: ubuntu-latest
     permissions: {}
     steps:

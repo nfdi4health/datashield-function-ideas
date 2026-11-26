@@ -350,3 +350,19 @@ PR merged -> methods-issues: open issues (method marker), record decisions
   research step's disclosure view goes (a first impression; the real
   disclosure work belongs in the design note later).
 
+## Idea check: daily limit and requests (user, 2026-11-26)
+
+Anyone can open an issue, and each one starts a check on the subscription
+with no person in between. Spending and wrong steering don't worry the user
+(steered text can do nothing bad: plain text, R's checks, no tools but web
+search for the brief, routing and the implementer need a person). Against
+floods: at most `daily-limit` (20) checks in 24 hours, counted from the
+bots' check comments of that time (`list-ideas.sh`), the rest waits with a
+warning annotation; the runner checks once a day as well, so nothing waits
+for the next new issue. A check the user asks for (label `bot-check`, set
+by a login of `priority-logins`, read from the issue's events) ignores the
+limit, comes first, also re-checks an issue checked before or carrying a
+skip label, carries `<!-- idea-check-priority -->` so it doesn't count,
+and the label is removed afterwards. RepositoryOverview shows the runner's
+Claude runs per day, days with many highlighted.
+
