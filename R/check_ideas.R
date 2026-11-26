@@ -6,9 +6,15 @@
 # catalogue's inventory, Claude judges them (the literature watch's
 # "Exists?" prompt), and R checks the answer and writes the comment and
 # label to IDEA_RESULTS (post-results.sh posts them). R never sees a GitHub
-# token. A method the literature watch's vocabulary knows by exactly this
-# name gets its paper count and the watch's marker, so the candidate list
-# treats it as tracked. At the usage limit it stops; the rest waits for the next run.
+# token. The literature watch's numbers (share, trend, fields): for a method
+# its vocabulary knows by exactly this name, with the watch's marker, so the
+# candidate list treats it as tracked; else for the method Claude matches by
+# meaning, without the marker (match_idea_literature()). For a method
+# DataSHIELD lacks (`research_verdicts`), a brief by Claude with web search
+# as for the candidates (research_idea(); user, 2026-11-26: a request is
+# actual demand, so it deserves the same basis for the decision). At the
+# usage limit it stops; the issue being checked and the rest wait for the
+# next run.
 # IDEA_TODAY for tests.
 
 library(jsonlite)
@@ -45,6 +51,11 @@ vocab <- if (dir.exists(data_dir)) read_vocabulary(data_dir) else NULL
 reg <- if (dir.exists(data_dir)) read_register(data_dir) else NULL
 reader <- claude_client("idea-reading", "prompts/idea-reading-prompt.md")
 judge <- claude_client("methods-exists", "prompts/methods-exists-prompt.md")
+matcher <- claude_client("idea-literature", "prompts/idea-literature-prompt.md")
+researcher <- claude_client("methods-research", "prompts/methods-research-prompt.md")
+# The months the numbers count over, as in the candidate list.
+months <- watch_months(today, watch$sampling$lag_months %||% 0, watch$sampling$years_back %||% 5)
+recent <- utils::head(months, 12 * (watch$report$share_years %||% 3))
 
 for (issue in ideas$ideas) {
   x <- check_idea(issue, ideas$others %||% list(), inventory, reader, judge, settings, today)
@@ -53,7 +64,27 @@ for (issue in ideas$ideas) {
     break
   }
   if (is.null(x$result)) next
-  if (!is.null(x$result$verdict)) x$result$literature <- idea_literature(x$result$method, vocab, reg)
+  if (!is.null(x$result$verdict)) {
+    lit <- match_idea_literature(matcher, x$result, vocab, settings$literature_candidates %||% 12)
+    if (isTRUE(lit$limit)) {
+      message("Stopped at the subscription's usage limit; the rest waits for the next run.")
+      break
+    }
+    if (!is.null(lit)) {
+      parts <- strsplit(lit$key, "/", fixed = TRUE)[[1]]
+      lit$name <- method_label(vocab, parts[1], if (length(parts) > 1) parts[2] else "")
+      x$result$literature <- c(lit, idea_literature_stats(reg, vocab, lit$key, months, recent))
+    }
+    if (x$result$verdict$verdict %in% unlist(settings$research_verdicts)) {
+      r <- research_idea(researcher, issue, x$result, x$result$literature, settings$max_research_issue_chars %||% 1500)
+      if (r$limit) {
+        message("Stopped at the subscription's usage limit; the rest waits for the next run.")
+        break
+      }
+      x$result$research <- r$research
+      x$result$research_failed <- is.null(r$research)
+    }
+  }
   comment <- format_idea_comment(x$result, settings, today)
   results[[length(results) + 1]] <- list(number = issue$number, body = comment$body, label = comment$label)
   message(sprintf("#%s: %s", issue$number, if (is.null(x$result$verdict)) "not a method" else x$result$verdict$verdict))
