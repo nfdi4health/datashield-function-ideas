@@ -1,0 +1,731 @@
+{
+  "month": "2026-11",
+  "created": "2026-11-27",
+  "researched_by": "e923cf10",
+  "coverage": [
+    {
+      "year": "2026",
+      "read": 2615,
+      "usable": 2577
+    },
+    {
+      "year": "2025",
+      "read": 2665,
+      "usable": 2619
+    },
+    {
+      "year": "2024",
+      "read": 2638,
+      "usable": 2583
+    },
+    {
+      "year": "2023",
+      "read": 2659,
+      "usable": 2591
+    },
+    {
+      "year": "2022",
+      "read": 2587,
+      "usable": 2513
+    },
+    {
+      "year": "2021",
+      "read": 2099,
+      "usable": 2020
+    }
+  ],
+  "candidates": [
+    {
+      "key": "mann-whitney-u-test",
+      "method": "mann-whitney-u-test",
+      "variant": "",
+      "name": "Mann-Whitney U test",
+      "variant_name": "",
+      "verdict": "partial",
+      "function": "dsBaseClient::ds.ranksSecure",
+      "note": "It gives global ranks, which the test is built on, but the documents describe no function that computes the U statistic or its p-value.",
+      "papers": 4281,
+      "share": 0.2873,
+      "recent_papers": 2471,
+      "recent_share": 0.3088,
+      "list": "most-used",
+      "trend": "rising",
+      "fields": "omics, cardiovascular, respiratory-allergy",
+      "examples": {
+        "41540829": {
+          "pmid": "41540829",
+          "title": "Comparison of Long-Term Outcomes between Curative and Non-Curative Resection after Endoscopic Submucosal Dissection for Superficial Esophageal Squamous Cell Carcinoma.",
+          "journal": "Gut Liver"
+        },
+        "42015618": {
+          "pmid": "42015618",
+          "title": "Prodromal Lewy Body Disorder Features in REM Sleep Behavior Disorder With Biomarker-Defined Synucleinopathy.",
+          "journal": "Ann Clin Transl Neurol"
+        },
+        "42050876": {
+          "pmid": "42050876",
+          "title": "Multiple breath washout for pulmonary function assessment in young childhood cancer survivors: a multicenter study.",
+          "journal": "Ann Am Thorac Soc"
+        }
+      },
+      "research": {
+        "description": "The Mann-Whitney U test, also called the Wilcoxon rank-sum test, pools two independent groups, ranks all observations together, and checks whether one group tends to have higher values than the other. It works from the rank sum of one group, so it needs no normality assumption. Health researchers use it a lot for skewed or ordinal outcomes and small samples, such as biomarker or omics levels, cardiovascular measurements, lung function and allergy scores, or length of stay between cases and controls or between two treatment arms.",
+        "federated": "Becher, Marcus-Kalish and Steinberg (2023) built a one-shot federated Mann-Whitney test for the Human Brain Project's Medical Informatics Platform. Each site releases group-wise counts in shared histogram bins under a K-anonymity rule (at least 10 subjects per cell), the pooled U is estimated from those counts, and they report only a modest loss of power compared with the pooled data. In DataSHIELD an exact pooled test looks possible on top of ds.ranksSecure, which already leaves global ranks on each server. A new server function would return only the per-group rank sum, the group size and the tie-group information, and the client would add these up across servers, compute U = R1 - n1(n1+1)/2, and get the p-value from the normal approximation with a tie correction. A simpler alternative is to meta-analyse per-study statistics: each server returns its local U, n1, n2 and the null variance, and these are combined in a stratified (van Elteren) test. That tests within-study differences rather than the pooled comparison. There are also differentially private Mann-Whitney analogues (Couch et al. 2019), but they are designed for a single central dataset, not for federation.",
+        "disclosure": "Through the ds.ranksSecure route, each server would release only scalars: the group sizes, the rank sum per group, and the tie counts needed for the variance. The individual-level ranks stay on the server. The main risk is a small group: with one or a few members, the rank sum shows those subjects' global ranks, and together with released quantiles that narrows down their values. So per-server group sizes need the nfilter.tab threshold, and repeated calls on slightly different subsets need guarding against differencing attacks. Tie counts and binned histograms carry the usual small-cell risk, and a Hodges-Lehmann confidence interval would need pairwise differences across servers, which is much more disclosive and best left out at first.",
+        "fit": "It belongs in dsBase/dsBaseClient next to ds.ranksSecure, as a client function (for example ds.wilcoxonTest) with a server-side aggregate function that reads the global-ranks data frame ds.ranksSecure produces and returns per-group rank sums and counts.",
+        "r_packages": [
+          {
+            "package": "stats",
+            "function": "wilcox.test",
+            "note": "Comes with base R. Gives the exact or normal-approximation p-value with a continuity correction, and optionally the Hodges-Lehmann shift estimate with a confidence interval."
+          },
+          {
+            "package": "coin",
+            "function": "wilcox_test",
+            "note": "Conditional permutation framework with exact, Monte Carlo or asymptotic null distributions. Its independence_test with a block term gives a stratified (van Elteren-type) version, which is useful as the multi-site analogue."
+          },
+          {
+            "package": "exactRankTests",
+            "function": "wilcox.exact",
+            "note": "Exact p-values and confidence intervals even when values are tied."
+          },
+          {
+            "package": "rstatix",
+            "function": "wilcox_test",
+            "note": "Tidy pipe-friendly wrapper around stats::wilcox.test, with grouping and adjustment for multiple comparisons."
+          }
+        ],
+        "sources": [
+          "https://arxiv.org/abs/2308.10194v1",
+          "https://www.frontiersin.org/journals/applied-mathematics-and-statistics/articles/10.3389/fams.2023.1267034/pdf",
+          "https://rdrr.io/github/datashield/dsBaseClient/man/ds.ranksSecure.html",
+          "https://rdrr.io/github/datashield/dsBase/man/ranksSecureDS3.html",
+          "https://search.r-project.org/CRAN/packages/coin/vignettes/coin.pdf",
+          "https://arxiv.org/pdf/1903.09364"
+        ]
+      },
+      "researched_on": "2026-11-27"
+    },
+    {
+      "key": "fishers-exact-test",
+      "method": "fishers-exact-test",
+      "variant": "",
+      "name": "Fisher's exact test",
+      "variant_name": "",
+      "verdict": "none",
+      "function": "",
+      "note": "I looked for an exact or hypergeometric test on general contingency tables; ds.exactHWE uses Fisher's test only for Hardy-Weinberg equilibrium on SNPs, and the table functions offer only chi-squared.",
+      "papers": 3032,
+      "share": 0.2034,
+      "recent_papers": 1743,
+      "recent_share": 0.2178,
+      "list": "most-used",
+      "trend": "rising",
+      "fields": "respiratory-allergy, cardiovascular, cancer",
+      "examples": {
+        "41540829": {
+          "pmid": "41540829",
+          "title": "Comparison of Long-Term Outcomes between Curative and Non-Curative Resection after Endoscopic Submucosal Dissection for Superficial Esophageal Squamous Cell Carcinoma.",
+          "journal": "Gut Liver"
+        },
+        "42015618": {
+          "pmid": "42015618",
+          "title": "Prodromal Lewy Body Disorder Features in REM Sleep Behavior Disorder With Biomarker-Defined Synucleinopathy.",
+          "journal": "Ann Clin Transl Neurol"
+        },
+        "42050876": {
+          "pmid": "42050876",
+          "title": "Multiple breath washout for pulmonary function assessment in young childhood cancer survivors: a multicenter study.",
+          "journal": "Ann Am Thorac Soc"
+        }
+      },
+      "research": {
+        "description": "Fisher's exact test checks whether two categorical variables are associated in a contingency table. It does this by computing, with the row and column totals held fixed, the exact hypergeometric probability of the observed table and of every table less likely than it. There is no large-sample approximation. Health researchers use it in place of the chi-squared test when cells are small or sparse, for example when comparing rare adverse events, exposures, genotypes or outcomes between groups in small trials, case series and subgroup analyses. For 2x2 tables it also gives a conditional maximum likelihood odds ratio with an exact confidence interval.",
+        "federated": "I found no published federated Fisher's exact test of the DataSHIELD kind. The privacy-preserving versions in the literature are cryptographic. One is a homomorphic-encryption (BGN) Fisher test for genomic data. Others are secure-computation schemes, such as Japanese patents for computing Fisher's test on secret-shared frequencies and the SAFETY GWAS system using Paillier encryption plus SGX. Closer analogues exist for chi-squared: FED-χ2, and MPC chi-squared tests in which centres secret-share their local tables. The test needs only the cell counts, so a one-shot approach is simple: each server returns its table, the client sums them, and fisher.test runs on the pooled table. The better approach treats study as a stratum and uses the exact conditional (Mantel-Haenszel-type) test of a common odds ratio. For 2x2xK tables this needs only each study's margins and the cross-study sum of one cell, because the null distribution is a convolution of per-study hypergeometrics. A third option is for each server to run fisher.test locally and return only the p-value and odds ratio, which are then combined by meta-analysis or Fisher's p-value combination.",
+        "disclosure": "All of these routes release cell counts, margins, or quantities equivalent to them. The method's whole purpose is small cells, which is exactly what DataSHIELD's table filter (the threshold behind ds.table) suppresses, so the two are in direct tension. A per-study exact p-value or conditional odds ratio is not safe either. Once the margins are known, the p-value of a 2x2 table is a monotone function of the single free cell, so the analyst can work backwards to the count. The safer designs are the stratified exact test, if the cross-study sum of the cell can be released without the per-study values (which needs secure aggregation, or every study above threshold), or computing the test server-side with only a coarsened p-value returned. The guard against differencing across repeated calls on subsets would have to match the one ds.table has.",
+        "fit": "It would fit in dsBase/dsBaseClient, either as a report.fisher.tests option next to report.chisq.tests in ds.table or as a separate ds.fisherTest with a stratified exact option across studies, rather than in the genetics-specific setting of ds.exactHWE.",
+        "r_packages": [
+          {
+            "package": "stats",
+            "function": "fisher.test",
+            "note": "Base R. Handles 2x2 tables, with a conditional MLE odds ratio and exact CI, and RxC tables through the network algorithm or a simulated p-value. mantelhaen.test(exact = TRUE) in the same package gives the exact stratified test for 2x2xK tables, which is the natural pooled version when strata are studies."
+          },
+          {
+            "package": "exact2x2",
+            "function": "exact2x2 / fisher.exact",
+            "note": "CRAN, version 1.7.0 (2025). Conditional exact tests (Fisher, Blaker, exact McNemar) and unconditional exact tests, with confidence intervals that match the p-value."
+          },
+          {
+            "package": "Exact",
+            "function": "exact.test",
+            "note": "Unconditional exact tests for 2x2 tables (Barnard, Boschloo), which are more powerful alternatives to Fisher's test."
+          },
+          {
+            "package": "rstatix",
+            "function": "fisher_test",
+            "note": "Tidy, pipe-friendly wrapper around fisher.test, including pairwise post-hoc comparisons, as often used in applied papers."
+          }
+        ],
+        "sources": [
+          "https://rdrr.io/github/datashield/dsBaseClient/src/R/ds.table.R",
+          "https://cran.rstudio.com/web/packages/exact2x2/index.html",
+          "https://arxiv.org/pdf/2105.14618",
+          "https://arxiv.org/pdf/1703.02577",
+          "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/11081024",
+          "https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-018-2541-3/figures/2"
+        ]
+      },
+      "researched_on": "2026-11-27"
+    },
+    {
+      "key": "anova",
+      "method": "anova",
+      "variant": "",
+      "name": "Analysis of variance (ANOVA)",
+      "variant_name": "",
+      "verdict": "none",
+      "function": "",
+      "note": "I looked for a function that partitions variance or gives an ANOVA F-test; ds.meanSdGp only gives group means and SDs, with no test.",
+      "papers": 2217,
+      "share": 0.1488,
+      "recent_papers": 1206,
+      "recent_share": 0.1507,
+      "list": "most-used",
+      "trend": "steady",
+      "fields": "nutrition, metabolic, omics",
+      "examples": {
+        "41308075": {
+          "pmid": "41308075",
+          "title": "Longitudinal Neurocognitive Performance in South African Women With HIV and Domestic Violence.",
+          "journal": "Violence Against Women"
+        },
+        "41568677": {
+          "pmid": "41568677",
+          "title": "Serum Resistin and High-sensitivity C-reactive Protein as Independent Predictors of Vascular Complications in Type 2 Diabetes Mellitus: A Cross-sectional Observational Study at a Tertiary Care Center.",
+          "journal": "Ann Afr Med"
+        },
+        "41934365": {
+          "pmid": "41934365",
+          "title": "Signs of Cross-Reactivity Between SARS-CoV-2 and Other Coronaviruses in a Pre-Vaccine Swedish School Setting.",
+          "journal": "Acta Paediatr"
+        }
+      },
+      "research": {
+        "description": "Analysis of variance (ANOVA) tests whether the mean of a continuous outcome differs across the levels of one or more categorical factors. It splits the total variability into a between-group part and a within-group (residual) part and compares them with an F-test. Health researchers use it to compare biomarker levels, nutrient intakes or omics features across diet arms, exposure categories or disease groups, often in factorial or covariate-adjusted forms (ANCOVA) and with post-hoc pairwise comparisons.",
+        "federated": "I found no peer-reviewed paper on a federated ANOVA as such. The method is a linear model, though, and its sufficient statistics add up across sites, so one-shot aggregation is exact. For a one-way ANOVA (and the Welch variant) each server only needs to return the per-group count, mean and variance, which is essentially what ds.meanSdGp already produces. For factorial or covariate-adjusted ANOVA, the X'X, X'y and y'y aggregates behind a Gaussian ds.glm (or the residual deviances of nested models fitted with ds.glm) give the sums of squares and F-statistics, with study added as a factor or blocking term. Study-level meta-analysis of per-study F-statistics or contrasts via ds.glmSLMA is a fallback. There have been earlier attempts inside the DataSHIELD ecosystem: an unofficial ds.anova in the GitHub-only distStatsClient package, and a 2022 workshop note announcing an ANOVA function for dsML. I could not confirm that either was ever released.",
+        "disclosure": "For one-way ANOVA, the per-group counts, means and variances (or sums and sums of squares) would leave the servers, and for multi-way or ANCOVA designs the small cross-product matrices and residual deviances would too. No residuals or fitted values need to leave. The main risk is small cells: a group or interaction cell with one or very few people exposes individual values through its mean and variance. Factorial designs multiply the number of cells, so the existing subset and table-cell thresholds (nfilter.subset, nfilter.tab) should be checked on every cell. Repeated calls on overlapping subsets or factor recodings could also allow differencing attacks.",
+        "fit": "It would fit in dsBaseClient/dsBase as a client-side ds.anova that reuses the server-side aggregates already behind ds.meanSdGp for one-way designs and the Gaussian ds.glm machinery for factorial and adjusted designs, so it may need little or no new server code.",
+        "r_packages": [
+          {
+            "package": "stats",
+            "function": "aov / anova / oneway.test",
+            "note": "Base R. aov fits one-way and factorial ANOVA, anova compares nested lm fits with F-tests, and oneway.test gives the Welch test for unequal variances."
+          },
+          {
+            "package": "car",
+            "function": "Anova",
+            "note": "Type II and Type III sums of squares for unbalanced designs and linear models with covariates. It is widely used alongside lm."
+          },
+          {
+            "package": "afex",
+            "function": "aov_car / aov_ez",
+            "note": "A convenience wrapper around car::Anova for factorial and repeated-measures designs. It defaults to Type III with sum-to-zero contrasts."
+          }
+        ],
+        "sources": [
+          "https://rdrr.io/pkg/dsBaseClient/man/ds.glm.html",
+          "https://rdrr.io/github/paularaissa/distStatsClient/man/ds.anova.html",
+          "https://isglobal-brge.github.io/UnCoVer_workshop/workshop_part3.html",
+          "https://search.r-project.org/CRAN/refmans/afex/html/aov_car.html",
+          "https://arxiv.org/html/2601.08216",
+          "https://niss.org/sites/default/files/technicalreports/tr158.pdf"
+        ]
+      },
+      "researched_on": "2026-11-27"
+    },
+    {
+      "key": "kruskal-wallis-test",
+      "method": "kruskal-wallis-test",
+      "variant": "",
+      "name": "Kruskal-Wallis test",
+      "variant_name": "",
+      "verdict": "none",
+      "function": "",
+      "note": "I looked for a rank-based test comparing three or more independent groups; the candidates only rank, give quantiles or summarise groups, and none of them runs a test.",
+      "papers": 1679,
+      "share": 0.1127,
+      "recent_papers": 961,
+      "recent_share": 0.1201,
+      "list": "most-used",
+      "trend": "rising",
+      "fields": "omics, nutrition, metabolic",
+      "examples": {
+        "41934365": {
+          "pmid": "41934365",
+          "title": "Signs of Cross-Reactivity Between SARS-CoV-2 and Other Coronaviruses in a Pre-Vaccine Swedish School Setting.",
+          "journal": "Acta Paediatr"
+        },
+        "42118278": {
+          "pmid": "42118278",
+          "title": "Imaging biomarkers of liver hypertrophy after portal vein embolization in patients with liver tumors: cholestasis, arterial hyperperfusion, and splenic response.",
+          "journal": "Abdom Radiol (NY)"
+        },
+        "42295323": {
+          "pmid": "42295323",
+          "title": "Invasive ventilation and association with outcomes in heart failure-related cardiogenic shock.",
+          "journal": "Clin Res Cardiol"
+        }
+      },
+      "research": {
+        "description": "The Kruskal-Wallis test pools all observations, ranks them, and checks whether the mean rank differs across three or more independent groups. It is the rank-based alternative to one-way ANOVA and needs no normality assumption. In health research it is used to compare skewed or ordinal outcomes across several groups, such as metabolite or gene-expression levels between disease subtypes, nutrient intake across diet or exposure categories, or biomarkers across BMI or metabolic-status classes. It is usually followed by post-hoc pairwise tests such as Dunn's test.",
+        "federated": "I found no DataSHIELD or other federated-analysis implementation. A secure multi-party protocol for the test on distributed data was published in 2013 (Computer Methods and Programs in Biomedicine). Couch et al. (ACM CCS 2019) published a differentially private Kruskal-Wallis variant that has more power than simply adding noise to H. Neither is built for an R client-server setup like DataSHIELD. In DataSHIELD the most direct one-shot route builds on the existing ds.ranksSecure, which writes pooled global ranks to each server without revealing them. Each server would then return, for each group, its count and the sum of the global ranks (plus a tie-correction term), and the client sums these across servers and computes H and its chi-squared p-value exactly. A simpler alternative skips global ranking: each server ranks its own data and returns the same per-group sums, and the client combines them as a study-stratified Kruskal-Wallis test, much as the coin package handles blocking. That tests a slightly different hypothesis but avoids the iterative ranking step.",
+        "disclosure": "What would leave the servers is per-group counts, per-group rank sums, and possibly the tie-correction sum of (t^3 - t) over tied values. No individual values would be returned, only aggregates. The main risk is small groups: with a group of size one or two, the rank sum reveals an individual's position in the pooled ordering, and combined with the quantiles ds.ranksSecure can estimate, that can narrow down their value. So the existing minimum cell-count filter should apply to every group-by-server cell. The tie term reports how often values repeat, which matters for discrete or heavily tied variables. Repeating the test on subsets that differ by one person could expose that person's rank, so the usual differencing safeguards apply.",
+        "fit": "It would fit in dsBase/dsBaseClient as a new ds.kruskalTest. The server-side part would reuse the ds.ranksSecure ranking machinery and add an aggregate function for per-group rank sums and counts.",
+        "r_packages": [
+          {
+            "package": "stats",
+            "function": "kruskal.test",
+            "note": "Base R. Gives the classical H statistic with the tie correction and a chi-squared p-value. This is the reference to check a federated version against."
+          },
+          {
+            "package": "coin",
+            "function": "kruskal_test",
+            "note": "Permutation framework. Gives asymptotic, approximate (Monte Carlo) or exact p-values, and allows blocking or stratification."
+          },
+          {
+            "package": "rstatix",
+            "function": "kruskal_test",
+            "note": "Pipe-friendly tidy wrapper. Has kruskal_effsize for eta-squared and dunn_test for post-hoc comparisons."
+          },
+          {
+            "package": "PMCMRplus",
+            "function": "kruskalTest",
+            "note": "Kruskal-Wallis plus many many-to-one and all-pairs post-hoc rank tests (Dunn, Conover, Nemenyi)."
+          }
+        ],
+        "sources": [
+          "https://rdrr.io/github/datashield/dsBaseClient/man/ds.ranksSecure.html",
+          "https://www.pubmed.gov/23871682/",
+          "https://arxiv.org/pdf/1903.09364",
+          "https://stuartwheater.r-universe.dev/dsBase/dsBase.pdf"
+        ]
+      },
+      "researched_on": "2026-11-27"
+    },
+    {
+      "key": "log-rank-test",
+      "method": "log-rank-test",
+      "variant": "",
+      "name": "Log-rank test",
+      "variant_name": "",
+      "verdict": "none",
+      "function": "",
+      "note": "I looked for a test that compares survival curves between groups; the candidates only build survival data or tasks, or fit conditional logistic regression (dssClogit) or hazard models.",
+      "papers": 1143,
+      "share": 0.0767,
+      "recent_papers": 618,
+      "recent_share": 0.0772,
+      "list": "most-used",
+      "trend": "steady",
+      "fields": "cancer, respiratory-allergy, cardiovascular",
+      "examples": {
+        "41540829": {
+          "pmid": "41540829",
+          "title": "Comparison of Long-Term Outcomes between Curative and Non-Curative Resection after Endoscopic Submucosal Dissection for Superficial Esophageal Squamous Cell Carcinoma.",
+          "journal": "Gut Liver"
+        },
+        "42482168": {
+          "pmid": "42482168",
+          "title": "Early increase in apparent diffusion coefficient predicts favorable response to dordaviprone (ONC201) therapy in H3K27M-mutant diffuse midline glioma.",
+          "journal": "Neuro Oncol"
+        },
+        "42601177": {
+          "pmid": "42601177",
+          "title": "CT-Based Biomarkers for Predicting Progressive Phenotypes in Interstitial Lung Diseases: A Retrospective Cohort Study.",
+          "journal": "Respirology"
+        }
+      },
+      "research": {
+        "description": "The log-rank test checks whether the survival curves of two or more groups differ, using right-censored time-to-event data. At each distinct event time it compares the number of events seen in each group with the number expected if all groups shared one hazard, then sums these differences and their variances across all event times into a chi-square statistic. Health researchers use it widely, alongside Kaplan-Meier curves, to compare treatment arms, exposure groups or risk strata in cancer, cardiovascular and respiratory studies, and it has weighted variants such as Peto-Peto and Fleming-Harrington.",
+        "federated": "The test can be split into additive parts, so a one-shot aggregation is natural. In the stratified version, with study as the stratum, each server computes over its own event times the observed-minus-expected event count per group and the variance-covariance matrix. The client then sums these across servers to get an exact stratified log-rank test, the same result as pooled survdiff with strata(study). An unstratified pooled test needs pooled risk sets, so each server would have to return, on a time grid agreed in advance or binned, the number of events and the number at risk per group at each time point. Published work builds this with stronger protections: Partea (Späth et al., PLOS Digital Health 2022) combines federated aggregation, additive secret sharing and differential privacy to give federated Kaplan-Meier, log-rank and Cox. A JMIR Medical Informatics paper (2021) runs the log-rank test under SPDZ secure multiparty computation between two hospitals. A 2024 preprint uses multiparty homomorphic encryption, and a 2025 preprint releases node-level differentially private Kaplan-Meier curves and shows that log-rank inference holds up. In DataSHIELD, dsSurvival 2.0 already gives privacy-enhanced per-site survival curves and per-site Cox models combined by meta-analysis (ds.coxphSLMA), but I found no log-rank function there.",
+        "disclosure": "The stratified-by-study version would send only a few scalars and a small matrix per server: observed and expected events per group, plus the variance-covariance matrix. That is low risk if the usual minimum counts per group, both total subjects and events, are enforced. The pooled unstratified version is riskier, because event and at-risk counts at exact event times effectively give the life table. Differencing consecutive time points can then reveal individual event or censoring times, especially in small groups or at the tail of follow-up. That version needs coarse time bins with minimum cell counts per bin, or added noise like that used for the dsSurvival 2.0 curves. The method is not iterative, so repeated rounds are not a risk, but repeated calls with different group definitions or subsets should be covered by the existing subset and differencing safeguards.",
+        "fit": "It would fit best as a new ds.survdiff client function in dsSurvivalClient, backed by an aggregate server function in dsSurvival, which already holds the Surv objects and survival-curve machinery; it would start with the exact stratified-by-study test and add a binned pooled option later.",
+        "r_packages": [
+          {
+            "package": "survival",
+            "function": "survdiff",
+            "note": "The reference implementation. It runs the log-rank test and the G-rho family of weighted tests, and supports strata() for a stratified test. It is already a dependency of dsSurvival."
+          },
+          {
+            "package": "coin",
+            "function": "logrank_test",
+            "note": "Permutation-based log-rank test with asymptotic, approximate or exact p-values, several weight schemes, and stratification through blocks."
+          },
+          {
+            "package": "survminer",
+            "function": "surv_pvalue",
+            "note": "Wraps survdiff to give log-rank p-values for Kaplan-Meier plots made with ggsurvplot. It is mostly a presentation layer."
+          },
+          {
+            "package": "nph",
+            "function": "logrank.test",
+            "note": "Weighted log-rank tests and max-combo tests for non-proportional hazards."
+          }
+        ],
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC10243006",
+          "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9166323/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC9931301",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7850908",
+          "https://arxiv.org/abs/2509.00615v1",
+          "https://arxiv.org/html/2412.20495v1"
+        ]
+      },
+      "researched_on": "2026-11-27"
+    },
+    {
+      "key": "subgroup-analysis",
+      "method": "subgroup-analysis",
+      "variant": "",
+      "name": "Subgroup analysis",
+      "variant_name": "",
+      "verdict": "none",
+      "function": "",
+      "note": "I looked for effects estimated within strata or interaction tests; dh.meanByGroup only describes a variable by strata, and the regression and meta-analysis functions don't mention subgroup or interaction analysis.",
+      "papers": 1068,
+      "share": 0.0717,
+      "recent_papers": 705,
+      "recent_share": 0.0881,
+      "list": "most-used",
+      "trend": "rising",
+      "fields": "environment, nutrition, cardiovascular",
+      "examples": {
+        "41981048": {
+          "pmid": "41981048",
+          "title": "Targeted and non-targeted analyses of per-and polyfluoroalkyl substances in newborn dried blood spots and risk of childhood acute lymphoblastic leukemia.",
+          "journal": "J Expo Sci Environ Epidemiol"
+        },
+        "42297897": {
+          "pmid": "42297897",
+          "title": "Long-term outdoor air pollution and risk of ovarian and endometrial cancers in a large prospective cohort.",
+          "journal": "J Expo Sci Environ Epidemiol"
+        },
+        "42700476": {
+          "pmid": "42700476",
+          "title": "Adding salt to foods, genetic susceptibility, and risk of incident osteoporosis.",
+          "journal": "J Nutr Health Aging"
+        }
+      },
+      "research": {
+        "description": "Subgroup analysis estimates an exposure or treatment effect separately within strata of the population, such as sex, age band, BMI category or baseline risk. It then tests whether the effect differs between strata, usually with an exposure-by-modifier interaction term in a regression model, on a multiplicative scale or an additive one (RERI, AP, synergy index). Health researchers use it to look for effect modification and vulnerable groups, and the results are often shown as a forest plot of stratum-specific estimates with a p-value for interaction. It is common in environmental, nutritional and cardiovascular epidemiology and in trials.",
+        "federated": "I found no DataSHIELD function or published federated method aimed squarely at classical subgroup analysis, but most of it can be built from parts that already exist. ds.glm already accepts R formula shortcuts, so an interaction term like exposure*modifier can be fitted on pooled data with the usual iterative federated IRLS. This gives the interaction test, and stratum-specific effects follow as linear contrasts of the coefficients and their covariance matrix. You can also subset the data on the servers by stratum (ds.dataFrameSubset) and run ds.glm or ds.glmSLMA in each stratum. The other route is meta-analysis of per-study estimates: each server fits the interaction model, returns the within-study interaction coefficient and its standard error, and the client pools them. Fisher et al. (BMJ 2017) recommend pooling within-study interactions this way (their \"deft\" approach) to avoid ecological bias. The federated heterogeneous-treatment-effect methods in the recent literature (targeted federated learning, federated CATE estimation) share only aggregated statistics or model parameters, but they target causal effect modification rather than the plain stratified regression most papers report.",
+        "disclosure": "What leaves the servers would be what ds.glm and ds.glmSLMA already release, but per stratum or with more parameters: coefficients, standard errors, variance-covariance matrices, deviance and per-iteration score vectors and information matrices, plus the counts per stratum and per exposure-by-stratum cell. The main risk is small cells. Crossing an exposure with a modifier, or adding several modifiers, quickly produces strata or interaction cells with few subjects or few events, where a coefficient can be close to an individual's value. So the existing nfilter thresholds on cell size and the parameter-to-subject ratio have to be checked within each stratum, not just overall. Running many overlapping subgroups (nested age bands, or subsets that differ by one person) invites differencing attacks, which the subset filters in dsBase only partly guard against.",
+        "fit": "It fits best as a client-side wrapper in dsHelper, next to dh.meanByGroup, that calls ds.dataFrameSubset with ds.glm or ds.glmSLMA per stratum, computes interaction tests and additive-interaction contrasts from the returned coefficients and covariance matrices, and pools within-study interactions; it would need little or no new server code in dsBase beyond per-stratum disclosure checks.",
+        "r_packages": [
+          {
+            "package": "jstable",
+            "function": "TableSubgroupMultiGLM / TableSubgroupMultiCox",
+            "note": "Fits GLM, Cox or survey-weighted models within each level of one or more subgroup variables and reports the stratum estimates and interaction p-values as a table ready for a forest plot. Recent versions also handle competing risks."
+          },
+          {
+            "package": "Publish",
+            "function": "subgroupAnalysis",
+            "note": "Treatment or exposure effects by subgroup for glm and Cox models, with interaction tests and a forest-plot output."
+          },
+          {
+            "package": "interactionR",
+            "function": "interactionR",
+            "note": "Takes a glm, clogit or coxph fit with an interaction between two binary exposures. It returns stratum-specific effects plus RERI, AP and SI with delta-method, MOVER or bootstrap intervals, following Knol and VanderWeele's reporting guidance."
+          },
+          {
+            "package": "metafor",
+            "function": "rma",
+            "note": "Pools per-study subgroup or interaction estimates with random-effects meta-analysis and tests subgroup differences with moderators. This is the natural second step after study-level analysis."
+          }
+        ],
+        "sources": [
+          "https://search.r-project.org/CRAN/refmans/jstable/html/TableSubgroupMultiGLM.html",
+          "https://cran.r-project.org/web/packages/interactionR/index.html",
+          "https://rdrr.io/pkg/dsBaseClient/man/ds.glm.html",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC5421441",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC12083601",
+          "https://arxiv.org/pdf/2505.02238"
+        ]
+      },
+      "researched_on": "2026-11-27"
+    },
+    {
+      "key": "false-discovery-rate-correction",
+      "method": "false-discovery-rate-correction",
+      "variant": "",
+      "name": "false-discovery-rate-correction",
+      "variant_name": "",
+      "verdict": "none",
+      "function": "",
+      "note": "I looked for a multiple-testing or Benjamini-Hochberg p-value adjustment; no candidate mentions one.",
+      "papers": 1057,
+      "share": 0.0709,
+      "recent_papers": 692,
+      "recent_share": 0.0865,
+      "list": "most-used",
+      "trend": "rising",
+      "fields": "omics, mental-health, environment",
+      "examples": {
+        "42015618": {
+          "pmid": "42015618",
+          "title": "Prodromal Lewy Body Disorder Features in REM Sleep Behavior Disorder With Biomarker-Defined Synucleinopathy.",
+          "journal": "Ann Clin Transl Neurol"
+        },
+        "42342117": {
+          "pmid": "42342117",
+          "title": "Changes in Toddler Diet Quality Between Ages 12 and 24 Months Using the Healthy Eating Index-Toddlers-2020: A Secondary Analysis of a Prospective Cohort.",
+          "journal": "J Acad Nutr Diet"
+        },
+        "42482168": {
+          "pmid": "42482168",
+          "title": "Early increase in apparent diffusion coefficient predicts favorable response to dordaviprone (ONC201) therapy in H3K27M-mutant diffuse midline glioma.",
+          "journal": "Neuro Oncol"
+        }
+      },
+      "research": {
+        "description": "False-discovery-rate correction adjusts a set of p-values from many simultaneous tests so that the expected share of false positives among the results called significant stays below a chosen level. The usual method is Benjamini-Hochberg, with q-values and Benjamini-Yekutieli as variants. Health researchers use it whenever they test many hypotheses at once, for example genes, CpG sites, metabolites or exposures in omics and exposome studies, or many symptom and outcome scales in mental-health research.",
+        "federated": "I found no DataSHIELD-specific approach. In the common case it isn't needed, because the input is p-values that the analyst already holds on the client, from ds.glm calls over many outcomes or from per-study ds.limma or ds.GWAS output in dsOmicsClient. BH can then be run client-side with p.adjust on pooled or meta-analysed p-values. dsOmicsClient already returns limma's per-study adj.P.Val. Its metaPvalues function, however, combines raw per-study P.Value columns by Fisher's method and does not seem to adjust the combined p-values, so a correction step after meta-analysis is the main gap. The literature also has distributed multiple testing, where each node sends local p-values or summaries of them to a fusion centre that applies a global BH (Zhang, Pournaderi, Xiang and Varshney 2025, which also looks at nodes that report false p-values; a 2026 preprint on decentralized FDR control that shares only summary statistics of local p-values), and differentially private BH variants (Dwork, Su and Zhang). None of these needs more from the servers than the per-test statistics DataSHIELD already returns.",
+        "disclosure": "Only test statistics and p-values leave the servers, one per hypothesis. These come from functions like ds.glm or ds.limma that already have their own disclosure checks, and the adjustment itself runs on the client and adds no new server output. The risk lies upstream. With thousands of features, many per-feature regressions on small subgroups give many outputs about the same individuals, and they may hit small-cell problems. The number of tests and per-feature minimum counts should therefore stay under the existing server-side checks. Formal differential-privacy guarantees for BH exist but would only matter if exact p-values were thought to be disclosive.",
+        "fit": "The best fit is a small client-side helper in dsBaseClient, a wrapper around p.adjust for vectors of p-values from ds.glm or similar calls, plus an adjustment option in dsOmicsClient's metaPvalues; no new server-side function is needed.",
+        "r_packages": [
+          {
+            "package": "stats",
+            "function": "p.adjust",
+            "note": "Part of base R. Offers methods \"BH\", \"BY\", \"holm\", \"bonferroni\" and others, and takes only a vector of p-values."
+          },
+          {
+            "package": "qvalue",
+            "function": "qvalue",
+            "note": "Bioconductor (Storey). Estimates the share of true nulls and returns q-values and local FDR. Widely used in genomics."
+          },
+          {
+            "package": "fdrtool",
+            "function": "fdrtool",
+            "note": "CRAN. Estimates tail-area and local FDR from p-values, z-scores or correlations."
+          },
+          {
+            "package": "IHW",
+            "function": "ihw",
+            "note": "Bioconductor. Weighted BH that uses an informative covariate, such as mean expression, to gain power."
+          }
+        ],
+        "sources": [
+          "https://rdrr.io/github/isglobal-brge/dsOmicsClient/src/R/metaPvalues.R",
+          "https://isglobal-brge.github.io/OmicSHIELD/TranscriptHELIX.html",
+          "https://arxiv.org/abs/2501.13242",
+          "https://arxiv.org/html/2605.08263",
+          "https://arxiv.org/pdf/1511.03803",
+          "https://bioconductor.org/packages/qvalue"
+        ]
+      },
+      "researched_on": "2026-11-27"
+    },
+    {
+      "key": "variance-inflation-factor",
+      "method": "variance-inflation-factor",
+      "variant": "",
+      "name": "Variance inflation factor",
+      "variant_name": "",
+      "verdict": "none",
+      "function": "",
+      "note": "No candidate computes variance inflation factors; ds.cov gives a variance-covariance matrix, but the VIF itself is not computed.",
+      "papers": 761,
+      "share": 0.0511,
+      "recent_papers": 527,
+      "recent_share": 0.0659,
+      "list": "rising",
+      "trend": "rising",
+      "fields": "nutrition, lifestyle, environment",
+      "examples": {
+        "42118278": {
+          "pmid": "42118278",
+          "title": "Imaging biomarkers of liver hypertrophy after portal vein embolization in patients with liver tumors: cholestasis, arterial hyperperfusion, and splenic response.",
+          "journal": "Abdom Radiol (NY)"
+        },
+        "42423174": {
+          "pmid": "42423174",
+          "title": "One echocardiographic or hemodynamic parameter improves mortality prediction by the ESC/ERS four-strata model: a flexible approach to follow-up risk stratification in pulmonary arterial hypertension.",
+          "journal": "Eur Heart J Qual Care Clin Outcomes"
+        },
+        "42661573": {
+          "pmid": "42661573",
+          "title": "Individual Differences in Sleep Quality: Exploring the Impact of Temperament on Sleep Through Anxiety and Depression.",
+          "journal": "Personal Ment Health"
+        }
+      },
+      "research": {
+        "description": "The variance inflation factor (VIF) measures how much the variance of a regression coefficient is inflated because that covariate is correlated with the other covariates. For covariate j it equals 1/(1−R²j), where R²j comes from regressing covariate j on all the others. It also equals the j-th diagonal element of the inverse of the covariates' correlation matrix. The generalised VIF (GVIF) of Fox and Monette extends it to factors and polynomial terms. Health researchers use it, mostly in nutrition, lifestyle and environmental epidemiology, to check whether correlated exposures such as nutrients, pollutants or behaviours can safely go into one model, often reporting a cut-off of 5 or 10.",
+        "federated": "I found no peer-reviewed federated VIF method in health research. The only direct description is a patent application on privacy-protected multicollinearity detection. It builds the VIFs from the inverse of a jointly computed X'X matrix, split across parties, for horizontally or vertically partitioned data. For horizontally partitioned data, as in DataSHIELD, the VIF is a deterministic function of aggregates that can already be pooled in one shot. One route takes the pooled correlation matrix of the model-matrix columns from per-server sums, sums of squares and cross-products (what ds.cor and ds.cov return) and inverts it on the client. The other follows car::vif: the client turns the coefficient variance-covariance matrix that ds.glm already returns with viewVarCov=TRUE into a correlation matrix after dropping the intercept, then computes VIF and GVIF from determinants of its submatrices. A per-study variant for split analyses could compute VIFs within each study from that study's own variance-covariance or correlation matrix and report them side by side, without pooling.",
+        "disclosure": "Only a p×p matrix of aggregates would leave the servers: either cross-products or correlations of the covariates, or the coefficient variance-covariance matrix from a fitted glm. That is no more than ds.cor, ds.cov and ds.glm already release under their existing nfilter checks, and the VIFs themselves are computed on the client. The risks are the usual ones for these matrices. Dummy columns for sparse factor levels act like small cells. Models with almost as many parameters as rows, or near-saturated ones, can let near-exact linear dependencies reveal individual values. Repeated calls on overlapping subsets, or with one covariate added or dropped, could be differenced. So the existing glm/correlation subset and parameter-to-sample-size checks should apply unchanged.",
+        "fit": "It would fit best as a client-only function in dsBaseClient, for example ds.vif, built on the output of ds.glm (viewVarCov=TRUE) or of ds.cor/ds.cov, so that dsBase would need no new server-side function.",
+        "r_packages": [
+          {
+            "package": "car",
+            "function": "vif",
+            "note": "The reference implementation. It handles lm and glm fits and gives the GVIF and GVIF^(1/(2*Df)) for multi-df terms. It works from the coefficients' variance-covariance matrix (vcov) of the fitted model, which is why it maps easily onto a federated fit."
+          },
+          {
+            "package": "performance",
+            "function": "check_collinearity",
+            "note": "Gives VIFs with confidence intervals and tolerance. It covers many model classes, including mixed and zero-inflated models."
+          },
+          {
+            "package": "olsrr",
+            "function": "ols_vif_tol",
+            "note": "Gives VIF and tolerance for lm models, alongside other collinearity diagnostics such as condition indices."
+          },
+          {
+            "package": "mctest",
+            "function": "imcdiag",
+            "note": "Gives individual multicollinearity diagnostics (VIF, tolerance, Klein's rule and others) for linear models."
+          }
+        ],
+        "sources": [
+          "https://rdrr.io/pkg/dsBaseClient/man/ds.glm.html",
+          "https://datashield.github.io/dsBaseClient/reference/ds.cov.html",
+          "https://rdrr.io/github/datashield/dsBaseClient/man/ds.cor.html",
+          "https://patents.justia.com/patent/20220237319",
+          "https://arxiv.org/html/2503.15287"
+        ]
+      },
+      "researched_on": "2026-11-27"
+    },
+    {
+      "key": "bootstrap",
+      "method": "bootstrap",
+      "variant": "",
+      "name": "Bootstrap",
+      "variant_name": "",
+      "verdict": "partial",
+      "function": "dsDidClient::ds.multiplierBootstrap",
+      "note": "This is only a multiplier bootstrap on a matrix (status unknown), not a general bootstrap that resamples the data with replacement to get confidence intervals.",
+      "papers": 513,
+      "share": 0.0344,
+      "recent_papers": 360,
+      "recent_share": 0.045,
+      "list": "rising",
+      "trend": "rising",
+      "fields": "mental-health, respiratory-allergy, cancer",
+      "examples": {
+        "42566821": {
+          "pmid": "42566821",
+          "title": "Cost-effectiveness of the special care unit for persons with dementia.",
+          "journal": "J Prev Alzheimers Dis"
+        },
+        "42637980": {
+          "pmid": "42637980",
+          "title": "Definitive Chemoradiotherapy for Adenocarcinoma of the Esophagus or Esophago-Gastric Junction: A Dutch Population-Based Cohort Study.",
+          "journal": "Ann Surg Oncol"
+        },
+        "42711914": {
+          "pmid": "42711914",
+          "title": "Incidence of Periprocedural Myocardial Injury and Infarction After Intravascular Lithotripsy for Calcified Coronary Artery Stenosis.",
+          "journal": "Catheter Cardiovasc Interv"
+        }
+      },
+      "research": {
+        "description": "The bootstrap estimates how much a statistic would vary from sample to sample. It does this by redrawing the data with replacement many times, recomputing the statistic on each redraw, and using the spread of the results for standard errors and confidence intervals, for example percentile, basic, studentized or BCa intervals. In health research it is used when analytic standard errors are hard to get or not trusted, as with medians, ratios, mediation and indirect effects, prediction-model optimism and AUC, skewed costs and multi-step estimators.",
+        "federated": "Inside DataSHIELD, the closest published piece is the dsDid work on privacy-preserving difference-in-differences. It reports standard errors from a multiplier bootstrap of the influence functions: random weights are drawn and applied to the influence-function matrix, so the analysis is never refitted on resampled data. In the wider literature, distributed multiplier bootstraps (the k-grad and n+k-1-grad methods of Yu, Chao and Cheng) apply the multiplier bootstrap at the coordinating machine to gradients or scores that the servers send, so they need only a few rounds of communication rather than one per replicate. A general nonparametric bootstrap could be done federated in one of two ways. In the first, each server draws its own with-replacement sample (stratified by study) from a seed the client sends, refits the estimator, and returns only the replicate estimates or the aggregates needed for a pooled refit, such as score vectors and information matrices for a GLM. This needs B iterations, each costing as much as a full federated fit. In the second, each study bootstraps locally and the per-study estimates and bootstrap variances are combined by meta-analysis. Work on differentially private bootstraps notes that resampling touches the data many times, which spends privacy budget, unless the bootstrap is run as post-processing of an output that has already been made private. I found no general federated nonparametric bootstrap package.",
+        "disclosure": "If servers return only replicate parameter estimates, or per-replicate aggregates such as scores, information matrices and counts, each single output is no more disclosive than the original model. The risk comes from returning hundreds or thousands of them: because the replicates differ by known reweightings of individual records, comparing them could amount to a differencing attack on single records. The risk is highest for statistics such as medians, quantiles or the min and max, and for small strata where a resample can contain only a few distinct individuals. Safeguards would be to keep the seeds and resample indices on the servers, apply the usual small-cell and minimum-subset checks to every replicate, cap B or return only summaries (the bootstrap SE or interval limits rather than the full distribution), and refuse statistics that can be read off order statistics.",
+        "fit": "A general, model-agnostic bootstrap (server-side resampling with seeds plus refits through existing ds.glm-type machinery) would fit best as a new dsBootstrap/dsBootstrapClient pair or in dsBase, while dsDidClient::ds.multiplierBootstrap, whose status I could not confirm, could be generalised there as the multiplier option for estimators that expose influence functions.",
+        "r_packages": [
+          {
+            "package": "boot",
+            "function": "boot() with boot.ci()",
+            "note": "The standard CRAN package (a recommended package shipped with R). It runs nonparametric and parametric resampling, including stratified resampling, and gives normal, basic, studentized, percentile and BCa intervals."
+          },
+          {
+            "package": "rsample",
+            "function": "bootstraps() with int_pctl(), int_bca(), int_t()",
+            "note": "A tidymodels package that builds bootstrap resamples as objects and computes percentile, BCa and bootstrap-t intervals from statistics calculated on each resample."
+          }
+        ],
+        "sources": [
+          "https://www.biorxiv.org/content/10.1101/2023.12.05.570107.full.pdf",
+          "https://proceedings.mlr.press/v119/yu20a.html",
+          "https://arxiv.org/html/2402.07131v3",
+          "https://search.r-project.org/CRAN/refmans/boot/html/boot.ci.html",
+          "https://search.r-project.org/CRAN/refmans/rsample/html/int_pctl.html"
+        ]
+      },
+      "researched_on": "2026-11-27"
+    },
+    {
+      "key": "likelihood-ratio-test",
+      "method": "likelihood-ratio-test",
+      "variant": "",
+      "name": "Likelihood ratio test",
+      "variant_name": "",
+      "verdict": "none",
+      "function": "",
+      "note": "I looked for a function that compares nested models by the difference in their log-likelihoods, but the candidates only compute Boltzmann machine log-likelihoods, chi-squared tests or calibration curves.",
+      "papers": 493,
+      "share": 0.0331,
+      "recent_papers": 291,
+      "recent_share": 0.0364,
+      "list": "rising",
+      "trend": "rising",
+      "fields": "environment, nutrition, lifestyle",
+      "examples": {
+        "42423174": {
+          "pmid": "42423174",
+          "title": "One echocardiographic or hemodynamic parameter improves mortality prediction by the ESC/ERS four-strata model: a flexible approach to follow-up risk stratification in pulmonary arterial hypertension.",
+          "journal": "Eur Heart J Qual Care Clin Outcomes"
+        },
+        "42618823": {
+          "pmid": "42618823",
+          "title": "Prognostic nutritional index (PNI) is a predictor of adverse outcomes following open ventral hernia repair.",
+          "journal": "Surg Endosc"
+        },
+        "42847820": {
+          "pmid": "42847820",
+          "title": "Variability in Sertraline Pharmacokinetics in Routine Clinical Practice: Influence of Sex, Age, Body Weight, Smoking, and Co-Medication.",
+          "journal": "Fundam Clin Pharmacol"
+        }
+      },
+      "research": {
+        "description": "The likelihood ratio test compares two nested models fitted to the same observations. It doubles the difference between their maximised log-likelihoods, which is the same as the difference in deviances for a GLM, and refers the result to a chi-squared distribution whose degrees of freedom are the number of extra parameters. Health researchers use it to test whether a group of covariates, an interaction or a non-linear term improves a regression model (logistic, Poisson, Cox or mixed). It is also used to test effect modification and dose-response shape in environmental, nutritional and lifestyle epidemiology.",
+        "federated": "The log-likelihood is a sum over individuals, so in the pooled setting it splits into one piece per study. If the client fits both nested models with the existing iterative ds.glm algorithm, each server only needs to return its scalar deviance or log-likelihood at the final pooled coefficients, plus its count of valid observations. The client then sums these and computes the statistic and its degrees of freedom. The dsBase server code for GLMs already computes deviance and residual degrees of freedom; the glmSLMA code returns them per study, so a study-level LRT, or a sum of per-study statistics for a stratified model, is close to available. A privacy-preserving distributed LRT has been published (arXiv 2402.08156), in which centres share only noisy local log-likelihood ratio statistics, and federated GLM work uses the same additive split of the log-likelihood, masked across sites (arXiv 2603.05149). The main gap is making sure the two fits use the same complete-case rows (by subsetting both to the cases complete for the larger model) and extending the approach to mixed and Cox models.",
+        "disclosure": "For each model, only one scalar log-likelihood or deviance per server would leave it, together with valid-observation counts and the coefficients that ds.glm already releases. The usual DataSHIELD checks on minimum valid counts and model saturation should be applied to both fits. The deviance of a near-saturated model, or the difference between two models that differ by one indicator for a tiny subgroup, can reveal a few people's outcomes; ds.glmSummary already blanks residual deviance as potentially disclosive. Repeated LRTs on slightly different subsets are also a differencing risk, so a check on the degrees of freedom and on the change in the number of valid observations between the two fits is advisable.",
+        "fit": "It would fit in dsBase/dsBaseClient as a client function (for example ds.lrtest) that takes two ds.glm or ds.glmSLMA fits, or refits them on a shared complete-case subset, and combines the server-returned deviances; there is no need for a new package.",
+        "r_packages": [
+          {
+            "package": "stats",
+            "function": "anova(fit0, fit1, test = \"LRT\")",
+            "note": "Base R. For glm objects it gives the deviance difference and its chi-squared p-value. It also has methods for other model classes."
+          },
+          {
+            "package": "lmtest",
+            "function": "lrtest()",
+            "note": "A generic LRT for nested models of any class that has a logLik method (lm, glm, survreg and others). It can also build the restricted model by dropping terms."
+          },
+          {
+            "package": "lme4",
+            "function": "anova() on merMod objects",
+            "note": "An LRT between nested mixed models. It refits REML fits with ML before comparing them."
+          },
+          {
+            "package": "survival",
+            "function": "anova() on coxph objects",
+            "note": "An LRT on partial log-likelihoods for nested Cox models."
+          }
+        ],
+        "sources": [
+          "https://rdrr.io/pkg/dsBaseClient/man/ds.glm.html",
+          "https://rdrr.io/cran/dsBase/src/R/glmSLMADS2.R",
+          "https://rdrr.io/github/datashield/dsBaseClient/man/ds.glmSummary.html",
+          "https://cran.r-project.org/package=lmtest",
+          "https://arxiv.org/pdf/2402.08156",
+          "https://arxiv.org/pdf/2603.05149"
+        ]
+      },
+      "researched_on": "2026-11-27"
+    }
+  ],
+  "deferred": []
+}
