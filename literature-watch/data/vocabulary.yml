@@ -495,6 +495,15 @@ methods:
         name: Weighted ANOVA
       welch:
         name: Welch's ANOVA
+    exists:
+      verdict: none
+      function: ''
+      quote: ''
+      note: I looked for a function that partitions variance or gives an ANOVA F-test;
+        ds.meanSdGp only gives group means and SDs, with no test.
+      checked: '2026-11-27'
+      candidates: 37db9334
+      by: cbf0bb02
   anova-simultaneous-component-analysis:
     name: ANOVA-simultaneous component analysis (ASCA)
     description: Decomposes multivariate data by experimental design factors and applies
@@ -1706,6 +1715,17 @@ methods:
         name: Ultrafast bootstrap
       weights-reestimated-per-replicate:
         name: Weights re-estimated per replicate
+    exists:
+      verdict: partial
+      function: dsDidClient::ds.multiplierBootstrap
+      quote: The function performs a multiplier bootstrap on a given matrix on the
+        server side and returns the results to the client side.
+      note: This is only a multiplier bootstrap on a matrix (status unknown), not
+        a general bootstrap that resamples the data with replacement to get confidence
+        intervals.
+      checked: '2026-11-27'
+      candidates: 7d5e7b40
+      by: cbf0bb02
   bootstrap-likelihood-ratio-test:
     name: Bootstrap likelihood ratio test (BLRT)
     description: Compares mixture or latent class models with k and k-1 classes using
@@ -2436,6 +2456,15 @@ methods:
         name: Post hoc pairwise comparisons
       yates-continuity-correction:
         name: Yates continuity correction
+    exists:
+      verdict: 'yes'
+      function: dsBaseClient::ds.table
+      quote: Generates 1-, 2-, and 3-dimensional contingency tables with option of
+        assigning to serverside only and producing chi-squared statistics
+      note: ''
+      checked: '2026-11-27'
+      candidates: 19f2be04
+      by: cbf0bb02
   chou-talalay-combination-index:
     name: Chou-Talalay combination index
     description: Measures drug synergy, additivity or antagonism from dose-effect
@@ -3731,6 +3760,14 @@ methods:
         name: Time-varying covariates
       weighted:
         name: Weighted
+    exists:
+      verdict: 'yes'
+      function: dsSurvivalClient::ds.coxph
+      quote: Distributed Cox Proportional Hazards Model
+      note: ''
+      checked: '2026-11-27'
+      candidates: 46b1afad
+      by: cbf0bb02
   cox-snell-residuals:
     name: Cox-Snell residuals
     description: Calculates Cox-Snell residuals from a survival model and compares
@@ -3929,6 +3966,17 @@ methods:
         name: Temporal cross-validation
       with-permutation-test:
         name: Permutation-tested cross-validation
+    exists:
+      verdict: development
+      function: dsFlowerClient::ds.flower.cross_validate
+      quote: Runs \code{folds} complete federated trainings
+      note: This is the only general-purpose model cross-validation, and its status
+        is development; the production dsMTLClient options (e.g. ds.Lasso_CVCroSite,
+        ds.Lasso_CVInSite) only cover Lasso and multi-task models.
+      checked: '2026-11-27'
+      candidates: a2ab0094
+      by: cbf0bb02
+      match: 'yes'
   crossover-trial-analysis:
     name: Crossover trial analysis
     description: Analyses a crossover trial by comparing treatments within subjects
@@ -5864,6 +5912,15 @@ methods:
         name: Storey q-value
       two-stage-benjamini-krieger-yekutieli:
         name: Two-stage Benjamini-Krieger-Yekutieli
+    exists:
+      verdict: none
+      function: ''
+      quote: ''
+      note: I looked for a multiple-testing or Benjamini-Hochberg p-value adjustment;
+        no candidate mentions one.
+      checked: '2026-11-27'
+      candidates: ae746759
+      by: cbf0bb02
   false-positive-report-probability:
     name: False positive report probability (FPRP)
     description: Estimates the probability that a significant association is a false
@@ -6090,6 +6147,16 @@ methods:
     - odds ratio
     added: '2026-11-19'
     by: b1852a99
+    exists:
+      verdict: none
+      function: ''
+      quote: ''
+      note: I looked for an exact or hypergeometric test on general contingency tables;
+        ds.exactHWE uses Fisher's test only for Hardy-Weinberg equilibrium on SNPs,
+        and the table functions offer only chi-squared.
+      checked: '2026-11-27'
+      candidates: cdb83cf3
+      by: cbf0bb02
   fishers-lsd-test:
     name: Fisher's least significant difference test
     description: Compares all pairs of group means after a significant ANOVA using
@@ -8644,6 +8711,17 @@ methods:
         name: Type III tests
       wald-test:
         name: Wald test
+    exists:
+      verdict: unconfirmed
+      function: ''
+      quote: ''
+      note: A pooled regression model can hold a product term to test multiplicative
+        interaction, but the documents never mention interaction terms, and nothing
+        gives additive-scale measures such as RERI. (Claude said partial, but the
+        function or its quote wasn't found.)
+      checked: '2026-11-27'
+      candidates: 4bbc8966
+      by: cbf0bb02
   interquartile-range:
     name: Interquartile range
     description: Measures spread as the difference between the 75th and 25th percentiles
@@ -9190,6 +9268,14 @@ methods:
     - survival
     added: '2026-11-19'
     by: b1852a99
+    exists:
+      verdict: 'yes'
+      function: dsSurvivalClient::ds.survfit
+      quote: Creates a server side Survival fit (survfit) object
+      note: ds.plotsurvfit plots the privacy-preserving survival curves.
+      checked: '2026-11-27'
+      candidates: aeec4a65
+      by: cbf0bb02
   kendalls-tau:
     name: Kendall's tau rank correlation
     description: Measures the ordinal association between two variables from the proportion
@@ -9385,6 +9471,16 @@ methods:
     - groups
     added: '2026-11-19'
     by: b1852a99
+    exists:
+      verdict: none
+      function: ''
+      quote: ''
+      note: I looked for a rank-based test comparing three or more independent groups;
+        the candidates only rank, give quantiles or summarise groups, and none of
+        them runs a test.
+      checked: '2026-11-27'
+      candidates: c6c63a25
+      by: cbf0bb02
   kuder-richardson-20:
     name: Kuder-Richardson Formula 20 (KR-20)
     description: Estimates internal consistency reliability of a scale made of dichotomous
@@ -9886,6 +9982,16 @@ methods:
     - chi-square
     added: '2026-11-19'
     by: b1852a99
+    exists:
+      verdict: none
+      function: ''
+      quote: ''
+      note: I looked for a function that compares nested models by the difference
+        in their log-likelihoods, but the candidates only compute Boltzmann machine
+        log-likelihoods, chi-squared tests or calibration curves.
+      checked: '2026-11-27'
+      candidates: '89120776'
+      by: cbf0bb02
   lilliefors-test:
     name: Lilliefors test
     description: Tests whether data come from a normal distribution with estimated
@@ -10275,6 +10381,16 @@ methods:
         name: Weighted least squares
       winsorized-variables:
         name: Winsorized variables
+    exists:
+      verdict: 'yes'
+      function: dsBaseClient::ds.glm
+      quote: Fits a Generalized Linear Model (GLM) on data from single or multiple
+        sources on the server-side.
+      note: Linear regression is the Gaussian case of the GLM, fitted on data pooled
+        across sources.
+      checked: '2026-11-27'
+      candidates: 0990e9a7
+      by: cbf0bb02
   linear-splines:
     name: Linear spline regression
     description: Models a nonlinear relation with piecewise linear terms joined at
@@ -10509,6 +10625,16 @@ methods:
     - hazard
     added: '2026-11-19'
     by: b1852a99
+    exists:
+      verdict: none
+      function: ''
+      quote: ''
+      note: I looked for a test that compares survival curves between groups; the
+        candidates only build survival data or tasks, or fit conditional logistic
+        regression (dssClogit) or hazard models.
+      checked: '2026-11-27'
+      candidates: 9c798bf8
+      by: cbf0bb02
   log-ratio-em-zero-replacement:
     name: Log-ratio EM zero replacement
     description: Replaces zeros in compositional data with values estimated by an
@@ -10663,6 +10789,15 @@ methods:
         name: Univariable (unadjusted)
       weighted:
         name: Weighted
+    exists:
+      verdict: 'yes'
+      function: dsBaseClient::ds.glm
+      quote: Fits a Generalized Linear Model (GLM) on data from single or multiple
+        sources on the server-side.
+      note: ''
+      checked: '2026-11-27'
+      candidates: bf95a574
+      by: cbf0bb02
   logo-feature-selection:
     name: LOGO (local learning-based) feature selection
     description: Selects features in high-dimensional data by solving many local learning
@@ -10845,6 +10980,16 @@ methods:
     - wilcox
     added: '2026-11-19'
     by: b1852a99
+    exists:
+      verdict: partial
+      function: dsBaseClient::ds.ranksSecure
+      quote: Securely generate the ranks of a numeric vector and estimate true global
+        quantiles across all data sources simultaneously
+      note: It gives global ranks, which the test is built on, but the documents describe
+        no function that computes the U statistic or its p-value.
+      checked: '2026-11-27'
+      candidates: 64c281e3
+      by: cbf0bb02
   manova:
     name: Multivariate analysis of variance (MANOVA)
     description: Tests whether group means differ on several continuous outcomes jointly.
@@ -11417,6 +11562,15 @@ methods:
         name: Weighting-based mediation
       wlsmv-estimation:
         name: WLSMV estimation
+    exists:
+      verdict: unconfirmed
+      function: ''
+      quote: ''
+      note: The documents don't say whether results are pooled across studies or computed
+        per study. (Claude said yes, but the function or its quote wasn't found.)
+      checked: '2026-11-27'
+      candidates: 65c9e128
+      by: cbf0bb02
   mega-analysis:
     name: Mega-analysis
     description: Analyses pooled individual-level data from several studies in a single
@@ -12408,6 +12562,16 @@ methods:
         name: Random forest imputation model
       reiter-pooling-rules:
         name: Reiter pooling rules
+    exists:
+      verdict: 'yes'
+      function: dsBaseClient::ds.mice
+      quote: The function creates multiple imputations (replacement values) for multivariate
+        missing data.
+      note: Rubin's pooling of the analyses on the imputed data is a separate step,
+        done with ds-helper::dh.pool.
+      checked: '2026-11-27'
+      candidates: 8d373154
+      by: cbf0bb02
   multiple-instance-learning:
     name: Multiple instance learning
     description: Trains a classifier on labelled bags of unlabelled instances, such
@@ -14056,6 +14220,15 @@ methods:
     - cor.test
     added: '2026-11-19'
     by: b1852a99
+    exists:
+      verdict: 'yes'
+      function: dsBaseClient::ds.cor
+      quote: This function calculates the correlation of two variables or the correlation
+        matrix for the variables of an input data frame.
+      note: ''
+      checked: '2026-11-27'
+      candidates: bc563578
+      by: cbf0bb02
   penalized-regression:
     name: penalized-regression
     description: ''
@@ -16280,6 +16453,14 @@ methods:
     - nonlinear
     added: '2026-11-19'
     by: b1852a99
+    exists:
+      verdict: unconfirmed
+      function: ''
+      quote: ''
+      note: (Claude said yes, but the function or its quote wasn't found.)
+      checked: '2026-11-27'
+      candidates: d77caebf
+      by: cbf0bb02
   restricted-maximum-likelihood:
     name: Restricted maximum likelihood (REML)
     description: Estimates variance components by maximizing the likelihood of error
@@ -16488,6 +16669,17 @@ methods:
         name: Stratified ROC
       youden-optimal-cutoff:
         name: Youden optimal cutoff
+    exists:
+      verdict: 'yes'
+      function: dsBinVal::dsROCGLM
+      quote: ROC-GLM function for DataSHIELD. The function prepares the data on the
+        server and fits the model.
+      note: The ROC curve is a binormal ROC-GLM, with AUC and a DeLong CI in the companion
+        functions; status is unknown, and the production ds.auc only gives AUC for
+        logistic regression models.
+      checked: '2026-11-27'
+      candidates: c286b1e1
+      by: cbf0bb02
   roc-regression:
     name: ROC regression (covariate-specific ROC)
     description: Models how a marker's ROC curve depends on covariates to give covariate-specific
@@ -17006,6 +17198,14 @@ methods:
     - normal distribution
     added: '2026-11-19'
     by: b1852a99
+    exists:
+      verdict: unconfirmed
+      function: ''
+      quote: ''
+      note: (Claude said yes, but the function or its quote wasn't found.)
+      checked: '2026-11-27'
+      candidates: c5785d6d
+      by: cbf0bb02
   shared-nearest-neighbor-clustering:
     name: Shared nearest neighbor (SNN) clustering
     description: Clusters observations by building a graph whose edges are weighted
@@ -17621,6 +17821,15 @@ methods:
     - nonparametric
     added: '2026-11-19'
     by: b1852a99
+    exists:
+      verdict: unclear
+      function: ''
+      quote: ''
+      note: I looked for a Spearman or rank-correlation option; ds.corTest is only
+        described as similar to cor.test, and no document names Spearman.
+      checked: '2026-11-27'
+      candidates: e5108a71
+      by: cbf0bb02
   spectral-analysis:
     name: Spectral analysis
     description: Decomposes a time series into frequency components to estimate its
@@ -18074,6 +18283,16 @@ methods:
         name: Stratified analysis
       wald-interaction-test:
         name: Wald interaction test
+    exists:
+      verdict: none
+      function: ''
+      quote: ''
+      note: I looked for effects estimated within strata or interaction tests; dh.meanByGroup
+        only describes a variable by strata, and the regression and meta-analysis
+        functions don't mention subgroup or interaction analysis.
+      checked: '2026-11-27'
+      candidates: f2a5b005
+      by: cbf0bb02
   subsampling:
     name: Subsampling
     description: Repeatedly draws subsets of the data without replacement to assess
@@ -18319,6 +18538,17 @@ methods:
     variants:
       independent-samples:
         name: Independent samples
+        exists:
+          verdict: unconfirmed
+          function: ''
+          quote: ''
+          note: The only t-test is a differentially private one with unknown status
+            and no description, so the documents don't confirm it handles independent
+            samples or pooling. (Claude said partial, but the function or its quote
+            wasn't found.)
+          checked: '2026-11-27'
+          candidates: 6cf81e14
+          by: cbf0bb02
       multiple-imputation-pooled:
         name: Pooled across imputations
       one-sample:
@@ -18339,6 +18569,17 @@ methods:
         name: Weighted
       welch:
         name: Welch unequal variances
+    exists:
+      verdict: unconfirmed
+      function: ''
+      quote: ''
+      note: The only t-test candidate is a differentially private (noise-added) version
+        with unknown status and no description; the production functions only give
+        group means and SDs, not a test. (Claude said partial, but the function or
+        its quote wasn't found.)
+      checked: '2026-11-27'
+      candidates: 5056fdb4
+      by: cbf0bb02
   tabnet:
     name: TabNet
     description: An attention-based deep neural network for classification and regression
@@ -19128,6 +19369,15 @@ methods:
     - regression diagnostics
     added: '2026-11-19'
     by: b1852a99
+    exists:
+      verdict: none
+      function: ''
+      quote: ''
+      note: No candidate computes variance inflation factors; ds.cov gives a variance-covariance
+        matrix, but the VIF itself is not computed.
+      checked: '2026-11-27'
+      candidates: 156b1bd4
+      by: cbf0bb02
   variance-partitioning:
     name: Variance partitioning
     description: Decomposes the total variance of an outcome into fractions attributable
