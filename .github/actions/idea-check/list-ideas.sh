@@ -4,7 +4,10 @@
 # most $MAX_ISSUES, leaving out pull requests, issues carrying a label of
 # $SKIP_LABELS (comma or space separated) and issues the literature watch
 # opened (a bot's issue with its <!-- literature-watch-method: --> marker:
-# already checked; a person's hidden marker doesn't skip the check).
+# already checked; a person's hidden marker doesn't skip the check), and
+# issues already routed (a bot's <!-- routed-to: --> comment; user,
+# 2026-11-26: the check informs the routing, so after it there's nothing
+# to decide).
 #
 # A daily limit (user, 2026-11-26): at most $DAILY_LIMIT checks in 24
 # hours (the bots' check comments of that time; 0: no limit), so nobody can
@@ -82,11 +85,11 @@ while IFS= read -r issue; do
     # holds it back (then the warning says how many wait).
     [ "$limit" -gt 0 ] && [ "$((limit - used))" -lt "$((max - n_priority))" ] || break
   fi
-  if ! comments="$(gh api --paginate "repos/$HUB/issues/$n/comments?per_page=100" --jq '.[].body')"; then
+  if ! comments="$(gh api --paginate "repos/$HUB/issues/$n/comments?per_page=100" --jq '.[] | select(.user.type == "Bot") | .body')"; then
     echo "::warning::Could not read the comments of #$n; checked next time."
     continue
   fi
-  if grep -q '<!-- idea-check:' <<< "$comments"; then continue; fi
+  if grep -q -e '<!-- idea-check:' -e '<!-- routed-to:' <<< "$comments"; then continue; fi
   if [ "$count" -ge "$room" ]; then
     waiting=$((waiting + 1))
     continue

@@ -20,7 +20,8 @@ check() {  # check <name> <0 for passed>
 }
 
 # gh: the issue list from $WORK/issues.json; an issue's comment bodies from
-# $WORK/comments/<n> (missing: none; "FAIL": the call fails); every call
+# $WORK/comments/<n> as JSON, --jq applied (missing: none; "FAIL": the call
+# fails); every call
 # goes to $WORK/calls.
 cat > "$BIN/gh" <<STANDIN
 #!/usr/bin/env bash
@@ -37,7 +38,9 @@ case "\$*" in
     f="$WORK/comments/\$n"
     [ -f "\$f" ] || exit 0
     [ "\$(cat "\$f")" = FAIL ] && exit 1
-    cat "\$f" ;;
+    # The file is the comments as JSON; --jq's filter is applied as gh would.
+    filter="\$(sed -nE "s/.*--jq (.*)\$/\\1/p" <<< "\$*")"
+    jq -r "\${filter:-.}" "\$f" ;;
   *"-X POST"*"/comments"*) cat > "$WORK/posted-\$(sed -E 's#.*issues/([0-9]+)/comments.*#\1#' <<< "\$*")" ;;
 esac
 STANDIN
@@ -58,7 +61,7 @@ issue() {  # issue <number> <state> <labels, comma separated> <body> [user type]
   issue 8 open "" "eighth"
   jq -n '{number: 9, title: "a PR", state: "open", body: "", labels: [], pull_request: {}}'
 } | jq -s . > "$WORK/issues.json"
-echo '<!-- idea-check: none -->' > "$WORK/comments/2"
+echo '[{"user": {"type": "Bot"}, "body": "<!-- idea-check: none -->"}]' > "$WORK/comments/2"
 echo FAIL > "$WORK/comments/6"
 
 : > "$WORK/calls"
@@ -108,6 +111,26 @@ rc=1; if [ "$(jq -c '[.ideas[] | [.number, .priority]]' "$WORK/ideas.json")" = "
 check "requests come first, also checked or skipped issues, past the daily limit; a label set by anybody else counts nothing" "$rc"
 grep -q "#8 carries bot-check, set by someone, who isn't listed" "$WORK/log"
 check "an unlisted login's label is noted" $?
+
+# Routed issues aren't checked (a bot's routing comment); a person's copy of
+# the marker doesn't count, and a request checks a routed issue all the same.
+mkdir -p "$WORK/routed/comments" "$WORK/routed/events"
+cp "$WORK/issues.json" "$WORK/issues.saved"
+{
+  issue 21 open "dsBase" "routed"
+  issue 22 open "" "a person pasted the marker"
+  issue 23 open "dsBase,bot-check" "routed, asked for again"
+} | jq -s . > "$WORK/issues.json"
+echo '[{"user": {"type": "Bot"}, "body": "Tracked in o/r#1. <!-- routed-to: o/r -->"}]' > "$WORK/comments/21"
+echo '[{"user": {"type": "User"}, "body": "<!-- routed-to: o/r -->"}]' > "$WORK/comments/22"
+cp "$WORK/comments/21" "$WORK/comments/23"
+echo '[{"event":"labeled","label":{"name":"bot-check"},"actor":{"login":"FlorianSchw"}}]' > "$WORK/events/23"
+rm -f "$WORK/recent.json"
+PATH="$BIN:$PATH" HUB=hub/ideas GH_TOKEN=t MAX_ISSUES=5 PRIORITY_LABEL=bot-check PRIORITY_LOGINS=FlorianSchw \
+  bash "$DIR/list-ideas.sh" "$WORK/ideas.json" > "$WORK/log" 2>&1
+rc=1; if [ "$(jq -c '[.ideas[].number]' "$WORK/ideas.json")" = "[23,22]" ]; then rc=0; fi
+check "routed issues are skipped, unless asked for; a person's marker doesn't count" "$rc"
+mv "$WORK/issues.saved" "$WORK/issues.json"
 
 jq -n '[{number: 1, body: "**Exists in DataSHIELD?**\n<!-- idea-check: yes -->", label: "exists"},
         {number: 2, body: "dup", label: "exists"},

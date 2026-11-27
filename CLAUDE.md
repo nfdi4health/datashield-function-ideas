@@ -53,7 +53,9 @@ runs (`hub-files`, for R and the scripts; also the defaults
   run, also on a checked or skipped issue, not counted
   (`<!-- idea-check-priority -->`), label removed afterwards. Spending and
   steering aren't a worry for the user; the limit is only against floods.
-  RepositoryOverview reports the runner's Claude runs per day.
+  RepositoryOverview reports the runner's Claude runs per day. Issues
+  already routed (a bot's `<!-- routed-to: -->` comment) aren't checked
+  (user, 2026-11-26), unless asked for with `bot-check`.
 - **The researcher** runs in the private runner
   `FlorianSchw/datashield-agent-runner` on the user's Claude subscription,
   in one queue with the implementer (decided 2026-11-13);
