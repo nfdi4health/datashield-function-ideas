@@ -219,7 +219,12 @@ the place of a person's review:
   (`FederatedMethods/packages`, `datashield_functions_metadata.json`,
   extracted from the packages' roxygen by the user's script there): title
   and description per function, no arguments, so the evidence quote comes
-  from those. Retired packages and server functions are left out.
+  from those. **Since 2026-11-27:** that file was deleted upstream on
+  2026-11-18 (their build moved from R to Python); the catalogue now
+  publishes `packages.json` (packages.datashield.org) with each package's
+  status and its functions' roxygen blocks, which
+  `read_function_inventory()` reads (`inventory_from_packages()`); the
+  older table format is still read if configured. Retired packages and server functions are left out.
 - **Built 2026-11-17** (`R/candidates_literature.R`,
   `literature-candidates.yml`): ranking, research (Opus with web search)
   and the candidate PR with three boxes; decisions in `decisions.json` on
