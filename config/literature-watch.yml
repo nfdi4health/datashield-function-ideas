@@ -56,8 +56,8 @@ vocabulary:
 # "Exists in DataSHIELD?" (R/candidates_literature.R, when candidates are
 # due): down the ranking of the most used methods and variants, each is
 # checked against the functions of the DataSHIELD packages, from the
-# catalogue's inventory (FederatedMethods/packages, which also gives each
-# package's status; retired ones are left out), until each list has its
+# catalogue's inventory (FederatedMethods/packages' packages.json, which
+# also gives each package's status; retired ones are left out), until each list has its
 # gaps (`candidates$most_used`, `candidates$rising`). R picks the `candidates` functions sharing most words
 # with the method, Claude answers with the function and a quote from its
 # title or description, which R checks. Asked again only when those
@@ -68,7 +68,10 @@ exists:
   batch: 5             # methods per call
   max_calls: 15
   architectures: [client, other]   # client functions and exported helpers, not server functions
-  functions_url: https://raw.githubusercontent.com/FederatedMethods/packages/main/datashield_functions_metadata.json
+  # The catalogue's packages.json (since 2026-11-18: packages with their
+  # status and their functions' roxygen); packages_url is only read for
+  # the older format (a table of functions).
+  functions_url: https://packages.datashield.org/packages.json
   packages_url: https://raw.githubusercontent.com/FederatedMethods/packages/main/package_list.csv
 
 # The candidates (runner-candidate-selection.yml: monthly and by hand,

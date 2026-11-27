@@ -221,3 +221,36 @@ test_that("a hand-written idea gets a research brief as plain text; a failed cal
   local_global_mock(call_claude_tool = function(claude, tool, prompt) stop("Claude AI usage limit reached|1763400000"))
   expect_true(research_idea(researcher, iss, r, NULL)$limit)
 })
+
+test_that("the inventory is read from the catalogue's packages.json", {
+  pk <- list(
+    dsBaseClient = list(input = list(status = "production"), repo = list(function_info = list(roxygen_tags = list(
+      list(`function` = "ds.glm", tags = list(title = list("Fits a generalised\n linear model"), description = list("Pooled over studies."), export = list(""))),
+      list(`function` = "ds.mean", tags = list(`_intro` = list("Computes the mean. Of a numeric vector."))),
+      list(`function` = "glmDS2", tags = list(title = list("Server side"), export = list(""))),
+      list(`function` = "helper", tags = list(title = list("Not exported"))),
+      list(`function` = "exportedHelper", tags = list(title = list("A helper"), export = list(""))),
+      list(`function` = NULL, tags = list(title = list("No function"))),
+      list(`function` = "ds.todo", tags = list(title = list("XXXX"))))))),
+    dsOld = list(input = list(status = "retired"), repo = list(function_info = list(roxygen_tags = list(
+      list(`function` = "ds.old", tags = list(title = list("Old"))))))),
+    dsBroken = list(input = list(status = "development"), repo = list(function_info = "Error")),
+    dsUnread = list(input = list(status = "development"), repo = "Error"),
+    dsNamespace = list(input = list(status = "development"), repo = list(functions_exported_in_NAMESPACE = list("initProject"),
+      function_info = list(roxygen_tags = list(
+        list(`function` = "initProject", tags = list(title = list("Initiate a project"))),
+        list(`function` = "internal_confirm", tags = list(title = list("Ask the user"))))))))
+  inv <- inventory_from_packages(pk)
+  expect_equal(inv$fn, c("ds.glm", "ds.mean", "exportedHelper", "ds.todo", "ds.old", "initProject"))
+  expect_equal(inv$title[1], "Fits a generalised linear model")
+  expect_equal(inv$description[1:2], c("Pooled over studies.", "Of a numeric vector."))
+  expect_equal(inv$title[2], "Computes the mean.")
+  expect_equal(unique(inv$status), c("production", "retired", "development"))
+  local_global_mock(inventory_from_packages = inventory_from_packages)
+  text <- jsonlite::toJSON(pk, auto_unbox = TRUE, null = "null")
+  local_mocked_bindings(req_perform = function(req, ...) structure(list(), class = "fake"),
+    resp_body_string = function(resp, ...) text, .package = "httr2")
+  out <- read_function_inventory(list(exists = list(functions_url = "https://example.org/packages.json")))
+  expect_equal(out$fn, c("ds.glm", "ds.mean", "exportedHelper", "initProject"))
+  expect_true(is_server_function("vcovDS.coxph") && is_server_function("meanDS") && !is_server_function("ds.mean"))
+})
